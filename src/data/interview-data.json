@@ -10559,236 +10559,724 @@
       },
       "lessons": [
         {
-          "id": "nest-l1",
+          "id": "nest-l01",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "البنية الأساسية",
-            "en": "Architecture"
+            "ar": "إيه هي NestJS والفرق بينها وبين Express؟",
+            "en": "What is NestJS and how is it different from Express?"
+          },
+          "short": {
+            "ar": "Framework لبناء تطبيقات سيرفر منظمة بـ TypeScript.",
+            "en": "A framework for building structured server apps with TypeScript."
           },
           "points": {
             "ar": [
-              "Module للتنظيم، Controller لاستقبال الطلبات، Provider للمنطق."
+              "بتشتغل فوق Express افتراضيًا أو Fastify.",
+              "Express مرنة ومبتفرضش هيكل، أما NestJS فبتديك architecture واضح و Dependency Injection وأدوات للـ validation والـ testing."
             ],
             "en": [
-              "Modules organise, controllers handle requests, providers hold logic."
+              "It runs on top of Express by default, or on Fastify.",
+              "Express is flexible and imposes no structure, while NestJS gives you a clear architecture, dependency injection, and tools for validation and testing."
             ]
           },
-          "code": "@Module({ controllers: [UsersController], providers: [UsersService] })\nexport class UsersModule {}"
+          "code": ""
         },
         {
-          "id": "nest-l2",
+          "id": "nest-l02",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ Dependency Injection",
-            "en": "Dependency Injection"
+            "ar": "Modules و Controllers و Providers؟",
+            "en": "What are modules, controllers and providers?"
+          },
+          "short": {
+            "ar": "Module بينظم، Controller بيستقبل الطلبات، Provider فيه المنطق.",
+            "en": "A module organises, a controller receives requests, and a provider holds the logic."
           },
           "points": {
             "ar": [
-              "الـ container بينشئ الاعتمادات ويحقنها. providers ممكن تكون useClass أو useValue أو useFactory أو useExisting."
+              "الـ providers خاصة بالـ module إلا لو عملت لها exports."
             ],
             "en": [
-              "The container creates and injects dependencies. Providers: useClass, useValue, useFactory, useExisting."
+              "Providers are private to their module unless you export them."
             ]
           },
-          "code": "@Injectable()\nexport class UsersService {\n  constructor(private readonly repo: UsersRepository) {}\n}"
+          "code": "@Module({\n  controllers: [UsersController],\n  providers: [UsersService],\n  exports: [UsersService],\n})\nexport class UsersModule {}"
         },
         {
-          "id": "nest-l3",
+          "id": "nest-l03",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ Controllers والـ DTO",
-            "en": "Controllers & DTO"
+            "ar": "يعني إيه Dependency Injection؟",
+            "en": "What is dependency injection?"
+          },
+          "short": {
+            "ar": "الـ class بتاخد اللي محتاجاه من بره بدل ما تنشئه.",
+            "en": "A class receives what it needs from outside instead of creating it."
           },
           "points": {
             "ar": [
-              "DTO كلاس بيوصف المدخلات، و ValidationPipe مع class-validator بيتحقق منها."
+              "الـ IoC Container في NestJS بينشئ الـ providers ويحقنها في الـ constructor.",
+              "ده بيقلل الترابط ويسهل الاختبار."
             ],
             "en": [
-              "DTO classes describe input; ValidationPipe with class-validator checks it."
+              "NestJS's IoC container creates providers and injects them into constructors.",
+              "This reduces coupling and makes testing easier."
             ]
           },
-          "code": "export class CreateUserDto { @IsEmail() email: string; @MinLength(8) password: string; }\n@Post() create(@Body() dto: CreateUserDto) { return this.users.create(dto); }\napp.useGlobalPipes(new ValidationPipe({ whitelist: true }));"
+          "code": "@Injectable()\nexport class UsersService {}\n\n@Controller(\"users\")\nexport class UsersController {\n  constructor(private readonly users: UsersService) {}\n}"
         },
         {
-          "id": "nest-l4",
+          "id": "nest-l04",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "دورة الطلب",
-            "en": "Request Lifecycle"
+            "ar": "الـ Decorators و Custom Decorator؟",
+            "en": "What are decorators, and how do you write a custom one?"
+          },
+          "short": {
+            "ar": "دوال بتضيف metadata أو سلوك للـ classes والـ methods والـ parameters.",
+            "en": "Functions that add metadata or behaviour to classes, methods and parameters."
           },
           "points": {
             "ar": [
-              "Middleware ثم Guards ثم Interceptors ثم Pipes ثم Handler ثم Interceptors. الأخطاء للـ Exception Filters."
+              "أمثلة: @Get() و @Body().",
+              "وتقدر تعمل واحد خاص بيك بـ createParamDecorator."
             ],
             "en": [
-              "Middleware, guards, interceptors, pipes, handler, interceptors. Errors go to exception filters."
+              "Examples: @Get() and @Body().",
+              "You can write your own with createParamDecorator."
             ]
           },
-          "code": "@UseGuards(AuthGuard)\n@UseInterceptors(LoggingInterceptor)\n@Get(':id') one(@Param('id', ParseIntPipe) id: number) {}"
+          "code": "export const CurrentUser = createParamDecorator(\n  (_data: unknown, ctx: ExecutionContext) =>\n    ctx.switchToHttp().getRequest().user,\n);"
         },
         {
-          "id": "nest-l5",
+          "id": "nest-l05",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "المصادقة والصلاحيات",
-            "en": "Auth & RBAC"
+            "ar": "الـ Provider Scopes؟",
+            "en": "What are provider scopes?"
+          },
+          "short": {
+            "ar": "DEFAULT نسخة واحدة، REQUEST لكل طلب، TRANSIENT لكل مستهلك.",
+            "en": "DEFAULT is one shared instance, REQUEST is one per request, and TRANSIENT is one per consumer."
           },
           "points": {
             "ar": [
-              "JWT للمصادقة، و Guard يقرأ metadata الأدوار بـ Reflector."
+              "الـ Singleton هو الأفضل للأداء.",
+              "REQUEST بينتقل لفوق، فاللي بيعتمد عليه بيبقى request-scoped كمان."
             ],
             "en": [
-              "JWT for authentication; a guard reads role metadata with Reflector."
-            ]
-          },
-          "code": "canActivate(ctx: ExecutionContext) {\n  const roles = this.reflector.get<string[]>('roles', ctx.getHandler());\n  return !roles || roles.includes(ctx.switchToHttp().getRequest().user.role);\n}"
-        },
-        {
-          "id": "nest-l6",
-          "title": {
-            "ar": "الـ Scopes والاعتماد الدائري",
-            "en": "Scopes"
-          },
-          "points": {
-            "ar": [
-              "singleton الافتراضي، و request و transient. الاعتماد الدائري يتحل بإعادة التصميم أو forwardRef."
-            ],
-            "en": [
-              "Singleton by default, plus request and transient. Fix circular dependencies by redesign or forwardRef."
+              "Singleton is best for performance.",
+              "REQUEST scope bubbles up, so anything that depends on it becomes request-scoped too."
             ]
           },
           "code": "@Injectable({ scope: Scope.REQUEST })\nexport class TenantService {}"
         },
         {
-          "id": "nest-l7",
+          "id": "nest-l06",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "قواعد البيانات",
-            "en": "Databases"
+            "ar": "الـ Custom Providers؟",
+            "en": "What are custom providers?"
+          },
+          "short": {
+            "ar": "طرق مختلفة لتحديد القيمة اللي هتتحقن.",
+            "en": "Different ways to define the value that gets injected."
           },
           "points": {
             "ar": [
-              "Prisma أو TypeORM. استخدم migrations و transactions، وبلاش synchronize في production."
+              "useClass: يحدد class معينة.",
+              "useValue: قيمة جاهزة أو mock.",
+              "useFactory: دالة بتنشئ القيمة، وممكن تكون async.",
+              "useExisting: اسم تاني لـ provider موجود."
             ],
             "en": [
-              "Prisma or TypeORM. Use migrations and transactions; no synchronize in production."
+              "useClass: picks a specific class.",
+              "useValue: a ready-made value or a mock.",
+              "useFactory: a function that builds the value, and it can be async.",
+              "useExisting: an alias for an existing provider."
             ]
           },
-          "code": "await prisma.$transaction([debit, credit]);"
+          "code": "{\n  provide: \"DB\",\n  useFactory: (config: ConfigService) => createDb(config.get(\"DB_URL\")),\n  inject: [ConfigService],\n}"
         },
         {
-          "id": "nest-l8",
+          "id": "nest-l07",
+          "section": {
+            "ar": "Request Lifecycle",
+            "en": "Request Lifecycle"
+          },
           "title": {
-            "ar": "الاختبار والـ Microservices",
-            "en": "Testing & Microservices"
+            "ar": "ترتيب الـ Request Lifecycle؟",
+            "en": "What is the order of the request lifecycle?"
+          },
+          "short": {
+            "ar": "Middleware ← Guards ← Interceptors ← Pipes ← Handler.",
+            "en": "Middleware → Guards → Interceptors → Pipes → Handler."
           },
           "points": {
             "ar": [
-              "Test.createTestingModule لعمل mocks. الـ transporters زي Redis و Kafka و RabbitMQ و NATS."
+              "Middleware",
+              "Guards",
+              "Interceptors (قبل التنفيذ)",
+              "Pipes",
+              "Controller ثم Service",
+              "Interceptors (بعد التنفيذ)",
+              "Response",
+              "ولو حصل exception ومتمسكش، بيروح للـ Exception Filters."
             ],
             "en": [
-              "Test.createTestingModule for mocks. Transporters include Redis, Kafka, RabbitMQ, NATS."
+              "Middleware",
+              "Guards",
+              "Interceptors (before the handler)",
+              "Pipes",
+              "Controller, then service",
+              "Interceptors (after the handler)",
+              "Response",
+              "An uncaught exception goes to the exception filters."
             ]
           },
-          "code": "const mod = await Test.createTestingModule({\n  providers: [UsersService, { provide: UsersRepository, useValue: mockRepo }],\n}).compile();"
+          "code": ""
+        },
+        {
+          "id": "nest-l08",
+          "section": {
+            "ar": "Request Lifecycle",
+            "en": "Request Lifecycle"
+          },
+          "title": {
+            "ar": "Middleware و Guard و Interceptor؟",
+            "en": "Middleware, guards and interceptors: what is the difference?"
+          },
+          "short": {
+            "ar": "Middleware معالجة أولية، Guard سماح أو منع، Interceptor قبل وبعد.",
+            "en": "Middleware does early processing, a guard allows or blocks, and an interceptor runs before and after."
+          },
+          "points": {
+            "ar": [
+              "الـ Guard عنده ExecutionContext فيعرف الـ handler المطلوب.",
+              "الـ Interceptor بيستخدم RxJS ومناسب للـ logging والـ caching وتعديل الرد."
+            ],
+            "en": [
+              "A guard has the ExecutionContext, so it knows which handler is being called.",
+              "An interceptor uses RxJS and suits logging, caching and reshaping the response."
+            ]
+          },
+          "code": "@Injectable()\nexport class WrapInterceptor implements NestInterceptor {\n  intercept(ctx: ExecutionContext, next: CallHandler) {\n    return next.handle().pipe(map(data => ({ data })));\n  }\n}"
+        },
+        {
+          "id": "nest-l09",
+          "section": {
+            "ar": "Request Lifecycle",
+            "en": "Request Lifecycle"
+          },
+          "title": {
+            "ar": "Pipes و ValidationPipe و DTOs؟",
+            "en": "What are pipes, ValidationPipe and DTOs?"
+          },
+          "short": {
+            "ar": "الـ Pipes للتحويل والتحقق من المدخلات.",
+            "en": "Pipes transform and validate input."
+          },
+          "points": {
+            "ar": [
+              "الـ DTO بيوصف شكل البيانات، ولازم يكون class.",
+              "whitelist بتشيل الخصائص الزيادة."
+            ],
+            "en": [
+              "A DTO describes the shape of the data, and it must be a class.",
+              "whitelist strips out extra properties."
+            ]
+          },
+          "code": "export class CreateUserDto {\n  @IsEmail() email: string;\n  @MinLength(8) password: string;\n}\n\napp.useGlobalPipes(\n  new ValidationPipe({ whitelist: true, transform: true }),\n);"
+        },
+        {
+          "id": "nest-l10",
+          "section": {
+            "ar": "Request Lifecycle",
+            "en": "Request Lifecycle"
+          },
+          "title": {
+            "ar": "الـ Exception Filters؟",
+            "en": "What are exception filters?"
+          },
+          "short": {
+            "ar": "بتتحكم في شكل رد الأخطاء.",
+            "en": "They control the shape of error responses."
+          },
+          "points": {
+            "ar": [
+              "NestJS فيها filter افتراضي وأخطاء جاهزة زي NotFoundException."
+            ],
+            "en": [
+              "NestJS has a default filter and ready-made errors such as NotFoundException."
+            ]
+          },
+          "code": "@Catch(HttpException)\nexport class HttpFilter implements ExceptionFilter {\n  catch(e: HttpException, host: ArgumentsHost) {\n    const res = host.switchToHttp().getResponse();\n    res.status(e.getStatus()).json({ message: e.message });\n  }\n}"
+        },
+        {
+          "id": "nest-l11",
+          "section": {
+            "ar": "Modules متقدمة",
+            "en": "Advanced Modules"
+          },
+          "title": {
+            "ar": "Dynamic Modules و forRoot و forFeature؟",
+            "en": "What are dynamic modules, forRoot and forFeature?"
+          },
+          "short": {
+            "ar": "modules بتتظبط بإعدادات وقت الاستيراد.",
+            "en": "Modules configured with options when they are imported."
+          },
+          "points": {
+            "ar": [
+              "حسب العرف، forRoot للإعداد العام مرة واحدة، و forFeature لتسجيل حاجات تخص module معين.",
+              "وفيه forRootAsync لما الإعدادات تعتمد على providers."
+            ],
+            "en": [
+              "By convention, forRoot sets up global configuration once, and forFeature registers things for a specific module.",
+              "forRootAsync is for when the settings depend on other providers."
+            ]
+          },
+          "code": "TypeOrmModule.forRoot(options);\nTypeOrmModule.forFeature([User]);"
+        },
+        {
+          "id": "nest-l12",
+          "section": {
+            "ar": "Modules متقدمة",
+            "en": "Advanced Modules"
+          },
+          "title": {
+            "ar": "@Global()؟",
+            "en": "What does @Global() do?"
+          },
+          "short": {
+            "ar": "بيخلي exports الـ module متاحة في كل مكان.",
+            "en": "It makes a module's exports available everywhere."
+          },
+          "points": {
+            "ar": [
+              "لازم الـ module يتعمل له import مرة واحدة.",
+              "استخدمه بحساب للحاجات المشتركة زي الـ database، لأنه بيخبي الاعتماديات."
+            ],
+            "en": [
+              "The module still has to be imported once.",
+              "Use it sparingly for shared things such as the database, because it hides dependencies."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "nest-l13",
+          "section": {
+            "ar": "Modules متقدمة",
+            "en": "Advanced Modules"
+          },
+          "title": {
+            "ar": "الـ Circular Dependency؟",
+            "en": "What is a circular dependency?"
+          },
+          "short": {
+            "ar": "لما A تعتمد على B و B على A.",
+            "en": "When A depends on B and B depends on A."
+          },
+          "points": {
+            "ar": [
+              "الحل الأفضل تنقل المنطق المشترك لـ provider تالت أو تستخدم events.",
+              "ولو لازم، استخدم forwardRef في الطرفين."
+            ],
+            "en": [
+              "The best fix is to move the shared logic into a third provider or use events.",
+              "If you must, use forwardRef on both sides."
+            ]
+          },
+          "code": "constructor(\n  @Inject(forwardRef(() => AuthService))\n  private auth: AuthService,\n) {}"
+        },
+        {
+          "id": "nest-l14",
+          "section": {
+            "ar": "Modules متقدمة",
+            "en": "Advanced Modules"
+          },
+          "title": {
+            "ar": "الـ Lifecycle Hooks؟",
+            "en": "What are lifecycle hooks?"
+          },
+          "short": {
+            "ar": "دوال بتتنفذ عند تشغيل وقفل التطبيق.",
+            "en": "Methods that run when the app starts and shuts down."
+          },
+          "points": {
+            "ar": [
+              "onModuleInit و onApplicationBootstrap للبداية.",
+              "onModuleDestroy و beforeApplicationShutdown و onApplicationShutdown للنهاية.",
+              "ولإشارات النظام زي SIGTERM لازم تفعل app.enableShutdownHooks()."
+            ],
+            "en": [
+              "onModuleInit and onApplicationBootstrap run at startup.",
+              "onModuleDestroy, beforeApplicationShutdown and onApplicationShutdown run at shutdown.",
+              "For system signals such as SIGTERM you must call app.enableShutdownHooks()."
+            ]
+          },
+          "code": "app.enableShutdownHooks();"
+        },
+        {
+          "id": "nest-l15",
+          "section": {
+            "ar": "Database و Security",
+            "en": "Database & Security"
+          },
+          "title": {
+            "ar": "ربط قاعدة البيانات؟",
+            "en": "How do you connect a database?"
+          },
+          "short": {
+            "ar": "TypeORM للـ SQL بـ entities، و Mongoose لـ MongoDB، و Prisma بـ schema.",
+            "en": "TypeORM for SQL with entities, Mongoose for MongoDB, and Prisma with a schema."
+          },
+          "points": {
+            "ar": [
+              "TypeORM و Mongoose ليهم packages رسمية، و Prisma غالبًا بتعمل له service.",
+              "في الـ production استخدم migrations بدل synchronize: true."
+            ],
+            "en": [
+              "TypeORM and Mongoose have official packages, and Prisma is usually wrapped in a service.",
+              "In production use migrations instead of synchronize: true."
+            ]
+          },
+          "code": "@Injectable()\nexport class UsersService {\n  constructor(\n    @InjectRepository(User) private repo: Repository<User>,\n  ) {}\n\n  findAll() { return this.repo.find(); }\n}"
+        },
+        {
+          "id": "nest-l16",
+          "section": {
+            "ar": "Database و Security",
+            "en": "Database & Security"
+          },
+          "title": {
+            "ar": "Authentication بـ JWT و Passport؟",
+            "en": "Authentication with JWT and Passport?"
+          },
+          "short": {
+            "ar": "تسجيل دخول بيرجع token، و guard بيتأكد منه.",
+            "en": "Logging in returns a token, and a guard verifies it."
+          },
+          "points": {
+            "ar": [
+              "الـ Strategy بتحدد طريقة التحقق، واللي بيرجع من validate بيتحط في request.user."
+            ],
+            "en": [
+              "The strategy defines how to verify, and whatever validate returns is placed on request.user."
+            ]
+          },
+          "code": "@Injectable()\nexport class JwtStrategy extends PassportStrategy(Strategy) {\n  constructor() {\n    super({\n      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),\n      secretOrKey: process.env.JWT_SECRET!,\n    });\n  }\n  validate(payload: { sub: string }) {\n    return { id: payload.sub };\n  }\n}\n\n@UseGuards(AuthGuard(\"jwt\"))\n@Get(\"me\")\nme(@CurrentUser() user) { return user; }"
+        },
+        {
+          "id": "nest-l17",
+          "section": {
+            "ar": "Database و Security",
+            "en": "Database & Security"
+          },
+          "title": {
+            "ar": "Role-based Authorization؟",
+            "en": "How does role-based authorization work?"
+          },
+          "short": {
+            "ar": "decorator بيحدد الأدوار، و guard بيقراها بـ Reflector.",
+            "en": "A decorator sets the roles, and a guard reads them with Reflector."
+          },
+          "points": {
+            "ar": [
+              "لازم guard الـ authentication يشتغل الأول عشان user يكون موجود."
+            ],
+            "en": [
+              "The authentication guard must run first so that user exists."
+            ]
+          },
+          "code": "export const Roles = (...r: string[]) => SetMetadata(\"roles\", r);\n\n@Injectable()\nexport class RolesGuard implements CanActivate {\n  constructor(private reflector: Reflector) {}\n\n  canActivate(ctx: ExecutionContext) {\n    const roles = this.reflector.getAllAndOverride<string[]>(\"roles\", [\n      ctx.getHandler(),\n      ctx.getClass(),\n    ]);\n    if (!roles) return true;\n    const { user } = ctx.switchToHttp().getRequest();\n    return roles.includes(user?.role);\n  }\n}"
+        },
+        {
+          "id": "nest-l18",
+          "section": {
+            "ar": "Database و Security",
+            "en": "Database & Security"
+          },
+          "title": {
+            "ar": "ConfigModule؟",
+            "en": "What is ConfigModule?"
+          },
+          "short": {
+            "ar": "لإدارة متغيرات البيئة.",
+            "en": "It manages environment variables."
+          },
+          "points": {
+            "ar": [
+              "بيقرا .env ويتحقق من القيم، وبتوصل ليها بـ ConfigService."
+            ],
+            "en": [
+              "It reads .env, validates the values, and exposes them through ConfigService."
+            ]
+          },
+          "code": "ConfigModule.forRoot({ isGlobal: true });\nthis.config.getOrThrow<string>(\"JWT_SECRET\");"
+        },
+        {
+          "id": "nest-l19",
+          "section": {
+            "ar": "Testing و Architecture",
+            "en": "Testing & Architecture"
+          },
+          "title": {
+            "ar": "Unit و E2E Testing؟",
+            "en": "Unit and E2E testing?"
+          },
+          "short": {
+            "ar": "Unit لوحدة لوحدها، و E2E للتطبيق من الطلب للرد.",
+            "en": "Unit tests check one piece alone; E2E tests check the app from request to response."
+          },
+          "points": {
+            "ar": [
+              "Test.createTestingModule بيبني module للاختبار، وتقدر تبدل أي provider بـ mock.",
+              "وفي الـ E2E بتستخدم supertest."
+            ],
+            "en": [
+              "Test.createTestingModule builds a module for testing, and you can swap any provider for a mock.",
+              "E2E tests use supertest."
+            ]
+          },
+          "code": "const moduleRef = await Test.createTestingModule({\n  providers: [\n    UsersService,\n    { provide: getRepositoryToken(User), useValue: { find: jest.fn() } },\n  ],\n}).compile();\n\nconst service = moduleRef.get(UsersService);"
+        },
+        {
+          "id": "nest-l20",
+          "section": {
+            "ar": "Testing و Architecture",
+            "en": "Testing & Architecture"
+          },
+          "title": {
+            "ar": "Microservices و WebSockets و Queues؟",
+            "en": "Microservices, WebSockets and queues?"
+          },
+          "short": {
+            "ar": "فيه packages رسمية لكل واحدة.",
+            "en": "There are official packages for each."
+          },
+          "points": {
+            "ar": [
+              "Microservices: transports زي TCP و Redis و NATS و RabbitMQ و Kafka و gRPC. @MessagePattern للطلب والرد، و @EventPattern للأحداث.",
+              "WebSockets: Gateways بـ @WebSocketGateway.",
+              "Queues: @nestjs/bullmq للمهام في الخلفية."
+            ],
+            "en": [
+              "Microservices: transports such as TCP, Redis, NATS, RabbitMQ, Kafka and gRPC. @MessagePattern handles request-response, and @EventPattern handles events.",
+              "WebSockets: gateways with @WebSocketGateway.",
+              "Queues: @nestjs/bullmq for background jobs."
+            ]
+          },
+          "code": "@WebSocketGateway()\nexport class ChatGateway {\n  @SubscribeMessage(\"msg\")\n  handle(@MessageBody() text: string) {\n    return { event: \"msg\", data: text };\n  }\n}"
         }
       ],
       "quiz": [
         {
-          "id": "nest-q1",
+          "id": "nest-q01",
           "question": {
-            "ar": "مين المسؤول عن الصلاحيات؟",
-            "en": "Which handles authorization?"
+            "ar": "NestJS بتشتغل فوق أنهي HTTP platform افتراضيًا؟",
+            "en": "Which HTTP platform does NestJS use by default?"
           },
           "options": [
             {
-              "ar": "Guard",
-              "en": "Guard"
+              "ar": "Express",
+              "en": "Express"
             },
             {
-              "ar": "Pipe",
-              "en": "Pipe"
+              "ar": "Fastify",
+              "en": "Fastify"
             },
             {
-              "ar": "Filter",
-              "en": "Filter"
+              "ar": "Koa",
+              "en": "Koa"
             },
             {
-              "ar": "DTO",
-              "en": "DTO"
+              "ar": "Hapi",
+              "en": "Hapi"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "canActivate بترجع true أو false.",
-            "en": "canActivate allows or denies."
+            "ar": "Framework لبناء تطبيقات سيرفر منظمة بـ TypeScript.",
+            "en": "A framework for building structured server apps with TypeScript."
           }
         },
         {
-          "id": "nest-q2",
+          "id": "nest-q02",
           "question": {
-            "ar": "مين مسؤول عن التحويل والتحقق؟",
-            "en": "Which transforms and validates input?"
+            "ar": "عشان تستخدم UsersService في module تاني لازم تعمل إيه؟",
+            "en": "What must you do to use UsersService in another module?"
           },
           "options": [
             {
-              "ar": "Pipe",
-              "en": "Pipe"
+              "ar": "تعمله export وتعمل import لـ UsersModule",
+              "en": "Export it and import UsersModule"
             },
             {
-              "ar": "Guard",
-              "en": "Guard"
+              "ar": "تعمله new",
+              "en": "Create it with new"
             },
             {
-              "ar": "Module",
-              "en": "Module"
+              "ar": "تحطه في controllers",
+              "en": "Add it to controllers"
             },
             {
-              "ar": "Filter",
-              "en": "Filter"
+              "ar": "ولا حاجة",
+              "en": "Nothing"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "زي ParseIntPipe.",
-            "en": "Such as ParseIntPipe."
+            "ar": "Module بينظم، Controller بيستقبل الطلبات، Provider فيه المنطق.",
+            "en": "A module organises, a controller receives requests, and a provider holds the logic."
           }
         },
         {
-          "id": "nest-q3",
+          "id": "nest-q03",
           "question": {
-            "ar": "الـ scope الافتراضي؟",
-            "en": "Default provider scope?"
+            "ar": "مين اللي بينشئ الـ providers ويحقنها في NestJS؟",
+            "en": "Who creates and injects providers in NestJS?"
           },
           "options": [
+            {
+              "ar": "الـ IoC Container",
+              "en": "The IoC container"
+            },
+            {
+              "ar": "إنت بـ new",
+              "en": "You, with new"
+            },
+            {
+              "ar": "الـ controller",
+              "en": "The controller"
+            },
+            {
+              "ar": "Express",
+              "en": "Express"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ class بتاخد اللي محتاجاه من بره بدل ما تنشئه.",
+            "en": "A class receives what it needs from outside instead of creating it."
+          }
+        },
+        {
+          "id": "nest-q04",
+          "question": {
+            "ar": "أنهي دالة بتعمل custom parameter decorator؟",
+            "en": "Which function creates a custom parameter decorator?"
+          },
+          "options": [
+            {
+              "ar": "createParamDecorator",
+              "en": "createParamDecorator"
+            },
+            {
+              "ar": "SetMetadata",
+              "en": "SetMetadata"
+            },
+            {
+              "ar": "Injectable",
+              "en": "Injectable"
+            },
+            {
+              "ar": "Reflector",
+              "en": "Reflector"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "دوال بتضيف metadata أو سلوك للـ classes والـ methods والـ parameters.",
+            "en": "Functions that add metadata or behaviour to classes, methods and parameters."
+          }
+        },
+        {
+          "id": "nest-q05",
+          "question": {
+            "ar": "controller بيحقن service نوعه REQUEST. الـ controller هيبقى إيه؟",
+            "en": "A controller injects a REQUEST-scoped service. What does the controller become?"
+          },
+          "options": [
+            {
+              "ar": "request-scoped هو كمان",
+              "en": "Request-scoped as well"
+            },
             {
               "ar": "Singleton",
               "en": "Singleton"
-            },
-            {
-              "ar": "Request",
-              "en": "Request"
             },
             {
               "ar": "Transient",
               "en": "Transient"
             },
             {
-              "ar": "Session",
-              "en": "Session"
+              "ar": "Error",
+              "en": "An error"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "نسخة واحدة للتطبيق.",
-            "en": "One shared instance."
+            "ar": "DEFAULT نسخة واحدة، REQUEST لكل طلب، TRANSIENT لكل مستهلك.",
+            "en": "DEFAULT is one shared instance, REQUEST is one per request, and TRANSIENT is one per consumer."
           }
         },
         {
-          "id": "nest-q4",
+          "id": "nest-q06",
           "question": {
-            "ar": "أول مرحلة في دورة الطلب؟",
-            "en": "First stage of the lifecycle?"
+            "ar": "أنهي واحد بتستخدمه لقيمة جاهزة أو object وهمي (mock)؟",
+            "en": "Which one supplies a ready-made value or a mock object?"
           },
           "options": [
             {
-              "ar": "Middleware",
-              "en": "Middleware"
+              "ar": "useValue",
+              "en": "useValue"
             },
+            {
+              "ar": "useFactory",
+              "en": "useFactory"
+            },
+            {
+              "ar": "useExisting",
+              "en": "useExisting"
+            },
+            {
+              "ar": "useClass",
+              "en": "useClass"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "طرق مختلفة لتحديد القيمة اللي هتتحقن.",
+            "en": "Different ways to define the value that gets injected."
+          }
+        },
+        {
+          "id": "nest-q07",
+          "question": {
+            "ar": "أنهي مرحلة بتتنفذ قبل الـ handler على طول؟",
+            "en": "Which stage runs immediately before the route handler?"
+          },
+          "options": [
             {
               "ar": "Pipes",
               "en": "Pipes"
@@ -10798,111 +11286,25 @@
               "en": "Guards"
             },
             {
-              "ar": "Interceptors",
-              "en": "Interceptors"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "قبل الـ guards.",
-            "en": "It precedes guards."
-          }
-        },
-        {
-          "id": "nest-q5",
-          "question": {
-            "ar": "عشان provider يتستخدم في module تاني؟",
-            "en": "To use a provider in another module?"
-          },
-          "options": [
-            {
-              "ar": "export من موديوله و import للموديول",
-              "en": "Export it and import its module"
-            },
-            {
-              "ar": "تعمله new",
-              "en": "Instantiate it with new"
-            },
-            {
-              "ar": "تحطه في controllers",
-              "en": "List it in controllers"
-            },
-            {
-              "ar": "متعملش حاجة",
-              "en": "Nothing"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الـ modules مغلفة.",
-            "en": "Modules are encapsulated."
-          }
-        },
-        {
-          "id": "nest-q6",
-          "question": {
-            "ar": "ليه DTO كلاس مش interface؟",
-            "en": "Why are DTOs classes?"
-          },
-          "options": [
-            {
-              "ar": "الـ interface بيتمسح وقت التشغيل",
-              "en": "Interfaces are erased at runtime"
-            },
-            {
-              "ar": "الكلاس أسرع",
-              "en": "Classes are faster"
-            },
-            {
-              "ar": "الـ interface ممنوع",
-              "en": "Interfaces are forbidden"
-            },
-            {
-              "ar": "عشان قاعدة البيانات",
-              "en": "For the database"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الـ validation محتاج metadata.",
-            "en": "Validation needs runtime metadata."
-          }
-        },
-        {
-          "id": "nest-q7",
-          "question": {
-            "ar": "توحيد شكل الأخطاء بيتم بـ؟",
-            "en": "Shape error responses with?"
-          },
-          "options": [
-            {
-              "ar": "Exception Filter",
-              "en": "Exception Filter"
-            },
-            {
-              "ar": "Guard",
-              "en": "Guard"
-            },
-            {
-              "ar": "Pipe",
-              "en": "Pipe"
-            },
-            {
               "ar": "Middleware",
               "en": "Middleware"
+            },
+            {
+              "ar": "Exception Filters",
+              "en": "Exception Filters"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "@Catch",
-            "en": "Using @Catch."
+            "ar": "Middleware ← Guards ← Interceptors ← Pipes ← Handler.",
+            "en": "Middleware → Guards → Interceptors → Pipes → Handler."
           }
         },
         {
-          "id": "nest-q8",
+          "id": "nest-q08",
           "question": {
-            "ar": "تغليف الرد الناجح في شكل موحد؟",
-            "en": "Wrap successful responses?"
+            "ar": "أنهي واحد بيغلف الرد الناجح في { data }؟",
+            "en": "Which one wraps a successful response in { data }?"
           },
           "options": [
             {
@@ -10918,14 +11320,374 @@
               "en": "Pipe"
             },
             {
-              "ar": "Module",
-              "en": "Module"
+              "ar": "Middleware",
+              "en": "Middleware"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "بيستخدم RxJS map.",
-            "en": "Uses RxJS map."
+            "ar": "Middleware معالجة أولية، Guard سماح أو منع، Interceptor قبل وبعد.",
+            "en": "Middleware does early processing, a guard allows or blocks, and an interceptor runs before and after."
+          }
+        },
+        {
+          "id": "nest-q09",
+          "question": {
+            "ar": "ليه الـ DTO لازم يكون class مش interface؟",
+            "en": "Why must a DTO be a class rather than an interface?"
+          },
+          "options": [
+            {
+              "ar": "الـ interface بيتمسح وقت التشغيل فالـ validation مش هيشوفه",
+              "en": "Interfaces are erased at runtime, so validation cannot see them"
+            },
+            {
+              "ar": "الكلاس أسرع",
+              "en": "Classes are faster"
+            },
+            {
+              "ar": "NestJS بتمنع الـ interfaces",
+              "en": "NestJS forbids interfaces"
+            },
+            {
+              "ar": "عشان الداتابيز",
+              "en": "Because of the database"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Pipes للتحويل والتحقق من المدخلات.",
+            "en": "Pipes transform and validate input."
+          }
+        },
+        {
+          "id": "nest-q10",
+          "question": {
+            "ar": "أنهي decorator بيحدد الأخطاء اللي الـ filter بيمسكها؟",
+            "en": "Which decorator sets the exceptions a filter handles?"
+          },
+          "options": [
+            {
+              "ar": "@Catch()",
+              "en": "@Catch()"
+            },
+            {
+              "ar": "@UseGuards()",
+              "en": "@UseGuards()"
+            },
+            {
+              "ar": "@Injectable()",
+              "en": "@Injectable()"
+            },
+            {
+              "ar": "@Module()",
+              "en": "@Module()"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بتتحكم في شكل رد الأخطاء.",
+            "en": "They control the shape of error responses."
+          }
+        },
+        {
+          "id": "nest-q11",
+          "question": {
+            "ar": "الإعدادات معتمدة على ConfigService. تستخدم إيه؟",
+            "en": "The settings depend on ConfigService. What do you use?"
+          },
+          "options": [
+            {
+              "ar": "forRootAsync",
+              "en": "forRootAsync"
+            },
+            {
+              "ar": "forRoot",
+              "en": "forRoot"
+            },
+            {
+              "ar": "forFeature",
+              "en": "forFeature"
+            },
+            {
+              "ar": "@Global()",
+              "en": "@Global()"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "modules بتتظبط بإعدادات وقت الاستيراد.",
+            "en": "Modules configured with options when they are imported."
+          }
+        },
+        {
+          "id": "nest-q12",
+          "question": {
+            "ar": "أهم عيب في @Global()؟",
+            "en": "The main downside of @Global()?"
+          },
+          "options": [
+            {
+              "ar": "بيخبي الاعتماديات",
+              "en": "It hides dependencies"
+            },
+            {
+              "ar": "بيبطأ التشغيل",
+              "en": "It slows startup"
+            },
+            {
+              "ar": "بيكسر الـ DI",
+              "en": "It breaks dependency injection"
+            },
+            {
+              "ar": "لازم import في كل module",
+              "en": "It must be imported in every module"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بيخلي exports الـ module متاحة في كل مكان.",
+            "en": "It makes a module's exports available everywhere."
+          }
+        },
+        {
+          "id": "nest-q13",
+          "question": {
+            "ar": "الحل المفضل للـ Circular Dependency؟",
+            "en": "The preferred fix for a circular dependency?"
+          },
+          "options": [
+            {
+              "ar": "تنقل المنطق المشترك لـ provider تالت",
+              "en": "Move the shared logic into a third provider"
+            },
+            {
+              "ar": "forwardRef في كل حتة",
+              "en": "forwardRef everywhere"
+            },
+            {
+              "ar": "تخلي الاتنين @Global()",
+              "en": "Make both modules @Global()"
+            },
+            {
+              "ar": "تستخدم REQUEST scope",
+              "en": "Use REQUEST scope"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "لما A تعتمد على B و B على A.",
+            "en": "When A depends on B and B depends on A."
+          }
+        },
+        {
+          "id": "nest-q14",
+          "question": {
+            "ar": "الـ shutdown hooks مش بتشتغل مع SIGTERM. إيه الناقص؟",
+            "en": "Shutdown hooks do not run on SIGTERM. What is missing?"
+          },
+          "options": [
+            {
+              "ar": "app.enableShutdownHooks()",
+              "en": "app.enableShutdownHooks()"
+            },
+            {
+              "ar": "app.listen()",
+              "en": "app.listen()"
+            },
+            {
+              "ar": "@Global()",
+              "en": "@Global()"
+            },
+            {
+              "ar": "onModuleInit",
+              "en": "onModuleInit"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "دوال بتتنفذ عند تشغيل وقفل التطبيق.",
+            "en": "Methods that run when the app starts and shuts down."
+          }
+        },
+        {
+          "id": "nest-q15",
+          "question": {
+            "ar": "في الـ production تستخدم إيه بدل synchronize: true؟",
+            "en": "In production, what should replace synchronize: true?"
+          },
+          "options": [
+            {
+              "ar": "Migrations",
+              "en": "Migrations"
+            },
+            {
+              "ar": "Seeders",
+              "en": "Seeders"
+            },
+            {
+              "ar": "forFeature",
+              "en": "forFeature"
+            },
+            {
+              "ar": "@Global()",
+              "en": "@Global()"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "TypeORM للـ SQL بـ entities، و Mongoose لـ MongoDB، و Prisma بـ schema.",
+            "en": "TypeORM for SQL with entities, Mongoose for MongoDB, and Prisma with a schema."
+          }
+        },
+        {
+          "id": "nest-q16",
+          "question": {
+            "ar": "القيمة اللي بترجع من validate() بتتحط فين؟",
+            "en": "Where does the value returned from validate() end up?"
+          },
+          "options": [
+            {
+              "ar": "request.user",
+              "en": "request.user"
+            },
+            {
+              "ar": "request.body",
+              "en": "request.body"
+            },
+            {
+              "ar": "response.locals",
+              "en": "response.locals"
+            },
+            {
+              "ar": "process.env",
+              "en": "process.env"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "تسجيل دخول بيرجع token، و guard بيتأكد منه.",
+            "en": "Logging in returns a token, and a guard verifies it."
+          }
+        },
+        {
+          "id": "nest-q17",
+          "question": {
+            "ar": "مين بيقرا metadata الأدوار جوه الـ guard؟",
+            "en": "What reads the roles metadata inside the guard?"
+          },
+          "options": [
+            {
+              "ar": "Reflector",
+              "en": "Reflector"
+            },
+            {
+              "ar": "ConfigService",
+              "en": "ConfigService"
+            },
+            {
+              "ar": "ModuleRef",
+              "en": "ModuleRef"
+            },
+            {
+              "ar": "ValidationPipe",
+              "en": "ValidationPipe"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "decorator بيحدد الأدوار، و guard بيقراها بـ Reflector.",
+            "en": "A decorator sets the roles, and a guard reads them with Reflector."
+          }
+        },
+        {
+          "id": "nest-q18",
+          "question": {
+            "ar": "أنهي option بيخلي ConfigModule متاح من غير import في كل module؟",
+            "en": "Which option makes ConfigModule available without importing it in every module?"
+          },
+          "options": [
+            {
+              "ar": "isGlobal: true",
+              "en": "isGlobal: true"
+            },
+            {
+              "ar": "cache: true",
+              "en": "cache: true"
+            },
+            {
+              "ar": "expandVariables: true",
+              "en": "expandVariables: true"
+            },
+            {
+              "ar": "ignoreEnvFile: true",
+              "en": "ignoreEnvFile: true"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "لإدارة متغيرات البيئة.",
+            "en": "It manages environment variables."
+          }
+        },
+        {
+          "id": "nest-q19",
+          "question": {
+            "ar": "أنهي مكتبة بتستخدم عادةً في E2E tests للـ HTTP في NestJS؟",
+            "en": "Which library is commonly used for HTTP E2E tests in NestJS?"
+          },
+          "options": [
+            {
+              "ar": "supertest",
+              "en": "supertest"
+            },
+            {
+              "ar": "class-validator",
+              "en": "class-validator"
+            },
+            {
+              "ar": "rxjs",
+              "en": "rxjs"
+            },
+            {
+              "ar": "passport",
+              "en": "passport"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Unit لوحدة لوحدها، و E2E للتطبيق من الطلب للرد.",
+            "en": "Unit tests check one piece alone; E2E tests check the app from request to response."
+          }
+        },
+        {
+          "id": "nest-q20",
+          "question": {
+            "ar": "أنهي decorator بيستقبل الأحداث (من غير رد) في الـ microservices؟",
+            "en": "Which decorator handles events (no reply) in microservices?"
+          },
+          "options": [
+            {
+              "ar": "@EventPattern",
+              "en": "@EventPattern"
+            },
+            {
+              "ar": "@MessagePattern",
+              "en": "@MessagePattern"
+            },
+            {
+              "ar": "@SubscribeMessage",
+              "en": "@SubscribeMessage"
+            },
+            {
+              "ar": "@Get",
+              "en": "@Get"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "فيه packages رسمية لكل واحدة.",
+            "en": "There are official packages for each."
           }
         }
       ]
