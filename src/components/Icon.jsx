@@ -15,6 +15,7 @@ const PATHS = {
     </>
   ),
   arrowRight: <path d="M5 12h14M13 5l7 7-7 7" />,
+  chevronDown: <path d="m6 9 6 6 6-6" />,
   arrowLeft: <path d="M19 12H5M11 19l-7-7 7-7" />,
   search: (
     <>

@@ -34,7 +34,7 @@ export default function Navbar() {
         <Link
           to="/"
           dir="ltr"
-          className="me-auto font-display text-sm font-bold uppercase tracking-[0.32em] text-accent-text sm:text-base"
+          className="me-auto shrink-0 font-display text-xs font-bold uppercase tracking-[0.22em] text-accent-text min-[380px]:text-sm sm:text-base sm:tracking-[0.32em]"
         >
           Ahmed Khaled
         </Link>
@@ -73,10 +73,12 @@ export default function Navbar() {
           <Link
             to="/exam"
             aria-current={pathname === '/exam' ? 'page' : undefined}
-            className={btn('primary', 'sm', 'px-4 py-2')}
+            aria-label={t('nav.exam')}
+            title={t('nav.exam')}
+            className={btn('primary', 'sm', 'size-10 p-0 sm:size-auto sm:px-4 sm:py-2')}
           >
             <Icon name="flag" className="size-4" />
-            {t('nav.exam')}
+            <span className="hidden sm:inline">{t('nav.exam')}</span>
           </Link>
         </div>
       </div>

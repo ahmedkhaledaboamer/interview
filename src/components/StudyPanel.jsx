@@ -22,7 +22,9 @@ function matches(lesson, query, lang) {
 export default function StudyPanel({ track, lessonId, onLessonChange, onGoQuiz }) {
   const { t, pick, lang, completedSet, toggleLesson } = useApp();
   const [query, setQuery] = useState('');
+  const [listOpen, setListOpen] = useState(false);
   const searchId = useId();
+  const listId = useId();
   const articleRef = useRef(null);
   const firstRender = useRef(true);
 
@@ -63,10 +65,30 @@ export default function StudyPanel({ track, lessonId, onLessonChange, onGoQuiz }
   };
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[18rem_1fr] lg:gap-8">
-      {/* Lesson list */}
-      <aside className="lg:sticky lg:top-24 lg:self-start">
-        <div className="rounded-3xl border border-line bg-card p-4">
+    <div className="grid grid-cols-1 gap-4 lg:grid-cols-[18rem_minmax(0,1fr)] lg:gap-8">
+      {/* Lesson list (collapsible on small screens) */}
+      <aside className="min-w-0 lg:sticky lg:top-24 lg:self-start">
+        <button
+          type="button"
+          onClick={() => setListOpen((v) => !v)}
+          aria-expanded={listOpen}
+          aria-controls={listId}
+          className="flex w-full items-center justify-between gap-3 rounded-2xl border border-line bg-card px-4 py-3 text-start text-sm font-semibold lg:hidden"
+        >
+          <span className="flex min-w-0 items-center gap-2">
+            <Icon name="book" className="size-4 text-accent-text" />
+            <span className="truncate">{t('study.list')}</span>
+            <span className="font-mono text-xs text-muted" dir="ltr">
+              {currentIndex + 1}/{lessons.length}
+            </span>
+          </span>
+          <Icon name="chevronDown" className={`size-4 transition-transform ${listOpen ? 'rotate-180' : ''}`} />
+        </button>
+
+        <div
+          id={listId}
+          className={`${listOpen ? 'mt-3 block' : 'hidden'} rounded-3xl border border-line bg-card p-4 lg:mt-0 lg:block`}
+        >
           <label htmlFor={searchId} className="sr-only">
             {t('study.search')}
           </label>
@@ -109,7 +131,10 @@ export default function StudyPanel({ track, lessonId, onLessonChange, onGoQuiz }
                     )}
                     <button
                       type="button"
-                      onClick={() => onLessonChange(l.id)}
+                      onClick={() => {
+                        onLessonChange(l.id);
+                        setListOpen(false);
+                      }}
                       aria-current={active ? 'true' : undefined}
                       className={`flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-start text-sm transition-colors ${
                         active ? 'bg-accent/12 text-fg ring-1 ring-accent/40' : 'text-muted hover:bg-card-2 hover:text-fg'
@@ -138,7 +163,7 @@ export default function StudyPanel({ track, lessonId, onLessonChange, onGoQuiz }
         ref={articleRef}
         tabIndex={-1}
         aria-labelledby={`lesson-${lesson.id}`}
-        className="scroll-mt-28 rounded-3xl border border-line bg-card p-6 outline-none sm:p-8 lg:p-10"
+        className="min-w-0 scroll-mt-28 rounded-3xl border border-line bg-card p-5 outline-none sm:p-8 lg:p-10"
       >
         <div key={lesson.id} className="motion-safe:animate-fade-up">
           <p className="text-sm font-medium text-accent-text">

@@ -59,7 +59,7 @@ export default function ExamRunner({ questions, deadline, onSubmit }) {
   };
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[1fr_18rem] lg:gap-8">
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-8">
       {/* Status bar */}
       <div className="sticky top-[7.25rem] z-30 flex flex-wrap items-center gap-x-6 gap-y-3 rounded-3xl border border-line bg-card/90 px-5 py-4 backdrop-blur-xl sm:top-20 lg:col-span-2">
         <div

@@ -19,7 +19,7 @@ export default function ExamSetup({ selected, onChange, onStart }) {
   ];
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[1fr_20rem]">
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_20rem]">
       <div role="group" aria-labelledby="exam-pick-title" className="rounded-3xl border border-line bg-card p-6 sm:p-8">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <h2 id="exam-pick-title" className="text-xl font-bold">
