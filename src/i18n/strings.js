@@ -59,6 +59,7 @@ const strings = {
     'study.goQuiz': 'Take the quiz',
     'study.short': 'Short answer',
     'study.detailed': 'Detailed answer',
+    'study.say': 'Say it in the interview',
 
     'code.copy': 'Copy',
     'code.copied': 'Copied!',
@@ -186,6 +187,7 @@ const strings = {
     'study.goQuiz': 'ابدأ الاختبار',
     'study.short': 'الإجابة المختصرة',
     'study.detailed': 'الإجابة المفصلة',
+    'study.say': 'قولها في الإنترفيو بالإنجليزي',
 
     'code.copy': 'نسخ',
     'code.copied': 'اتنسخ!',

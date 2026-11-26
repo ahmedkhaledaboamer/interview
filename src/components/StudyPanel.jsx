@@ -168,6 +168,15 @@ export default function StudyPanel({ track, lessonId, onLessonChange, onGoQuiz }
             ))}
           </ul>
 
+          {lesson.say && lang === 'ar' && (
+            <div className="mt-8 rounded-2xl border border-line border-s-4 border-s-accent bg-card-2 p-4 sm:p-5">
+              <p className="text-xs font-bold uppercase tracking-wider text-accent-text">{t('study.say')}</p>
+              <p dir="ltr" lang="en" className="mt-2 text-start font-sans text-base leading-relaxed sm:text-lg">
+                {lesson.say}
+              </p>
+            </div>
+          )}
+
           {lesson.code && (
             <div className="mt-8">
               <CodeBlock code={lesson.code} label={`${track.id}/${lesson.id}`} />

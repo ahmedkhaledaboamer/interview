@@ -6,6 +6,5177 @@
   },
   "tracks": [
     {
+      "id": "all",
+      "name": {
+        "ar": "All",
+        "en": "All"
+      },
+      "lessons": [
+        {
+          "id": "all-l001",
+          "section": {
+            "ar": "عرّف نفسك",
+            "en": "Introduce Yourself"
+          },
+          "title": {
+            "ar": "إزاي تجاوب أي سؤال في الإنترفيو؟",
+            "en": "How should you answer any interview question?"
+          },
+          "points": {
+            "ar": [
+              "كل سؤال هنا ليه إجابة بالعربي عشان تفهم، وتحتها نفس الإجابة بجمل English قصيرة تحفظها وتقولها في الإنترفيو.",
+              "قاعدة مهمة: قول التعريف في جملة، وبعدين مثال من شغلك. المثال هو اللي بيقنع."
+            ],
+            "en": [
+              "Give the definition in one sentence, then an example from your own work.",
+              "The example is what convinces the interviewer."
+            ]
+          },
+          "say": "Give the definition in one sentence, then an example from your own work. The example is what convinces the interviewer.",
+          "code": ""
+        },
+        {
+          "id": "all-l002",
+          "section": {
+            "ar": "عرّف نفسك",
+            "en": "Introduce Yourself"
+          },
+          "title": {
+            "ar": "عرّف نفسك",
+            "en": "Tell me about yourself"
+          },
+          "points": {
+            "ar": [
+              "أنا Full Stack Developer عندي أكتر من 4 سنين خبرة. بشتغل أساسًا بـ React و Next.js و TypeScript في الفرونت، و Node.js و NestJS و Laravel في الباك.",
+              "عملت أنظمة ERP، ومتاجر إلكترونية فيها دفع بـ Stripe، وأنظمة إدارة مدارس.",
+              "حاليًا ببني مواقع Next.js في دبي مع SEO وتحسين أداء وأتمتة بـ n8n.",
+              "بحب أبني المنتج من الصفر لحد ما ينزل production."
+            ],
+            "en": [
+              "I'm a Full Stack Developer with 4+ years of experience.",
+              "I work mainly with React, Next.js and TypeScript on the frontend, and Node.js, NestJS and Laravel on the backend.",
+              "I built ERP systems, e-commerce platforms with Stripe payments, and school management systems.",
+              "Now I build Next.js websites in Dubai with SEO, performance, and n8n automation.",
+              "I enjoy building products from zero to production."
+            ]
+          },
+          "say": "I'm a Full Stack Developer with 4+ years of experience. I work mainly with React, Next.js and TypeScript on the frontend, and Node.js, NestJS and Laravel on the backend. I built ERP systems, e-commerce platforms with Stripe payments, and school management systems. Now I build Next.js websites in Dubai with SEO, performance, and n8n automation. I enjoy building products from zero to production.",
+          "code": ""
+        },
+        {
+          "id": "all-l003",
+          "section": {
+            "ar": "عرّف نفسك",
+            "en": "Introduce Yourself"
+          },
+          "title": {
+            "ar": "ليه نوظفك؟",
+            "en": "Why should we hire you?"
+          },
+          "points": {
+            "ar": [
+              "عندي خبرة حقيقية في الفرونت والباك، فأقدر أمسك feature من أولها لآخرها.",
+              "واشتغلت على ERP ومتاجر وأنظمة شبه SaaS، فبفهم احتياج البيزنس مش الكود بس.",
+              "نصيحة: اقرا عن الشركة قبلها واربط خبرتك بحاجة عندهم."
+            ],
+            "en": [
+              "I have real experience on both frontend and backend, so I can own a feature end to end.",
+              "I worked on ERP, e-commerce and SaaS-style projects, so I understand the business, not only the code."
+            ]
+          },
+          "say": "I have real experience on both frontend and backend, so I can own a feature end to end. I worked on ERP, e-commerce and SaaS-style projects, so I understand the business, not only the code.",
+          "code": ""
+        },
+        {
+          "id": "all-l004",
+          "section": {
+            "ar": "عرّف نفسك",
+            "en": "Introduce Yourself"
+          },
+          "title": {
+            "ar": "نقط قوتك وضعفك؟",
+            "en": "What are your strengths and weaknesses?"
+          },
+          "points": {
+            "ar": [
+              "نقطة قوتي إني بتعلم بسرعة وبشتغل فرونت وباك.",
+              "نقطة ضعفي إني أحيانًا بقعد وقت كتير أخلي الكود perfect، ودلوقتي بسلّم الأول وبعدين أحسن."
+            ],
+            "en": [
+              "My strength is that I learn fast and I work on both frontend and backend.",
+              "My weakness is that sometimes I spend too much time making code perfect.",
+              "Now I deliver first, then improve."
+            ]
+          },
+          "say": "My strength is that I learn fast and I work on both frontend and backend. My weakness is that sometimes I spend too much time making code perfect. Now I deliver first, then improve.",
+          "code": ""
+        },
+        {
+          "id": "all-l005",
+          "section": {
+            "ar": "عرّف نفسك",
+            "en": "Introduce Yourself"
+          },
+          "title": {
+            "ar": "الراتب المتوقع والـ notice period؟",
+            "en": "What is your expected salary and notice period?"
+          },
+          "points": {
+            "ar": [
+              "في الإمارات بيسألوا عن الراتب المتوقع، والـ notice period، والـ visa status.",
+              "اعرف رينج السوق قبلها، وقول رينج مش رقم واحد."
+            ],
+            "en": [
+              "My expectation is between X and Y AED, but I'm flexible depending on the full package.",
+              "I can join after one month notice."
+            ]
+          },
+          "say": "My expectation is between X and Y AED, but I'm flexible depending on the full package. I can join after one month notice.",
+          "code": ""
+        },
+        {
+          "id": "all-l006",
+          "section": {
+            "ar": "بناء المشروع من الأول للآخر",
+            "en": "Building a Project"
+          },
+          "title": {
+            "ar": "إزاي تبني مشروع من الصفر؟",
+            "en": "Walk me through how you build a project from scratch"
+          },
+          "points": {
+            "ar": [
+              "Requirements: أفهم المشكلة من العميل أو الـ PM، ومين الـ users، وأحدد الـ MVP (أقل features نبدأ بيها).",
+              "Planning: أقسم الشغل لـ tasks على Jira أو Trello وأحدد الأولويات.",
+              "System design: أختار الـ tech stack، وأصمم الـ database (الجداول والعلاقات).",
+              "API design: أحدد الـ endpoints والـ auth (JWT + roles).",
+              "UI: أشتغل من تصميم Figma وأعمل reusable components.",
+              "Development: Git مع branch لكل feature، و Pull Request و code review.",
+              "Testing: unit tests بـ Jest، وأجرب الـ APIs بـ Postman.",
+              "Deployment: CI/CD، وسيرفر (Vercel أو VPS أو AWS)، و env variables، و domain و SSL.",
+              "Monitoring: logs و Sentry للأخطاء، وتحسينات من feedback المستخدمين.",
+              "مثال من شغلك: في Sky Gate صممت الـ database الأول، بعدين APIs بـ NestJS فيها JWT و roles، بعدين الفرونت بـ Next.js مع SSR عشان الـ SEO، وربطت Stripe للدفع."
+            ],
+            "en": [
+              "First, I understand the requirements and define the MVP.",
+              "Then I choose the tech stack and design the database and APIs.",
+              "I build with Git branches and pull requests, and I test with Jest and Postman.",
+              "Then I deploy with CI/CD and monitor errors after launch.",
+              "For example, in Sky Gate I designed the database first, built NestJS APIs with JWT and roles, then a Next.js frontend with SSR for SEO, and integrated Stripe."
+            ]
+          },
+          "say": "First, I understand the requirements and define the MVP. Then I choose the tech stack and design the database and APIs. I build with Git branches and pull requests, and I test with Jest and Postman. Then I deploy with CI/CD and monitor errors after launch. For example, in Sky Gate I designed the database first, built NestJS APIs with JWT and roles, then a Next.js frontend with SSR for SEO, and integrated Stripe.",
+          "code": ""
+        },
+        {
+          "id": "all-l007",
+          "section": {
+            "ar": "بناء المشروع من الأول للآخر",
+            "en": "Building a Project"
+          },
+          "title": {
+            "ar": "بتختار الـ tech stack إزاي؟",
+            "en": "How do you choose the tech stack?"
+          },
+          "points": {
+            "ar": [
+              "بختار حسب احتياج المشروع مش حسب اللي بحبه.",
+              "لو الـ SEO مهم: Next.js.",
+              "لو الـ data فيها علاقات كتير زي ERP وفلوس: MySQL.",
+              "لو الـ data مرنة: MongoDB.",
+              "لو المشروع كبير ومحتاج structure: NestJS.",
+              "وكمان بشوف خبرة الفريق والـ deadline."
+            ],
+            "en": [
+              "I choose based on the project: SEO needs, data structure, team skills, and deadline.",
+              "Next.js when SEO matters, MySQL for relational data like ERP, MongoDB for flexible data, and NestJS for large backends."
+            ]
+          },
+          "say": "I choose based on the project: SEO needs, data structure, team skills, and deadline. Next.js when SEO matters, MySQL for relational data like ERP, MongoDB for flexible data, and NestJS for large backends.",
+          "code": ""
+        },
+        {
+          "id": "all-l008",
+          "section": {
+            "ar": "بناء المشروع من الأول للآخر",
+            "en": "Building a Project"
+          },
+          "title": {
+            "ar": "بتشتغل بـ Git في فريق إزاي؟",
+            "en": "How do you work with Git in a team?"
+          },
+          "points": {
+            "ar": [
+              "فيه branch اسمه main و branch اسمه develop.",
+              "كل feature ليها branch لوحدها.",
+              "بعمل Pull Request، حد من الفريق يراجعه، وبعدين نعمل merge.",
+              "والـ commit messages بتكون واضحة."
+            ],
+            "en": [
+              "We have main and develop branches.",
+              "Each feature has its own branch.",
+              "I open a pull request, a teammate reviews it, then we merge.",
+              "I write clear commit messages."
+            ]
+          },
+          "say": "We have main and develop branches. Each feature has its own branch. I open a pull request, a teammate reviews it, then we merge. I write clear commit messages.",
+          "code": ""
+        },
+        {
+          "id": "all-l009",
+          "section": {
+            "ar": "بناء المشروع من الأول للآخر",
+            "en": "Building a Project"
+          },
+          "title": {
+            "ar": "بتقدر وقت الـ task إزاي؟",
+            "en": "How do you estimate a task?"
+          },
+          "points": {
+            "ar": [
+              "بقسم الـ task لأجزاء صغيرة، وأقدر وقت كل جزء.",
+              "وأزود وقت للـ testing والمشاكل اللي مش متوقعة.",
+              "ولو في حاجة مش واضحة بسأل قبل ما أبدأ."
+            ],
+            "en": [
+              "I split the task into small parts, estimate each part, and add time for testing and surprises.",
+              "If something is not clear, I ask before I start."
+            ]
+          },
+          "say": "I split the task into small parts, estimate each part, and add time for testing and surprises. If something is not clear, I ask before I start.",
+          "code": ""
+        },
+        {
+          "id": "all-l010",
+          "section": {
+            "ar": "Frontend: React و Next.js",
+            "en": "Frontend: React & Next.js"
+          },
+          "title": {
+            "ar": "الفرق بين SSR و CSR و SSG و ISR؟",
+            "en": "What is the difference between SSR, CSR, SSG and ISR?"
+          },
+          "points": {
+            "ar": [
+              "الفرق كله في سؤال واحد: الصفحة بتتبني فين وإمتى؟",
+              "CSR: في المتصفح بـ JavaScript بعد تحميل الـ JS. مناسب للـ Dashboards والـ admin panels.",
+              "SSR: على السيرفر مع كل request. مناسب لصفحات بياناتها بتتغير ومحتاجة SEO.",
+              "SSG: على السيرفر مرة واحدة وقت الـ build. مناسب للـ Blog والـ landing page.",
+              "ISR: على السيرفر، static وبيتحدث كل X ثانية. مناسب لمنتجات كتير بتتغير كل شوية.",
+              "مثال من شغلك: في Sky Gate استخدمت SSR و ISR لصفحات المنتجات عشان الـ SEO، و CSR للـ admin dashboard."
+            ],
+            "en": [
+              "CSR renders the page in the browser, so the first load is slower and SEO is weaker.",
+              "SSR renders on the server for every request, good for SEO and fresh data.",
+              "SSG builds the page once at build time, so it's the fastest.",
+              "ISR is static but regenerates every few seconds.",
+              "In Sky Gate, I used SSR and ISR for product pages and CSR for the admin dashboard."
+            ]
+          },
+          "say": "CSR renders the page in the browser, so the first load is slower and SEO is weaker. SSR renders on the server for every request, good for SEO and fresh data. SSG builds the page once at build time, so it's the fastest. ISR is static but regenerates every few seconds. In Sky Gate, I used SSR and ISR for product pages and CSR for the admin dashboard.",
+          "code": ""
+        },
+        {
+          "id": "all-l011",
+          "section": {
+            "ar": "Frontend: React و Next.js",
+            "en": "Frontend: React & Next.js"
+          },
+          "title": {
+            "ar": "يعني إيه Hydration؟",
+            "en": "What is hydration?"
+          },
+          "points": {
+            "ar": [
+              "السيرفر بيبعت HTML جاهز، وبعدين React بيربط الـ events (زي الضغط) بالـ HTML ده في المتصفح، فالصفحة تبقى تفاعلية.",
+              "لو الـ HTML بتاع السيرفر مختلف عن اللي في المتصفح يحصل hydration error، مثلًا لو استخدمت Date.now() أو window."
+            ],
+            "en": [
+              "Hydration is when React attaches event handlers to the HTML that came from the server, so the page becomes interactive."
+            ]
+          },
+          "say": "Hydration is when React attaches event handlers to the HTML that came from the server, so the page becomes interactive.",
+          "code": ""
+        },
+        {
+          "id": "all-l012",
+          "section": {
+            "ar": "Frontend: React و Next.js",
+            "en": "Frontend: React & Next.js"
+          },
+          "title": {
+            "ar": "Server Components و Client Components",
+            "en": "Server Components vs Client Components"
+          },
+          "points": {
+            "ar": [
+              "الـ Server Component بيشتغل على السيرفر بس، ومبيبعتش JavaScript للمتصفح، ويقدر يكلم الـ database على طول.",
+              "الـ Client Component (عليه \"use client\") بستخدمه بس لما أحتاج useState أو onClick أو حاجة من المتصفح."
+            ],
+            "en": [
+              "Server Components run only on the server and send no JavaScript to the browser, so the page is faster.",
+              "I use Client Components only when I need state, events, or browser APIs."
+            ]
+          },
+          "say": "Server Components run only on the server and send no JavaScript to the browser, so the page is faster. I use Client Components only when I need state, events, or browser APIs.",
+          "code": ""
+        },
+        {
+          "id": "all-l013",
+          "section": {
+            "ar": "Frontend: React و Next.js",
+            "en": "Frontend: React & Next.js"
+          },
+          "title": {
+            "ar": "يعني إيه Virtual DOM؟",
+            "en": "What is the Virtual DOM?"
+          },
+          "points": {
+            "ar": [
+              "نسخة من الـ DOM في الذاكرة.",
+              "لما الـ state يتغير، React يقارن النسخة الجديدة بالقديمة ويغير في الصفحة الحاجة اللي اتغيرت بس.",
+              "العملية دي اسمها reconciliation."
+            ],
+            "en": [
+              "It's a copy of the DOM in memory.",
+              "When state changes, React compares the new copy with the old one and updates only what changed.",
+              "This is called reconciliation."
+            ]
+          },
+          "say": "It's a copy of the DOM in memory. When state changes, React compares the new copy with the old one and updates only what changed. This is called reconciliation.",
+          "code": ""
+        },
+        {
+          "id": "all-l014",
+          "section": {
+            "ar": "Frontend: React و Next.js",
+            "en": "Frontend: React & Next.js"
+          },
+          "title": {
+            "ar": "اشرح أهم الـ React hooks",
+            "en": "Explain the main React hooks"
+          },
+          "points": {
+            "ar": [
+              "useState: يخزن state.",
+              "useEffect: حاجات جانبية بعد الـ render زي API call.",
+              "useMemo: يحفظ نتيجة حساب تقيل.",
+              "useCallback: يحفظ function عشان متتعملش من جديد كل render.",
+              "useRef: يمسك عنصر DOM أو قيمة من غير re-render.",
+              "useContext: ياخد data من Context من غير ما أبعتها props كتير."
+            ],
+            "en": [
+              "useState stores state, and useEffect runs side effects.",
+              "useMemo caches a value, and useCallback caches a function.",
+              "useRef keeps a reference without re-render, and useContext reads shared data."
+            ]
+          },
+          "say": "useState stores state, and useEffect runs side effects. useMemo caches a value, and useCallback caches a function. useRef keeps a reference without re-render, and useContext reads shared data.",
+          "code": ""
+        },
+        {
+          "id": "all-l015",
+          "section": {
+            "ar": "Frontend: React و Next.js",
+            "en": "Frontend: React & Next.js"
+          },
+          "title": {
+            "ar": "Redux Toolkit و React Query و Context",
+            "en": "Redux Toolkit vs React Query vs Context"
+          },
+          "points": {
+            "ar": [
+              "React Query للـ data اللي جاية من الـ API (caching و loading و refetch).",
+              "Redux Toolkit للـ state المعقد المشترك في الفرونت زي الـ cart.",
+              "Context للحاجات البسيطة اللي مش بتتغير كتير زي الـ theme واللغة."
+            ],
+            "en": [
+              "I use React Query for server data because it handles caching and loading.",
+              "Redux Toolkit for complex shared client state, and Context for simple things like theme or language."
+            ]
+          },
+          "say": "I use React Query for server data because it handles caching and loading. Redux Toolkit for complex shared client state, and Context for simple things like theme or language.",
+          "code": ""
+        },
+        {
+          "id": "all-l016",
+          "section": {
+            "ar": "Frontend: React و Next.js",
+            "en": "Frontend: React & Next.js"
+          },
+          "title": {
+            "ar": "Props و State",
+            "en": "Props vs State"
+          },
+          "points": {
+            "ar": [
+              "الـ Props جاية من الـ parent وللقراية بس.",
+              "الـ State بتاع الـ component نفسه وبيتغير."
+            ],
+            "en": [
+              "Props come from the parent and are read-only.",
+              "State belongs to the component and can change."
+            ]
+          },
+          "say": "Props come from the parent and are read-only. State belongs to the component and can change.",
+          "code": ""
+        },
+        {
+          "id": "all-l017",
+          "section": {
+            "ar": "Frontend: React و Next.js",
+            "en": "Frontend: React & Next.js"
+          },
+          "title": {
+            "ar": "ليه بنحتاج key في القوايم؟",
+            "en": "Why do we need a key in lists?"
+          },
+          "points": {
+            "ar": [
+              "الـ key بيخلي React يعرف أنهي عنصر اتغير أو اتضاف أو اتمسح.",
+              "بستخدم id فريد مش الـ index."
+            ],
+            "en": [
+              "The key helps React know which item changed, was added, or removed.",
+              "I use a unique id, not the index."
+            ]
+          },
+          "say": "The key helps React know which item changed, was added, or removed. I use a unique id, not the index.",
+          "code": ""
+        },
+        {
+          "id": "all-l018",
+          "section": {
+            "ar": "Frontend: React و Next.js",
+            "en": "Frontend: React & Next.js"
+          },
+          "title": {
+            "ar": "Controlled و Uncontrolled components",
+            "en": "Controlled vs Uncontrolled components"
+          },
+          "points": {
+            "ar": [
+              "الـ Controlled input قيمته متخزنة في الـ state بتاع React.",
+              "الـ Uncontrolled قيمته في الـ DOM نفسه وبقراها بـ ref."
+            ],
+            "en": [
+              "A controlled input is managed by React state.",
+              "An uncontrolled input keeps its value in the DOM, and I read it with a ref."
+            ]
+          },
+          "say": "A controlled input is managed by React state. An uncontrolled input keeps its value in the DOM, and I read it with a ref.",
+          "code": ""
+        },
+        {
+          "id": "all-l019",
+          "section": {
+            "ar": "Frontend: React و Next.js",
+            "en": "Frontend: React & Next.js"
+          },
+          "title": {
+            "ar": "بتتعامل مع العربي والإنجليزي (RTL) إزاي؟",
+            "en": "How do you handle Arabic and English (RTL)?"
+          },
+          "points": {
+            "ar": [
+              "بستخدم مكتبة i18n زي next-intl.",
+              "وبحط dir=\"rtl\" للعربي.",
+              "وبستخدم classes في Tailwind زي ms و me بدل ml و mr عشان تتقلب لوحدها."
+            ],
+            "en": [
+              "I use an i18n library like next-intl, and set dir=\"rtl\" for Arabic.",
+              "I use Tailwind logical classes like ms and me instead of ml and mr."
+            ]
+          },
+          "say": "I use an i18n library like next-intl, and set dir=\"rtl\" for Arabic. I use Tailwind logical classes like ms and me instead of ml and mr.",
+          "code": ""
+        },
+        {
+          "id": "all-l020",
+          "section": {
+            "ar": "JavaScript و CORS",
+            "en": "JavaScript & CORS"
+          },
+          "title": {
+            "ar": "يعني إيه CORS؟",
+            "en": "What is CORS?"
+          },
+          "points": {
+            "ar": [
+              "المتصفح بيمنع موقع (مثلًا localhost:3000) إنه يكلم API على origin تاني (api.site.com) إلا لو السيرفر سمح.",
+              "الـ origin = البروتوكول + الدومين + البورت.",
+              "السيرفر بيسمح بـ header اسمه Access-Control-Allow-Origin.",
+              "لو الـ request مش بسيط (PUT أو DELETE أو فيه Authorization header) المتصفح بيبعت الأول preflight request بـ OPTIONS يسأل السيرفر.",
+              "الحل في الباك إند: Express cors()، و NestJS enableCors()، و Laravel config/cors.php.",
+              "الـ CORS في المتصفح بس، عشان كده Postman مبيتأثرش.",
+              "متستخدمش * لو بتبعت cookies."
+            ],
+            "en": [
+              "CORS is a browser security rule.",
+              "It blocks requests to another origin unless the server allows it with the Access-Control-Allow-Origin header.",
+              "For complex requests, the browser first sends a preflight OPTIONS request.",
+              "I fix it on the backend by allowing only trusted origins."
+            ]
+          },
+          "say": "CORS is a browser security rule. It blocks requests to another origin unless the server allows it with the Access-Control-Allow-Origin header. For complex requests, the browser first sends a preflight OPTIONS request. I fix it on the backend by allowing only trusted origins.",
+          "code": ""
+        },
+        {
+          "id": "all-l021",
+          "section": {
+            "ar": "JavaScript و CORS",
+            "en": "JavaScript & CORS"
+          },
+          "title": {
+            "ar": "اشرح الـ Event Loop",
+            "en": "Explain the Event Loop"
+          },
+          "points": {
+            "ar": [
+              "JavaScript شغالة على thread واحد. الكود العادي بيتنفذ في الـ Call Stack.",
+              "الحاجات الـ async (setTimeout و fetch) بتخلص برة، وبعدين تدخل الـ Queue، والـ Event Loop بيدخلها الـ stack لما يفضى.",
+              "الـ Promises (microtasks) ليها أولوية على setTimeout (macrotasks)."
+            ],
+            "en": [
+              "JavaScript has one thread.",
+              "The event loop moves callbacks from the queues to the call stack when it's empty.",
+              "Promises are microtasks, so they run before setTimeout."
+            ]
+          },
+          "say": "JavaScript has one thread. The event loop moves callbacks from the queues to the call stack when it's empty. Promises are microtasks, so they run before setTimeout.",
+          "code": "console.log(1);\nsetTimeout(() => console.log(2), 0);\nPromise.resolve().then(() => console.log(3));\nconsole.log(4);\n// 1, 4, 3, 2"
+        },
+        {
+          "id": "all-l022",
+          "section": {
+            "ar": "JavaScript و CORS",
+            "en": "JavaScript & CORS"
+          },
+          "title": {
+            "ar": "var و let و const",
+            "en": "var vs let vs const"
+          },
+          "points": {
+            "ar": [
+              "الـ var بيشتغل جوه الـ function كلها وبيعمله hoisting.",
+              "الـ let و const جوه الـ block { } بس.",
+              "الـ const مينفعش تديله قيمة جديدة، بس لو object تقدر تغير اللي جواه."
+            ],
+            "en": [
+              "var is function-scoped. let and const are block-scoped.",
+              "const can't be reassigned, but an object inside it can still change."
+            ]
+          },
+          "say": "var is function-scoped. let and const are block-scoped. const can't be reassigned, but an object inside it can still change.",
+          "code": ""
+        },
+        {
+          "id": "all-l023",
+          "section": {
+            "ar": "JavaScript و CORS",
+            "en": "JavaScript & CORS"
+          },
+          "title": {
+            "ar": "== و ===",
+            "en": "== vs ==="
+          },
+          "points": {
+            "ar": [
+              "الـ == بيحول النوع قبل ما يقارن ('5' == 5 صح).",
+              "الـ === بيقارن القيمة والنوع، وده اللي بستخدمه دايمًا."
+            ],
+            "en": [
+              "== converts types before comparing.",
+              "=== compares value and type, so I always use ===."
+            ]
+          },
+          "say": "== converts types before comparing. === compares value and type, so I always use ===.",
+          "code": ""
+        },
+        {
+          "id": "all-l024",
+          "section": {
+            "ar": "JavaScript و CORS",
+            "en": "JavaScript & CORS"
+          },
+          "title": {
+            "ar": "يعني إيه Closure؟",
+            "en": "What is a closure?"
+          },
+          "points": {
+            "ar": [
+              "function جوه function، والداخلية فاكرة متغيرات الخارجية حتى بعد ما الخارجية خلصت.",
+              "بيستخدم في الـ debounce والـ counters وإخفاء الـ data."
+            ],
+            "en": [
+              "A closure is a function that remembers variables from its outer scope, even after the outer function finished."
+            ]
+          },
+          "say": "A closure is a function that remembers variables from its outer scope, even after the outer function finished.",
+          "code": ""
+        },
+        {
+          "id": "all-l025",
+          "section": {
+            "ar": "JavaScript و CORS",
+            "en": "JavaScript & CORS"
+          },
+          "title": {
+            "ar": "يعني إيه Hoisting؟",
+            "en": "What is hoisting?"
+          },
+          "points": {
+            "ar": [
+              "JavaScript بترفع التعريفات لفوق قبل التنفيذ.",
+              "الـ var بيبقى undefined.",
+              "الـ let و const بيبقوا في temporal dead zone لحد ما يتعرفوا، فلو استخدمتهم قبلها يحصل error."
+            ],
+            "en": [
+              "JavaScript moves declarations to the top before running.",
+              "var becomes undefined.",
+              "let and const are in the temporal dead zone until they're declared."
+            ]
+          },
+          "say": "JavaScript moves declarations to the top before running. var becomes undefined. let and const are in the temporal dead zone until they're declared.",
+          "code": ""
+        },
+        {
+          "id": "all-l026",
+          "section": {
+            "ar": "JavaScript و CORS",
+            "en": "JavaScript & CORS"
+          },
+          "title": {
+            "ar": "Callbacks و Promises و async/await",
+            "en": "Callbacks vs Promises vs async/await"
+          },
+          "points": {
+            "ar": [
+              "الـ Callbacks لما تكتر بتعمل callback hell.",
+              "الـ Promises بتخلي الكود الـ async مرتب بـ then.",
+              "الـ async/await أسهل في القراية ومبني على Promises، وبمسك الأخطاء بـ try/catch."
+            ],
+            "en": [
+              "Callbacks can cause callback hell.",
+              "Promises make async code chainable.",
+              "async/await is cleaner syntax on top of Promises, and I use try/catch for errors."
+            ]
+          },
+          "say": "Callbacks can cause callback hell. Promises make async code chainable. async/await is cleaner syntax on top of Promises, and I use try/catch for errors.",
+          "code": ""
+        },
+        {
+          "id": "all-l027",
+          "section": {
+            "ar": "JavaScript و CORS",
+            "en": "JavaScript & CORS"
+          },
+          "title": {
+            "ar": "Promise.all و allSettled و race",
+            "en": "Promise.all vs Promise.allSettled vs Promise.race"
+          },
+          "points": {
+            "ar": [
+              "الـ all بيشغلهم مع بعض، ولو واحد فشل كله يفشل.",
+              "الـ allSettled يستنى الكل ويرجع نتيجة كل واحد.",
+              "الـ race يرجع أول واحد يخلص."
+            ],
+            "en": [
+              "Promise.all runs in parallel and fails if one fails.",
+              "allSettled waits for all and returns each result.",
+              "race returns the first one that finishes."
+            ]
+          },
+          "say": "Promise.all runs in parallel and fails if one fails. allSettled waits for all and returns each result. race returns the first one that finishes.",
+          "code": ""
+        },
+        {
+          "id": "all-l028",
+          "section": {
+            "ar": "JavaScript و CORS",
+            "en": "JavaScript & CORS"
+          },
+          "title": {
+            "ar": "Debounce و Throttle",
+            "en": "Debounce vs Throttle"
+          },
+          "points": {
+            "ar": [
+              "الـ Debounce: استنى المستخدم يبطل كتابة 300ms وبعدين ابعت (search box).",
+              "الـ Throttle: نفذ مرة واحدة كل X ms مهما حصل (scroll و resize)."
+            ],
+            "en": [
+              "Debounce waits until the user stops, like in a search input.",
+              "Throttle runs at most once every X milliseconds, like on scroll."
+            ]
+          },
+          "say": "Debounce waits until the user stops, like in a search input. Throttle runs at most once every X milliseconds, like on scroll.",
+          "code": ""
+        },
+        {
+          "id": "all-l029",
+          "section": {
+            "ar": "JavaScript و CORS",
+            "en": "JavaScript & CORS"
+          },
+          "title": {
+            "ar": "Shallow copy و Deep copy",
+            "en": "Shallow copy vs Deep copy"
+          },
+          "points": {
+            "ar": [
+              "الـ Shallow بينسخ أول مستوى بس، والـ objects اللي جوه بتفضل مشتركة.",
+              "الـ Deep بينسخ كل حاجة. بستخدم structuredClone."
+            ],
+            "en": [
+              "A shallow copy copies only the first level.",
+              "A deep copy copies everything. I use structuredClone for deep copies."
+            ]
+          },
+          "say": "A shallow copy copies only the first level. A deep copy copies everything. I use structuredClone for deep copies.",
+          "code": ""
+        },
+        {
+          "id": "all-l030",
+          "section": {
+            "ar": "JavaScript و CORS",
+            "en": "JavaScript & CORS"
+          },
+          "title": {
+            "ar": "this والـ arrow functions",
+            "en": "this and arrow functions"
+          },
+          "points": {
+            "ar": [
+              "الـ arrow function ملهاش this خاص بيها، بتاخده من المكان اللي اتكتبت فيه."
+            ],
+            "en": [
+              "Arrow functions don't have their own this. They take it from the outer scope."
+            ]
+          },
+          "say": "Arrow functions don't have their own this. They take it from the outer scope.",
+          "code": ""
+        },
+        {
+          "id": "all-l031",
+          "section": {
+            "ar": "JavaScript و CORS",
+            "en": "JavaScript & CORS"
+          },
+          "title": {
+            "ar": "map و forEach و filter و reduce",
+            "en": "map vs forEach vs filter vs reduce"
+          },
+          "points": {
+            "ar": [
+              "الـ map بيرجع array جديد.",
+              "الـ forEach مبيرجعش حاجة.",
+              "الـ filter بيرجع العناصر اللي بتحقق الشرط.",
+              "الـ reduce بيحول الـ array لقيمة واحدة زي المجموع."
+            ],
+            "en": [
+              "map returns a new array, forEach returns nothing, filter returns matching items, and reduce turns the array into one value."
+            ]
+          },
+          "say": "map returns a new array, forEach returns nothing, filter returns matching items, and reduce turns the array into one value.",
+          "code": ""
+        },
+        {
+          "id": "all-l032",
+          "section": {
+            "ar": "JavaScript و CORS",
+            "en": "JavaScript & CORS"
+          },
+          "title": {
+            "ar": "ليه TypeScript؟ والفرق بين interface و type",
+            "en": "Why TypeScript? interface vs type"
+          },
+          "points": {
+            "ar": [
+              "TypeScript بيمسك الأخطاء قبل التشغيل وبيخلي التعديل في الكود أأمن.",
+              "الـ interface ينفع يتعمله extend ويتدمج، والـ type بيعمل unions.",
+              "بستخدم interface لشكل الـ object و type للـ unions."
+            ],
+            "en": [
+              "TypeScript catches errors before runtime and makes refactoring safer.",
+              "I use interfaces for object shapes and types for unions."
+            ]
+          },
+          "say": "TypeScript catches errors before runtime and makes refactoring safer. I use interfaces for object shapes and types for unions.",
+          "code": ""
+        },
+        {
+          "id": "all-l033",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "Express و NestJS",
+            "en": "Express vs NestJS"
+          },
+          "points": {
+            "ar": [
+              "الـ Express خفيف ومرن بس ملوش structure ثابت، كل فريق بيعمله بطريقته.",
+              "الـ NestJS مبني على Express وبيديك structure جاهز: Modules و Controllers و Services و Dependency Injection و Guards و Pipes مع TypeScript.",
+              "أحسن للمشاريع الكبيرة."
+            ],
+            "en": [
+              "Express is minimal and flexible.",
+              "NestJS is built on Express and gives a clear structure with modules, dependency injection, guards and pipes.",
+              "I use NestJS for large projects and Express for small services."
+            ]
+          },
+          "say": "Express is minimal and flexible. NestJS is built on Express and gives a clear structure with modules, dependency injection, guards and pipes. I use NestJS for large projects and Express for small services.",
+          "code": ""
+        },
+        {
+          "id": "all-l034",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "Node.js ولا Laravel: إمتى تستخدم كل واحد؟",
+            "en": "Node.js vs Laravel: when to use each?"
+          },
+          "points": {
+            "ar": [
+              "الـ Node.js ممتاز للـ real-time وللـ requests الكتير زي الشات بـ Socket.io.",
+              "الـ Laravel ممتاز لأنظمة البيزنس زي ERP لأن فيه حاجات كتير جاهزة: Eloquent و Queues و Auth و Validation."
+            ],
+            "en": [
+              "Node.js is great for real-time apps and many I/O requests, like chat.",
+              "Laravel is great for business systems like ERP because it has a lot built in: Eloquent, queues, auth, and validation."
+            ]
+          },
+          "say": "Node.js is great for real-time apps and many I/O requests, like chat. Laravel is great for business systems like ERP because it has a lot built in: Eloquent, queues, auth, and validation.",
+          "code": ""
+        },
+        {
+          "id": "all-l035",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "يعني إيه Middleware؟",
+            "en": "What is middleware?"
+          },
+          "points": {
+            "ar": [
+              "كود بيشتغل بين الـ request والـ controller، زي التأكد من الـ login، أو الـ logging، أو الـ rate limiting."
+            ],
+            "en": [
+              "Middleware is code that runs between the request and the controller, like checking auth, logging, or rate limiting."
+            ]
+          },
+          "say": "Middleware is code that runs between the request and the controller, like checking auth, logging, or rate limiting.",
+          "code": ""
+        },
+        {
+          "id": "all-l036",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "REST و GraphQL",
+            "en": "REST vs GraphQL"
+          },
+          "points": {
+            "ar": [
+              "Endpoints: الـ REST فيه كتير (/users و /orders)، والـ GraphQL endpoint واحد.",
+              "الـ data: في REST السيرفر بيحددها، وفي GraphQL الـ client بيطلب اللي محتاجه بالظبط.",
+              "Over-fetching: ممكن يحصل في REST، ومفيش في GraphQL.",
+              "Caching: سهل في REST، وأصعب في GraphQL."
+            ],
+            "en": [
+              "REST has many endpoints and is simple to cache.",
+              "GraphQL has one endpoint and the client asks for exactly the fields it needs, so there's no over-fetching.",
+              "I used GraphQL at Kick Start."
+            ]
+          },
+          "say": "REST has many endpoints and is simple to cache. GraphQL has one endpoint and the client asks for exactly the fields it needs, so there's no over-fetching. I used GraphQL at Kick Start.",
+          "code": ""
+        },
+        {
+          "id": "all-l037",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "HTTP methods والـ status codes",
+            "en": "HTTP methods and status codes"
+          },
+          "points": {
+            "ar": [
+              "GET يجيب، POST يعمل جديد، PUT يبدل كله، PATCH يعدل جزء، DELETE يمسح.",
+              "200 تمام، 201 اتعمل، 400 request غلط، 401 مش عامل login، 403 عامل login بس ممنوع.",
+              "404 مش موجود، 422 validation error، 429 requests كتير، 500 مشكلة في السيرفر."
+            ],
+            "en": [
+              "200 is OK, 201 is created, 400 is a bad request, 401 means not logged in, and 403 means no permission.",
+              "404 is not found, 422 is a validation error, and 500 is a server error."
+            ]
+          },
+          "say": "200 is OK, 201 is created, 400 is a bad request, 401 means not logged in, and 403 means no permission. 404 is not found, 422 is a validation error, and 500 is a server error.",
+          "code": ""
+        },
+        {
+          "id": "all-l038",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "PUT و PATCH",
+            "en": "PUT vs PATCH"
+          },
+          "points": {
+            "ar": [
+              "الـ PUT بيبدل الـ resource كله.",
+              "الـ PATCH بيعدل fields معينة بس."
+            ],
+            "en": [
+              "PUT replaces the whole resource. PATCH updates only some fields."
+            ]
+          },
+          "say": "PUT replaces the whole resource. PATCH updates only some fields.",
+          "code": ""
+        },
+        {
+          "id": "all-l039",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "Authentication و Authorization",
+            "en": "Authentication vs Authorization"
+          },
+          "points": {
+            "ar": [
+              "الـ Authentication: إنت مين؟ (login).",
+              "الـ Authorization: مسموحلك تعمل إيه؟ (roles و permissions)."
+            ],
+            "en": [
+              "Authentication checks who you are, like login.",
+              "Authorization checks what you are allowed to do, like roles and permissions."
+            ]
+          },
+          "say": "Authentication checks who you are, like login. Authorization checks what you are allowed to do, like roles and permissions.",
+          "code": ""
+        },
+        {
+          "id": "all-l040",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "الـ JWT بيشتغل إزاي؟",
+            "en": "How does JWT work?"
+          },
+          "points": {
+            "ar": [
+              "المستخدم يعمل login، السيرفر يتأكد ويعمل token موقّع بـ secret.",
+              "الـ client يبعته في كل request في Authorization: Bearer.",
+              "السيرفر يتأكد من التوقيع من غير ما يروح للـ database.",
+              "الـ payload مش متشفر، فمتحطش فيه password.",
+              "بستخدم access token عمره قصير (15 دقيقة) و refresh token عمره طويل متخزن في httpOnly cookie. لما الـ access يخلص، باخد واحد جديد بالـ refresh."
+            ],
+            "en": [
+              "After login, the server creates a signed token.",
+              "The client sends it in the Authorization header, and the server verifies the signature without a database call.",
+              "I use a short access token and a long refresh token in an httpOnly cookie."
+            ]
+          },
+          "say": "After login, the server creates a signed token. The client sends it in the Authorization header, and the server verifies the signature without a database call. I use a short access token and a long refresh token in an httpOnly cookie.",
+          "code": ""
+        },
+        {
+          "id": "all-l041",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "تخزن الـ token فين: localStorage ولا cookie؟",
+            "en": "Where do you store the token: localStorage or cookie?"
+          },
+          "points": {
+            "ar": [
+              "الـ localStorage ممكن يتسرق بـ XSS.",
+              "بفضل httpOnly و Secure و SameSite cookie لأن JavaScript مش بيقدر يقراها."
+            ],
+            "en": [
+              "localStorage can be stolen with XSS.",
+              "I prefer an httpOnly, Secure, SameSite cookie, because JavaScript can't read it."
+            ]
+          },
+          "say": "localStorage can be stolen with XSS. I prefer an httpOnly, Secure, SameSite cookie, because JavaScript can't read it.",
+          "code": ""
+        },
+        {
+          "id": "all-l042",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "JWT و Session",
+            "en": "JWT vs Session"
+          },
+          "points": {
+            "ar": [
+              "الـ Session متخزنة على السيرفر فسهل تلغيها.",
+              "الـ JWT مش متخزن على السيرفر فسهل تعمله scale، بس صعب تلغيه قبل ما ينتهي."
+            ],
+            "en": [
+              "Sessions are stored on the server, so they're easy to revoke.",
+              "JWT is stateless and scales easily, but it's hard to revoke before it expires."
+            ]
+          },
+          "say": "Sessions are stored on the server, so they're easy to revoke. JWT is stateless and scales easily, but it's hard to revoke before it expires.",
+          "code": ""
+        },
+        {
+          "id": "all-l043",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "بتعمل RBAC إزاي؟",
+            "en": "How do you implement role-based access control (RBAC)?"
+          },
+          "points": {
+            "ar": [
+              "كل user ليه role (admin أو manager أو employee)، وكل role ليه permissions (زي create_invoice و view_payroll).",
+              "بتأكد منها في الباك بـ middleware أو Guard.",
+              "في الفرونت بخبي الأزرار بس، لأن الحماية الحقيقية في الباك.",
+              "مثال: في الـ ERP، الـ HR بيشوف المرتبات، والموظف بيشوف بياناته بس."
+            ],
+            "en": [
+              "Users have roles, and roles have permissions.",
+              "I check permissions on the backend with a guard or middleware.",
+              "On the frontend I only hide buttons, because real security is on the backend.",
+              "In the ERP, HR could see payroll, but employees saw only their own data."
+            ]
+          },
+          "say": "Users have roles, and roles have permissions. I check permissions on the backend with a guard or middleware. On the frontend I only hide buttons, because real security is on the backend. In the ERP, HR could see payroll, but employees saw only their own data.",
+          "code": ""
+        },
+        {
+          "id": "all-l044",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "يعني إيه OAuth؟",
+            "en": "What is OAuth?"
+          },
+          "points": {
+            "ar": [
+              "طريقة تخلي المستخدم يعمل login بـ Google أو Facebook من غير ما يدينا الـ password بتاعه."
+            ],
+            "en": [
+              "OAuth lets users log in with Google or Facebook without sharing their password with us."
+            ]
+          },
+          "say": "OAuth lets users log in with Google or Facebook without sharing their password with us.",
+          "code": ""
+        },
+        {
+          "id": "all-l045",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "WebSockets و HTTP",
+            "en": "WebSockets vs HTTP"
+          },
+          "points": {
+            "ar": [
+              "الـ HTTP: request ورد وخلاص.",
+              "الـ WebSocket: اتصال مفتوح على طول، فالسيرفر يقدر يبعت data لوحده في نفس اللحظة، زي الشات والإشعارات."
+            ],
+            "en": [
+              "HTTP is request and response.",
+              "WebSockets keep one open connection, so the server can push data in real time, like chat or notifications."
+            ]
+          },
+          "say": "HTTP is request and response. WebSockets keep one open connection, so the server can push data in real time, like chat or notifications.",
+          "code": ""
+        },
+        {
+          "id": "all-l046",
+          "section": {
+            "ar": "Backend و Auth",
+            "en": "Backend & Auth"
+          },
+          "title": {
+            "ar": "بتصمم API كويس إزاي؟",
+            "en": "How do you design a good API?"
+          },
+          "points": {
+            "ar": [
+              "أسماء resources واضحة، والـ HTTP methods والـ status codes الصح.",
+              "validation و pagination، و versioning زي /api/v1، وشكل موحد للأخطاء."
+            ],
+            "en": [
+              "Clear resource names, correct HTTP methods and status codes, validation, pagination, versioning like /api/v1, and a consistent error format."
+            ]
+          },
+          "say": "Clear resource names, correct HTTP methods and status codes, validation, pagination, versioning like /api/v1, and a consistent error format.",
+          "code": ""
+        },
+        {
+          "id": "all-l047",
+          "section": {
+            "ar": "Databases وعمليات البحث",
+            "en": "Databases & Search"
+          },
+          "title": {
+            "ar": "SQL (MySQL) و NoSQL (MongoDB)",
+            "en": "SQL (MySQL) vs NoSQL (MongoDB)"
+          },
+          "points": {
+            "ar": [
+              "الشكل: MySQL جداول و schema ثابت، و MongoDB documents (JSON) و schema مرن.",
+              "العلاقات: MySQL فيه joins قوية، و MongoDB بـ embed أو reference.",
+              "Transactions: قوية جدًا في MySQL، وموجودة بس أقل في MongoDB.",
+              "مناسب لـ: MySQL للـ ERP والمرتبات والفلوس، و MongoDB للمنتجات والـ content والـ data المتغيرة."
+            ],
+            "en": [
+              "MySQL uses tables with a fixed schema and strong joins and transactions, so I used it for the ERP and payroll.",
+              "MongoDB stores flexible JSON documents, so I used it for e-commerce and the school system."
+            ]
+          },
+          "say": "MySQL uses tables with a fixed schema and strong joins and transactions, so I used it for the ERP and payroll. MongoDB stores flexible JSON documents, so I used it for e-commerce and the school system.",
+          "code": ""
+        },
+        {
+          "id": "all-l048",
+          "section": {
+            "ar": "Databases وعمليات البحث",
+            "en": "Databases & Search"
+          },
+          "title": {
+            "ar": "يعني إيه Index؟ وإمتى يضر؟",
+            "en": "What is an index? When can it hurt?"
+          },
+          "points": {
+            "ar": [
+              "الـ index زي فهرس الكتاب: بدل ما الـ database تقرا كل الصفوف، بتروح للمكان على طول.",
+              "بحطه على الأعمدة اللي في WHERE و JOIN و ORDER BY.",
+              "بس بيبطأ الـ INSERT و UPDATE وبياخد مساحة، فمش بحطه على كل حاجة.",
+              "وبستخدم EXPLAIN أشوف الـ query بتستخدم index ولا لأ."
+            ],
+            "en": [
+              "An index helps the database find rows fast without scanning the whole table.",
+              "I add indexes on columns used in WHERE, JOIN and ORDER BY.",
+              "Too many indexes slow down inserts and updates. I use EXPLAIN to check the query."
+            ]
+          },
+          "say": "An index helps the database find rows fast without scanning the whole table. I add indexes on columns used in WHERE, JOIN and ORDER BY. Too many indexes slow down inserts and updates. I use EXPLAIN to check the query.",
+          "code": ""
+        },
+        {
+          "id": "all-l049",
+          "section": {
+            "ar": "Databases وعمليات البحث",
+            "en": "Databases & Search"
+          },
+          "title": {
+            "ar": "مشكلة N+1؟",
+            "en": "What is the N+1 problem?"
+          },
+          "points": {
+            "ar": [
+              "جبت 100 order في query، وبعدين لكل order عملت query تجيب الـ customer، فبقوا 101 query.",
+              "الحل eager loading: في Laravel with('customer')، وفي Mongoose populate()، أو JOIN في SQL."
+            ],
+            "en": [
+              "N+1 is when I run one query for a list and then one extra query for each item.",
+              "I fix it with eager loading, like with() in Laravel or populate() in Mongoose."
+            ]
+          },
+          "say": "N+1 is when I run one query for a list and then one extra query for each item. I fix it with eager loading, like with() in Laravel or populate() in Mongoose.",
+          "code": ""
+        },
+        {
+          "id": "all-l050",
+          "section": {
+            "ar": "Databases وعمليات البحث",
+            "en": "Databases & Search"
+          },
+          "title": {
+            "ar": "يعني إيه Transaction؟",
+            "en": "What is a transaction?"
+          },
+          "points": {
+            "ar": [
+              "مجموعة عمليات يا تنجح كلها يا تتلغي كلها.",
+              "مثال: عمل order + نقص المخزون. لو واحدة فشلت يحصل rollback ومفيش حاجة تتسجل."
+            ],
+            "en": [
+              "A transaction makes many operations succeed together or fail together.",
+              "For example, when an order is placed, I create the order and reduce stock in one transaction."
+            ]
+          },
+          "say": "A transaction makes many operations succeed together or fail together. For example, when an order is placed, I create the order and reduce stock in one transaction.",
+          "code": ""
+        },
+        {
+          "id": "all-l051",
+          "section": {
+            "ar": "Databases وعمليات البحث",
+            "en": "Databases & Search"
+          },
+          "title": {
+            "ar": "Normalization و Denormalization",
+            "en": "Normalization vs Denormalization"
+          },
+          "points": {
+            "ar": [
+              "الـ Normalization: بقسم الجداول عشان مفيش data متكررة.",
+              "الـ Denormalization: بكرر شوية data عشان القراية تبقى أسرع."
+            ],
+            "en": [
+              "Normalization removes duplicate data by splitting tables.",
+              "Denormalization adds some duplication to make reads faster."
+            ]
+          },
+          "say": "Normalization removes duplicate data by splitting tables. Denormalization adds some duplication to make reads faster.",
+          "code": ""
+        },
+        {
+          "id": "all-l052",
+          "section": {
+            "ar": "Databases وعمليات البحث",
+            "en": "Databases & Search"
+          },
+          "title": {
+            "ar": "بتعمل البحث إزاي؟",
+            "en": "How do you implement search?"
+          },
+          "points": {
+            "ar": [
+              "حسب حجم الـ data.",
+              "صغيرة: LIKE '%word%'، بس بطيء على data كبيرة.",
+              "متوسطة: Full-text index، زي MySQL FULLTEXT أو MongoDB text index.",
+              "كبيرة: search engine منفصل زي Meilisearch أو Elasticsearch أو Algolia (بيدعم الأخطاء الإملائية والعربي والفلاتر)، وفي Laravel بستخدم Laravel Scout.",
+              "وفي الفرونت: debounce 300ms، و pagination، و loading."
+            ],
+            "en": [
+              "For small data I use LIKE or a full-text index.",
+              "For large data I use a search engine like Meilisearch or Elasticsearch, with Laravel Scout.",
+              "On the frontend I debounce the input and paginate the results."
+            ]
+          },
+          "say": "For small data I use LIKE or a full-text index. For large data I use a search engine like Meilisearch or Elasticsearch, with Laravel Scout. On the frontend I debounce the input and paginate the results.",
+          "code": ""
+        },
+        {
+          "id": "all-l053",
+          "section": {
+            "ar": "Databases وعمليات البحث",
+            "en": "Databases & Search"
+          },
+          "title": {
+            "ar": "بتعمل pagination للـ data الكبيرة إزاي؟",
+            "en": "How do you paginate large data?"
+          },
+          "points": {
+            "ar": [
+              "عمري ما برجع كل الصفوف.",
+              "الـ offset pagination (LIMIT 20 OFFSET 1000) سهلة بس بتبطأ مع الأرقام الكبيرة.",
+              "الـ cursor pagination (WHERE id > lastId) أسرع للجداول الكبيرة والـ infinite scroll."
+            ],
+            "en": [
+              "I never return all rows.",
+              "Offset pagination is simple, but cursor pagination is faster for big tables and infinite scroll."
+            ]
+          },
+          "say": "I never return all rows. Offset pagination is simple, but cursor pagination is faster for big tables and infinite scroll.",
+          "code": ""
+        },
+        {
+          "id": "all-l054",
+          "section": {
+            "ar": "Databases وعمليات البحث",
+            "en": "Databases & Search"
+          },
+          "title": {
+            "ar": "Embedding و Referencing في MongoDB",
+            "en": "Embedding vs Referencing in MongoDB"
+          },
+          "points": {
+            "ar": [
+              "بعمل embed للـ data الصغيرة اللي بتتقرا مع بعض دايمًا زي العنوان.",
+              "بعمل reference للـ data اللي بتكبر أو مشتركة زي الـ orders بتاعة الـ user."
+            ],
+            "en": [
+              "I embed small data that is always read together, like an address.",
+              "I reference data that grows or is shared, like a user's orders."
+            ]
+          },
+          "say": "I embed small data that is always read together, like an address. I reference data that grows or is shared, like a user's orders.",
+          "code": ""
+        },
+        {
+          "id": "all-l055",
+          "section": {
+            "ar": "Databases وعمليات البحث",
+            "en": "Databases & Search"
+          },
+          "title": {
+            "ar": "يعني إيه ORM؟",
+            "en": "What is an ORM?"
+          },
+          "points": {
+            "ar": [
+              "الـ ORM زي Eloquent أو Mongoose بيخليني أتعامل مع الـ database بالكود بدل SQL.",
+              "أسرع في الشغل وأأمن، بس في التقارير المعقدة الـ raw query ممكن تبقى أسرع."
+            ],
+            "en": [
+              "An ORM like Eloquent or Mongoose lets me use code instead of raw SQL.",
+              "It's faster to develop and safer, but for complex reports raw queries can be faster."
+            ]
+          },
+          "say": "An ORM like Eloquent or Mongoose lets me use code instead of raw SQL. It's faster to develop and safer, but for complex reports raw queries can be faster.",
+          "code": ""
+        },
+        {
+          "id": "all-l056",
+          "section": {
+            "ar": "تحسين الأداء",
+            "en": "Performance"
+          },
+          "title": {
+            "ar": "بتحسن أداء الموقع إزاي؟",
+            "en": "How do you improve website performance?"
+          },
+          "points": {
+            "ar": [
+              "قسّم الإجابة 3 أجزاء: أقيس الأول، بعدين الفرونت، بعدين الباك.",
+              "أقيس: Lighthouse و PageSpeed Insights و Chrome DevTools و React Profiler.",
+              "الفرونت: الصور بـ next/image و WebP و lazy loading، و code splitting بـ dynamic import عشان مش كل الكود يتحمل مرة واحدة.",
+              "الفرونت: SSG و ISR للصفحات الثابتة، و Server Components عشان JavaScript أقل، وأقلل الـ re-renders بـ React.memo و useMemo و useCallback.",
+              "الفرونت: القوايم الطويلة بـ virtualization، و caching بـ React Query و CDN.",
+              "الباك: indexes، وحل N+1، وأجيب الأعمدة اللي محتاجها بس، و pagination.",
+              "الباك: Redis للـ caching، و Queues للحاجات التقيلة زي الإيميلات والـ PDF والتقارير، و compression و load balancer.",
+              "مثال من شغلك: في الـ ERP تقرير المرتبات كان بطيء. لقيت N+1 queries وناقص indexes، وبعد الـ eager loading والـ indexes بقى أسرع بكتير."
+            ],
+            "en": [
+              "First I measure with Lighthouse and DevTools.",
+              "On the frontend, I optimize images, use code splitting, use SSG or ISR when possible, and reduce re-renders.",
+              "On the backend, I add indexes, fix N+1 queries, cache with Redis, and move heavy tasks to queues.",
+              "In the ERP, the payroll report was slow because of N+1 queries and missing indexes. After fixing them, it became much faster."
+            ]
+          },
+          "say": "First I measure with Lighthouse and DevTools. On the frontend, I optimize images, use code splitting, use SSG or ISR when possible, and reduce re-renders. On the backend, I add indexes, fix N+1 queries, cache with Redis, and move heavy tasks to queues. In the ERP, the payroll report was slow because of N+1 queries and missing indexes. After fixing them, it became much faster.",
+          "code": ""
+        },
+        {
+          "id": "all-l057",
+          "section": {
+            "ar": "تحسين الأداء",
+            "en": "Performance"
+          },
+          "title": {
+            "ar": "يعني إيه Core Web Vitals؟",
+            "en": "What are Core Web Vitals?"
+          },
+          "points": {
+            "ar": [
+              "LCP: أكبر عنصر في الصفحة ظهر إمتى. الهدف أقل من 2.5 ثانية.",
+              "INP: الصفحة بترد على الضغط بسرعة قد إيه. الهدف أقل من 200ms.",
+              "CLS: الصفحة بتتحرك وهي بتحمل؟ الهدف أقل من 0.1.",
+              "عشان أحسن الـ CLS بحدد width و height للصور."
+            ],
+            "en": [
+              "LCP is loading speed, INP is how fast the page responds to clicks, and CLS is layout stability.",
+              "To improve CLS, I set width and height for images."
+            ]
+          },
+          "say": "LCP is loading speed, INP is how fast the page responds to clicks, and CLS is layout stability. To improve CLS, I set width and height for images.",
+          "code": ""
+        },
+        {
+          "id": "all-l058",
+          "section": {
+            "ar": "تحسين الأداء",
+            "en": "Performance"
+          },
+          "title": {
+            "ar": "بتحسن الـ SEO في Next.js إزاي؟",
+            "en": "How do you improve SEO in Next.js?"
+          },
+          "points": {
+            "ar": [
+              "بستخدم SSR أو SSG عشان Google يشوف الـ HTML كامل.",
+              "والـ Metadata API للـ title والـ description، و Open Graph، و sitemap.xml و robots.txt.",
+              "و structured data، ولينكات نضيفة، و Core Web Vitals كويسة."
+            ],
+            "en": [
+              "I use SSR or SSG so Google sees the full HTML, and the Metadata API for title and description.",
+              "I add Open Graph tags, a sitemap, robots.txt, structured data, clean URLs, and keep good Core Web Vitals."
+            ]
+          },
+          "say": "I use SSR or SSG so Google sees the full HTML, and the Metadata API for title and description. I add Open Graph tags, a sitemap, robots.txt, structured data, clean URLs, and keep good Core Web Vitals.",
+          "code": ""
+        },
+        {
+          "id": "all-l059",
+          "section": {
+            "ar": "تحسين الأداء",
+            "en": "Performance"
+          },
+          "title": {
+            "ar": "يعني إيه Caching؟ وتعمله فين؟",
+            "en": "What is caching? Where can you cache?"
+          },
+          "points": {
+            "ar": [
+              "الـ caching إني أحفظ الـ data عشان مجيبهاش أو أحسبها تاني.",
+              "ممكن في المتصفح، أو CDN، أو Next.js، أو React Query، أو Redis على السيرفر.",
+              "أصعب حاجة إني أحدث الـ cache لما الـ data تتغير (invalidation)."
+            ],
+            "en": [
+              "Caching stores data so we don't fetch or compute it again.",
+              "I can cache in the browser, on a CDN, in Next.js, in React Query, or in Redis.",
+              "The hard part is invalidation: updating the cache when data changes."
+            ]
+          },
+          "say": "Caching stores data so we don't fetch or compute it again. I can cache in the browser, on a CDN, in Next.js, in React Query, or in Redis. The hard part is invalidation: updating the cache when data changes.",
+          "code": ""
+        },
+        {
+          "id": "all-l060",
+          "section": {
+            "ar": "تحسين الأداء",
+            "en": "Performance"
+          },
+          "title": {
+            "ar": "ليه الـ component في React بيعمل re-render؟",
+            "en": "Why does a React component re-render?"
+          },
+          "points": {
+            "ar": [
+              "لما الـ state بتاعه يتغير، أو الـ props تتغير، أو الـ parent يعمل re-render، أو الـ context اللي بيستخدمه يتغير."
+            ],
+            "en": [
+              "When its state changes, its props change, its parent re-renders, or a context it uses changes."
+            ]
+          },
+          "say": "When its state changes, its props change, its parent re-renders, or a context it uses changes.",
+          "code": ""
+        },
+        {
+          "id": "all-l061",
+          "section": {
+            "ar": "الحماية",
+            "en": "Security"
+          },
+          "title": {
+            "ar": "بتأمن تطبيق ويب إزاي؟",
+            "en": "How do you secure a web application?"
+          },
+          "points": {
+            "ar": [
+              "اعرض الهجمات المشهورة (OWASP Top 10) وحل كل واحدة.",
+              "XSS: حد يحط JavaScript في input ويتنفذ عند غيره. الحماية: React بيعمل escape لوحده، و DOMPurify، و CSP، و httpOnly cookies.",
+              "SQL / NoSQL Injection: حد يحط كود في input للـ database. الحماية: ORM و parameterized queries و validation.",
+              "CSRF: موقع تاني يعمل request باسم المستخدم. الحماية: SameSite cookies و CSRF token.",
+              "Brute force: تجربة passwords كتير. الحماية: rate limiting و CAPTCHA و 2FA.",
+              "Broken access control: user يغير الـ id في الـ URL ويشوف data غيره. الحماية: ownership check في الباك.",
+              "Sensitive data: passwords أو keys مكشوفة. الحماية: bcrypt و HTTPS و .env برة Git.",
+              "File upload: رفع ملف خبيث. الحماية: تأكد من النوع والحجم، وخزنه على S3.",
+              "كمان: Helmet للـ security headers، و validation بـ Zod أو class-validator أو Laravel Form Requests، و CORS لـ origins معروفة بس، و npm audit، ومتظهرش stack trace للمستخدم."
+            ],
+            "en": [
+              "I follow OWASP Top 10.",
+              "I validate all input on the backend, use an ORM to prevent SQL injection, escape output to prevent XSS, and use SameSite cookies or CSRF tokens.",
+              "I hash passwords with bcrypt, use HTTPS, rate limiting, and Helmet.",
+              "I always check permissions and ownership on the backend, and keep secrets in environment variables."
+            ]
+          },
+          "say": "I follow OWASP Top 10. I validate all input on the backend, use an ORM to prevent SQL injection, escape output to prevent XSS, and use SameSite cookies or CSRF tokens. I hash passwords with bcrypt, use HTTPS, rate limiting, and Helmet. I always check permissions and ownership on the backend, and keep secrets in environment variables.",
+          "code": ""
+        },
+        {
+          "id": "all-l062",
+          "section": {
+            "ar": "الحماية",
+            "en": "Security"
+          },
+          "title": {
+            "ar": "بتخزن الباسوردات إزاي؟",
+            "en": "How do you store passwords?"
+          },
+          "points": {
+            "ar": [
+              "عمري ما أخزن password زي ما هو.",
+              "بعمله hash بـ bcrypt أو argon2، وهما بيضيفوا salt وبطيئين عن قصد، فالـ brute force يبقى صعب."
+            ],
+            "en": [
+              "I never store plain passwords.",
+              "I hash them with bcrypt or argon2, which add a salt and are slow on purpose, so brute force is hard."
+            ]
+          },
+          "say": "I never store plain passwords. I hash them with bcrypt or argon2, which add a salt and are slow on purpose, so brute force is hard.",
+          "code": ""
+        },
+        {
+          "id": "all-l063",
+          "section": {
+            "ar": "الحماية",
+            "en": "Security"
+          },
+          "title": {
+            "ar": "Hashing و Encryption",
+            "en": "Hashing vs Encryption"
+          },
+          "points": {
+            "ar": [
+              "الـ Hashing اتجاه واحد مينفعش يترجع، بيستخدم للـ passwords.",
+              "الـ Encryption ينفع يترجع بـ key، بيستخدم للـ data الحساسة."
+            ],
+            "en": [
+              "Hashing is one-way, used for passwords.",
+              "Encryption is two-way with a key, used for sensitive data."
+            ]
+          },
+          "say": "Hashing is one-way, used for passwords. Encryption is two-way with a key, used for sensitive data.",
+          "code": ""
+        },
+        {
+          "id": "all-l064",
+          "section": {
+            "ar": "الحماية",
+            "en": "Security"
+          },
+          "title": {
+            "ar": "يعني إيه Rate Limiting؟",
+            "en": "What is rate limiting?"
+          },
+          "points": {
+            "ar": [
+              "بحدد عدد الـ requests لكل user أو IP في وقت معين، مثلًا 100 في الدقيقة.",
+              "بيحمي من الـ brute force والضغط على السيرفر.",
+              "بستخدم express-rate-limit، أو ThrottlerModule في NestJS، أو throttle في Laravel."
+            ],
+            "en": [
+              "Rate limiting limits how many requests a user or IP can send in a time window, like 100 per minute.",
+              "It protects against brute force and abuse."
+            ]
+          },
+          "say": "Rate limiting limits how many requests a user or IP can send in a time window, like 100 per minute. It protects against brute force and abuse.",
+          "code": ""
+        },
+        {
+          "id": "all-l065",
+          "section": {
+            "ar": "الحماية",
+            "en": "Security"
+          },
+          "title": {
+            "ar": "ليه الـ validation في الفرونت مش كفاية؟",
+            "en": "Why is frontend validation not enough?"
+          },
+          "points": {
+            "ar": [
+              "أي حد يقدر يتخطى الفرونت ويكلم الـ API بـ Postman.",
+              "الـ validation في الفرونت عشان تجربة المستخدم، وفي الباك عشان الحماية."
+            ],
+            "en": [
+              "Anyone can skip the frontend and call the API directly.",
+              "Frontend validation is for user experience, backend validation is for security."
+            ]
+          },
+          "say": "Anyone can skip the frontend and call the API directly. Frontend validation is for user experience, backend validation is for security.",
+          "code": ""
+        },
+        {
+          "id": "all-l066",
+          "section": {
+            "ar": "الحماية",
+            "en": "Security"
+          },
+          "title": {
+            "ar": "يعني إيه HTTPS؟",
+            "en": "What is HTTPS?"
+          },
+          "points": {
+            "ar": [
+              "الـ HTTPS بيشفر الـ data بين المتصفح والسيرفر بـ TLS، فمحدش في النص يقدر يقراها أو يغيرها."
+            ],
+            "en": [
+              "HTTPS encrypts data between the browser and the server with TLS, so no one in the middle can read or change it."
+            ]
+          },
+          "say": "HTTPS encrypts data between the browser and the server with TLS, so no one in the middle can read or change it.",
+          "code": ""
+        },
+        {
+          "id": "all-l067",
+          "section": {
+            "ar": "عمليات الدفع",
+            "en": "Payments"
+          },
+          "title": {
+            "ar": "بتربط الدفع إزاي؟ اشرح الـ flow",
+            "en": "How did you integrate payments? Walk me through the flow"
+          },
+          "points": {
+            "ar": [
+              "أهم نقطة: الفرونت عمره ما يقرر إن الدفع نجح. اللي بيأكد هو الـ webhook اللي جاي من بوابة الدفع للسيرفر.",
+              "1. المستخدم يضغط Checkout، والفرونت يبعت الـ cart للباك.",
+              "2. الباك يحسب السعر بنفسه من الـ database (مش من الفرونت) ويعمل order حالته pending.",
+              "3. الباك يعمل Stripe Checkout Session ويرجع الـ URL.",
+              "4. المستخدم يدفع في صفحة Stripe، فبيانات الكارت مبتعديش على سيرفري.",
+              "5. Stripe يبعت webhook للسيرفر.",
+              "6. السيرفر يتأكد من الـ signature، ويخلي الـ order paid، ويقلل المخزون، ويبعت إيميل.",
+              "7. صفحة النجاح في الفرونت بتعرض الحالة من الـ database بس."
+            ],
+            "en": [
+              "The backend calculates the price from the database and creates a pending order.",
+              "Then it creates a Stripe checkout session. The user pays on Stripe's page, so card data never touches our server.",
+              "Stripe sends a webhook, I verify its signature, and only then I mark the order as paid.",
+              "I never trust the frontend to confirm payment."
+            ]
+          },
+          "say": "The backend calculates the price from the database and creates a pending order. Then it creates a Stripe checkout session. The user pays on Stripe's page, so card data never touches our server. Stripe sends a webhook, I verify its signature, and only then I mark the order as paid. I never trust the frontend to confirm payment.",
+          "code": ""
+        },
+        {
+          "id": "all-l068",
+          "section": {
+            "ar": "عمليات الدفع",
+            "en": "Payments"
+          },
+          "title": {
+            "ar": "ليه webhooks ومش الـ redirect بس؟",
+            "en": "Why use webhooks and not only the redirect?"
+          },
+          "points": {
+            "ar": [
+              "المستخدم ممكن يقفل المتصفح قبل الـ redirect، أو يزور لينك صفحة النجاح بنفسه.",
+              "الـ webhook جاي من Stripe للسيرفر على طول، فهو الموثوق."
+            ],
+            "en": [
+              "The user can close the browser before the redirect, or open the success URL by himself.",
+              "The webhook comes directly from Stripe to the server, so it's reliable and secure."
+            ]
+          },
+          "say": "The user can close the browser before the redirect, or open the success URL by himself. The webhook comes directly from Stripe to the server, so it's reliable and secure.",
+          "code": ""
+        },
+        {
+          "id": "all-l069",
+          "section": {
+            "ar": "عمليات الدفع",
+            "en": "Payments"
+          },
+          "title": {
+            "ar": "يعني إيه Idempotency وليه مهمة في الدفع؟",
+            "en": "What is idempotency and why does it matter in payments?"
+          },
+          "points": {
+            "ar": [
+              "يعني لو نفس الطلب اتبعت مرتين النتيجة تبقى زي ما اتبعت مرة.",
+              "Stripe ممكن يبعت نفس الـ webhook أكتر من مرة، أو المستخدم يضغط ادفع مرتين.",
+              "فبخزن الـ event id وأتأكد إنه متعالجش قبل كده، وبستخدم Idempotency-Key مع Stripe، وبقفل الزرار بعد أول ضغطة."
+            ],
+            "en": [
+              "Idempotency means sending the same request twice gives the same result.",
+              "Webhooks can arrive more than once, so I save the event ID and skip it if it was already processed.",
+              "This prevents charging or fulfilling an order twice."
+            ]
+          },
+          "say": "Idempotency means sending the same request twice gives the same result. Webhooks can arrive more than once, so I save the event ID and skip it if it was already processed. This prevents charging or fulfilling an order twice.",
+          "code": ""
+        },
+        {
+          "id": "all-l070",
+          "section": {
+            "ar": "عمليات الدفع",
+            "en": "Payments"
+          },
+          "title": {
+            "ar": "بتتعامل مع الدفع الفاشل والـ refunds إزاي؟",
+            "en": "How do you handle failed payments and refunds?"
+          },
+          "points": {
+            "ar": [
+              "بسمع الـ webhook بتاع الفشل، وأخلي الـ order حالته failed، والمستخدم يقدر يحاول تاني.",
+              "الـ refund بيتعمل من الباك بـ Stripe API، وبحدث حالة الـ order من الـ webhook."
+            ],
+            "en": [
+              "I listen to failure webhooks, mark the order as failed, and let the user retry.",
+              "Refunds are done from the backend with the Stripe API, and I update the order status from the webhook."
+            ]
+          },
+          "say": "I listen to failure webhooks, mark the order as failed, and let the user retry. Refunds are done from the backend with the Stripe API, and I update the order status from the webhook.",
+          "code": ""
+        },
+        {
+          "id": "all-l071",
+          "section": {
+            "ar": "عمليات الدفع",
+            "en": "Payments"
+          },
+          "title": {
+            "ar": "تعرف إيه من بوابات الدفع في الإمارات؟",
+            "en": "Which payment gateways do you know in the UAE?"
+          },
+          "points": {
+            "ar": [
+              "اعرف الأسماء دي: Stripe، و Checkout.com، و Network International (N-Genius)، و Telr، و PayTabs، و Tap Payments.",
+              "و Tabby و Tamara (اشتري دلوقتي وادفع بعدين)، و Apple Pay مهم جدًا في الخليج.",
+              "الفكرة واحدة في كلهم: session، ثم redirect أو SDK، ثم webhook، ثم verify."
+            ],
+            "en": [
+              "I worked with Stripe, but most gateways work the same way: create a session, redirect the user, then verify with a webhook.",
+              "In the UAE, I know Checkout.com, Network International, Telr, and Tabby and Tamara for buy now, pay later."
+            ]
+          },
+          "say": "I worked with Stripe, but most gateways work the same way: create a session, redirect the user, then verify with a webhook. In the UAE, I know Checkout.com, Network International, Telr, and Tabby and Tamara for buy now, pay later.",
+          "code": ""
+        },
+        {
+          "id": "all-l072",
+          "section": {
+            "ar": "عمليات الدفع",
+            "en": "Payments"
+          },
+          "title": {
+            "ar": "بتتعامل مع الاشتراكات إزاي؟",
+            "en": "How do you handle subscriptions?"
+          },
+          "points": {
+            "ar": [
+              "بستخدم Stripe Billing مع Products و Prices.",
+              "بخزن الـ customer id وحالة الاشتراك في الـ database، وبحدثهم من webhooks زي invoice.paid و customer.subscription.deleted."
+            ],
+            "en": [
+              "I use Stripe Billing.",
+              "I store the customer ID and subscription status in my database and update them from webhooks like invoice.paid and customer.subscription.deleted."
+            ]
+          },
+          "say": "I use Stripe Billing. I store the customer ID and subscription status in my database and update them from webhooks like invoice.paid and customer.subscription.deleted.",
+          "code": ""
+        },
+        {
+          "id": "all-l073",
+          "section": {
+            "ar": "عمليات الدفع",
+            "en": "Payments"
+          },
+          "title": {
+            "ar": "بتخزن قيم الفلوس إزاي؟",
+            "en": "How do you store money values?"
+          },
+          "points": {
+            "ar": [
+              "بخزن الفلوس كرقم صحيح بأصغر وحدة (فلس أو سنت)، أو DECIMAL في SQL.",
+              "عمري ما أستخدم float لأنه بيعمل أخطاء في التقريب."
+            ],
+            "en": [
+              "I store money as integers in the smallest unit, like fils or cents, or as DECIMAL in SQL.",
+              "Never float, because it has rounding errors."
+            ]
+          },
+          "say": "I store money as integers in the smallest unit, like fils or cents, or as DECIMAL in SQL. Never float, because it has rounding errors.",
+          "code": ""
+        },
+        {
+          "id": "all-l074",
+          "section": {
+            "ar": "SaaS و Multi-tenancy",
+            "en": "SaaS & Multi-tenancy"
+          },
+          "title": {
+            "ar": "يعني إيه SaaS؟",
+            "en": "What is SaaS?"
+          },
+          "points": {
+            "ar": [
+              "برنامج على الإنترنت الشركات بتشترك فيه شهري أو سنوي بدل ما تشتريه وتسطبه، زي Slack و Shopify.",
+              "نفس الكود بيخدم شركات كتير، وكل شركة اسمها tenant."
+            ],
+            "en": [
+              "SaaS is software that customers use online with a subscription.",
+              "One application serves many companies, and each company is called a tenant."
+            ]
+          },
+          "say": "SaaS is software that customers use online with a subscription. One application serves many companies, and each company is called a tenant.",
+          "code": ""
+        },
+        {
+          "id": "all-l075",
+          "section": {
+            "ar": "SaaS و Multi-tenancy",
+            "en": "SaaS & Multi-tenancy"
+          },
+          "title": {
+            "ar": "يعني إيه Multi-tenancy؟ وبتصممها إزاي؟",
+            "en": "What is multi-tenancy? How do you design it?"
+          },
+          "points": {
+            "ar": [
+              "Database واحدة + tenant_id: كل جدول فيه عمود tenant_id. أرخص وأسهل، بس لو نسيت الفلتر الـ data تتسرب.",
+              "Schema لكل شركة: نفس الـ database بس schema منفصل. عزل أحسن، بس الـ migrations أصعب.",
+              "Database لكل شركة: database منفصلة. أعلى عزل (بنوك ومستشفيات)، بس أغلى وأصعب.",
+              "أهم حاجة العزل: في الـ database الواحدة الفلتر بيتحط لوحده، بـ Global Scope في Laravel أو middleware في NestJS.",
+              "وبعرف الشركة من الـ subdomain (acme.app.com) أو من الـ JWT."
+            ],
+            "en": [
+              "There are three ways: a shared database with tenant_id, a schema per tenant, or a database per tenant.",
+              "For most startups I use a shared database with tenant_id because it's cheaper and easier.",
+              "The most important thing is isolation, so I apply the tenant filter automatically with a global scope or middleware.",
+              "I identify the tenant from the subdomain or the JWT."
+            ]
+          },
+          "say": "There are three ways: a shared database with tenant_id, a schema per tenant, or a database per tenant. For most startups I use a shared database with tenant_id because it's cheaper and easier. The most important thing is isolation, so I apply the tenant filter automatically with a global scope or middleware. I identify the tenant from the subdomain or the JWT.",
+          "code": ""
+        },
+        {
+          "id": "all-l076",
+          "section": {
+            "ar": "SaaS و Multi-tenancy",
+            "en": "SaaS & Multi-tenancy"
+          },
+          "title": {
+            "ar": "الـ SaaS محتاج إيه غير الـ features الأساسية؟",
+            "en": "What does a SaaS need besides the main features?"
+          },
+          "points": {
+            "ar": [
+              "اشتراكات وباقات (Basic و Pro) و trial بـ Stripe Billing.",
+              "حدود حسب الباقة (عدد users و storage).",
+              "Roles جوه كل شركة (owner و admin و member) ودعوة users.",
+              "صفحة billing وفواتير.",
+              "Admin dashboard لصاحب الـ SaaS.",
+              "Audit logs و backups و monitoring."
+            ],
+            "en": [
+              "Besides the core features, a SaaS needs subscriptions and plans, limits per plan, roles inside each tenant, user invitations, billing, and an admin dashboard."
+            ]
+          },
+          "say": "Besides the core features, a SaaS needs subscriptions and plans, limits per plan, roles inside each tenant, user invitations, billing, and an admin dashboard.",
+          "code": ""
+        },
+        {
+          "id": "all-l077",
+          "section": {
+            "ar": "SaaS و Multi-tenancy",
+            "en": "SaaS & Multi-tenancy"
+          },
+          "title": {
+            "ar": "بتعمل scale للـ SaaS إزاي؟",
+            "en": "How would you scale a SaaS?"
+          },
+          "points": {
+            "ar": [
+              "بخلي الـ API مش بيخزن state عشان أقدر أزود سيرفرات ورا load balancer.",
+              "Redis للـ caching، و queues للشغل التقيل، و CDN للملفات.",
+              "indexes و read replicas للـ database، و monitoring عشان ألاقي البطء فين."
+            ],
+            "en": [
+              "I keep the API stateless so I can add more servers behind a load balancer.",
+              "I use Redis for caching, queues for heavy jobs, a CDN for files, database indexes and read replicas, and monitoring to find bottlenecks."
+            ]
+          },
+          "say": "I keep the API stateless so I can add more servers behind a load balancer. I use Redis for caching, queues for heavy jobs, a CDN for files, database indexes and read replicas, and monitoring to find bottlenecks.",
+          "code": ""
+        },
+        {
+          "id": "all-l078",
+          "section": {
+            "ar": "SaaS و Multi-tenancy",
+            "en": "SaaS & Multi-tenancy"
+          },
+          "title": {
+            "ar": "Monolith و Microservices",
+            "en": "Monolith vs Microservices"
+          },
+          "points": {
+            "ar": [
+              "الـ Monolith تطبيق واحد، سهل تبنيه وترفعه، وأحسن في البداية.",
+              "الـ Microservices بتقسم النظام لخدمات صغيرة كل واحدة تكبر لوحدها، بس أعقد.",
+              "ببدأ بـ modular monolith وأقسم بعدين لو احتجت."
+            ],
+            "en": [
+              "A monolith is one application, simple to build and deploy, best for starting.",
+              "Microservices split the system into small services that scale separately, but they're more complex.",
+              "I start with a modular monolith and split later if needed."
+            ]
+          },
+          "say": "A monolith is one application, simple to build and deploy, best for starting. Microservices split the system into small services that scale separately, but they're more complex. I start with a modular monolith and split later if needed.",
+          "code": ""
+        },
+        {
+          "id": "all-l079",
+          "section": {
+            "ar": "SaaS و Multi-tenancy",
+            "en": "SaaS & Multi-tenancy"
+          },
+          "title": {
+            "ar": "عملت حاجة زي SaaS قبل كده؟",
+            "en": "Have you built something like SaaS?"
+          },
+          "points": {
+            "ar": [
+              "أيوه، نظام إدارة المدارس كان فيه dashboards حسب الـ role (admin و teacher و student) و modules أكاديمية ومالية.",
+              "وكان ينفع يخدم مدارس كتير بـ school id على كل record، ودي نفس فكرة الـ multi-tenant."
+            ],
+            "en": [
+              "Yes. The school management system had role-based dashboards and academic and financial modules.",
+              "It could serve many schools with a school ID on every record, which is the multi-tenant idea."
+            ]
+          },
+          "say": "Yes. The school management system had role-based dashboards and academic and financial modules. It could serve many schools with a school ID on every record, which is the multi-tenant idea.",
+          "code": ""
+        },
+        {
+          "id": "all-l080",
+          "section": {
+            "ar": "الأخطاء والـ Debugging",
+            "en": "Errors & Debugging"
+          },
+          "title": {
+            "ar": "بتعمل debug لمشكلة إزاي؟",
+            "en": "How do you debug a problem?"
+          },
+          "points": {
+            "ar": [
+              "1. أعيد المشكلة بنفسي وأعرف بتحصل إمتى ولمين.",
+              "2. أقرا الـ error في الـ console والـ logs والـ stack trace.",
+              "3. أحدد مكانها: أفتح Network tab وأشوف الـ request والـ response والـ status code، وأجرب الـ API في Postman عشان أعرف المشكلة في الفرونت ولا الباك.",
+              "4. ألاقي السبب بـ breakpoints أو console.log، أو أشوف آخر تعديل في git.",
+              "5. أصلح وأكتب test عشان المشكلة متتكررش.",
+              "6. أتابع في production إنها اتحلت."
+            ],
+            "en": [
+              "First I reproduce the bug. Then I read the error and logs.",
+              "I check the Network tab to see if the problem is in the frontend or backend, and test the API with Postman.",
+              "When I find the root cause, I fix it, add a test, and monitor it in production."
+            ]
+          },
+          "say": "First I reproduce the bug. Then I read the error and logs. I check the Network tab to see if the problem is in the frontend or backend, and test the API with Postman. When I find the root cause, I fix it, add a test, and monitor it in production.",
+          "code": ""
+        },
+        {
+          "id": "all-l081",
+          "section": {
+            "ar": "الأخطاء والـ Debugging",
+            "en": "Errors & Debugging"
+          },
+          "title": {
+            "ar": "بتتعامل مع الأخطاء في الكود إزاي؟",
+            "en": "How do you handle errors in your code?"
+          },
+          "points": {
+            "ar": [
+              "الباك: global error handler واحد (Express middleware أو NestJS Exception Filter أو Laravel Handler) بيرجع شكل موحد للخطأ مع الـ status code الصح، ومن غير stack trace في production.",
+              "الـ Async: try/catch مع async/await.",
+              "الفرونت: Error Boundary عشان الصفحة كلها متقعش، و error.tsx في Next.js، ورسالة واضحة للمستخدم.",
+              "المتابعة: logs بـ Winston أو Pino، و Sentry يبلغني بالأخطاء."
+            ],
+            "en": [
+              "On the backend I use one global error handler that returns a consistent error format with the right status code.",
+              "I use try/catch with async/await.",
+              "On the frontend I use Error Boundaries and show clear messages.",
+              "In production I use logs and Sentry to catch errors early."
+            ]
+          },
+          "say": "On the backend I use one global error handler that returns a consistent error format with the right status code. I use try/catch with async/await. On the frontend I use Error Boundaries and show clear messages. In production I use logs and Sentry to catch errors early.",
+          "code": ""
+        },
+        {
+          "id": "all-l082",
+          "section": {
+            "ar": "الأخطاء والـ Debugging",
+            "en": "Errors & Debugging"
+          },
+          "title": {
+            "ar": "يعني إيه Error Boundary؟",
+            "en": "What is an Error Boundary?"
+          },
+          "points": {
+            "ar": [
+              "component في React بيمسك الأخطاء اللي في الـ components اللي جواه ويعرض شاشة بديلة، بدل ما التطبيق كله يقع."
+            ],
+            "en": [
+              "It's a React component that catches errors in its children and shows a fallback UI, so the whole app doesn't crash."
+            ]
+          },
+          "say": "It's a React component that catches errors in its children and shows a fallback UI, so the whole app doesn't crash.",
+          "code": ""
+        },
+        {
+          "id": "all-l083",
+          "section": {
+            "ar": "الأخطاء والـ Debugging",
+            "en": "Errors & Debugging"
+          },
+          "title": {
+            "ar": "شغال locally ومش شغال في production. بتشيك على إيه؟",
+            "en": "It works locally but not in production. What do you check?"
+          },
+          "points": {
+            "ar": [
+              "الـ environment variables، وإعدادات الـ CORS، ولينكات الـ API، وأخطاء الـ build، و logs السيرفر، والاتصال بالـ database، واختلاف نسخة Node."
+            ],
+            "en": [
+              "I check environment variables, CORS settings, API URLs, build errors, server logs, the database connection, and the Node version."
+            ]
+          },
+          "say": "I check environment variables, CORS settings, API URLs, build errors, server logs, the database connection, and the Node version.",
+          "code": ""
+        },
+        {
+          "id": "all-l084",
+          "section": {
+            "ar": "الأخطاء والـ Debugging",
+            "en": "Errors & Debugging"
+          },
+          "title": {
+            "ar": "بتختبر الكود بتاعك إزاي؟",
+            "en": "How do you test your code?"
+          },
+          "points": {
+            "ar": [
+              "Unit: function أو component لوحده، بـ Jest أو Vitest.",
+              "Integration: أكتر من جزء مع بعض (API و DB)، بـ Supertest أو PHPUnit.",
+              "E2E: رحلة المستخدم كاملة، بـ Playwright أو Cypress."
+            ],
+            "en": [
+              "I write unit tests with Jest for important logic, integration tests for APIs, and I test APIs with Postman.",
+              "For critical flows like checkout, E2E tests with Playwright are useful."
+            ]
+          },
+          "say": "I write unit tests with Jest for important logic, integration tests for APIs, and I test APIs with Postman. For critical flows like checkout, E2E tests with Playwright are useful.",
+          "code": ""
+        },
+        {
+          "id": "all-l085",
+          "section": {
+            "ar": "الأسئلة السلوكية",
+            "en": "Behavioral Questions"
+          },
+          "title": {
+            "ar": "إزاي تجاوب الأسئلة السلوكية (STAR)؟",
+            "en": "How do you answer behavioral questions (STAR)?"
+          },
+          "points": {
+            "ar": [
+              "احكي أي قصة بطريقة STAR: الموقف (Situation)، المطلوب (Task)، إنت عملت إيه (Action)، والنتيجة (Result).",
+              "القصص اللي جاية مناسبة لمشاريعك، بس عدّل التفاصيل والأرقام على اللي حصل فعلًا عشان تعرف ترد على أي سؤال متابعة."
+            ],
+            "en": [
+              "I answer with STAR: the situation, the task, the action I took, and the result."
+            ]
+          },
+          "say": "I answer with STAR: the situation, the task, the action I took, and the result.",
+          "code": ""
+        },
+        {
+          "id": "all-l086",
+          "section": {
+            "ar": "الأسئلة السلوكية",
+            "en": "Behavioral Questions"
+          },
+          "title": {
+            "ar": "أكبر مشكلة واجهتك؟ (تقرير ERP بطيء)",
+            "en": "What is the biggest problem you faced? (slow ERP report)"
+          },
+          "points": {
+            "ar": [
+              "تقرير المرتبات الشهري في الـ ERP كان بطيء جدًا وأحيانًا بيعمل timeout، لأن فيه مئات الموظفين ولكل واحد حضور وخصومات.",
+              "لقيت N+1 queries ومفيش indexes على employee_id و date.",
+              "عملت eager loading، وحطيت indexes، وحسبت المجاميع في الـ query بدل loops في PHP، وخليت الـ PDF يتعمل في Queue ويوصل إشعار لما يخلص.",
+              "التقرير نزل من حوالي دقيقة لثواني."
+            ],
+            "en": [
+              "In the ERP, the monthly payroll report was very slow and sometimes timed out.",
+              "I found N+1 queries and missing indexes.",
+              "I used eager loading, added indexes, and moved PDF generation to a background queue.",
+              "The report went from about a minute to a few seconds."
+            ]
+          },
+          "say": "In the ERP, the monthly payroll report was very slow and sometimes timed out. I found N+1 queries and missing indexes. I used eager loading, added indexes, and moved PDF generation to a background queue. The report went from about a minute to a few seconds.",
+          "code": ""
+        },
+        {
+          "id": "all-l087",
+          "section": {
+            "ar": "الأسئلة السلوكية",
+            "en": "Behavioral Questions"
+          },
+          "title": {
+            "ar": "مشكلة تانية؟ (orders مكررة)",
+            "en": "Another problem? (duplicate orders)"
+          },
+          "points": {
+            "ar": [
+              "في متجر، بعض الـ orders اتسجلت مرتين، أو الدفع نجح والـ order فضل pending، لأن الكود كان معتمد على الـ redirect من صفحة الدفع.",
+              "خليت الـ webhook هو المصدر الوحيد لتأكيد الدفع، وتأكدت من الـ signature، وخزنت الـ event id عشان محدش يتعالج مرتين، وقفلت زرار الدفع بعد أول ضغطة.",
+              "بعدها مبقاش فيه orders مكررة."
+            ],
+            "en": [
+              "In an e-commerce project, some orders were duplicated or stayed pending, because we trusted the redirect.",
+              "I made the Stripe webhook the only source of truth, verified the signature, and saved the event ID to make it idempotent.",
+              "After that, we had no duplicate orders."
+            ]
+          },
+          "say": "In an e-commerce project, some orders were duplicated or stayed pending, because we trusted the redirect. I made the Stripe webhook the only source of truth, verified the signature, and saved the event ID to make it idempotent. After that, we had no duplicate orders.",
+          "code": ""
+        },
+        {
+          "id": "all-l088",
+          "section": {
+            "ar": "الأسئلة السلوكية",
+            "en": "Behavioral Questions"
+          },
+          "title": {
+            "ar": "مشكلة أداء أو SEO؟ (SEO ضعيف)",
+            "en": "A performance or SEO problem? (bad SEO)"
+          },
+          "points": {
+            "ar": [
+              "موقع شركة كان React CSR، فـ Google مش شايف المحتوى والـ Lighthouse score ضعيف.",
+              "نقلته لـ Next.js مع SSG و ISR، وحسنت الصور، وضفت metadata و sitemap.",
+              "الـ score بقى فوق 90 والصفحات بدأت تظهر في Google."
+            ],
+            "en": [
+              "A company website used client-side React, so Google couldn't see the content.",
+              "I moved it to Next.js with SSG and ISR, optimized images, and added metadata and a sitemap.",
+              "The Lighthouse score went above 90 and the pages started appearing on Google."
+            ]
+          },
+          "say": "A company website used client-side React, so Google couldn't see the content. I moved it to Next.js with SSG and ISR, optimized images, and added metadata and a sitemap. The Lighthouse score went above 90 and the pages started appearing on Google.",
+          "code": ""
+        },
+        {
+          "id": "all-l089",
+          "section": {
+            "ar": "الأسئلة السلوكية",
+            "en": "Behavioral Questions"
+          },
+          "title": {
+            "ar": "مشكلة أمنية؟ (تسريب بيانات)",
+            "en": "A security problem? (data leak)"
+          },
+          "points": {
+            "ar": [
+              "لقيت إن أي user يقدر يغير الـ id في الـ URL ويشوف بيانات موظف تاني.",
+              "ضفت check في الباك لكل request إن الـ data دي بتاعته، مش في الفرونت بس، وكتبت tests ليها."
+            ],
+            "en": [
+              "I found that a user could change the ID in the URL and see another employee's data.",
+              "I added an ownership check on the backend for every request and wrote tests for it."
+            ]
+          },
+          "say": "I found that a user could change the ID in the URL and see another employee's data. I added an ownership check on the backend for every request and wrote tests for it.",
+          "code": ""
+        },
+        {
+          "id": "all-l090",
+          "section": {
+            "ar": "الأسئلة السلوكية",
+            "en": "Behavioral Questions"
+          },
+          "title": {
+            "ar": "احكي عن خلاف مع زميل",
+            "en": "Tell me about a conflict with a teammate"
+          },
+          "points": {
+            "ar": [
+              "اختلفنا على مكتبة نستخدمها.",
+              "جهزت مقارنة صغيرة بالمميزات والعيوب، واتكلمنا بهدوء، واخترنا الأنسب للمشروع. بالأرقام مش بالرأي."
+            ],
+            "en": [
+              "We disagreed about which library to use.",
+              "I prepared a short comparison of pros and cons, we discussed it calmly, and we chose the best option for the project."
+            ]
+          },
+          "say": "We disagreed about which library to use. I prepared a short comparison of pros and cons, we discussed it calmly, and we chose the best option for the project.",
+          "code": ""
+        },
+        {
+          "id": "all-l091",
+          "section": {
+            "ar": "الأسئلة السلوكية",
+            "en": "Behavioral Questions"
+          },
+          "title": {
+            "ar": "بتتعامل مع deadline ضيق إزاي؟",
+            "en": "How do you handle a tight deadline?"
+          },
+          "points": {
+            "ar": [
+              "بركز على أهم features الأول، وبقول للمدير بدري لو فيه خطر، وبقترح نسلّم إيه دلوقتي وإيه بعدين."
+            ],
+            "en": [
+              "I focus on the most important features first, tell my manager early if there is a risk, and suggest what we deliver now and what comes later."
+            ]
+          },
+          "say": "I focus on the most important features first, tell my manager early if there is a risk, and suggest what we deliver now and what comes later.",
+          "code": ""
+        },
+        {
+          "id": "all-l092",
+          "section": {
+            "ar": "الأسئلة السلوكية",
+            "en": "Behavioral Questions"
+          },
+          "title": {
+            "ar": "احكي عن غلطة عملتها",
+            "en": "Tell me about a mistake you made"
+          },
+          "points": {
+            "ar": [
+              "مرة رفعت كود من غير ما أختبر حالة معينة وبوظ feature.",
+              "صلحته بسرعة وقلت للفريق، ومن ساعتها بكتب tests للأجزاء المهمة وبستخدم staging قبل production."
+            ],
+            "en": [
+              "Once I deployed without testing an edge case and it broke a feature.",
+              "I fixed it quickly and told the team.",
+              "Since then, I write tests for critical parts and use a staging environment."
+            ]
+          },
+          "say": "Once I deployed without testing an edge case and it broke a feature. I fixed it quickly and told the team. Since then, I write tests for critical parts and use a staging environment.",
+          "code": ""
+        },
+        {
+          "id": "all-l093",
+          "section": {
+            "ar": "الأسئلة السلوكية",
+            "en": "Behavioral Questions"
+          },
+          "title": {
+            "ar": "بتتعلم تكنولوجيا جديدة إزاي؟",
+            "en": "How do you learn new technologies?"
+          },
+          "points": {
+            "ar": [
+              "بقرا الـ documentation الرسمي، وأعمل مشروع صغير، وبعدين أستخدمها في شغل حقيقي.",
+              "مثلًا اتعلمت n8n واستخدمته في أتمتة شغل الشركة."
+            ],
+            "en": [
+              "I read the official documentation, build a small project, then use it in real work.",
+              "For example, I learned n8n and used it to automate business workflows."
+            ]
+          },
+          "say": "I read the official documentation, build a small project, then use it in real work. For example, I learned n8n and used it to automate business workflows.",
+          "code": ""
+        },
+        {
+          "id": "all-l094",
+          "section": {
+            "ar": "الأسئلة السلوكية",
+            "en": "Behavioral Questions"
+          },
+          "title": {
+            "ar": "بتتعامل مع requirements مش واضحة إزاي؟",
+            "en": "How do you handle unclear requirements?"
+          },
+          "points": {
+            "ar": [
+              "بسأل بدري، وبكتب اللي فهمته، وبأكده مع العميل أو المدير قبل ما أبدأ أكتب كود."
+            ],
+            "en": [
+              "I ask questions early, write down what I understood, and confirm it before I start coding."
+            ]
+          },
+          "say": "I ask questions early, write down what I understood, and confirm it before I start coding.",
+          "code": ""
+        },
+        {
+          "id": "all-l095",
+          "section": {
+            "ar": "مراجعة سريعة",
+            "en": "Quick Review"
+          },
+          "title": {
+            "ar": "يعني إيه Docker؟",
+            "en": "What is Docker?"
+          },
+          "points": {
+            "ar": [
+              "بيحط التطبيق مع كل اللي محتاجه، فيشتغل نفس الشكل في أي مكان."
+            ],
+            "en": [
+              "It packages the app with everything it needs, so it runs the same everywhere."
+            ]
+          },
+          "say": "It packages the app with everything it needs, so it runs the same everywhere.",
+          "code": ""
+        },
+        {
+          "id": "all-l096",
+          "section": {
+            "ar": "مراجعة سريعة",
+            "en": "Quick Review"
+          },
+          "title": {
+            "ar": "يعني إيه CI/CD؟",
+            "en": "What is CI/CD?"
+          },
+          "points": {
+            "ar": [
+              "test و deploy أوتوماتيك مع كل push."
+            ],
+            "en": [
+              "Automatic testing and deployment on every push."
+            ]
+          },
+          "say": "Automatic testing and deployment on every push.",
+          "code": ""
+        },
+        {
+          "id": "all-l097",
+          "section": {
+            "ar": "مراجعة سريعة",
+            "en": "Quick Review"
+          },
+          "title": {
+            "ar": "يعني إيه Redis؟",
+            "en": "What is Redis?"
+          },
+          "points": {
+            "ar": [
+              "تخزين في الذاكرة للـ cache والـ sessions والـ queues."
+            ],
+            "en": [
+              "An in-memory store for caching, sessions and queues."
+            ]
+          },
+          "say": "An in-memory store for caching, sessions and queues.",
+          "code": ""
+        },
+        {
+          "id": "all-l098",
+          "section": {
+            "ar": "مراجعة سريعة",
+            "en": "Quick Review"
+          },
+          "title": {
+            "ar": "يعني إيه CDN؟",
+            "en": "What is a CDN?"
+          },
+          "points": {
+            "ar": [
+              "سيرفرات حوالين العالم بتوصل الملفات من أقرب مكان."
+            ],
+            "en": [
+              "Servers worldwide that serve files from the closest location."
+            ]
+          },
+          "say": "Servers worldwide that serve files from the closest location.",
+          "code": ""
+        },
+        {
+          "id": "all-l099",
+          "section": {
+            "ar": "مراجعة سريعة",
+            "en": "Quick Review"
+          },
+          "title": {
+            "ar": "يعني إيه n8n؟",
+            "en": "What is n8n?"
+          },
+          "points": {
+            "ar": [
+              "أداة أتمتة workflows، استخدمتها مع webhooks."
+            ],
+            "en": [
+              "A workflow automation tool. I used it with webhooks."
+            ]
+          },
+          "say": "A workflow automation tool. I used it with webhooks.",
+          "code": ""
+        },
+        {
+          "id": "all-l100",
+          "section": {
+            "ar": "مراجعة سريعة",
+            "en": "Quick Review"
+          },
+          "title": {
+            "ar": "ليه React Native؟",
+            "en": "Why React Native?"
+          },
+          "points": {
+            "ar": [
+              "كود واحد لـ iOS و Android بنفس مهارات React."
+            ],
+            "en": [
+              "One codebase for iOS and Android with React skills."
+            ]
+          },
+          "say": "One codebase for iOS and Android with React skills.",
+          "code": ""
+        },
+        {
+          "id": "all-l101",
+          "section": {
+            "ar": "مراجعة سريعة",
+            "en": "Quick Review"
+          },
+          "title": {
+            "ar": "يعني إيه Environment variables؟",
+            "en": "What are environment variables?"
+          },
+          "points": {
+            "ar": [
+              "إعدادات وأسرار برة الكود زي الـ API keys."
+            ],
+            "en": [
+              "Config and secrets outside the code, like API keys."
+            ]
+          },
+          "say": "Config and secrets outside the code, like API keys.",
+          "code": ""
+        },
+        {
+          "id": "all-l102",
+          "section": {
+            "ar": "مراجعة سريعة",
+            "en": "Quick Review"
+          },
+          "title": {
+            "ar": "تسأل إيه في آخر الإنترفيو؟",
+            "en": "What should you ask at the end of the interview?"
+          },
+          "points": {
+            "ar": [
+              "لما يقولك \"Do you have any questions?\" متقولش لأ. اختار سؤالين:",
+              "اليوم العادي في الوظيفة دي شكله إيه؟",
+              "إيه الـ tech stack، وإيه أكبر تحدي دلوقتي؟",
+              "الفريق متقسم إزاي؟ فيه code review؟",
+              "النجاح في أول 3 شهور يبقى إيه؟"
+            ],
+            "en": [
+              "What does a normal day look like in this role?",
+              "What is the tech stack, and what is the biggest challenge now?",
+              "How is the team structured? Do you do code reviews?",
+              "What does success look like in the first 3 months?"
+            ]
+          },
+          "say": "What does a normal day look like in this role? What is the tech stack, and what is the biggest challenge now? How is the team structured? Do you do code reviews? What does success look like in the first 3 months?",
+          "code": ""
+        },
+        {
+          "id": "all-l103",
+          "section": {
+            "ar": "مراجعة سريعة",
+            "en": "Quick Review"
+          },
+          "title": {
+            "ar": "جمل تنقذك في الإنجليزي",
+            "en": "Phrases that save you in English"
+          },
+          "points": {
+            "ar": [
+              "مفهمتش السؤال: Sorry, could you repeat the question?",
+              "عايز تتأكد إنك فاهم: Do you mean...?",
+              "محتاج ثانية تفكر: Good question, let me think for a second.",
+              "مش عارف الإجابة: I haven't used it in production, but I understand that..."
+            ],
+            "en": [
+              "Sorry, could you repeat the question?",
+              "Do you mean...?",
+              "Good question, let me think for a second.",
+              "I haven't used it in production, but I understand that..."
+            ]
+          },
+          "say": "Sorry, could you repeat the question? Do you mean...? Good question, let me think for a second. I haven't used it in production, but I understand that...",
+          "code": ""
+        }
+      ],
+      "quiz": [
+        {
+          "id": "all-q001",
+          "question": {
+            "ar": "أحسن طريقة تجاوب بيها سؤال تقني؟",
+            "en": "The best way to answer a technical question?"
+          },
+          "options": [
+            {
+              "ar": "تعريف في جملة وبعدين مثال من شغلك",
+              "en": "A one-sentence definition, then an example from your work"
+            },
+            {
+              "ar": "تعريف طويل من الكتاب",
+              "en": "A long textbook definition"
+            },
+            {
+              "ar": "مثال من غير تعريف",
+              "en": "An example with no definition"
+            },
+            {
+              "ar": "تقول إنك مش عارف",
+              "en": "Say you do not know"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "كل سؤال هنا ليه إجابة بالعربي عشان تفهم، وتحتها نفس الإجابة بجمل English قصيرة تحفظها وتقولها في الإنترفيو.",
+            "en": "Give the definition in one sentence, then an example from your own work."
+          }
+        },
+        {
+          "id": "all-q005",
+          "question": {
+            "ar": "لما يسألوك عن الراتب المتوقع تقول إيه؟",
+            "en": "How should you answer the expected salary question?"
+          },
+          "options": [
+            {
+              "ar": "رينج بعد ما تعرف السوق",
+              "en": "A range, after researching the market"
+            },
+            {
+              "ar": "رقم واحد ثابت",
+              "en": "One fixed number"
+            },
+            {
+              "ar": "ترفض تجاوب",
+              "en": "Refuse to answer"
+            },
+            {
+              "ar": "أقل رقم ممكن",
+              "en": "The lowest number possible"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "في الإمارات بيسألوا عن الراتب المتوقع، والـ notice period، والـ visa status.",
+            "en": "My expectation is between X and Y AED, but I'm flexible depending on the full package."
+          }
+        },
+        {
+          "id": "all-q006",
+          "question": {
+            "ar": "أول خطوة في بناء مشروع من الصفر؟",
+            "en": "The first step when building a project from scratch?"
+          },
+          "options": [
+            {
+              "ar": "فهم الـ requirements وتحديد الـ MVP",
+              "en": "Understand the requirements and define the MVP"
+            },
+            {
+              "ar": "كتابة الكود على طول",
+              "en": "Start coding immediately"
+            },
+            {
+              "ar": "اختيار الألوان",
+              "en": "Pick the colours"
+            },
+            {
+              "ar": "الـ deployment",
+              "en": "Deployment"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Requirements: أفهم المشكلة من العميل أو الـ PM، ومين الـ users، وأحدد الـ MVP (أقل features نبدأ بيها).",
+            "en": "First, I understand the requirements and define the MVP."
+          }
+        },
+        {
+          "id": "all-q007",
+          "question": {
+            "ar": "المشروع محتاج SEO قوي. تختار إيه للفرونت؟",
+            "en": "The project needs strong SEO. Which frontend do you pick?"
+          },
+          "options": [
+            {
+              "ar": "Next.js",
+              "en": "Next.js"
+            },
+            {
+              "ar": "React CSR بس",
+              "en": "Client-side React only"
+            },
+            {
+              "ar": "Express",
+              "en": "Express"
+            },
+            {
+              "ar": "MongoDB",
+              "en": "MongoDB"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بختار حسب احتياج المشروع مش حسب اللي بحبه.",
+            "en": "I choose based on the project: SEO needs, data structure, team skills, and deadline."
+          }
+        },
+        {
+          "id": "all-q008",
+          "question": {
+            "ar": "قبل ما أي feature تتعمل merge بيحصل إيه؟",
+            "en": "What happens before a feature is merged?"
+          },
+          "options": [
+            {
+              "ar": "Pull Request و code review",
+              "en": "A pull request and a code review"
+            },
+            {
+              "ar": "push على main على طول",
+              "en": "Push straight to main"
+            },
+            {
+              "ar": "حذف الـ branch",
+              "en": "Delete the branch"
+            },
+            {
+              "ar": "ولا حاجة",
+              "en": "Nothing"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "فيه branch اسمه main و branch اسمه develop.",
+            "en": "We have main and develop branches."
+          }
+        },
+        {
+          "id": "all-q009",
+          "question": {
+            "ar": "إزاي تقدر وقت task كبيرة؟",
+            "en": "How do you estimate a large task?"
+          },
+          "options": [
+            {
+              "ar": "تقسمها لأجزاء وتزود وقت للـ testing والمفاجآت",
+              "en": "Split it up and add time for testing and surprises"
+            },
+            {
+              "ar": "تخمن رقم واحد",
+              "en": "Guess a single number"
+            },
+            {
+              "ar": "تديها أقل وقت ممكن",
+              "en": "Give the shortest possible time"
+            },
+            {
+              "ar": "ترفض تقدر",
+              "en": "Refuse to estimate"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بقسم الـ task لأجزاء صغيرة، وأقدر وقت كل جزء.",
+            "en": "I split the task into small parts, estimate each part, and add time for testing and surprises."
+          }
+        },
+        {
+          "id": "all-q010",
+          "question": {
+            "ar": "صفحات منتجات كتير بتتغير كل شوية ومحتاجة SEO. أنسب حاجة؟",
+            "en": "Many product pages that change often and need SEO. Best fit?"
+          },
+          "options": [
+            {
+              "ar": "ISR",
+              "en": "ISR"
+            },
+            {
+              "ar": "CSR",
+              "en": "CSR"
+            },
+            {
+              "ar": "SSG من غير تحديث",
+              "en": "SSG with no regeneration"
+            },
+            {
+              "ar": "HTML ثابت مكتوب بإيدك",
+              "en": "Hand-written static HTML"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الفرق كله في سؤال واحد: الصفحة بتتبني فين وإمتى؟",
+            "en": "CSR renders the page in the browser, so the first load is slower and SEO is weaker."
+          }
+        },
+        {
+          "id": "all-q011",
+          "question": {
+            "ar": "أنهي حاجة ممكن تعمل hydration error؟",
+            "en": "Which can cause a hydration error?"
+          },
+          "options": [
+            {
+              "ar": "Date.now() وقت الرسم",
+              "en": "Date.now() during render"
+            },
+            {
+              "ar": "useState",
+              "en": "useState"
+            },
+            {
+              "ar": "className",
+              "en": "className"
+            },
+            {
+              "ar": "key",
+              "en": "key"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "السيرفر بيبعت HTML جاهز، وبعدين React بيربط الـ events (زي الضغط) بالـ HTML ده في المتصفح، فالصفحة تبقى تفاعلية.",
+            "en": "Hydration is when React attaches event handlers to the HTML that came from the server, so the page becomes interactive."
+          }
+        },
+        {
+          "id": "all-q012",
+          "question": {
+            "ar": "إمتى تحتاج Client Component؟",
+            "en": "When do you need a Client Component?"
+          },
+          "options": [
+            {
+              "ar": "لما تحتاج state أو events أو browser APIs",
+              "en": "When you need state, events or browser APIs"
+            },
+            {
+              "ar": "عشان تكلم الـ database",
+              "en": "To query the database"
+            },
+            {
+              "ar": "عشان تقلل الـ JavaScript",
+              "en": "To ship less JavaScript"
+            },
+            {
+              "ar": "دايمًا",
+              "en": "Always"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Server Component بيشتغل على السيرفر بس، ومبيبعتش JavaScript للمتصفح، ويقدر يكلم الـ database على طول.",
+            "en": "Server Components run only on the server and send no JavaScript to the browser, so the page is faster."
+          }
+        },
+        {
+          "id": "all-q013",
+          "question": {
+            "ar": "عملية مقارنة الـ Virtual DOM الجديد بالقديم اسمها إيه؟",
+            "en": "What is comparing the new Virtual DOM with the old one called?"
+          },
+          "options": [
+            {
+              "ar": "Reconciliation",
+              "en": "Reconciliation"
+            },
+            {
+              "ar": "Hydration",
+              "en": "Hydration"
+            },
+            {
+              "ar": "Hoisting",
+              "en": "Hoisting"
+            },
+            {
+              "ar": "Memoization",
+              "en": "Memoization"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "نسخة من الـ DOM في الذاكرة.",
+            "en": "It's a copy of the DOM in memory."
+          }
+        },
+        {
+          "id": "all-q014",
+          "question": {
+            "ar": "أنهي hook بيمسك عنصر DOM من غير re-render؟",
+            "en": "Which hook holds a DOM element without re-rendering?"
+          },
+          "options": [
+            {
+              "ar": "useRef",
+              "en": "useRef"
+            },
+            {
+              "ar": "useState",
+              "en": "useState"
+            },
+            {
+              "ar": "useMemo",
+              "en": "useMemo"
+            },
+            {
+              "ar": "useContext",
+              "en": "useContext"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "useState: يخزن state.",
+            "en": "useState stores state, and useEffect runs side effects."
+          }
+        },
+        {
+          "id": "all-q015",
+          "question": {
+            "ar": "بيانات جاية من API ومحتاجة caching و refetch. تستخدم إيه؟",
+            "en": "API data that needs caching and refetching. What do you use?"
+          },
+          "options": [
+            {
+              "ar": "React Query",
+              "en": "React Query"
+            },
+            {
+              "ar": "Context",
+              "en": "Context"
+            },
+            {
+              "ar": "useRef",
+              "en": "useRef"
+            },
+            {
+              "ar": "Redux Toolkit بس",
+              "en": "Redux Toolkit only"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "React Query للـ data اللي جاية من الـ API (caching و loading و refetch).",
+            "en": "I use React Query for server data because it handles caching and loading."
+          }
+        },
+        {
+          "id": "all-q016",
+          "question": {
+            "ar": "الـ Props جاية منين؟",
+            "en": "Where do props come from?"
+          },
+          "options": [
+            {
+              "ar": "من الـ parent وللقراية بس",
+              "en": "From the parent, read-only"
+            },
+            {
+              "ar": "من الـ component نفسه",
+              "en": "From the component itself"
+            },
+            {
+              "ar": "من الـ database",
+              "en": "From the database"
+            },
+            {
+              "ar": "من localStorage",
+              "en": "From localStorage"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Props جاية من الـ parent وللقراية بس.",
+            "en": "Props come from the parent and are read-only."
+          }
+        },
+        {
+          "id": "all-q017",
+          "question": {
+            "ar": "أحسن قيمة للـ key؟",
+            "en": "The best value for a key?"
+          },
+          "options": [
+            {
+              "ar": "id فريد",
+              "en": "A unique id"
+            },
+            {
+              "ar": "الـ index",
+              "en": "The index"
+            },
+            {
+              "ar": "Math.random()",
+              "en": "Math.random()"
+            },
+            {
+              "ar": "اسم الـ component",
+              "en": "The component name"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ key بيخلي React يعرف أنهي عنصر اتغير أو اتضاف أو اتمسح.",
+            "en": "The key helps React know which item changed, was added, or removed."
+          }
+        },
+        {
+          "id": "all-q018",
+          "question": {
+            "ar": "input قيمته في الـ DOM وبتقراها بـ ref اسمه إيه؟",
+            "en": "An input whose value lives in the DOM and is read with a ref is?"
+          },
+          "options": [
+            {
+              "ar": "Uncontrolled",
+              "en": "Uncontrolled"
+            },
+            {
+              "ar": "Controlled",
+              "en": "Controlled"
+            },
+            {
+              "ar": "Portal",
+              "en": "Portal"
+            },
+            {
+              "ar": "Fragment",
+              "en": "Fragment"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Controlled input قيمته متخزنة في الـ state بتاع React.",
+            "en": "A controlled input is managed by React state."
+          }
+        },
+        {
+          "id": "all-q019",
+          "question": {
+            "ar": "أنهي class في Tailwind بيتقلب لوحده مع RTL؟",
+            "en": "Which Tailwind class flips automatically in RTL?"
+          },
+          "options": [
+            {
+              "ar": "ms-4",
+              "en": "ms-4"
+            },
+            {
+              "ar": "ml-4",
+              "en": "ml-4"
+            },
+            {
+              "ar": "mr-4",
+              "en": "mr-4"
+            },
+            {
+              "ar": "left-4",
+              "en": "left-4"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بستخدم مكتبة i18n زي next-intl.",
+            "en": "I use an i18n library like next-intl, and set dir=\"rtl\" for Arabic."
+          }
+        },
+        {
+          "id": "all-q020",
+          "question": {
+            "ar": "ليه CORS مش بيأثر على Postman؟",
+            "en": "Why does CORS not affect Postman?"
+          },
+          "options": [
+            {
+              "ar": "لأن CORS قاعدة في المتصفح بس",
+              "en": "Because CORS is a browser-only rule"
+            },
+            {
+              "ar": "لأن Postman بيستخدم HTTPS",
+              "en": "Because Postman uses HTTPS"
+            },
+            {
+              "ar": "لأن السيرفر بيثق في Postman",
+              "en": "Because the server trusts Postman"
+            },
+            {
+              "ar": "لأن Postman مبيبعتش headers",
+              "en": "Because Postman sends no headers"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "المتصفح بيمنع موقع (مثلًا localhost:3000) إنه يكلم API على origin تاني (api.site.com) إلا لو السيرفر سمح.",
+            "en": "CORS is a browser security rule."
+          }
+        },
+        {
+          "id": "all-q021",
+          "question": {
+            "ar": "ترتيب الطباعة؟ log(1); setTimeout(2); Promise.then(3); log(4)",
+            "en": "Output order? log(1); setTimeout(2); Promise.then(3); log(4)"
+          },
+          "options": [
+            {
+              "ar": "1, 4, 3, 2",
+              "en": "1, 4, 3, 2"
+            },
+            {
+              "ar": "1, 2, 3, 4",
+              "en": "1, 2, 3, 4"
+            },
+            {
+              "ar": "1, 4, 2, 3",
+              "en": "1, 4, 2, 3"
+            },
+            {
+              "ar": "4, 3, 2, 1",
+              "en": "4, 3, 2, 1"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "JavaScript شغالة على thread واحد. الكود العادي بيتنفذ في الـ Call Stack.",
+            "en": "JavaScript has one thread."
+          }
+        },
+        {
+          "id": "all-q022",
+          "question": {
+            "ar": "متغير const فيه object. ينفع تعدل خاصية جواه؟",
+            "en": "A const holds an object. Can you change a property inside it?"
+          },
+          "options": [
+            {
+              "ar": "أيوه، بس مينفعش تعيد تعيينه",
+              "en": "Yes, but you cannot reassign it"
+            },
+            {
+              "ar": "لأ أبدًا",
+              "en": "Never"
+            },
+            {
+              "ar": "لو كان array بس",
+              "en": "Only for arrays"
+            },
+            {
+              "ar": "في strict mode بس",
+              "en": "Only in strict mode"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ var بيشتغل جوه الـ function كلها وبيعمله hoisting.",
+            "en": "var is function-scoped. let and const are block-scoped."
+          }
+        },
+        {
+          "id": "all-q023",
+          "question": {
+            "ar": "ناتج '5' == 5؟",
+            "en": "What is '5' == 5?"
+          },
+          "options": [
+            {
+              "ar": "true",
+              "en": "true"
+            },
+            {
+              "ar": "false",
+              "en": "false"
+            },
+            {
+              "ar": "TypeError",
+              "en": "TypeError"
+            },
+            {
+              "ar": "undefined",
+              "en": "undefined"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ == بيحول النوع قبل ما يقارن ('5' == 5 صح).",
+            "en": "== converts types before comparing."
+          }
+        },
+        {
+          "id": "all-q024",
+          "question": {
+            "ar": "الـ closure بيفتكر إيه؟",
+            "en": "What does a closure remember?"
+          },
+          "options": [
+            {
+              "ar": "متغيرات الـ scope الخارجي",
+              "en": "Variables from the outer scope"
+            },
+            {
+              "ar": "قيمة this بس",
+              "en": "Only the value of this"
+            },
+            {
+              "ar": "الـ DOM",
+              "en": "The DOM"
+            },
+            {
+              "ar": "ولا حاجة بعد ما الدالة تخلص",
+              "en": "Nothing once the function ends"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "function جوه function، والداخلية فاكرة متغيرات الخارجية حتى بعد ما الخارجية خلصت.",
+            "en": "A closure is a function that remembers variables from its outer scope, even after the outer function finished."
+          }
+        },
+        {
+          "id": "all-q025",
+          "question": {
+            "ar": "استخدام let قبل تعريفه بيدي إيه؟",
+            "en": "Using a let variable before its declaration gives?"
+          },
+          "options": [
+            {
+              "ar": "Error بسبب الـ TDZ",
+              "en": "An error, because of the TDZ"
+            },
+            {
+              "ar": "undefined",
+              "en": "undefined"
+            },
+            {
+              "ar": "null",
+              "en": "null"
+            },
+            {
+              "ar": "0",
+              "en": "0"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "JavaScript بترفع التعريفات لفوق قبل التنفيذ.",
+            "en": "JavaScript moves declarations to the top before running."
+          }
+        },
+        {
+          "id": "all-q026",
+          "question": {
+            "ar": "async/await مبني على إيه؟",
+            "en": "What is async/await built on?"
+          },
+          "options": [
+            {
+              "ar": "Promises",
+              "en": "Promises"
+            },
+            {
+              "ar": "setTimeout",
+              "en": "setTimeout"
+            },
+            {
+              "ar": "Web Workers",
+              "en": "Web Workers"
+            },
+            {
+              "ar": "Generators بس",
+              "en": "Generators only"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Callbacks لما تكتر بتعمل callback hell.",
+            "en": "Callbacks can cause callback hell."
+          }
+        },
+        {
+          "id": "all-q027",
+          "question": {
+            "ar": "محتاج نتيجة كل الطلبات حتى لو واحد فشل. تستخدم إيه؟",
+            "en": "You need every result even if one request fails. Use?"
+          },
+          "options": [
+            {
+              "ar": "Promise.allSettled",
+              "en": "Promise.allSettled"
+            },
+            {
+              "ar": "Promise.all",
+              "en": "Promise.all"
+            },
+            {
+              "ar": "Promise.race",
+              "en": "Promise.race"
+            },
+            {
+              "ar": "Promise.resolve",
+              "en": "Promise.resolve"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ all بيشغلهم مع بعض، ولو واحد فشل كله يفشل.",
+            "en": "Promise.all runs in parallel and fails if one fails."
+          }
+        },
+        {
+          "id": "all-q028",
+          "question": {
+            "ar": "search box ميبعتش طلب غير لما المستخدم يبطل كتابة. ده إيه؟",
+            "en": "A search box that sends only after the user stops typing uses?"
+          },
+          "options": [
+            {
+              "ar": "Debounce",
+              "en": "Debounce"
+            },
+            {
+              "ar": "Throttle",
+              "en": "Throttle"
+            },
+            {
+              "ar": "setInterval",
+              "en": "setInterval"
+            },
+            {
+              "ar": "Promise.race",
+              "en": "Promise.race"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Debounce: استنى المستخدم يبطل كتابة 300ms وبعدين ابعت (search box).",
+            "en": "Debounce waits until the user stops, like in a search input."
+          }
+        },
+        {
+          "id": "all-q029",
+          "question": {
+            "ar": "بتستخدم إيه للـ deep copy؟",
+            "en": "What do you use for a deep copy?"
+          },
+          "options": [
+            {
+              "ar": "structuredClone",
+              "en": "structuredClone"
+            },
+            {
+              "ar": "{ ...obj }",
+              "en": "{ ...obj }"
+            },
+            {
+              "ar": "Object.assign",
+              "en": "Object.assign"
+            },
+            {
+              "ar": "Array.from",
+              "en": "Array.from"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Shallow بينسخ أول مستوى بس، والـ objects اللي جوه بتفضل مشتركة.",
+            "en": "A shallow copy copies only the first level."
+          }
+        },
+        {
+          "id": "all-q030",
+          "question": {
+            "ar": "الـ arrow function بتاخد this منين؟",
+            "en": "Where does an arrow function get this from?"
+          },
+          "options": [
+            {
+              "ar": "من الـ scope اللي اتكتبت فيه",
+              "en": "From the scope where it was written"
+            },
+            {
+              "ar": "من اللي ناداها",
+              "en": "From the caller"
+            },
+            {
+              "ar": "دايمًا window",
+              "en": "Always window"
+            },
+            {
+              "ar": "من bind بس",
+              "en": "Only from bind"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ arrow function ملهاش this خاص بيها، بتاخده من المكان اللي اتكتبت فيه.",
+            "en": "Arrow functions don't have their own this. They take it from the outer scope."
+          }
+        },
+        {
+          "id": "all-q031",
+          "question": {
+            "ar": "أنهي method مبترجعش حاجة؟",
+            "en": "Which method returns nothing?"
+          },
+          "options": [
+            {
+              "ar": "forEach",
+              "en": "forEach"
+            },
+            {
+              "ar": "map",
+              "en": "map"
+            },
+            {
+              "ar": "filter",
+              "en": "filter"
+            },
+            {
+              "ar": "reduce",
+              "en": "reduce"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ map بيرجع array جديد.",
+            "en": "map returns a new array, forEach returns nothing, filter returns matching items, and reduce turns the array into one value."
+          }
+        },
+        {
+          "id": "all-q032",
+          "question": {
+            "ar": "أنهي واحد ينفع يعبر عن union؟",
+            "en": "Which one can express a union?"
+          },
+          "options": [
+            {
+              "ar": "type",
+              "en": "type"
+            },
+            {
+              "ar": "interface",
+              "en": "interface"
+            },
+            {
+              "ar": "class",
+              "en": "class"
+            },
+            {
+              "ar": "enum",
+              "en": "enum"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "TypeScript بيمسك الأخطاء قبل التشغيل وبيخلي التعديل في الكود أأمن.",
+            "en": "TypeScript catches errors before runtime and makes refactoring safer."
+          }
+        },
+        {
+          "id": "all-q033",
+          "question": {
+            "ar": "أنهي framework بيديك Modules و DI و Guards جاهزين؟",
+            "en": "Which framework gives you modules, DI and guards out of the box?"
+          },
+          "options": [
+            {
+              "ar": "NestJS",
+              "en": "NestJS"
+            },
+            {
+              "ar": "Express",
+              "en": "Express"
+            },
+            {
+              "ar": "Koa",
+              "en": "Koa"
+            },
+            {
+              "ar": "Fastify",
+              "en": "Fastify"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Express خفيف ومرن بس ملوش structure ثابت، كل فريق بيعمله بطريقته.",
+            "en": "Express is minimal and flexible."
+          }
+        },
+        {
+          "id": "all-q034",
+          "question": {
+            "ar": "تطبيق شات real-time. أنسب اختيار؟",
+            "en": "A real-time chat app. The best choice?"
+          },
+          "options": [
+            {
+              "ar": "Node.js مع Socket.io",
+              "en": "Node.js with Socket.io"
+            },
+            {
+              "ar": "Laravel Blade بس",
+              "en": "Laravel Blade only"
+            },
+            {
+              "ar": "HTML ثابت",
+              "en": "Static HTML"
+            },
+            {
+              "ar": "Cron job",
+              "en": "A cron job"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Node.js ممتاز للـ real-time وللـ requests الكتير زي الشات بـ Socket.io.",
+            "en": "Node.js is great for real-time apps and many I/O requests, like chat."
+          }
+        },
+        {
+          "id": "all-q035",
+          "question": {
+            "ar": "الـ middleware بيشتغل فين؟",
+            "en": "Where does middleware run?"
+          },
+          "options": [
+            {
+              "ar": "بين الـ request والـ controller",
+              "en": "Between the request and the controller"
+            },
+            {
+              "ar": "في المتصفح",
+              "en": "In the browser"
+            },
+            {
+              "ar": "في الـ database",
+              "en": "In the database"
+            },
+            {
+              "ar": "بعد ما الرد يوصل للمستخدم",
+              "en": "After the response reaches the user"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "كود بيشتغل بين الـ request والـ controller، زي التأكد من الـ login، أو الـ logging، أو الـ rate limiting.",
+            "en": "Middleware is code that runs between the request and the controller, like checking auth, logging, or rate limiting."
+          }
+        },
+        {
+          "id": "all-q036",
+          "question": {
+            "ar": "أنهي واحد بيتجنب الـ over-fetching؟",
+            "en": "Which one avoids over-fetching?"
+          },
+          "options": [
+            {
+              "ar": "GraphQL",
+              "en": "GraphQL"
+            },
+            {
+              "ar": "REST",
+              "en": "REST"
+            },
+            {
+              "ar": "SOAP",
+              "en": "SOAP"
+            },
+            {
+              "ar": "FTP",
+              "en": "FTP"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Endpoints: الـ REST فيه كتير (/users و /orders)، والـ GraphQL endpoint واحد.",
+            "en": "REST has many endpoints and is simple to cache."
+          }
+        },
+        {
+          "id": "all-q037",
+          "question": {
+            "ar": "المستخدم عامل login بس ممنوع. الـ status code؟",
+            "en": "Logged in but not allowed. Which status code?"
+          },
+          "options": [
+            {
+              "ar": "403",
+              "en": "403"
+            },
+            {
+              "ar": "401",
+              "en": "401"
+            },
+            {
+              "ar": "404",
+              "en": "404"
+            },
+            {
+              "ar": "422",
+              "en": "422"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "GET يجيب، POST يعمل جديد، PUT يبدل كله، PATCH يعدل جزء، DELETE يمسح.",
+            "en": "200 is OK, 201 is created, 400 is a bad request, 401 means not logged in, and 403 means no permission."
+          }
+        },
+        {
+          "id": "all-q038",
+          "question": {
+            "ar": "عايز تعدل الإيميل بس من غير باقي الـ fields. تستخدم إيه؟",
+            "en": "You want to update only the email. Which method?"
+          },
+          "options": [
+            {
+              "ar": "PATCH",
+              "en": "PATCH"
+            },
+            {
+              "ar": "PUT",
+              "en": "PUT"
+            },
+            {
+              "ar": "POST",
+              "en": "POST"
+            },
+            {
+              "ar": "GET",
+              "en": "GET"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ PUT بيبدل الـ resource كله.",
+            "en": "PUT replaces the whole resource. PATCH updates only some fields."
+          }
+        },
+        {
+          "id": "all-q039",
+          "question": {
+            "ar": "التأكد من الـ roles والـ permissions اسمه إيه؟",
+            "en": "Checking roles and permissions is called?"
+          },
+          "options": [
+            {
+              "ar": "Authorization",
+              "en": "Authorization"
+            },
+            {
+              "ar": "Authentication",
+              "en": "Authentication"
+            },
+            {
+              "ar": "Hashing",
+              "en": "Hashing"
+            },
+            {
+              "ar": "Encryption",
+              "en": "Encryption"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Authentication: إنت مين؟ (login).",
+            "en": "Authentication checks who you are, like login."
+          }
+        },
+        {
+          "id": "all-q040",
+          "question": {
+            "ar": "ينفع تحط password في الـ JWT payload؟",
+            "en": "Can you put a password in the JWT payload?"
+          },
+          "options": [
+            {
+              "ar": "لأ، الـ payload مش متشفر",
+              "en": "No, the payload is not encrypted"
+            },
+            {
+              "ar": "أيوه، متشفر",
+              "en": "Yes, it is encrypted"
+            },
+            {
+              "ar": "لو قصير",
+              "en": "If it is short"
+            },
+            {
+              "ar": "لو الـ token عمره قصير",
+              "en": "If the token is short-lived"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "المستخدم يعمل login، السيرفر يتأكد ويعمل token موقّع بـ secret.",
+            "en": "After login, the server creates a signed token."
+          }
+        },
+        {
+          "id": "all-q041",
+          "question": {
+            "ar": "أأمن مكان للـ token؟",
+            "en": "The safest place for a token?"
+          },
+          "options": [
+            {
+              "ar": "httpOnly Secure SameSite cookie",
+              "en": "An httpOnly, Secure, SameSite cookie"
+            },
+            {
+              "ar": "localStorage",
+              "en": "localStorage"
+            },
+            {
+              "ar": "sessionStorage",
+              "en": "sessionStorage"
+            },
+            {
+              "ar": "متغير global",
+              "en": "A global variable"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ localStorage ممكن يتسرق بـ XSS.",
+            "en": "localStorage can be stolen with XSS."
+          }
+        },
+        {
+          "id": "all-q042",
+          "question": {
+            "ar": "أنهي واحد أسهل تلغيه فورًا؟",
+            "en": "Which one is easier to revoke immediately?"
+          },
+          "options": [
+            {
+              "ar": "Session",
+              "en": "Session"
+            },
+            {
+              "ar": "JWT",
+              "en": "JWT"
+            },
+            {
+              "ar": "الاتنين زي بعض",
+              "en": "Both equally"
+            },
+            {
+              "ar": "ولا واحد",
+              "en": "Neither"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Session متخزنة على السيرفر فسهل تلغيها.",
+            "en": "Sessions are stored on the server, so they're easy to revoke."
+          }
+        },
+        {
+          "id": "all-q043",
+          "question": {
+            "ar": "الحماية الحقيقية للصلاحيات تكون فين؟",
+            "en": "Where does real permission enforcement belong?"
+          },
+          "options": [
+            {
+              "ar": "في الباك (Guard أو middleware)",
+              "en": "On the backend (a guard or middleware)"
+            },
+            {
+              "ar": "إخفاء الأزرار في الفرونت",
+              "en": "Hiding buttons on the frontend"
+            },
+            {
+              "ar": "في الـ CSS",
+              "en": "In CSS"
+            },
+            {
+              "ar": "في localStorage",
+              "en": "In localStorage"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "كل user ليه role (admin أو manager أو employee)، وكل role ليه permissions (زي create_invoice و view_payroll).",
+            "en": "Users have roles, and roles have permissions."
+          }
+        },
+        {
+          "id": "all-q044",
+          "question": {
+            "ar": "OAuth بيسمح بإيه؟",
+            "en": "What does OAuth allow?"
+          },
+          "options": [
+            {
+              "ar": "تسجيل دخول بـ Google من غير ما تدينا الـ password",
+              "en": "Logging in with Google without sharing the password with us"
+            },
+            {
+              "ar": "تشفير الـ database",
+              "en": "Encrypting the database"
+            },
+            {
+              "ar": "ضغط الملفات",
+              "en": "Compressing files"
+            },
+            {
+              "ar": "الـ caching",
+              "en": "Caching"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "طريقة تخلي المستخدم يعمل login بـ Google أو Facebook من غير ما يدينا الـ password بتاعه.",
+            "en": "OAuth lets users log in with Google or Facebook without sharing their password with us."
+          }
+        },
+        {
+          "id": "all-q045",
+          "question": {
+            "ar": "إشعارات لحظية من السيرفر للمستخدم. تستخدم إيه؟",
+            "en": "Instant notifications pushed from the server. What do you use?"
+          },
+          "options": [
+            {
+              "ar": "WebSockets",
+              "en": "WebSockets"
+            },
+            {
+              "ar": "HTTP requests عادية",
+              "en": "Plain HTTP requests"
+            },
+            {
+              "ar": "localStorage",
+              "en": "localStorage"
+            },
+            {
+              "ar": "CORS",
+              "en": "CORS"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ HTTP: request ورد وخلاص.",
+            "en": "HTTP is request and response."
+          }
+        },
+        {
+          "id": "all-q046",
+          "question": {
+            "ar": "إزاي تعمل versioning للـ API؟",
+            "en": "How do you version an API?"
+          },
+          "options": [
+            {
+              "ar": "/api/v1",
+              "en": "/api/v1"
+            },
+            {
+              "ar": "تغير اسم الدومين",
+              "en": "Change the domain name"
+            },
+            {
+              "ar": "ملفات CSS",
+              "en": "CSS files"
+            },
+            {
+              "ar": "مفيش داعي",
+              "en": "There is no need"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "أسماء resources واضحة، والـ HTTP methods والـ status codes الصح.",
+            "en": "Clear resource names, correct HTTP methods and status codes, validation, pagination, versioning like /api/v1, and a consistent error format."
+          }
+        },
+        {
+          "id": "all-q047",
+          "question": {
+            "ar": "نظام مرتبات وفلوس محتاج transactions قوية. تختار إيه؟",
+            "en": "A payroll system that needs strong transactions. What do you pick?"
+          },
+          "options": [
+            {
+              "ar": "MySQL",
+              "en": "MySQL"
+            },
+            {
+              "ar": "MongoDB",
+              "en": "MongoDB"
+            },
+            {
+              "ar": "Redis",
+              "en": "Redis"
+            },
+            {
+              "ar": "localStorage",
+              "en": "localStorage"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الشكل: MySQL جداول و schema ثابت، و MongoDB documents (JSON) و schema مرن.",
+            "en": "MySQL uses tables with a fixed schema and strong joins and transactions, so I used it for the ERP and payroll."
+          }
+        },
+        {
+          "id": "all-q048",
+          "question": {
+            "ar": "إمتى الـ index ممكن يضر؟",
+            "en": "When can an index hurt?"
+          },
+          "options": [
+            {
+              "ar": "لو كتير، بيبطأ الـ INSERT والـ UPDATE",
+              "en": "When there are too many, slowing INSERT and UPDATE"
+            },
+            {
+              "ar": "أبدًا",
+              "en": "Never"
+            },
+            {
+              "ar": "لما تستخدم WHERE",
+              "en": "When you use WHERE"
+            },
+            {
+              "ar": "في الجداول الصغيرة بس",
+              "en": "Only on small tables"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ index زي فهرس الكتاب: بدل ما الـ database تقرا كل الصفوف، بتروح للمكان على طول.",
+            "en": "An index helps the database find rows fast without scanning the whole table."
+          }
+        },
+        {
+          "id": "all-q049",
+          "question": {
+            "ar": "100 order وكل واحد بيعمل query للـ customer. عدد الـ queries كام؟",
+            "en": "100 orders, each with one customer query. How many queries?"
+          },
+          "options": [
+            {
+              "ar": "101",
+              "en": "101"
+            },
+            {
+              "ar": "100",
+              "en": "100"
+            },
+            {
+              "ar": "2",
+              "en": "2"
+            },
+            {
+              "ar": "1",
+              "en": "1"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "جبت 100 order في query، وبعدين لكل order عملت query تجيب الـ customer، فبقوا 101 query.",
+            "en": "N+1 is when I run one query for a list and then one extra query for each item."
+          }
+        },
+        {
+          "id": "all-q050",
+          "question": {
+            "ar": "لو عملية واحدة فشلت جوه transaction بيحصل إيه؟",
+            "en": "If one operation fails inside a transaction?"
+          },
+          "options": [
+            {
+              "ar": "rollback للكل",
+              "en": "Everything is rolled back"
+            },
+            {
+              "ar": "الباقي بيتسجل",
+              "en": "The rest is saved"
+            },
+            {
+              "ar": "بيتجاهلها",
+              "en": "It is ignored"
+            },
+            {
+              "ar": "بيعيد للأبد",
+              "en": "It retries forever"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "مجموعة عمليات يا تنجح كلها يا تتلغي كلها.",
+            "en": "A transaction makes many operations succeed together or fail together."
+          }
+        },
+        {
+          "id": "all-q051",
+          "question": {
+            "ar": "تكرار data عشان القراية تبقى أسرع اسمه إيه؟",
+            "en": "Duplicating data to make reads faster is called?"
+          },
+          "options": [
+            {
+              "ar": "Denormalization",
+              "en": "Denormalization"
+            },
+            {
+              "ar": "Normalization",
+              "en": "Normalization"
+            },
+            {
+              "ar": "Indexing",
+              "en": "Indexing"
+            },
+            {
+              "ar": "Sharding",
+              "en": "Sharding"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Normalization: بقسم الجداول عشان مفيش data متكررة.",
+            "en": "Normalization removes duplicate data by splitting tables."
+          }
+        },
+        {
+          "id": "all-q052",
+          "question": {
+            "ar": "بحث في ملايين المنتجات مع أخطاء إملائية وفلاتر. تستخدم إيه؟",
+            "en": "Searching millions of products with typos and filters. What do you use?"
+          },
+          "options": [
+            {
+              "ar": "Meilisearch أو Elasticsearch",
+              "en": "Meilisearch or Elasticsearch"
+            },
+            {
+              "ar": "LIKE '%word%'",
+              "en": "LIKE '%word%'"
+            },
+            {
+              "ar": "localStorage",
+              "en": "localStorage"
+            },
+            {
+              "ar": "Array.filter في الفرونت",
+              "en": "Array.filter on the frontend"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "حسب حجم الـ data.",
+            "en": "For small data I use LIKE or a full-text index."
+          }
+        },
+        {
+          "id": "all-q053",
+          "question": {
+            "ar": "أسرع pagination لجدول ضخم و infinite scroll؟",
+            "en": "The fastest pagination for a huge table with infinite scroll?"
+          },
+          "options": [
+            {
+              "ar": "Cursor (WHERE id > lastId)",
+              "en": "Cursor (WHERE id > lastId)"
+            },
+            {
+              "ar": "OFFSET كبير",
+              "en": "A large OFFSET"
+            },
+            {
+              "ar": "ترجع كل الصفوف",
+              "en": "Return every row"
+            },
+            {
+              "ar": "صفوف عشوائية",
+              "en": "Random rows"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "عمري ما برجع كل الصفوف.",
+            "en": "I never return all rows."
+          }
+        },
+        {
+          "id": "all-q054",
+          "question": {
+            "ar": "عنوان المستخدم اللي بيتقرا معاه دايمًا: Embed ولا Reference؟",
+            "en": "A user's address that is always read with the user: embed or reference?"
+          },
+          "options": [
+            {
+              "ar": "Embed",
+              "en": "Embed"
+            },
+            {
+              "ar": "Reference",
+              "en": "Reference"
+            },
+            {
+              "ar": "جدول SQL منفصل",
+              "en": "A separate SQL table"
+            },
+            {
+              "ar": "ملف JSON بره",
+              "en": "An external JSON file"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بعمل embed للـ data الصغيرة اللي بتتقرا مع بعض دايمًا زي العنوان.",
+            "en": "I embed small data that is always read together, like an address."
+          }
+        },
+        {
+          "id": "all-q055",
+          "question": {
+            "ar": "إمتى الـ raw query ممكن تبقى أحسن من الـ ORM؟",
+            "en": "When can a raw query beat the ORM?"
+          },
+          "options": [
+            {
+              "ar": "في التقارير المعقدة",
+              "en": "In complex reports"
+            },
+            {
+              "ar": "في الـ CRUD البسيط",
+              "en": "In simple CRUD"
+            },
+            {
+              "ar": "دايمًا",
+              "en": "Always"
+            },
+            {
+              "ar": "أبدًا",
+              "en": "Never"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ ORM زي Eloquent أو Mongoose بيخليني أتعامل مع الـ database بالكود بدل SQL.",
+            "en": "An ORM like Eloquent or Mongoose lets me use code instead of raw SQL."
+          }
+        },
+        {
+          "id": "all-q056",
+          "question": {
+            "ar": "أول خطوة لتحسين أداء موقع؟",
+            "en": "The first step to improve a site's performance?"
+          },
+          "options": [
+            {
+              "ar": "تقيس بـ Lighthouse و DevTools",
+              "en": "Measure with Lighthouse and DevTools"
+            },
+            {
+              "ar": "تعيد كتابة الموقع",
+              "en": "Rewrite the site"
+            },
+            {
+              "ar": "تزود سيرفرات",
+              "en": "Add more servers"
+            },
+            {
+              "ar": "تشيل كل الصور",
+              "en": "Remove all images"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "قسّم الإجابة 3 أجزاء: أقيس الأول، بعدين الفرونت، بعدين الباك.",
+            "en": "First I measure with Lighthouse and DevTools."
+          }
+        },
+        {
+          "id": "all-q057",
+          "question": {
+            "ar": "أنهي مقياس بيقيس ثبات الصفحة وهي بتحمل؟",
+            "en": "Which metric measures layout stability while loading?"
+          },
+          "options": [
+            {
+              "ar": "CLS",
+              "en": "CLS"
+            },
+            {
+              "ar": "LCP",
+              "en": "LCP"
+            },
+            {
+              "ar": "INP",
+              "en": "INP"
+            },
+            {
+              "ar": "TTFB",
+              "en": "TTFB"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "LCP: أكبر عنصر في الصفحة ظهر إمتى. الهدف أقل من 2.5 ثانية.",
+            "en": "LCP is loading speed, INP is how fast the page responds to clicks, and CLS is layout stability."
+          }
+        },
+        {
+          "id": "all-q058",
+          "question": {
+            "ar": "ليه SSR أو SSG بيحسنوا الـ SEO؟",
+            "en": "Why do SSR and SSG improve SEO?"
+          },
+          "options": [
+            {
+              "ar": "Google بيشوف الـ HTML كامل",
+              "en": "Google sees the full HTML"
+            },
+            {
+              "ar": "بيصغروا الصور",
+              "en": "They shrink images"
+            },
+            {
+              "ar": "بيلغوا الـ JavaScript",
+              "en": "They remove JavaScript"
+            },
+            {
+              "ar": "بيزودوا keywords",
+              "en": "They add keywords"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بستخدم SSR أو SSG عشان Google يشوف الـ HTML كامل.",
+            "en": "I use SSR or SSG so Google sees the full HTML, and the Metadata API for title and description."
+          }
+        },
+        {
+          "id": "all-q059",
+          "question": {
+            "ar": "أصعب حاجة في الـ caching؟",
+            "en": "The hardest part of caching?"
+          },
+          "options": [
+            {
+              "ar": "الـ invalidation لما الـ data تتغير",
+              "en": "Invalidation when the data changes"
+            },
+            {
+              "ar": "تخزين الـ data",
+              "en": "Storing the data"
+            },
+            {
+              "ar": "اختيار اسم الـ key",
+              "en": "Naming the key"
+            },
+            {
+              "ar": "تشغيل Redis",
+              "en": "Running Redis"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ caching إني أحفظ الـ data عشان مجيبهاش أو أحسبها تاني.",
+            "en": "Caching stores data so we don't fetch or compute it again."
+          }
+        },
+        {
+          "id": "all-q060",
+          "question": {
+            "ar": "أنهي حاجة مش بتعمل re-render للـ component؟",
+            "en": "Which of these does NOT re-render a component?"
+          },
+          "options": [
+            {
+              "ar": "تغيير ref.current",
+              "en": "Changing ref.current"
+            },
+            {
+              "ar": "تغيير الـ state",
+              "en": "Changing state"
+            },
+            {
+              "ar": "re-render للـ parent",
+              "en": "A parent re-render"
+            },
+            {
+              "ar": "تغيير context بيستخدمه",
+              "en": "A change in a context it uses"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "لما الـ state بتاعه يتغير، أو الـ props تتغير، أو الـ parent يعمل re-render، أو الـ context اللي بيستخدمه يتغير.",
+            "en": "When its state changes, its props change, its parent re-renders, or a context it uses changes."
+          }
+        },
+        {
+          "id": "all-q061",
+          "question": {
+            "ar": "user بيغير الـ id في الـ URL ويشوف data غيره. اسم الثغرة؟",
+            "en": "A user changes the id in the URL and sees other people's data. Which flaw is it?"
+          },
+          "options": [
+            {
+              "ar": "Broken access control",
+              "en": "Broken access control"
+            },
+            {
+              "ar": "XSS",
+              "en": "XSS"
+            },
+            {
+              "ar": "CSRF",
+              "en": "CSRF"
+            },
+            {
+              "ar": "Brute force",
+              "en": "Brute force"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "اعرض الهجمات المشهورة (OWASP Top 10) وحل كل واحدة.",
+            "en": "I follow OWASP Top 10."
+          }
+        },
+        {
+          "id": "all-q062",
+          "question": {
+            "ar": "بتخزن الـ password إزاي؟",
+            "en": "How do you store a password?"
+          },
+          "options": [
+            {
+              "ar": "hash بـ bcrypt أو argon2",
+              "en": "Hash it with bcrypt or argon2"
+            },
+            {
+              "ar": "نص عادي",
+              "en": "Plain text"
+            },
+            {
+              "ar": "Base64",
+              "en": "Base64"
+            },
+            {
+              "ar": "تشفير بمفتاح جوه الكود",
+              "en": "Encrypt it with a hardcoded key"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "عمري ما أخزن password زي ما هو.",
+            "en": "I never store plain passwords."
+          }
+        },
+        {
+          "id": "all-q063",
+          "question": {
+            "ar": "أنهي واحد اتجاه واحد ومينفعش يترجع؟",
+            "en": "Which one is one-way and cannot be reversed?"
+          },
+          "options": [
+            {
+              "ar": "Hashing",
+              "en": "Hashing"
+            },
+            {
+              "ar": "Encryption",
+              "en": "Encryption"
+            },
+            {
+              "ar": "Base64",
+              "en": "Base64"
+            },
+            {
+              "ar": "Compression",
+              "en": "Compression"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Hashing اتجاه واحد مينفعش يترجع، بيستخدم للـ passwords.",
+            "en": "Hashing is one-way, used for passwords."
+          }
+        },
+        {
+          "id": "all-q064",
+          "question": {
+            "ar": "الـ Rate limiting بيحمي من إيه؟",
+            "en": "What does rate limiting protect against?"
+          },
+          "options": [
+            {
+              "ar": "الـ brute force والضغط على السيرفر",
+              "en": "Brute force and server abuse"
+            },
+            {
+              "ar": "XSS",
+              "en": "XSS"
+            },
+            {
+              "ar": "SQL injection",
+              "en": "SQL injection"
+            },
+            {
+              "ar": "Hydration errors",
+              "en": "Hydration errors"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بحدد عدد الـ requests لكل user أو IP في وقت معين، مثلًا 100 في الدقيقة.",
+            "en": "Rate limiting limits how many requests a user or IP can send in a time window, like 100 per minute."
+          }
+        },
+        {
+          "id": "all-q065",
+          "question": {
+            "ar": "ليه الـ validation في الفرونت لوحده مش كفاية؟",
+            "en": "Why is frontend validation alone not enough?"
+          },
+          "options": [
+            {
+              "ar": "أي حد يقدر يكلم الـ API مباشرة",
+              "en": "Anyone can call the API directly"
+            },
+            {
+              "ar": "عشان بطيء",
+              "en": "Because it is slow"
+            },
+            {
+              "ar": "مبيشتغلش في Safari",
+              "en": "It does not work in Safari"
+            },
+            {
+              "ar": "React بيمنعه",
+              "en": "React blocks it"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "أي حد يقدر يتخطى الفرونت ويكلم الـ API بـ Postman.",
+            "en": "Anyone can skip the frontend and call the API directly."
+          }
+        },
+        {
+          "id": "all-q066",
+          "question": {
+            "ar": "HTTPS بيشفر بإيه؟",
+            "en": "What does HTTPS use for encryption?"
+          },
+          "options": [
+            {
+              "ar": "TLS",
+              "en": "TLS"
+            },
+            {
+              "ar": "JWT",
+              "en": "JWT"
+            },
+            {
+              "ar": "bcrypt",
+              "en": "bcrypt"
+            },
+            {
+              "ar": "Base64",
+              "en": "Base64"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ HTTPS بيشفر الـ data بين المتصفح والسيرفر بـ TLS، فمحدش في النص يقدر يقراها أو يغيرها.",
+            "en": "HTTPS encrypts data between the browser and the server with TLS, so no one in the middle can read or change it."
+          }
+        },
+        {
+          "id": "all-q067",
+          "question": {
+            "ar": "مين بيأكد إن الدفع نجح؟",
+            "en": "Who confirms that a payment succeeded?"
+          },
+          "options": [
+            {
+              "ar": "الـ webhook من بوابة الدفع للسيرفر",
+              "en": "The gateway's webhook to the server"
+            },
+            {
+              "ar": "صفحة النجاح في الفرونت",
+              "en": "The frontend success page"
+            },
+            {
+              "ar": "المستخدم",
+              "en": "The user"
+            },
+            {
+              "ar": "الـ redirect",
+              "en": "The redirect"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "أهم نقطة: الفرونت عمره ما يقرر إن الدفع نجح. اللي بيأكد هو الـ webhook اللي جاي من بوابة الدفع للسيرفر.",
+            "en": "The backend calculates the price from the database and creates a pending order."
+          }
+        },
+        {
+          "id": "all-q068",
+          "question": {
+            "ar": "ليه الـ redirect مش كفاية لتأكيد الدفع؟",
+            "en": "Why is the redirect not enough to confirm payment?"
+          },
+          "options": [
+            {
+              "ar": "المستخدم ممكن يقفل المتصفح أو يفتح اللينك بنفسه",
+              "en": "The user can close the browser or open the link themselves"
+            },
+            {
+              "ar": "الـ redirect بطيء",
+              "en": "Redirects are slow"
+            },
+            {
+              "ar": "Stripe مش بيدعمه",
+              "en": "Stripe does not support it"
+            },
+            {
+              "ar": "بيكلف فلوس",
+              "en": "It costs money"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "المستخدم ممكن يقفل المتصفح قبل الـ redirect، أو يزور لينك صفحة النجاح بنفسه.",
+            "en": "The user can close the browser before the redirect, or open the success URL by himself."
+          }
+        },
+        {
+          "id": "all-q069",
+          "question": {
+            "ar": "نفس الـ webhook وصل مرتين. تعمل إيه؟",
+            "en": "The same webhook arrives twice. What do you do?"
+          },
+          "options": [
+            {
+              "ar": "تخزن الـ event id وتتجاهل المكرر",
+              "en": "Store the event ID and skip the duplicate"
+            },
+            {
+              "ar": "تعالجه مرتين",
+              "en": "Process it twice"
+            },
+            {
+              "ar": "ترفض الاتنين",
+              "en": "Reject both"
+            },
+            {
+              "ar": "تمسح الـ order",
+              "en": "Delete the order"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "يعني لو نفس الطلب اتبعت مرتين النتيجة تبقى زي ما اتبعت مرة.",
+            "en": "Idempotency means sending the same request twice gives the same result."
+          }
+        },
+        {
+          "id": "all-q070",
+          "question": {
+            "ar": "الـ refund بيتعمل منين؟",
+            "en": "Where is a refund issued from?"
+          },
+          "options": [
+            {
+              "ar": "من الباك بـ Stripe API",
+              "en": "From the backend with the Stripe API"
+            },
+            {
+              "ar": "من الفرونت مباشرة",
+              "en": "Directly from the frontend"
+            },
+            {
+              "ar": "بتعديل الـ database بإيدك",
+              "en": "By editing the database by hand"
+            },
+            {
+              "ar": "من الـ CDN",
+              "en": "From the CDN"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بسمع الـ webhook بتاع الفشل، وأخلي الـ order حالته failed، والمستخدم يقدر يحاول تاني.",
+            "en": "I listen to failure webhooks, mark the order as failed, and let the user retry."
+          }
+        },
+        {
+          "id": "all-q071",
+          "question": {
+            "ar": "Tabby و Tamara نوعهم إيه؟",
+            "en": "What kind of services are Tabby and Tamara?"
+          },
+          "options": [
+            {
+              "ar": "اشتري دلوقتي وادفع بعدين",
+              "en": "Buy now, pay later"
+            },
+            {
+              "ar": "CDN",
+              "en": "CDNs"
+            },
+            {
+              "ar": "قواعد بيانات",
+              "en": "Databases"
+            },
+            {
+              "ar": "أدوات testing",
+              "en": "Testing tools"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "اعرف الأسماء دي: Stripe، و Checkout.com، و Network International (N-Genius)، و Telr، و PayTabs، و Tap Payments.",
+            "en": "I worked with Stripe, but most gateways work the same way: create a session, redirect the user, then verify with a webhook."
+          }
+        },
+        {
+          "id": "all-q072",
+          "question": {
+            "ar": "حالة الاشتراك بتتحدث إزاي؟",
+            "en": "How is the subscription status kept up to date?"
+          },
+          "options": [
+            {
+              "ar": "من webhooks زي invoice.paid",
+              "en": "From webhooks such as invoice.paid"
+            },
+            {
+              "ar": "من الفرونت",
+              "en": "From the frontend"
+            },
+            {
+              "ar": "بـ cron مرة في السنة",
+              "en": "With a yearly cron job"
+            },
+            {
+              "ar": "المستخدم بيحدثها",
+              "en": "The user updates it"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بستخدم Stripe Billing مع Products و Prices.",
+            "en": "I use Stripe Billing."
+          }
+        },
+        {
+          "id": "all-q073",
+          "question": {
+            "ar": "تخزن الفلوس إزاي؟",
+            "en": "How should you store money?"
+          },
+          "options": [
+            {
+              "ar": "رقم صحيح بأصغر وحدة أو DECIMAL",
+              "en": "Integers in the smallest unit, or DECIMAL"
+            },
+            {
+              "ar": "float",
+              "en": "float"
+            },
+            {
+              "ar": "string عادي",
+              "en": "A plain string"
+            },
+            {
+              "ar": "double",
+              "en": "double"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بخزن الفلوس كرقم صحيح بأصغر وحدة (فلس أو سنت)، أو DECIMAL في SQL.",
+            "en": "I store money as integers in the smallest unit, like fils or cents, or as DECIMAL in SQL."
+          }
+        },
+        {
+          "id": "all-q074",
+          "question": {
+            "ar": "كل شركة في الـ SaaS اسمها إيه؟",
+            "en": "What is each customer company called in a SaaS?"
+          },
+          "options": [
+            {
+              "ar": "Tenant",
+              "en": "Tenant"
+            },
+            {
+              "ar": "Node",
+              "en": "Node"
+            },
+            {
+              "ar": "Instance",
+              "en": "Instance"
+            },
+            {
+              "ar": "Cluster",
+              "en": "Cluster"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "برنامج على الإنترنت الشركات بتشترك فيه شهري أو سنوي بدل ما تشتريه وتسطبه، زي Slack و Shopify.",
+            "en": "SaaS is software that customers use online with a subscription."
+          }
+        },
+        {
+          "id": "all-q075",
+          "question": {
+            "ar": "أرخص وأسهل طريقة multi-tenancy لمعظم الـ startups؟",
+            "en": "The cheapest, simplest multi-tenancy approach for most startups?"
+          },
+          "options": [
+            {
+              "ar": "Database واحدة مع tenant_id",
+              "en": "One database with tenant_id"
+            },
+            {
+              "ar": "Database لكل شركة",
+              "en": "A database per tenant"
+            },
+            {
+              "ar": "سيرفر لكل شركة",
+              "en": "A server per tenant"
+            },
+            {
+              "ar": "ملف JSON لكل شركة",
+              "en": "A JSON file per tenant"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Database واحدة + tenant_id: كل جدول فيه عمود tenant_id. أرخص وأسهل، بس لو نسيت الفلتر الـ data تتسرب.",
+            "en": "There are three ways: a shared database with tenant_id, a schema per tenant, or a database per tenant."
+          }
+        },
+        {
+          "id": "all-q076",
+          "question": {
+            "ar": "أنهي حاجة لازم تكون في أي SaaS غير الـ features الأساسية؟",
+            "en": "What does every SaaS need besides its core features?"
+          },
+          "options": [
+            {
+              "ar": "اشتراكات وباقات و billing",
+              "en": "Subscriptions, plans and billing"
+            },
+            {
+              "ar": "Dark mode بس",
+              "en": "Only dark mode"
+            },
+            {
+              "ar": "تطبيق موبايل",
+              "en": "A mobile app"
+            },
+            {
+              "ar": "Blog",
+              "en": "A blog"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "اشتراكات وباقات (Basic و Pro) و trial بـ Stripe Billing.",
+            "en": "Besides the core features, a SaaS needs subscriptions and plans, limits per plan, roles inside each tenant, user invitations, billing, and an admin dashboard."
+          }
+        },
+        {
+          "id": "all-q077",
+          "question": {
+            "ar": "ليه تخلي الـ API stateless؟",
+            "en": "Why keep the API stateless?"
+          },
+          "options": [
+            {
+              "ar": "عشان تزود سيرفرات ورا load balancer",
+              "en": "To add servers behind a load balancer"
+            },
+            {
+              "ar": "عشان يبقى أأمن",
+              "en": "For security"
+            },
+            {
+              "ar": "عشان يقلل الكود",
+              "en": "To write less code"
+            },
+            {
+              "ar": "عشان الـ SEO",
+              "en": "For SEO"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بخلي الـ API مش بيخزن state عشان أقدر أزود سيرفرات ورا load balancer.",
+            "en": "I keep the API stateless so I can add more servers behind a load balancer."
+          }
+        },
+        {
+          "id": "all-q078",
+          "question": {
+            "ar": "غالبًا تبدأ مشروع جديد بإيه؟",
+            "en": "What do you usually start a new project with?"
+          },
+          "options": [
+            {
+              "ar": "Modular monolith",
+              "en": "A modular monolith"
+            },
+            {
+              "ar": "Microservices كتير",
+              "en": "Many microservices"
+            },
+            {
+              "ar": "Serverless functions بس",
+              "en": "Only serverless functions"
+            },
+            {
+              "ar": "من غير structure",
+              "en": "No structure at all"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Monolith تطبيق واحد، سهل تبنيه وترفعه، وأحسن في البداية.",
+            "en": "A monolith is one application, simple to build and deploy, best for starting."
+          }
+        },
+        {
+          "id": "all-q080",
+          "question": {
+            "ar": "أول خطوة في الـ debugging؟",
+            "en": "The first debugging step?"
+          },
+          "options": [
+            {
+              "ar": "تعيد المشكلة بنفسك",
+              "en": "Reproduce the bug"
+            },
+            {
+              "ar": "تعيد كتابة الكود",
+              "en": "Rewrite the code"
+            },
+            {
+              "ar": "ترفع على production",
+              "en": "Deploy to production"
+            },
+            {
+              "ar": "تمسح الـ logs",
+              "en": "Delete the logs"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "1. أعيد المشكلة بنفسي وأعرف بتحصل إمتى ولمين.",
+            "en": "First I reproduce the bug. Then I read the error and logs."
+          }
+        },
+        {
+          "id": "all-q081",
+          "question": {
+            "ar": "في production، المستخدم يشوف الـ stack trace؟",
+            "en": "Should users see the stack trace in production?"
+          },
+          "options": [
+            {
+              "ar": "لأ",
+              "en": "No"
+            },
+            {
+              "ar": "أيوه",
+              "en": "Yes"
+            },
+            {
+              "ar": "للـ admins من غير login",
+              "en": "Only for admins without login"
+            },
+            {
+              "ar": "في صفحة 404 بس",
+              "en": "Only on 404 pages"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الباك: global error handler واحد (Express middleware أو NestJS Exception Filter أو Laravel Handler) بيرجع شكل موحد للخطأ مع الـ status code الصح، ومن غير stack trace في production.",
+            "en": "On the backend I use one global error handler that returns a consistent error format with the right status code."
+          }
+        },
+        {
+          "id": "all-q082",
+          "question": {
+            "ar": "الـ Error Boundary بيمنع إيه؟",
+            "en": "What does an Error Boundary prevent?"
+          },
+          "options": [
+            {
+              "ar": "إن التطبيق كله يقع",
+              "en": "The whole app crashing"
+            },
+            {
+              "ar": "الـ re-renders",
+              "en": "Re-renders"
+            },
+            {
+              "ar": "الـ hydration",
+              "en": "Hydration"
+            },
+            {
+              "ar": "أخطاء الـ CORS",
+              "en": "CORS errors"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "component في React بيمسك الأخطاء اللي في الـ components اللي جواه ويعرض شاشة بديلة، بدل ما التطبيق كله يقع.",
+            "en": "It's a React component that catches errors in its children and shows a fallback UI, so the whole app doesn't crash."
+          }
+        },
+        {
+          "id": "all-q083",
+          "question": {
+            "ar": "شغال locally ومش شغال في production. أول حاجة تشيك عليها؟",
+            "en": "Works locally but not in production. What do you check first?"
+          },
+          "options": [
+            {
+              "ar": "الـ environment variables",
+              "en": "Environment variables"
+            },
+            {
+              "ar": "ألوان الأزرار",
+              "en": "Button colours"
+            },
+            {
+              "ar": "الـ README",
+              "en": "The README"
+            },
+            {
+              "ar": "اسم الـ branch",
+              "en": "The branch name"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ environment variables، وإعدادات الـ CORS، ولينكات الـ API، وأخطاء الـ build، و logs السيرفر، والاتصال بالـ database، واختلاف نسخة Node.",
+            "en": "I check environment variables, CORS settings, API URLs, build errors, server logs, the database connection, and the Node version."
+          }
+        },
+        {
+          "id": "all-q084",
+          "question": {
+            "ar": "أنهي نوع بيختبر رحلة المستخدم كاملة؟",
+            "en": "Which test type covers the full user journey?"
+          },
+          "options": [
+            {
+              "ar": "E2E",
+              "en": "E2E"
+            },
+            {
+              "ar": "Unit",
+              "en": "Unit"
+            },
+            {
+              "ar": "Integration",
+              "en": "Integration"
+            },
+            {
+              "ar": "Lint",
+              "en": "Lint"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Unit: function أو component لوحده، بـ Jest أو Vitest.",
+            "en": "I write unit tests with Jest for important logic, integration tests for APIs, and I test APIs with Postman."
+          }
+        },
+        {
+          "id": "all-q085",
+          "question": {
+            "ar": "STAR معناها إيه؟",
+            "en": "What does STAR stand for?"
+          },
+          "options": [
+            {
+              "ar": "Situation, Task, Action, Result",
+              "en": "Situation, Task, Action, Result"
+            },
+            {
+              "ar": "Start, Test, Apply, Review",
+              "en": "Start, Test, Apply, Review"
+            },
+            {
+              "ar": "Skill, Time, Answer, Rate",
+              "en": "Skill, Time, Answer, Rate"
+            },
+            {
+              "ar": "Story, Team, Aim, Reward",
+              "en": "Story, Team, Aim, Reward"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "احكي أي قصة بطريقة STAR: الموقف (Situation)، المطلوب (Task)، إنت عملت إيه (Action)، والنتيجة (Result).",
+            "en": "I answer with STAR: the situation, the task, the action I took, and the result."
+          }
+        },
+        {
+          "id": "all-q091",
+          "question": {
+            "ar": "عندك deadline ضيق. أول حاجة تعملها؟",
+            "en": "You have a tight deadline. What do you do first?"
+          },
+          "options": [
+            {
+              "ar": "تركز على أهم features وتبلغ المدير بدري",
+              "en": "Focus on the key features and warn your manager early"
+            },
+            {
+              "ar": "تشتغل من غير testing",
+              "en": "Skip testing"
+            },
+            {
+              "ar": "تسكت لحد آخر يوم",
+              "en": "Stay quiet until the last day"
+            },
+            {
+              "ar": "تزود features",
+              "en": "Add more features"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بركز على أهم features الأول، وبقول للمدير بدري لو فيه خطر، وبقترح نسلّم إيه دلوقتي وإيه بعدين.",
+            "en": "I focus on the most important features first, tell my manager early if there is a risk, and suggest what we deliver now and what comes later."
+          }
+        },
+        {
+          "id": "all-q094",
+          "question": {
+            "ar": "الـ requirements مش واضحة. تعمل إيه؟",
+            "en": "The requirements are unclear. What do you do?"
+          },
+          "options": [
+            {
+              "ar": "تسأل بدري وتأكد فهمك قبل الكود",
+              "en": "Ask early and confirm before coding"
+            },
+            {
+              "ar": "تخمن وتبدأ",
+              "en": "Guess and start"
+            },
+            {
+              "ar": "تستنى لحد ما يوضحوا لوحدهم",
+              "en": "Wait until they clarify on their own"
+            },
+            {
+              "ar": "ترفض الـ task",
+              "en": "Refuse the task"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بسأل بدري، وبكتب اللي فهمته، وبأكده مع العميل أو المدير قبل ما أبدأ أكتب كود.",
+            "en": "I ask questions early, write down what I understood, and confirm it before I start coding."
+          }
+        },
+        {
+          "id": "all-q095",
+          "question": {
+            "ar": "Docker بيحل مشكلة إيه؟",
+            "en": "Which problem does Docker solve?"
+          },
+          "options": [
+            {
+              "ar": "\"شغال عندي ومش شغال عندك\"",
+              "en": "\"It works on my machine\" problems"
+            },
+            {
+              "ar": "الـ SEO",
+              "en": "SEO"
+            },
+            {
+              "ar": "تصميم الـ UI",
+              "en": "UI design"
+            },
+            {
+              "ar": "الـ caching في المتصفح",
+              "en": "Browser caching"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بيحط التطبيق مع كل اللي محتاجه، فيشتغل نفس الشكل في أي مكان.",
+            "en": "It packages the app with everything it needs, so it runs the same everywhere."
+          }
+        },
+        {
+          "id": "all-q096",
+          "question": {
+            "ar": "CI/CD بيعمل إيه؟",
+            "en": "What does CI/CD do?"
+          },
+          "options": [
+            {
+              "ar": "test و deploy أوتوماتيك مع كل push",
+              "en": "Automatic testing and deployment on every push"
+            },
+            {
+              "ar": "بيكتب الكود",
+              "en": "Writes the code"
+            },
+            {
+              "ar": "بيصمم الـ database",
+              "en": "Designs the database"
+            },
+            {
+              "ar": "بيعمل backup للإيميلات",
+              "en": "Backs up emails"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "test و deploy أوتوماتيك مع كل push.",
+            "en": "Automatic testing and deployment on every push."
+          }
+        },
+        {
+          "id": "all-q097",
+          "question": {
+            "ar": "Redis بيخزن البيانات فين؟",
+            "en": "Where does Redis keep its data?"
+          },
+          "options": [
+            {
+              "ar": "في الذاكرة",
+              "en": "In memory"
+            },
+            {
+              "ar": "على الـ CDN",
+              "en": "On a CDN"
+            },
+            {
+              "ar": "في المتصفح",
+              "en": "In the browser"
+            },
+            {
+              "ar": "في ملفات CSV",
+              "en": "In CSV files"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "تخزين في الذاكرة للـ cache والـ sessions والـ queues.",
+            "en": "An in-memory store for caching, sessions and queues."
+          }
+        },
+        {
+          "id": "all-q098",
+          "question": {
+            "ar": "الـ CDN بيسرع إيه؟",
+            "en": "What does a CDN speed up?"
+          },
+          "options": [
+            {
+              "ar": "توصيل الملفات من أقرب سيرفر",
+              "en": "Serving files from the nearest server"
+            },
+            {
+              "ar": "استعلامات SQL",
+              "en": "SQL queries"
+            },
+            {
+              "ar": "الـ compile",
+              "en": "Compilation"
+            },
+            {
+              "ar": "الـ login",
+              "en": "Login"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "سيرفرات حوالين العالم بتوصل الملفات من أقرب مكان.",
+            "en": "Servers worldwide that serve files from the closest location."
+          }
+        },
+        {
+          "id": "all-q101",
+          "question": {
+            "ar": "الـ API keys تتحط فين؟",
+            "en": "Where do API keys belong?"
+          },
+          "options": [
+            {
+              "ar": "environment variables برة الكود",
+              "en": "Environment variables, outside the code"
+            },
+            {
+              "ar": "جوه الكود",
+              "en": "Hard-coded in the code"
+            },
+            {
+              "ar": "في الفرونت",
+              "en": "In the frontend"
+            },
+            {
+              "ar": "في الـ README",
+              "en": "In the README"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "إعدادات وأسرار برة الكود زي الـ API keys.",
+            "en": "Config and secrets outside the code, like API keys."
+          }
+        },
+        {
+          "id": "all-q102",
+          "question": {
+            "ar": "لما يقولولك \"Do you have any questions?\" تعمل إيه؟",
+            "en": "When they ask \"Do you have any questions?\", what do you do?"
+          },
+          "options": [
+            {
+              "ar": "تسأل سؤالين عن الدور والفريق",
+              "en": "Ask two questions about the role and the team"
+            },
+            {
+              "ar": "تقول لأ وتمشي",
+              "en": "Say no and leave"
+            },
+            {
+              "ar": "تسأل عن الإجازات بس",
+              "en": "Ask only about vacations"
+            },
+            {
+              "ar": "تسأل عن المرتب من تاني",
+              "en": "Ask about salary again"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "لما يقولك \"Do you have any questions?\" متقولش لأ. اختار سؤالين:",
+            "en": "What does a normal day look like in this role?"
+          }
+        }
+      ]
+    },
+    {
       "id": "js",
       "name": {
         "ar": "JavaScript",
