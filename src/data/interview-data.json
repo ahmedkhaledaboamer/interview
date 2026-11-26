@@ -5136,11 +5136,13 @@
           "points": {
             "ar": [
               "بتعتمد على Components قابلة لإعادة الاستخدام، وأسلوب Declarative، و One-way Data Flow.",
-              "بتعتبر Library لأنها بتركز على الـ UI، والـ routing وغيره بييجي من مكتبات أو frameworks زي Next.js."
+              "بتعتبر Library لأنها بتركز على الـ UI، والـ routing وغيره بييجي من مكتبات أو frameworks زي Next.js.",
+              "React بتطورها Meta مع مجتمع open source كبير."
             ],
             "en": [
               "It is built on reusable components, a declarative style and one-way data flow.",
-              "It counts as a library because it focuses on the UI; routing and the rest come from other libraries or frameworks such as Next.js."
+              "It counts as a library because it focuses on the UI; routing and the rest come from other libraries or frameworks such as Next.js.",
+              "React is maintained by Meta together with a large open-source community."
             ]
           },
           "code": ""
@@ -5414,14 +5416,16 @@
           "points": {
             "ar": [
               "<>...</> بترجع أكتر من عنصر من غير div زيادة.",
-              "children هو اللي بتكتبه بين tag الفتح والقفل بتاع الـ component."
+              "children هو اللي بتكتبه بين tag الفتح والقفل بتاع الـ component.",
+              "لو محتاج key زي جوه map، استخدم <Fragment key={...}> لأن الصيغة المختصرة <> مبتقبلش key."
             ],
             "en": [
               "<>...</> returns several elements without an extra div.",
-              "children is whatever you write between a component's opening and closing tags."
+              "children is whatever you write between a component's opening and closing tags.",
+              "When you need a key, such as inside map, use <Fragment key={...}>, because the short <> syntax cannot take a key."
             ]
           },
-          "code": "function Card({ children }) {\n  return <div className=\"card\">{children}</div>;\n}\n<><h1 /><p /></>"
+          "code": "function Card({ children }) {\n  return <div className=\"card\">{children}</div>;\n}\n<><h1 /><p /></>\n\n// Fragment with a key inside a list\nitems.map(item => (\n  <Fragment key={item.id}>\n    <li>{item.name}</li>\n    <li>{item.description}</li>\n  </Fragment>\n));"
         },
         {
           "id": "react-l13",
@@ -5799,10 +5803,12 @@
           },
           "points": {
             "ar": [
-              "Suspense بيعرض fallback لحد ما الـ component يتحمل."
+              "Suspense بيعرض fallback لحد ما الـ component يتحمل.",
+              "Suspense مش للـ lazy بس، بيشتغل كمان مع تحميل البيانات عن طريق use() أو frameworks ومكتبات بتدعمه."
             ],
             "en": [
-              "Suspense shows a fallback until the component has loaded."
+              "Suspense shows a fallback until the component has loaded.",
+              "Suspense is not only for lazy components; it also works with data loading through use() or frameworks and libraries that support it."
             ]
           },
           "code": "const Admin = lazy(() => import(\"./Admin\"));\n<Suspense fallback={<Spinner />}><Admin /></Suspense>"
@@ -6110,11 +6116,13 @@
           "points": {
             "ar": [
               "الـ Server Components تقدر توصل للداتابيز وكودها مبيروحش للمتصفح، بس ملهاش state ولا effects.",
-              "الـ Client بتتحدد بـ \"use client\"، وممكن تترسم على السيرفر برضه في SSR."
+              "الـ Client بتتحدد بـ \"use client\"، وممكن تترسم على السيرفر برضه في SSR.",
+              "المميزات: bundle أصغر، وتحميل أسرع، و SEO أحسن."
             ],
             "en": [
               "Server Components can reach the database and their code never ships to the browser, but they have no state or effects.",
-              "Client Components are marked with \"use client\", and can still be rendered on the server during SSR."
+              "Client Components are marked with \"use client\", and can still be rendered on the server during SSR.",
+              "Benefits: a smaller bundle, faster loading and better SEO."
             ]
           },
           "code": ""
