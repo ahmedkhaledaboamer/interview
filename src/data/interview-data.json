@@ -12448,373 +12448,1667 @@
       },
       "lessons": [
         {
-          "id": "php-l1",
-          "title": {
+          "id": "php-l01",
+          "section": {
             "ar": "الأساسيات",
             "en": "Basics"
           },
-          "points": {
-            "ar": [
-              "PHP لغة سيرفر، المتغيرات بتبدأ بـ $، و strict_types بيمنع التحويل الضمني للأنواع في استدعاء الدوال."
-            ],
-            "en": [
-              "PHP is server-side; variables start with $. strict_types disables scalar coercion in calls."
-            ]
-          },
-          "code": "declare(strict_types=1);\nfunction sum(int $a, int $b): int { return $a + $b; }"
-        },
-        {
-          "id": "php-l2",
           "title": {
-            "ar": "المصفوفات",
-            "en": "Arrays"
+            "ar": "إيه هي PHP والكود بيتنفذ إزاي؟",
+            "en": "What is PHP and how is its code executed?"
+          },
+          "short": {
+            "ar": "لغة سكريبت بتشتغل على السيرفر وبتستخدم في الويب.",
+            "en": "A server-side scripting language used for the web."
           },
           "points": {
             "ar": [
-              "indexed أو associative. أهم الدوال array_map و array_filter و array_reduce."
+              "الكود بيتحول لـ tokens ثم AST ثم Opcodes، والـ Zend Engine بينفذها، والناتج بيروح للمتصفح.",
+              "وفي الويب العادي كل طلب بيبدأ بحالة جديدة."
             ],
             "en": [
-              "Indexed or associative. Key functions: array_map, array_filter, array_reduce."
+              "Code becomes tokens, then an AST, then opcodes, which the Zend Engine runs; the output goes to the browser.",
+              "In a typical web setup every request starts from a fresh state."
             ]
           },
-          "code": "$prices = ['pen' => 5, 'book' => 40];\n$big = array_filter($prices, fn($p) => $p > 10);"
+          "code": ""
         },
         {
-          "id": "php-l3",
+          "id": "php-l02",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "المقارنة والـ null",
-            "en": "Comparison & Null"
+            "ar": "أنواع البيانات و Type Juggling؟",
+            "en": "What are the data types, and what is type juggling?"
+          },
+          "short": {
+            "ar": "int و float و string و bool و array و object و null وغيرهم، و PHP بتحول بينهم تلقائيًا.",
+            "en": "int, float, string, bool, array, object, null and more, and PHP converts between them automatically."
           },
           "points": {
             "ar": [
-              "== بيحول الأنواع و === صارمة. ?? للقيمة البديلة و ?-> للوصول الآمن."
+              "فيه كمان callable و iterable و resource.",
+              "ولمنع التحويل التلقائي في تمرير القيم استخدم declare(strict_types=1)."
             ],
             "en": [
-              "== coerces, === is strict. ?? gives a fallback; ?-> is nullsafe access."
+              "There are also callable, iterable and resource.",
+              "To stop automatic conversion when passing values, use declare(strict_types=1)."
             ]
           },
-          "code": "$city = $user?->address?->city ?? 'N/A';"
+          "code": "declare(strict_types=1);\necho \"5\" + 3; // 8"
         },
         {
-          "id": "php-l4",
+          "id": "php-l03",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ OOP",
+            "ar": "== و ===؟",
+            "en": "What is the difference between == and ===?"
+          },
+          "short": {
+            "ar": "الأولى بتقارن القيمة بعد التحويل، والتانية القيمة والنوع.",
+            "en": "The first compares values after conversion; the second compares value and type."
+          },
+          "points": {
+            "ar": [
+              "في PHP 8 مقارنة رقم بنص غير رقمي بقت منطقية أكتر."
+            ],
+            "en": [
+              "In PHP 8, comparing a number with a non-numeric string became more sensible."
+            ]
+          },
+          "code": "1 == \"1\";   // true\n1 === \"1\";  // false\n0 == \"abc\"; // false in PHP 8"
+        },
+        {
+          "id": "php-l04",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "echo و print و print_r و var_dump؟",
+            "en": "echo, print, print_r and var_dump?"
+          },
+          "short": {
+            "ar": "الأولين للطباعة، والباقيين لفحص البيانات.",
+            "en": "The first two print output; the other two inspect data."
+          },
+          "points": {
+            "ar": [
+              "echo تقبل كذا قيمة ومبترجعش حاجة.",
+              "print بترجع 1.",
+              "print_r بتعرض محتوى مقروء.",
+              "var_dump بتعرض النوع والقيمة."
+            ],
+            "en": [
+              "echo accepts several values and returns nothing.",
+              "print returns 1.",
+              "print_r shows readable contents.",
+              "var_dump shows the type and the value."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "php-l05",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "include و require؟",
+            "en": "include versus require?"
+          },
+          "short": {
+            "ar": "require بتوقف السكريبت لو فشلت، و include بتطلع Warning وتكمل.",
+            "en": "require stops the script if it fails; include raises a warning and carries on."
+          },
+          "points": {
+            "ar": [
+              "النسخ _once بتتأكد إن الملف ميتضمنش أكتر من مرة."
+            ],
+            "en": [
+              "The _once variants make sure a file is included only once."
+            ]
+          },
+          "code": "require_once __DIR__ . '/config.php';"
+        },
+        {
+          "id": "php-l06",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "isset و empty و is_null؟",
+            "en": "isset, empty and is_null?"
+          },
+          "short": {
+            "ar": "isset موجود ومش null، empty فاضي أو falsy، is_null قيمته null.",
+            "en": "isset: exists and is not null; empty: empty or falsy; is_null: the value is null."
+          },
+          "points": {
+            "ar": [
+              "empty بترجع true لـ \"\" و \"0\" و 0 و [] و false و null.",
+              "و is_null على متغير مش معرف بتطلع Warning."
+            ],
+            "en": [
+              "empty returns true for \"\", \"0\", 0, [], false and null.",
+              "is_null on an undefined variable raises a warning."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "php-l07",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "الـ Superglobals؟",
+            "en": "What are superglobals?"
+          },
+          "short": {
+            "ar": "متغيرات متاحة في كل مكان.",
+            "en": "Variables available everywhere."
+          },
+          "points": {
+            "ar": [
+              "$_GET و $_POST و $_REQUEST و $_SERVER و $_SESSION و $_COOKIE و $_FILES و $_ENV و $GLOBALS.",
+              "وأي مدخل من المستخدم متثقش فيه."
+            ],
+            "en": [
+              "$_GET, $_POST, $_REQUEST, $_SERVER, $_SESSION, $_COOKIE, $_FILES, $_ENV and $GLOBALS.",
+              "Never trust any input that comes from the user."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "php-l08",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "GET و POST؟",
+            "en": "GET versus POST?"
+          },
+          "short": {
+            "ar": "GET للقراءة والبيانات في الـ URL، و POST للإرسال في الـ body.",
+            "en": "GET is for reading, with data in the URL; POST sends data in the body."
+          },
+          "points": {
+            "ar": [
+              "GET ينفع يتعمل له cache و bookmark.",
+              "POST أنسب للتعديل، بس مش مشفر من غير HTTPS."
+            ],
+            "en": [
+              "GET can be cached and bookmarked.",
+              "POST suits changes, but it is not encrypted without HTTPS."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "php-l09",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "Sessions و Cookies؟",
+            "en": "Sessions versus cookies?"
+          },
+          "short": {
+            "ar": "الـ Session في السيرفر، والـ Cookie في المتصفح.",
+            "en": "A session lives on the server; a cookie lives in the browser."
+          },
+          "points": {
+            "ar": [
+              "المتصفح غالبًا بيشيل session ID بس في cookie.",
+              "اعمل تجديد للـ ID بعد تسجيل الدخول."
+            ],
+            "en": [
+              "The browser usually holds only the session ID, in a cookie.",
+              "Regenerate the ID after login."
+            ]
+          },
+          "code": "session_start();\nsession_regenerate_id(true);\n$_SESSION['user_id'] = $id;"
+        },
+        {
+          "id": "php-l10",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "By Value و By Reference؟",
+            "en": "Passing by value versus by reference?"
+          },
+          "short": {
+            "ar": "الأولى نسخة، والتانية نفس المتغير باستخدام &.",
+            "en": "By value passes a copy; by reference passes the same variable, using &."
+          },
+          "points": {
+            "ar": [
+              "الـ objects بيتمرر الـ handle بتاعها، فتعديل خصائصها بيظهر بره."
+            ],
+            "en": [
+              "Objects pass their handle, so changes to their properties are visible outside."
+            ]
+          },
+          "code": "function inc(int &$n): void { $n++; }\n$x = 1; inc($x); // 2"
+        },
+        {
+          "id": "php-l11",
+          "section": {
+            "ar": "Arrays و Functions",
+            "en": "Arrays & Functions"
+          },
+          "title": {
+            "ar": "أنواع الـ Arrays؟",
+            "en": "What kinds of arrays are there?"
+          },
+          "short": {
+            "ar": "Indexed و Associative و Multidimensional.",
+            "en": "Indexed, associative and multidimensional."
+          },
+          "points": {
+            "ar": [
+              "Indexed مفاتيحه أرقام بتبدأ من 0.",
+              "Associative مفاتيحه نصوص بتختارها.",
+              "Multidimensional هو array جواه arrays."
+            ],
+            "en": [
+              "Indexed arrays have numeric keys starting at 0.",
+              "Associative arrays have string keys you choose.",
+              "Multidimensional arrays contain other arrays."
+            ]
+          },
+          "code": "$a = [1, 2, 3];\n$b = ['name' => 'Ali'];\n$c = [['id' => 1], ['id' => 2]];"
+        },
+        {
+          "id": "php-l12",
+          "section": {
+            "ar": "Arrays و Functions",
+            "en": "Arrays & Functions"
+          },
+          "title": {
+            "ar": "array_map و array_filter و array_reduce؟",
+            "en": "array_map, array_filter and array_reduce?"
+          },
+          "short": {
+            "ar": "تحويل، وتصفية، وتجميع.",
+            "en": "Transform, filter and accumulate."
+          },
+          "points": {
+            "ar": [
+              "array_filter بتحافظ على المفاتيح، فاستخدم array_values لإعادة الترقيم."
+            ],
+            "en": [
+              "array_filter keeps the original keys, so use array_values to renumber them."
+            ]
+          },
+          "code": "array_map(fn($n) => $n * 2, $a);\narray_filter($a, fn($n) => $n > 1);\narray_reduce($a, fn($s, $n) => $s + $n, 0);"
+        },
+        {
+          "id": "php-l13",
+          "section": {
+            "ar": "Arrays و Functions",
+            "en": "Arrays & Functions"
+          },
+          "title": {
+            "ar": "array_merge و +؟",
+            "en": "array_merge versus +?"
+          },
+          "short": {
+            "ar": "array_merge الأخير بيكسب في المفاتيح النصية، و + الأول بيكسب.",
+            "en": "With array_merge the later value wins for string keys; with + the first one wins."
+          },
+          "points": {
+            "ar": [
+              "array_merge كمان بتعيد ترقيم المفاتيح الرقمية."
+            ],
+            "en": [
+              "array_merge also renumbers numeric keys."
+            ]
+          },
+          "code": "array_merge(['a' => 1], ['a' => 2]); // ['a' => 2]\n['a' => 1] + ['a' => 2];             // ['a' => 1]"
+        },
+        {
+          "id": "php-l14",
+          "section": {
+            "ar": "Arrays و Functions",
+            "en": "Arrays & Functions"
+          },
+          "title": {
+            "ar": "Anonymous و Arrow Functions؟",
+            "en": "Anonymous functions versus arrow functions?"
+          },
+          "short": {
+            "ar": "الـ Anonymous محتاجة use، والـ Arrow بتاخد المتغيرات تلقائيًا.",
+            "en": "Anonymous functions need use; arrow functions capture variables automatically."
+          },
+          "points": {
+            "ar": [
+              "الـ Arrow تعبير واحد وبتاخد المتغيرات بالقيمة."
+            ],
+            "en": [
+              "An arrow function is a single expression and captures variables by value."
+            ]
+          },
+          "code": "$x = 10;\n$a = function ($n) use ($x) { return $n + $x; };\n$b = fn($n) => $n + $x;"
+        },
+        {
+          "id": "php-l15",
+          "section": {
+            "ar": "Arrays و Functions",
+            "en": "Arrays & Functions"
+          },
+          "title": {
+            "ar": "Generators و yield؟",
+            "en": "Generators and yield?"
+          },
+          "short": {
+            "ar": "دوال بترجع القيم واحدة واحدة.",
+            "en": "Functions that return values one at a time."
+          },
+          "points": {
+            "ar": [
+              "بتوفر الذاكرة مع البيانات الكبيرة."
+            ],
+            "en": [
+              "They save memory with large data."
+            ]
+          },
+          "code": "function lines(string $path) {\n    $f = fopen($path, 'r');\n    while (($line = fgets($f)) !== false) yield $line;\n    fclose($f);\n}"
+        },
+        {
+          "id": "php-l16",
+          "section": {
+            "ar": "OOP",
             "en": "OOP"
           },
+          "title": {
+            "ar": "Abstract Class و Interface؟",
+            "en": "Abstract class versus interface?"
+          },
+          "short": {
+            "ar": "الأولى فيها تنفيذ جزئي، والتانية عقد.",
+            "en": "The first has partial implementation; the second is a contract."
+          },
           "points": {
             "ar": [
-              "classes و interfaces و abstract و traits. الـ traits بتعيد استخدام الكود لأن الوراثة من أب واحد بس."
+              "الـ class تورث من واحدة بس وتنفذ كذا interface.",
+              "الـ interface ممكن يكون فيها ثوابت، و methods من غير تنفيذ."
             ],
             "en": [
-              "Classes, interfaces, abstract classes and traits. Traits reuse code across single inheritance."
+              "A class extends only one class but can implement several interfaces.",
+              "An interface can hold constants and methods without implementation."
             ]
           },
-          "code": "trait Logs { public function log(string $m): void { error_log($m); } }\nclass Order { use Logs; public function __construct(private readonly int $id) {} }"
+          "code": ""
         },
         {
-          "id": "php-l5",
+          "id": "php-l17",
+          "section": {
+            "ar": "OOP",
+            "en": "OOP"
+          },
           "title": {
-            "ar": "ميزات PHP 8",
-            "en": "PHP 8 Features"
+            "ar": "الـ Traits؟",
+            "en": "What are traits?"
+          },
+          "short": {
+            "ar": "إعادة استخدام methods في classes مختلفة.",
+            "en": "A way to reuse methods across different classes."
           },
           "points": {
             "ar": [
-              "constructor promotion و named arguments و match و enums و readonly و union types."
+              "عند التعارض بنستخدم insteadof و as."
             ],
             "en": [
-              "Constructor promotion, named arguments, match, enums, readonly, union types."
+              "When names clash, use insteadof and as."
             ]
           },
-          "code": "enum Status: string { case Paid = 'paid'; case New = 'new'; }\n$label = match($status) { Status::Paid => 'Done', Status::New => 'Pending' };"
+          "code": "class C {\n    use A, B {\n        A::hello insteadof B;\n        B::hello as helloB;\n    }\n}"
         },
         {
-          "id": "php-l6",
+          "id": "php-l18",
+          "section": {
+            "ar": "OOP",
+            "en": "OOP"
+          },
           "title": {
-            "ar": "الجلسات والكوكيز",
-            "en": "Sessions & Cookies"
+            "ar": "self و static و parent؟",
+            "en": "self, static and parent?"
+          },
+          "short": {
+            "ar": "self الـ class اللي اتكتب فيها الكود، static اللي اتنادت، parent الأب.",
+            "en": "self is the class where the code is written, static is the class that was called, and parent is the parent class."
           },
           "points": {
             "ar": [
-              "الـ session بياناتها على السيرفر، والـ cookie على المتصفح."
+              "الـ Late Static Binding هو إن static بتتحدد وقت التشغيل."
             ],
             "en": [
-              "Session data lives on the server; cookies live in the browser."
+              "Late static binding means static is resolved at runtime."
             ]
           },
-          "code": "session_start();\n$_SESSION['user_id'] = 1;"
+          "code": "class Model {\n    public static function create(): static { return new static(); }\n}\nclass User extends Model {}\nUser::create(); // User"
         },
         {
-          "id": "php-l7",
+          "id": "php-l19",
+          "section": {
+            "ar": "OOP",
+            "en": "OOP"
+          },
           "title": {
-            "ar": "الأمان",
-            "en": "Security"
+            "ar": "الـ Magic Methods؟",
+            "en": "What are magic methods?"
+          },
+          "short": {
+            "ar": "methods بتبدأ بـ __ وبتتنادى تلقائيًا.",
+            "en": "Methods that start with __ and are called automatically."
           },
           "points": {
             "ar": [
-              "PDO prepared statements و password_hash و htmlspecialchars و CSRF tokens."
+              "__construct و __destruct و __get و __set و __call و __callStatic و __toString و __invoke و __clone."
             ],
             "en": [
-              "Prepared statements, password_hash, htmlspecialchars, CSRF tokens."
+              "__construct, __destruct, __get, __set, __call, __callStatic, __toString, __invoke and __clone."
             ]
           },
-          "code": "$stmt = $pdo->prepare('SELECT * FROM users WHERE email = ?');\n$stmt->execute([$email]);\n$hash = password_hash($password, PASSWORD_DEFAULT);"
+          "code": ""
         },
         {
-          "id": "php-l8",
+          "id": "php-l20",
+          "section": {
+            "ar": "OOP",
+            "en": "OOP"
+          },
           "title": {
-            "ar": "الـ Composer والأخطاء",
-            "en": "Composer & Errors"
+            "ar": "Namespaces و Autoloading و PSR-4؟",
+            "en": "Namespaces, autoloading and PSR-4?"
+          },
+          "short": {
+            "ar": "تنظيم الأسماء وتحميل الـ classes تلقائيًا.",
+            "en": "Organising names and loading classes automatically."
           },
           "points": {
             "ar": [
-              "Composer لإدارة الحزم و PSR-4 للتحميل التلقائي. الأخطاء بتتعالج بـ try/catch."
+              "PSR-4 بتربط الـ namespace بمسار الملفات."
             ],
             "en": [
-              "Composer manages packages with PSR-4 autoloading. Handle errors with try/catch."
+              "PSR-4 maps a namespace to a file path."
             ]
           },
-          "code": "require __DIR__ . '/vendor/autoload.php';\ntry { risky(); } catch (Throwable $e) { error_log($e->getMessage()); }"
+          "code": "{ \"autoload\": { \"psr-4\": { \"App\\\\\": \"src/\" } } }"
+        },
+        {
+          "id": "php-l21",
+          "section": {
+            "ar": "OOP",
+            "en": "OOP"
+          },
+          "title": {
+            "ar": "Exception و Error و Throwable؟",
+            "en": "Exception, Error and Throwable?"
+          },
+          "short": {
+            "ar": "Throwable هي الأساس، و Exception و Error بينفذوها.",
+            "en": "Throwable is the base, and Exception and Error implement it."
+          },
+          "points": {
+            "ar": [
+              "Exception لأخطاء التطبيق المتوقعة، و Error لأخطاء زي TypeError."
+            ],
+            "en": [
+              "Exception is for expected application errors; Error covers problems such as TypeError."
+            ]
+          },
+          "code": "try { run(); }\ncatch (InvalidArgumentException $e) { /* ... */ }\ncatch (Throwable $e) { error_log($e->getMessage()); }\nfinally { cleanup(); }"
+        },
+        {
+          "id": "php-l22",
+          "section": {
+            "ar": "Database و Security",
+            "en": "Database & Security"
+          },
+          "title": {
+            "ar": "PDO و MySQLi؟",
+            "en": "PDO versus MySQLi?"
+          },
+          "short": {
+            "ar": "PDO بتدعم قواعد بيانات كتير، و MySQLi لـ MySQL و MariaDB.",
+            "en": "PDO supports many databases; MySQLi is for MySQL and MariaDB."
+          },
+          "points": {
+            "ar": [
+              "الاتنين بيدعموا Prepared Statements.",
+              "PDO فيها named parameters، و MySQLi فيها واجهة procedural كمان."
+            ],
+            "en": [
+              "Both support prepared statements.",
+              "PDO has named parameters, and MySQLi also offers a procedural interface."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "php-l23",
+          "section": {
+            "ar": "Database و Security",
+            "en": "Database & Security"
+          },
+          "title": {
+            "ar": "SQL Injection؟",
+            "en": "How do you prevent SQL injection?"
+          },
+          "short": {
+            "ar": "استخدم Prepared Statements.",
+            "en": "Use prepared statements."
+          },
+          "points": {
+            "ar": [
+              "القيم بتتبعت منفصلة عن الـ query.",
+              "أسماء الجداول والأعمدة مينفعش تبقى parameters، فاستخدم whitelist."
+            ],
+            "en": [
+              "Values are sent separately from the query.",
+              "Table and column names cannot be parameters, so check them against a whitelist."
+            ]
+          },
+          "code": "$stmt = $pdo->prepare('SELECT * FROM users WHERE email = :email');\n$stmt->execute(['email' => $email]);\n$user = $stmt->fetch();"
+        },
+        {
+          "id": "php-l24",
+          "section": {
+            "ar": "Database و Security",
+            "en": "Database & Security"
+          },
+          "title": {
+            "ar": "XSS و CSRF؟",
+            "en": "XSS and CSRF?"
+          },
+          "short": {
+            "ar": "Escaping للمخرجات، و token للفورمز.",
+            "en": "Escape output, and use a token for forms."
+          },
+          "points": {
+            "ar": [
+              "وكمان استخدم CSP و cookies بـ SameSite."
+            ],
+            "en": [
+              "Also use CSP and SameSite cookies."
+            ]
+          },
+          "code": "echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8');\n\n$_SESSION['csrf'] ??= bin2hex(random_bytes(32));\nif (!hash_equals($_SESSION['csrf'], $_POST['csrf'] ?? '')) {\n    http_response_code(403);\n    exit;\n}"
+        },
+        {
+          "id": "php-l25",
+          "section": {
+            "ar": "Database و Security",
+            "en": "Database & Security"
+          },
+          "title": {
+            "ar": "تخزين الباسوردات؟",
+            "en": "How should passwords be stored?"
+          },
+          "short": {
+            "ar": "password_hash و password_verify.",
+            "en": "With password_hash and password_verify."
+          },
+          "points": {
+            "ar": [
+              "بتضيف salt تلقائيًا.",
+              "متستخدمش MD5 ولا SHA1."
+            ],
+            "en": [
+              "They add a salt automatically.",
+              "Never use MD5 or SHA1."
+            ]
+          },
+          "code": "$hash = password_hash($password, PASSWORD_DEFAULT);\nif (password_verify($input, $hash)) { /* ok */ }"
+        },
+        {
+          "id": "php-l26",
+          "section": {
+            "ar": "Database و Security",
+            "en": "Database & Security"
+          },
+          "title": {
+            "ar": "رفع ملفات بأمان؟",
+            "en": "How do you handle file uploads safely?"
+          },
+          "short": {
+            "ar": "اتحقق من النوع والحجم وغير الاسم.",
+            "en": "Check the type and size, and rename the file."
+          },
+          "points": {
+            "ar": [
+              "افحص الـ MIME من المحتوى، وخزن بره الـ public folder، وامنع تنفيذ الملفات."
+            ],
+            "en": [
+              "Detect the MIME type from the content, store files outside the public folder, and block execution."
+            ]
+          },
+          "code": "$f = $_FILES['image'];\nif ($f['error'] !== UPLOAD_ERR_OK || $f['size'] > 2_000_000) exit('Invalid');\n$mime = (new finfo(FILEINFO_MIME_TYPE))->file($f['tmp_name']);\nif ($mime !== 'image/png') exit('Invalid');\n$name = bin2hex(random_bytes(16)) . '.png';\nmove_uploaded_file($f['tmp_name'], __DIR__ . \"/../uploads/$name\");"
+        },
+        {
+          "id": "php-l27",
+          "section": {
+            "ar": "متقدم",
+            "en": "Advanced"
+          },
+          "title": {
+            "ar": "Composer و install و update؟",
+            "en": "Composer, install and update?"
+          },
+          "short": {
+            "ar": "مدير الحزم. install حسب الـ lock، و update بيحدث الإصدارات.",
+            "en": "The package manager. install follows the lock file; update upgrades versions."
+          },
+          "points": {
+            "ar": [
+              "composer install بيستخدم composer.lock فيضمن نفس الإصدارات.",
+              "composer update بيحدث حسب composer.json ويعدل الـ lock."
+            ],
+            "en": [
+              "composer install uses composer.lock, guaranteeing the same versions.",
+              "composer update upgrades within composer.json and rewrites the lock file."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "php-l28",
+          "section": {
+            "ar": "متقدم",
+            "en": "Advanced"
+          },
+          "title": {
+            "ar": "الجديد في PHP 8؟",
+            "en": "What is new in PHP 8?"
+          },
+          "short": {
+            "ar": "مميزات بتخلي الكود أقصر وأأمن.",
+            "en": "Features that make code shorter and safer."
+          },
+          "points": {
+            "ar": [
+              "match و Nullsafe و Constructor Promotion و Named Arguments في 8.0.",
+              "Enums و readonly properties في 8.1."
+            ],
+            "en": [
+              "match, nullsafe, constructor promotion and named arguments in 8.0.",
+              "Enums and readonly properties in 8.1."
+            ]
+          },
+          "code": "enum Status: string { case Active = 'active'; case Banned = 'banned'; }\n\n$label = match ($status) {\n    Status::Active => 'Active',\n    Status::Banned => 'Banned',\n};\n\n$city = $user?->address?->city;\n\nclass User { public function __construct(public readonly string $name) {} }"
+        },
+        {
+          "id": "php-l29",
+          "section": {
+            "ar": "متقدم",
+            "en": "Advanced"
+          },
+          "title": {
+            "ar": "OPcache و JIT و PHP-FPM؟",
+            "en": "OPcache, JIT and PHP-FPM?"
+          },
+          "short": {
+            "ar": "تخزين الـ opcodes، وترجمة لكود الآلة، وإدارة عمليات PHP.",
+            "en": "Caching opcodes, compiling to machine code, and managing PHP processes."
+          },
+          "points": {
+            "ar": [
+              "OPcache بيوفر إعادة الـ compile.",
+              "JIT بيفيد المهام التقيلة على الـ CPU أكتر من تطبيقات الويب المعتمدة على I/O.",
+              "PHP-FPM بيدير pool من الـ workers ورا Nginx أو Apache."
+            ],
+            "en": [
+              "OPcache saves recompiling.",
+              "JIT helps CPU-heavy tasks more than I/O-bound web apps.",
+              "PHP-FPM manages a pool of workers behind Nginx or Apache."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "php-l30",
+          "section": {
+            "ar": "متقدم",
+            "en": "Advanced"
+          },
+          "title": {
+            "ar": "تحسين الأداء؟",
+            "en": "How do you improve performance?"
+          },
+          "short": {
+            "ar": "قيس الأول، وبعدين حسن الداتابيز والـ caching.",
+            "en": "Measure first, then improve the database and caching."
+          },
+          "points": {
+            "ar": [
+              "فعل OPcache، واستخدم indexes، وتجنب N+1، واعمل caching بـ Redis.",
+              "انقل المهام الطويلة لـ queues، واعمل profiling بأدوات زي Xdebug أو Blackfire.",
+              "واستخدم composer install -o --no-dev في الـ production."
+            ],
+            "en": [
+              "Enable OPcache, use indexes, avoid N+1 queries, and cache with Redis.",
+              "Move long tasks to queues, and profile with tools such as Xdebug or Blackfire.",
+              "Run composer install -o --no-dev in production."
+            ]
+          },
+          "code": ""
         }
       ],
       "quiz": [
         {
-          "id": "php-q1",
+          "id": "php-q01",
           "question": {
-            "ar": "الحماية من SQL injection؟",
-            "en": "Prevent SQL injection with?"
+            "ar": "أنهي محرك بينفذ الـ opcodes في PHP؟",
+            "en": "Which engine executes PHP opcodes?"
           },
           "options": [
             {
-              "ar": "Prepared statements",
-              "en": "Prepared statements"
+              "ar": "Zend Engine",
+              "en": "Zend Engine"
             },
             {
-              "ar": "htmlspecialchars",
-              "en": "htmlspecialchars"
+              "ar": "V8",
+              "en": "V8"
             },
             {
-              "ar": "md5",
-              "en": "md5"
+              "ar": "JVM",
+              "en": "JVM"
             },
             {
-              "ar": "trim",
-              "en": "trim"
+              "ar": "SpiderMonkey",
+              "en": "SpiderMonkey"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "البيانات منفصلة عن الاستعلام.",
-            "en": "Data is separated from the query."
+            "ar": "لغة سكريبت بتشتغل على السيرفر وبتستخدم في الويب.",
+            "en": "A server-side scripting language used for the web."
           }
         },
         {
-          "id": "php-q2",
+          "id": "php-q02",
           "question": {
-            "ar": "إعادة استخدام كود في أكتر من كلاس من غير وراثة؟",
-            "en": "Reuse code across classes without inheritance?"
+            "ar": "echo \"5\" + 3; بتطبع إيه؟",
+            "en": "What does echo \"5\" + 3; print?"
           },
           "options": [
             {
-              "ar": "Trait",
-              "en": "Trait"
+              "ar": "8",
+              "en": "8"
             },
             {
-              "ar": "Interface",
-              "en": "Interface"
+              "ar": "53",
+              "en": "53"
             },
             {
-              "ar": "Enum",
-              "en": "Enum"
+              "ar": "TypeError",
+              "en": "TypeError"
             },
             {
-              "ar": "Namespace",
-              "en": "Namespace"
+              "ar": "0",
+              "en": "0"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "use TraitName;",
-            "en": "Via use TraitName."
+            "ar": "PHP بتحول النص لرقم في العمليات الحسابية.",
+            "en": "PHP converts the string to a number for arithmetic."
           }
         },
         {
-          "id": "php-q3",
+          "id": "php-q03",
           "question": {
-            "ar": "تشفير الباسورد؟",
-            "en": "Hash passwords with?"
+            "ar": "في PHP 8، ناتج 0 == \"abc\"؟",
+            "en": "In PHP 8, what is 0 == \"abc\"?"
           },
           "options": [
             {
-              "ar": "password_hash",
-              "en": "password_hash"
+              "ar": "false",
+              "en": "false"
             },
             {
-              "ar": "md5",
-              "en": "md5"
+              "ar": "true",
+              "en": "true"
             },
             {
-              "ar": "sha1",
-              "en": "sha1"
+              "ar": "null",
+              "en": "null"
             },
             {
-              "ar": "base64_encode",
-              "en": "base64_encode"
+              "ar": "Error",
+              "en": "Error"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "والتحقق بـ password_verify.",
-            "en": "Verify with password_verify."
+            "ar": "الأولى بتقارن القيمة بعد التحويل، والتانية القيمة والنوع.",
+            "en": "The first compares values after conversion; the second compares value and type."
           }
         },
         {
-          "id": "php-q4",
+          "id": "php-q04",
           "question": {
-            "ar": "match بتقارن بـ؟",
-            "en": "match compares using?"
+            "ar": "أنهي واحدة بتعرض النوع والقيمة مع بعض؟",
+            "en": "Which one shows both the type and the value?"
           },
           "options": [
             {
-              "ar": "===",
-              "en": "==="
+              "ar": "var_dump",
+              "en": "var_dump"
             },
             {
-              "ar": "==",
-              "en": "=="
+              "ar": "print_r",
+              "en": "print_r"
             },
             {
-              "ar": "=",
-              "en": "="
+              "ar": "echo",
+              "en": "echo"
             },
             {
-              "ar": "instanceof",
-              "en": "instanceof"
+              "ar": "print",
+              "en": "print"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "مقارنة صارمة.",
-            "en": "Strict comparison."
+            "ar": "الأولين للطباعة، والباقيين لفحص البيانات.",
+            "en": "The first two print output; the other two inspect data."
           }
         },
         {
-          "id": "php-q5",
+          "id": "php-q05",
           "question": {
-            "ar": "include و require الفرق؟",
-            "en": "include vs require on a missing file?"
+            "ar": "ملف مش موجود مع include بيعمل إيه؟",
+            "en": "What does include do with a missing file?"
           },
           "options": [
             {
-              "ar": "require بتوقف التنفيذ",
-              "en": "require stops execution"
+              "ar": "Warning والسكريبت بيكمل",
+              "en": "Raises a warning and the script continues"
             },
             {
-              "ar": "include بتوقف التنفيذ",
-              "en": "include stops execution"
+              "ar": "Fatal error",
+              "en": "Fatal error"
             },
             {
-              "ar": "مفيش فرق",
-              "en": "No difference"
+              "ar": "ولا حاجة خالص",
+              "en": "Nothing at all"
             },
             {
-              "ar": "require أسرع",
-              "en": "require is faster"
+              "ar": "بيعيد المحاولة",
+              "en": "Retries"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "include بتطلع warning بس.",
-            "en": "include only warns."
+            "ar": "require بتوقف السكريبت لو فشلت، و include بتطلع Warning وتكمل.",
+            "en": "require stops the script if it fails; include raises a warning and carries on."
           }
         },
         {
-          "id": "php-q6",
+          "id": "php-q06",
           "question": {
-            "ar": "بيانات الـ session بتتخزن فين؟",
-            "en": "Where is session data stored?"
+            "ar": "empty(\"0\") بترجع إيه؟",
+            "en": "What does empty(\"0\") return?"
           },
           "options": [
             {
-              "ar": "السيرفر",
-              "en": "Server"
+              "ar": "true",
+              "en": "true"
             },
             {
-              "ar": "المتصفح",
-              "en": "Browser"
+              "ar": "false",
+              "en": "false"
             },
             {
-              "ar": "الرابط",
-              "en": "URL"
+              "ar": "null",
+              "en": "null"
             },
             {
-              "ar": "DNS",
-              "en": "DNS"
+              "ar": "Warning",
+              "en": "Warning"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "المتصفح معاه الـ ID.",
-            "en": "The browser holds only the ID."
+            "ar": "النص \"0\" بيعتبر falsy في PHP.",
+            "en": "The string \"0\" is falsy in PHP."
           }
         },
         {
-          "id": "php-q7",
+          "id": "php-q07",
           "question": {
-            "ar": "الحماية من XSS في المخرجات؟",
-            "en": "Escape output against XSS?"
+            "ar": "الملفات المرفوعة بتلاقيها فين؟",
+            "en": "Where do you find uploaded files?"
           },
           "options": [
             {
-              "ar": "htmlspecialchars",
-              "en": "htmlspecialchars"
+              "ar": "$_FILES",
+              "en": "$_FILES"
+            },
+            {
+              "ar": "$_POST",
+              "en": "$_POST"
+            },
+            {
+              "ar": "$_SERVER",
+              "en": "$_SERVER"
+            },
+            {
+              "ar": "$_ENV",
+              "en": "$_ENV"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "متغيرات متاحة في كل مكان.",
+            "en": "Variables available everywhere."
+          }
+        },
+        {
+          "id": "php-q08",
+          "question": {
+            "ar": "بيانات POST مشفرة من غير HTTPS؟",
+            "en": "Is POST data encrypted without HTTPS?"
+          },
+          "options": [
+            {
+              "ar": "لأ",
+              "en": "No"
+            },
+            {
+              "ar": "أيوه",
+              "en": "Yes"
+            },
+            {
+              "ar": "الباسوردات بس",
+              "en": "Only passwords"
+            },
+            {
+              "ar": "في PHP 8 بس",
+              "en": "Only in PHP 8"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "GET للقراءة والبيانات في الـ URL، و POST للإرسال في الـ body.",
+            "en": "GET is for reading, with data in the URL; POST sends data in the body."
+          }
+        },
+        {
+          "id": "php-q09",
+          "question": {
+            "ar": "تنادي إيه بعد تسجيل الدخول على طول؟",
+            "en": "What should you call right after a successful login?"
+          },
+          "options": [
+            {
+              "ar": "session_regenerate_id(true)",
+              "en": "session_regenerate_id(true)"
+            },
+            {
+              "ar": "session_destroy()",
+              "en": "session_destroy()"
+            },
+            {
+              "ar": "setcookie()",
+              "en": "setcookie()"
+            },
+            {
+              "ar": "session_unset()",
+              "en": "session_unset()"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "عشان تمنع Session Fixation.",
+            "en": "It prevents session fixation."
+          }
+        },
+        {
+          "id": "php-q10",
+          "question": {
+            "ar": "أنهي رمز بيمرر المتغير by reference؟",
+            "en": "Which symbol passes a variable by reference?"
+          },
+          "options": [
+            {
+              "ar": "&",
+              "en": "&"
+            },
+            {
+              "ar": "*",
+              "en": "*"
+            },
+            {
+              "ar": "$$",
+              "en": "$$"
+            },
+            {
+              "ar": "@",
+              "en": "@"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الأولى نسخة، والتانية نفس المتغير باستخدام &.",
+            "en": "By value passes a copy; by reference passes the same variable, using &."
+          }
+        },
+        {
+          "id": "php-q11",
+          "question": {
+            "ar": "['name' => 'Ali'] نوعه إيه؟",
+            "en": "What kind of array is ['name' => 'Ali']?"
+          },
+          "options": [
+            {
+              "ar": "Associative",
+              "en": "Associative"
+            },
+            {
+              "ar": "Indexed",
+              "en": "Indexed"
+            },
+            {
+              "ar": "Multidimensional",
+              "en": "Multidimensional"
+            },
+            {
+              "ar": "Generator",
+              "en": "Generator"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Indexed و Associative و Multidimensional.",
+            "en": "Indexed, associative and multidimensional."
+          }
+        },
+        {
+          "id": "php-q12",
+          "question": {
+            "ar": "بعد array_filter، إزاي تعيد ترقيم المفاتيح؟",
+            "en": "After array_filter, how do you renumber the keys?"
+          },
+          "options": [
+            {
+              "ar": "array_values",
+              "en": "array_values"
+            },
+            {
+              "ar": "array_keys",
+              "en": "array_keys"
+            },
+            {
+              "ar": "ksort",
+              "en": "ksort"
+            },
+            {
+              "ar": "array_flip",
+              "en": "array_flip"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "تحويل، وتصفية، وتجميع.",
+            "en": "Transform, filter and accumulate."
+          }
+        },
+        {
+          "id": "php-q13",
+          "question": {
+            "ar": "ناتج ['a' => 1] + ['a' => 2]؟",
+            "en": "What is ['a' => 1] + ['a' => 2]?"
+          },
+          "options": [
+            {
+              "ar": "['a' => 1]",
+              "en": "['a' => 1]"
+            },
+            {
+              "ar": "['a' => 2]",
+              "en": "['a' => 2]"
+            },
+            {
+              "ar": "['a' => 3]",
+              "en": "['a' => 3]"
+            },
+            {
+              "ar": "Error",
+              "en": "Error"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "array_merge الأخير بيكسب في المفاتيح النصية، و + الأول بيكسب.",
+            "en": "With array_merge the later value wins for string keys; with + the first one wins."
+          }
+        },
+        {
+          "id": "php-q14",
+          "question": {
+            "ar": "أنهي كلمة بتخلي الـ anonymous function توصل لمتغير بره؟",
+            "en": "Which keyword lets an anonymous function access an outer variable?"
+          },
+          "options": [
+            {
+              "ar": "use",
+              "en": "use"
+            },
+            {
+              "ar": "global",
+              "en": "global"
+            },
+            {
+              "ar": "static",
+              "en": "static"
+            },
+            {
+              "ar": "extends",
+              "en": "extends"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Anonymous محتاجة use، والـ Arrow بتاخد المتغيرات تلقائيًا.",
+            "en": "Anonymous functions need use; arrow functions capture variables automatically."
+          }
+        },
+        {
+          "id": "php-q15",
+          "question": {
+            "ar": "أهم فايدة للـ generator مع ملف ضخم؟",
+            "en": "The main benefit of a generator for a huge file?"
+          },
+          "options": [
+            {
+              "ar": "استهلاك ذاكرة قليل",
+              "en": "Low memory use"
+            },
+            {
+              "ar": "قراءة أسرع من الديسك",
+              "en": "Faster disk reads"
+            },
+            {
+              "ar": "تنفيذ متوازي",
+              "en": "Parallel execution"
+            },
+            {
+              "ar": "caching تلقائي",
+              "en": "Automatic caching"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "دوال بترجع القيم واحدة واحدة.",
+            "en": "Functions that return values one at a time."
+          }
+        },
+        {
+          "id": "php-q16",
+          "question": {
+            "ar": "الـ class في PHP تقدر تعمل implements لأكتر من interface؟",
+            "en": "Can a PHP class implement more than one interface?"
+          },
+          "options": [
+            {
+              "ar": "أيوه",
+              "en": "Yes"
+            },
+            {
+              "ar": "لأ، واحد بس",
+              "en": "No, only one"
+            },
+            {
+              "ar": "لو abstract بس",
+              "en": "Only if it is abstract"
+            },
+            {
+              "ar": "بالـ traits بس",
+              "en": "Only through traits"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الأولى فيها تنفيذ جزئي، والتانية عقد.",
+            "en": "The first has partial implementation; the second is a contract."
+          }
+        },
+        {
+          "id": "php-q17",
+          "question": {
+            "ar": "اتنين traits فيهم hello(). أنهي كلمة بتختار واحدة منهم؟",
+            "en": "Two traits both define hello(). Which keyword picks one?"
+          },
+          "options": [
+            {
+              "ar": "insteadof",
+              "en": "insteadof"
+            },
+            {
+              "ar": "as",
+              "en": "as"
+            },
+            {
+              "ar": "use",
+              "en": "use"
+            },
+            {
+              "ar": "extends",
+              "en": "extends"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "إعادة استخدام methods في classes مختلفة.",
+            "en": "A way to reuse methods across different classes."
+          }
+        },
+        {
+          "id": "php-q18",
+          "question": {
+            "ar": "مع new static() جوه Model، ناتج User::create()؟",
+            "en": "With new static() inside Model, what does User::create() return?"
+          },
+          "options": [
+            {
+              "ar": "object من User",
+              "en": "A User object"
+            },
+            {
+              "ar": "object من Model",
+              "en": "A Model object"
+            },
+            {
+              "ar": "null",
+              "en": "null"
+            },
+            {
+              "ar": "Error",
+              "en": "Error"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "self الـ class اللي اتكتب فيها الكود، static اللي اتنادت، parent الأب.",
+            "en": "self is the class where the code is written, static is the class that was called, and parent is the parent class."
+          }
+        },
+        {
+          "id": "php-q19",
+          "question": {
+            "ar": "أنهي magic method بتشتغل لما تستخدم الـ object كنص؟",
+            "en": "Which magic method runs when an object is used as a string?"
+          },
+          "options": [
+            {
+              "ar": "__toString",
+              "en": "__toString"
+            },
+            {
+              "ar": "__invoke",
+              "en": "__invoke"
+            },
+            {
+              "ar": "__get",
+              "en": "__get"
+            },
+            {
+              "ar": "__call",
+              "en": "__call"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "methods بتبدأ بـ __ وبتتنادى تلقائيًا.",
+            "en": "Methods that start with __ and are called automatically."
+          }
+        },
+        {
+          "id": "php-q20",
+          "question": {
+            "ar": "PSR-4 بتربط الـ namespace بإيه؟",
+            "en": "What does PSR-4 map a namespace to?"
+          },
+          "options": [
+            {
+              "ar": "مسار ملفات",
+              "en": "A file path"
+            },
+            {
+              "ar": "جدول في الداتابيز",
+              "en": "A database table"
+            },
+            {
+              "ar": "URL",
+              "en": "A URL"
+            },
+            {
+              "ar": "متغير بيئة",
+              "en": "An environment variable"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "تنظيم الأسماء وتحميل الـ classes تلقائيًا.",
+            "en": "Organising names and loading classes automatically."
+          }
+        },
+        {
+          "id": "php-q21",
+          "question": {
+            "ar": "TypeError بيورث من إيه؟",
+            "en": "Which class does TypeError extend?"
+          },
+          "options": [
+            {
+              "ar": "Error",
+              "en": "Error"
+            },
+            {
+              "ar": "Exception",
+              "en": "Exception"
+            },
+            {
+              "ar": "RuntimeException",
+              "en": "RuntimeException"
+            },
+            {
+              "ar": "LogicException",
+              "en": "LogicException"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Throwable هي الأساس، و Exception و Error بينفذوها.",
+            "en": "Throwable is the base, and Exception and Error implement it."
+          }
+        },
+        {
+          "id": "php-q22",
+          "question": {
+            "ar": "أنهي واحدة بتدعم named parameters زي :email؟",
+            "en": "Which one supports named parameters such as :email?"
+          },
+          "options": [
+            {
+              "ar": "PDO",
+              "en": "PDO"
+            },
+            {
+              "ar": "MySQLi",
+              "en": "MySQLi"
+            },
+            {
+              "ar": "mysql_*",
+              "en": "mysql_*"
+            },
+            {
+              "ar": "ولا واحدة",
+              "en": "Neither"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "PDO بتدعم قواعد بيانات كتير، و MySQLi لـ MySQL و MariaDB.",
+            "en": "PDO supports many databases; MySQLi is for MySQL and MariaDB."
+          }
+        },
+        {
+          "id": "php-q23",
+          "question": {
+            "ar": "المستخدم بيختار عمود الترتيب. تأمنه إزاي؟",
+            "en": "The user chooses the sort column. How do you make it safe?"
+          },
+          "options": [
+            {
+              "ar": "تقارنه بـ whitelist",
+              "en": "Check it against a whitelist"
+            },
+            {
+              "ar": "تبعته كـ parameter",
+              "en": "Bind it as a parameter"
             },
             {
               "ar": "addslashes",
               "en": "addslashes"
             },
             {
-              "ar": "explode",
-              "en": "explode"
-            },
-            {
-              "ar": "password_hash",
-              "en": "password_hash"
+              "ar": "htmlspecialchars",
+              "en": "htmlspecialchars"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "بتعمل escape للـ HTML.",
-            "en": "Escapes HTML characters."
+            "ar": "استخدم Prepared Statements.",
+            "en": "Use prepared statements."
           }
         },
         {
-          "id": "php-q8",
+          "id": "php-q24",
           "question": {
-            "ar": "ربط النصوص في PHP بـ؟",
-            "en": "PHP string concatenation operator?"
+            "ar": "المقارنة الآمنة للـ CSRF token بتستخدم إيه؟",
+            "en": "What compares the CSRF token safely?"
           },
           "options": [
             {
-              "ar": ".",
-              "en": "."
+              "ar": "hash_equals",
+              "en": "hash_equals"
             },
             {
-              "ar": "+",
-              "en": "+"
+              "ar": "==",
+              "en": "=="
             },
             {
-              "ar": "&",
-              "en": "&"
+              "ar": "strcmp",
+              "en": "strcmp"
             },
             {
-              "ar": "::",
-              "en": "::"
+              "ar": "md5",
+              "en": "md5"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "النقطة.",
-            "en": "The dot."
+            "ar": "بتمنع timing attacks.",
+            "en": "It prevents timing attacks."
+          }
+        },
+        {
+          "id": "php-q25",
+          "question": {
+            "ar": "إزاي تتحقق من الباسورد وقت تسجيل الدخول؟",
+            "en": "How do you check a password at login?"
+          },
+          "options": [
+            {
+              "ar": "password_verify($input, $hash)",
+              "en": "password_verify($input, $hash)"
+            },
+            {
+              "ar": "md5($input) === $hash",
+              "en": "md5($input) === $hash"
+            },
+            {
+              "ar": "$input === $hash",
+              "en": "$input === $hash"
+            },
+            {
+              "ar": "sha1($input) === $hash",
+              "en": "sha1($input) === $hash"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "password_hash و password_verify.",
+            "en": "With password_hash and password_verify."
+          }
+        },
+        {
+          "id": "php-q26",
+          "question": {
+            "ar": "تتأكد من نوع الملف المرفوع الحقيقي منين؟",
+            "en": "How do you check the real type of an uploaded file?"
+          },
+          "options": [
+            {
+              "ar": "من محتوى الملف بـ finfo",
+              "en": "From the file content, with finfo"
+            },
+            {
+              "ar": "من الامتداد",
+              "en": "From the extension"
+            },
+            {
+              "ar": "من $_FILES[\"type\"]",
+              "en": "From $_FILES[\"type\"]"
+            },
+            {
+              "ar": "من اسم الملف",
+              "en": "From the file name"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الامتداد و type بيبعتهم المستخدم ومينفعش تثق فيهم.",
+            "en": "The extension and type come from the user and cannot be trusted."
+          }
+        },
+        {
+          "id": "php-q27",
+          "question": {
+            "ar": "أنهي أمر يتشغل في الـ production أو الـ CI؟",
+            "en": "Which command should production or CI run?"
+          },
+          "options": [
+            {
+              "ar": "composer install",
+              "en": "composer install"
+            },
+            {
+              "ar": "composer update",
+              "en": "composer update"
+            },
+            {
+              "ar": "composer require",
+              "en": "composer require"
+            },
+            {
+              "ar": "composer dump-autoload",
+              "en": "composer dump-autoload"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "مدير الحزم. install حسب الـ lock، و update بيحدث الإصدارات.",
+            "en": "The package manager. install follows the lock file; update upgrades versions."
+          }
+        },
+        {
+          "id": "php-q28",
+          "question": {
+            "ar": "الـ Enums اتضافت في أنهي إصدار؟",
+            "en": "Which PHP version introduced enums?"
+          },
+          "options": [
+            {
+              "ar": "8.1",
+              "en": "8.1"
+            },
+            {
+              "ar": "8.0",
+              "en": "8.0"
+            },
+            {
+              "ar": "7.4",
+              "en": "7.4"
+            },
+            {
+              "ar": "8.3",
+              "en": "8.3"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "مميزات بتخلي الكود أقصر وأأمن.",
+            "en": "Features that make code shorter and safer."
+          }
+        },
+        {
+          "id": "php-q29",
+          "question": {
+            "ar": "مين اللي بيستفيد أكتر من الـ JIT؟",
+            "en": "What benefits most from JIT?"
+          },
+          "options": [
+            {
+              "ar": "المهام التقيلة على الـ CPU",
+              "en": "CPU-heavy tasks"
+            },
+            {
+              "ar": "تطبيقات الويب المعتمدة على I/O",
+              "en": "I/O-bound web apps"
+            },
+            {
+              "ar": "استعلامات الداتابيز",
+              "en": "Database queries"
+            },
+            {
+              "ar": "الملفات الثابتة",
+              "en": "Static files"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "تخزين الـ opcodes، وترجمة لكود الآلة، وإدارة عمليات PHP.",
+            "en": "Caching opcodes, compiling to machine code, and managing PHP processes."
+          }
+        },
+        {
+          "id": "php-q30",
+          "question": {
+            "ar": "أول خطوة لتحسين الأداء؟",
+            "en": "The first step in improving performance?"
+          },
+          "options": [
+            {
+              "ar": "تقيس (profiling)",
+              "en": "Measure (profile)"
+            },
+            {
+              "ar": "تعيد الكتابة بلغة تانية",
+              "en": "Rewrite in another language"
+            },
+            {
+              "ar": "تقفل OPcache",
+              "en": "Disable OPcache"
+            },
+            {
+              "ar": "تزود سيرفرات",
+              "en": "Add more servers"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "قيس الأول، وبعدين حسن الداتابيز والـ caching.",
+            "en": "Measure first, then improve the database and caching."
           }
         }
       ]
