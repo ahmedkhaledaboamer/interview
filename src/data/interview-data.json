@@ -6615,142 +6615,1054 @@
       },
       "lessons": [
         {
-          "id": "next-l1",
+          "id": "next-l01",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ App Router",
-            "en": "App Router"
+            "ar": "إيه هي Next.js والفرق بينها وبين React؟",
+            "en": "What is Next.js and how is it different from React?"
+          },
+          "short": {
+            "ar": "Framework مبني على React.",
+            "en": "A framework built on React."
           },
           "points": {
             "ar": [
-              "المسارات من الفولدرات داخل app. page للصفحة، layout ثابت، loading و error و not-found."
+              "React مكتبة للـ UI، أما Next.js فبتديك routing و server rendering و caching و optimization و backend endpoints جاهزين، فتبني تطبيق full-stack."
             ],
             "en": [
-              "Folders in app define routes: page, layout, loading, error, not-found."
+              "React is a UI library, while Next.js gives you routing, server rendering, caching, optimisation and backend endpoints out of the box, so you can build a full-stack app."
             ]
           },
-          "code": "app/\n  layout.tsx\n  page.tsx\n  blog/[slug]/page.tsx"
+          "code": ""
         },
         {
-          "id": "next-l2",
+          "id": "next-l02",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ Server و Client Components",
-            "en": "Server & Client Components"
+            "ar": "الفرق بين App Router و Pages Router؟",
+            "en": "What is the difference between the App Router and the Pages Router?"
+          },
+          "short": {
+            "ar": "App Router الأحدث في فولدر app، و Pages Router في pages.",
+            "en": "The App Router is the newer one in the app folder; the Pages Router lives in pages."
           },
           "points": {
             "ar": [
-              "الافتراضي Server Component ومش بيبعت JS للمتصفح. 'use client' للتفاعل والـ browser APIs."
+              "App Router بيدعم Server Components و nested layouts و streaming و Server Actions.",
+              "Pages Router بيعتمد على getStaticProps و getServerSideProps ولسه مدعوم."
             ],
             "en": [
-              "Server Components are default and ship no JS. 'use client' enables interactivity."
+              "The App Router supports Server Components, nested layouts, streaming and Server Actions.",
+              "The Pages Router relies on getStaticProps and getServerSideProps and is still supported."
             ]
           },
-          "code": "'use client';\nimport { useState } from 'react';\nexport default function Like() {\n  const [on, set] = useState(false);\n  return <button onClick={() => set(!on)}>{on ? 'Liked' : 'Like'}</button>;\n}"
+          "code": ""
         },
         {
-          "id": "next-l3",
+          "id": "next-l03",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "أنواع الـ Rendering",
+            "ar": "الـ File-based Routing بيشتغل إزاي؟",
+            "en": "How does file-based routing work?"
+          },
+          "short": {
+            "ar": "الفولدرات والملفات بتحدد الـ URLs.",
+            "en": "Folders and files define the URLs."
+          },
+          "points": {
+            "ar": [
+              "في App Router الفولدر هو جزء من المسار، ومبيبقاش متاح إلا لو فيه page أو route."
+            ],
+            "en": [
+              "In the App Router each folder is a path segment, and it only becomes reachable if it contains a page or route file."
+            ]
+          },
+          "code": "app/page.tsx             → /\napp/blog/page.tsx        → /blog\napp/blog/[slug]/page.tsx → /blog/hello"
+        },
+        {
+          "id": "next-l04",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "دور page و layout و template؟",
+            "en": "What are page, layout and template for?"
+          },
+          "short": {
+            "ar": "page محتوى المسار، layout غلاف ثابت، template غلاف بيتعمل من جديد.",
+            "en": "page is the route's content, layout is a persistent wrapper, and template is a wrapper that is recreated."
+          },
+          "points": {
+            "ar": [
+              "الـ layout بيحافظ على الـ state ومبيعملش re-render مع التنقل بين أبنائه.",
+              "الـ template بيعمل instance جديد، فالـ effects بتتنفذ تاني.",
+              "والـ root layout إجباري وفيه html و body."
+            ],
+            "en": [
+              "A layout keeps its state and does not re-render when navigating between its children.",
+              "A template creates a new instance, so its effects run again.",
+              "The root layout is required and contains html and body."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "next-l05",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "loading و error و not-found؟",
+            "en": "What are loading, error and not-found?"
+          },
+          "short": {
+            "ar": "ملفات لحالات التحميل والخطأ والصفحة المش موجودة.",
+            "en": "Files for the loading, error and not-found states."
+          },
+          "points": {
+            "ar": [
+              "loading بيتحط fallback لـ Suspense.",
+              "error لازم يكون Client Component وبيشتغل كـ Error Boundary.",
+              "not-found بيظهر لما تنادي notFound()."
+            ],
+            "en": [
+              "loading becomes the Suspense fallback.",
+              "error must be a Client Component and works as an Error Boundary.",
+              "not-found appears when you call notFound()."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "next-l06",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "Dynamic و Catch-all Segments؟",
+            "en": "What are dynamic and catch-all segments?"
+          },
+          "short": {
+            "ar": "[id] جزء متغير، [...slug] أكتر من جزء، [[...slug]] اختياري.",
+            "en": "[id] is one dynamic segment, [...slug] matches several, and [[...slug]] is optional."
+          },
+          "points": {
+            "ar": [
+              "في الإصدارات الحديثة params عبارة عن Promise."
+            ],
+            "en": [
+              "In recent versions params is a Promise."
+            ]
+          },
+          "code": "export default async function Page({ params }: { params: Promise<{ id: string }> }) {\n  const { id } = await params;\n  return <h1>{id}</h1>;\n}"
+        },
+        {
+          "id": "next-l07",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "Route Groups و Private Folders؟",
+            "en": "What are route groups and private folders?"
+          },
+          "short": {
+            "ar": "(name) للتنظيم من غير ما يظهر في الـ URL، و _name بره الـ routing.",
+            "en": "(name) organises routes without appearing in the URL, and _name is excluded from routing."
+          },
+          "points": {
+            "ar": [
+              "الـ Groups مفيدة لعمل layouts مختلفة زي (auth) و (shop).",
+              "الـ Private Folders لملفات داخلية زي _components."
+            ],
+            "en": [
+              "Groups are handy for different layouts such as (auth) and (shop).",
+              "Private folders hold internal files such as _components."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "next-l08",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "<Link> ولا <a>؟ وإيه الـ Prefetching؟",
+            "en": "<Link> or <a>? And what is prefetching?"
+          },
+          "short": {
+            "ar": "<Link> بيتنقل من غير reload كامل.",
+            "en": "<Link> navigates without a full page reload."
+          },
+          "points": {
+            "ar": [
+              "الـ Prefetching تحميل جزء من الصفحة أو كلها قبل الضغط، لما اللينك يظهر على الشاشة في الـ production.",
+              "استخدم <a> للروابط الخارجية."
+            ],
+            "en": [
+              "Prefetching loads part or all of a page before the click, when the link scrolls into view in production.",
+              "Use <a> for external links."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "next-l09",
+          "section": {
+            "ar": "Rendering",
             "en": "Rendering"
           },
+          "title": {
+            "ar": "CSR و SSR و SSG و ISR؟",
+            "en": "What are CSR, SSR, SSG and ISR?"
+          },
+          "short": {
+            "ar": "في المتصفح، مع كل طلب، وقت الـ build، أو static بيتجدد.",
+            "en": "In the browser, on every request, at build time, or static that refreshes."
+          },
           "points": {
             "ar": [
-              "SSR مع كل طلب، SSG وقت البناء، ISR تجديد دوري، PPR هيكل ثابت مع أجزاء ديناميك داخل Suspense."
+              "CSR مناسب للوحات التحكم التفاعلية.",
+              "SSR للبيانات المتغيرة أو الخاصة بالمستخدم.",
+              "SSG للمحتوى الثابت.",
+              "ISR بيحدث الصفحات من غير build كامل."
             ],
             "en": [
-              "SSR per request, SSG at build, ISR regenerates, PPR mixes a static shell with streamed parts."
+              "CSR suits interactive dashboards.",
+              "SSR suits changing or user-specific data.",
+              "SSG suits static content.",
+              "ISR updates pages without a full rebuild."
             ]
           },
-          "code": "<Suspense fallback={<Skeleton />}>\n  <Recommendations />\n</Suspense>"
+          "code": ""
         },
         {
-          "id": "next-l4",
+          "id": "next-l10",
+          "section": {
+            "ar": "Rendering",
+            "en": "Rendering"
+          },
           "title": {
-            "ar": "جلب البيانات",
-            "en": "Data Fetching"
+            "ar": "Server و Client Components؟",
+            "en": "What are Server and Client Components?"
+          },
+          "short": {
+            "ar": "Server هو الافتراضي في App Router، و Client للتفاعل.",
+            "en": "Server Components are the default in the App Router; Client Components are for interactivity."
           },
           "points": {
             "ar": [
-              "في Server Component استخدم await مباشرة. ابدأ الطلبات بالتوازي لتجنب الـ waterfall.",
-              "في Next 16 الـ params بقت async."
+              "الـ Server Component يوصل للداتابيز والأسرار وكوده مبيروحش للمتصفح، بس ملوش state ولا events.",
+              "الـ Client Component بيستخدم hooks و browser APIs."
             ],
             "en": [
-              "await directly in Server Components; start requests in parallel.",
-              "In Next 16, params are async."
+              "A Server Component can reach the database and secrets and its code never ships to the browser, but it has no state or events.",
+              "A Client Component uses hooks and browser APIs."
             ]
           },
-          "code": "export default async function Page({ params }) {\n  const { id } = await params;\n  const [user, posts] = await Promise.all([getUser(id), getPosts(id)]);\n  return <Profile user={user} posts={posts} />;\n}"
+          "code": ""
         },
         {
-          "id": "next-l5",
+          "id": "next-l11",
+          "section": {
+            "ar": "Rendering",
+            "en": "Rendering"
+          },
           "title": {
-            "ar": "الكاش",
-            "en": "Caching"
+            "ar": "\"use client\" بتعمل إيه؟",
+            "en": "What does \"use client\" do?"
+          },
+          "short": {
+            "ar": "بتحدد بداية الجزء اللي بيروح للمتصفح.",
+            "en": "It marks where the part that ships to the browser begins."
           },
           "points": {
             "ar": [
-              "مع cacheComponents الكاش اختياري بـ 'use cache'. updateTag للتحديث الفوري و revalidateTag للتحديث في الخلفية."
+              "بتتكتب أول الملف، وكل اللي الملف بيعمله import بيدخل في bundle المتصفح.",
+              "حطها في أصغر component محتاج تفاعل.",
+              "وتقدر تمرر Server Component كـ children لـ Client Component."
             ],
             "en": [
-              "With cacheComponents, caching is opt-in via 'use cache'. updateTag is immediate; revalidateTag revalidates in the background."
+              "It goes at the top of the file, and everything that file imports joins the browser bundle.",
+              "Put it on the smallest component that needs interactivity.",
+              "You can still pass a Server Component as children to a Client Component."
             ]
           },
-          "code": "async function getProducts() {\n  'use cache';\n  cacheTag('products');\n  return db.product.findMany();\n}\n// in a Server Action\nrevalidateTag('products', 'max');"
+          "code": ""
         },
         {
-          "id": "next-l6",
+          "id": "next-l12",
+          "section": {
+            "ar": "Rendering",
+            "en": "Rendering"
+          },
           "title": {
-            "ar": "الـ Server Actions",
-            "en": "Server Actions"
+            "ar": "الـ Hydration وأسباب الـ Error؟",
+            "en": "What is hydration, and what causes hydration errors?"
+          },
+          "short": {
+            "ar": "ربط الـ HTML الجاهز بـ React، والـ Error لما الناتج يختلف.",
+            "en": "Attaching React to ready-made HTML; the error appears when the output differs."
           },
           "points": {
             "ar": [
-              "دوال سيرفر بتتنادى من الواجهة. اعتبرها endpoint عام: تحقق من المدخلات والصلاحيات."
+              "الأسباب: Date.now() أو Math.random() وقت الرسم، أو استخدام window و localStorage، أو HTML متداخل غلط.",
+              "الحل إنك تنقل القيم دي لـ effect."
             ],
             "en": [
-              "Server functions called from the UI. Treat them as public endpoints: validate and authorise."
+              "Causes: Date.now() or Math.random() during render, using window or localStorage, or invalid nested HTML.",
+              "The fix is to move those values into an effect."
             ]
           },
-          "code": "async function create(formData) {\n  'use server';\n  const session = await auth();\n  if (!session) throw new Error('Unauthorized');\n  await db.post.create({ data: { title: String(formData.get('title')) } });\n  updateTag('posts');\n}"
+          "code": ""
         },
         {
-          "id": "next-l7",
+          "id": "next-l13",
+          "section": {
+            "ar": "Rendering",
+            "en": "Rendering"
+          },
           "title": {
-            "ar": "الـ Route Handlers و proxy",
-            "en": "Route Handlers & proxy"
+            "ar": "Streaming و Suspense؟",
+            "en": "What are streaming and Suspense?"
+          },
+          "short": {
+            "ar": "إرسال الصفحة على أجزاء أول ما تجهز.",
+            "en": "Sending the page in pieces as soon as each one is ready."
           },
           "points": {
             "ar": [
-              "route.ts للـ APIs والـ webhooks. proxy.ts (بدل middleware) بيشتغل قبل الطلب."
+              "الجزء الجاهز بيظهر فورًا، والبطيء بيظهر مكانه fallback."
             ],
             "en": [
-              "route.ts serves APIs and webhooks. proxy.ts (formerly middleware) runs before requests."
+              "Ready parts show immediately, and slow parts show a fallback in their place."
             ]
           },
-          "code": "export async function GET() {\n  return Response.json({ ok: true });\n}"
+          "code": "<Suspense fallback={<Skeleton />}>\n  <Reviews />\n</Suspense>"
         },
         {
-          "id": "next-l8",
+          "id": "next-l14",
+          "section": {
+            "ar": "Rendering",
+            "en": "Rendering"
+          },
           "title": {
-            "ar": "الـ SEO والأداء",
-            "en": "SEO & Performance"
+            "ar": "Static و Dynamic Rendering؟",
+            "en": "What are static and dynamic rendering?"
+          },
+          "short": {
+            "ar": "Static بيتجهز مسبقًا، و Dynamic وقت الطلب.",
+            "en": "Static is prepared ahead of time; dynamic is rendered at request time."
           },
           "points": {
             "ar": [
-              "generateMetadata و next/image و next/font و dynamic import. راقب LCP و INP و CLS."
+              "استخدام cookies() أو headers() أو searchParams بيحتاج وقت الطلب.",
+              "في النموذج القديم ده بيخلي الـ route كله dynamic، ومع Cache Components بتعزل الجزء ده جوه Suspense."
             ],
             "en": [
-              "generateMetadata, next/image, next/font, dynamic import. Watch LCP, INP, CLS."
+              "Using cookies(), headers() or searchParams needs request time.",
+              "In the older model that made the whole route dynamic; with Cache Components you isolate that part inside Suspense."
             ]
           },
-          "code": "export const metadata = { title: 'Ahmed Khaled' };\n<Image src=\"/me.png\" alt=\"me\" width={400} height={400} />"
+          "code": ""
+        },
+        {
+          "id": "next-l15",
+          "section": {
+            "ar": "Rendering",
+            "en": "Rendering"
+          },
+          "title": {
+            "ar": "يعني إيه PPR؟",
+            "en": "What is PPR?"
+          },
+          "short": {
+            "ar": "صفحة واحدة فيها جزء static وجزء dynamic.",
+            "en": "A single page with a static part and a dynamic part."
+          },
+          "points": {
+            "ar": [
+              "الـ shell الثابت بيتبعت فورًا، والأجزاء الديناميكية بتوصل streaming في نفس الرد.",
+              "وبقى جزء من Cache Components."
+            ],
+            "en": [
+              "The static shell is sent immediately, and the dynamic parts stream in within the same response.",
+              "It is now part of Cache Components."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "next-l16",
+          "section": {
+            "ar": "Data و Caching",
+            "en": "Data & Caching"
+          },
+          "title": {
+            "ar": "Data Fetching في الاتنين؟",
+            "en": "How does data fetching work in each router?"
+          },
+          "short": {
+            "ar": "App Router: await جوه Server Component. Pages: دوال مخصصة.",
+            "en": "App Router: await inside a Server Component. Pages Router: dedicated functions."
+          },
+          "points": {
+            "ar": [
+              "getStaticProps وقت الـ build، و getServerSideProps مع كل طلب."
+            ],
+            "en": [
+              "getStaticProps runs at build time, and getServerSideProps on every request."
+            ]
+          },
+          "code": "export default async function Page() {\n  const posts = await db.post.findMany();\n  return <PostList posts={posts} />;\n}"
+        },
+        {
+          "id": "next-l17",
+          "section": {
+            "ar": "Data و Caching",
+            "en": "Data & Caching"
+          },
+          "title": {
+            "ar": "الـ Caching و Cache Components و \"use cache\"؟",
+            "en": "What are caching, Cache Components and \"use cache\"?"
+          },
+          "short": {
+            "ar": "الـ caching بقى اختياري وصريح باستخدام \"use cache\".",
+            "en": "Caching is now opt-in and explicit with \"use cache\"."
+          },
+          "points": {
+            "ar": [
+              "بتفعله بـ cacheComponents: true.",
+              "قبل 16.4 مكانش بيتنصح بيه لكل الحالات، لكن من 16.4 بقى الاختيار الموصى بيه، ومفعل افتراضيًا في المشاريع الجديدة، وهيبقى الافتراضي في Next.js 17.",
+              "cacheLife بتحدد المدة، و cacheTag بتدي اسم للإلغاء."
+            ],
+            "en": [
+              "Enable it with cacheComponents: true.",
+              "Before 16.4 it was not recommended for every case; since 16.4 it is the recommended choice, enabled by default in new projects, and it will become the default in Next.js 17.",
+              "cacheLife sets how long it lasts, and cacheTag names the cache so you can invalidate it."
+            ]
+          },
+          "code": "async function getProducts() {\n  \"use cache\";\n  cacheLife(\"hours\");\n  cacheTag(\"products\");\n  return db.product.findMany();\n}"
+        },
+        {
+          "id": "next-l18",
+          "section": {
+            "ar": "Data و Caching",
+            "en": "Data & Caching"
+          },
+          "title": {
+            "ar": "revalidatePath و revalidateTag و updateTag؟",
+            "en": "What are revalidatePath, revalidateTag and updateTag?"
+          },
+          "short": {
+            "ar": "الأولى بالمسار، والتانية بالـ tag، والتالتة تحديث فوري بالـ tag.",
+            "en": "The first works by path, the second by tag, and the third is an immediate update by tag."
+          },
+          "points": {
+            "ar": [
+              "revalidateTag(tag, \"max\") بتعرض القديم لحد ما الجديد يجهز.",
+              "updateTag متاحة جوه Server Functions بس، ومناسبة لما المستخدم لازم يشوف تعديله فورًا."
+            ],
+            "en": [
+              "revalidateTag(tag, \"max\") serves the old data until the new data is ready.",
+              "updateTag is only available inside Server Functions, and suits cases where users must see their own change immediately."
+            ]
+          },
+          "code": "revalidatePath(\"/products\");\nrevalidateTag(\"products\", \"max\");\nupdateTag(\"products\");"
+        },
+        {
+          "id": "next-l19",
+          "section": {
+            "ar": "Data و Caching",
+            "en": "Data & Caching"
+          },
+          "title": {
+            "ar": "Server Actions وتأمينها؟",
+            "en": "What are Server Actions and how do you secure them?"
+          },
+          "short": {
+            "ar": "دوال بتتنفذ على السيرفر وتتنادى من الواجهة.",
+            "en": "Functions that run on the server and are called from the UI."
+          },
+          "points": {
+            "ar": [
+              "اعتبرها public endpoint: اتأكد من الـ authentication والصلاحيات، واعمل validation للمدخلات جوه كل action."
+            ],
+            "en": [
+              "Treat each one as a public endpoint: check authentication and permissions, and validate the input inside every action."
+            ]
+          },
+          "code": "\"use server\";\nexport async function createPost(formData: FormData) {\n  const user = await requireUser();\n  const data = schema.parse(Object.fromEntries(formData));\n  await db.post.create({ data: { ...data, userId: user.id } });\n  updateTag(\"posts\");\n}"
+        },
+        {
+          "id": "next-l20",
+          "section": {
+            "ar": "Data و Caching",
+            "en": "Data & Caching"
+          },
+          "title": {
+            "ar": "إزاي تتجنب الـ Waterfalls؟",
+            "en": "How do you avoid request waterfalls?"
+          },
+          "short": {
+            "ar": "شغل الطلبات المستقلة بالتوازي.",
+            "en": "Run independent requests in parallel."
+          },
+          "points": {
+            "ar": [
+              "استخدم Promise.all، وقسم الصفحة بـ Suspense."
+            ],
+            "en": [
+              "Use Promise.all, and split the page with Suspense."
+            ]
+          },
+          "code": "const [user, posts] = await Promise.all([getUser(), getPosts()]);"
+        },
+        {
+          "id": "next-l21",
+          "section": {
+            "ar": "Data و Caching",
+            "en": "Data & Caching"
+          },
+          "title": {
+            "ar": "generateStaticParams؟",
+            "en": "What is generateStaticParams?"
+          },
+          "short": {
+            "ar": "بتحدد الـ dynamic routes اللي تتبني مسبقًا.",
+            "en": "It decides which dynamic routes are prebuilt."
+          },
+          "points": {
+            "ar": [
+              "بديل getStaticPaths."
+            ],
+            "en": [
+              "It replaces getStaticPaths."
+            ]
+          },
+          "code": "export async function generateStaticParams() {\n  const posts = await getPosts();\n  return posts.map(p => ({ slug: p.slug }));\n}"
+        },
+        {
+          "id": "next-l22",
+          "section": {
+            "ar": "Backend و Security",
+            "en": "Backend & Security"
+          },
+          "title": {
+            "ar": "Route Handlers ولا Server Actions؟",
+            "en": "Route Handlers or Server Actions?"
+          },
+          "short": {
+            "ar": "Handlers لـ APIs عامة، و Actions لتعديلات من الواجهة.",
+            "en": "Handlers are for public APIs; Actions are for mutations from the UI."
+          },
+          "points": {
+            "ar": [
+              "استخدم Route Handler للـ webhooks وتطبيقات الموبايل والتحكم في الرد."
+            ],
+            "en": [
+              "Use a Route Handler for webhooks, mobile apps, and full control over the response."
+            ]
+          },
+          "code": "// app/api/users/route.ts\nexport async function GET() {\n  return Response.json(await getUsers());\n}"
+        },
+        {
+          "id": "next-l23",
+          "section": {
+            "ar": "Backend و Security",
+            "en": "Backend & Security"
+          },
+          "title": {
+            "ar": "إيه هو الـ Proxy؟",
+            "en": "What is the proxy?"
+          },
+          "short": {
+            "ar": "كود بيتنفذ قبل ما الطلب يوصل للـ route.",
+            "en": "Code that runs before a request reaches the route."
+          },
+          "points": {
+            "ar": [
+              "في Next.js 16 اسم middleware.ts بقى proxy.ts.",
+              "بيستخدم في redirects و rewrites و headers واللغات وفحص مبدئي للدخول.",
+              "متعتمدش عليه لوحده في الأمان."
+            ],
+            "en": [
+              "In Next.js 16, middleware.ts was renamed to proxy.ts.",
+              "It is used for redirects, rewrites, headers, locales and an initial login check.",
+              "Do not rely on it alone for security."
+            ]
+          },
+          "code": "export function proxy(request: NextRequest) {\n  if (!request.cookies.has(\"session\"))\n    return NextResponse.redirect(new URL(\"/login\", request.url));\n}\nexport const config = { matcher: \"/dashboard/:path*\" };"
+        },
+        {
+          "id": "next-l24",
+          "section": {
+            "ar": "Backend و Security",
+            "en": "Backend & Security"
+          },
+          "title": {
+            "ar": "Authentication و Authorization؟",
+            "en": "What are authentication and authorization?"
+          },
+          "short": {
+            "ar": "الأولى إنت مين، والتانية مسموحلك بإيه.",
+            "en": "The first is who you are; the second is what you are allowed to do."
+          },
+          "points": {
+            "ar": [
+              "استخدم مكتبة موثوقة زي Auth.js أو Clerk أو Better Auth، وخزن الـ session في cookie HttpOnly.",
+              "افحص الصلاحيات قريب من البيانات: في الـ Data Access Layer والـ Actions والـ Handlers."
+            ],
+            "en": [
+              "Use a trusted library such as Auth.js, Clerk or Better Auth, and store the session in an HttpOnly cookie.",
+              "Check permissions close to the data: in the Data Access Layer, Actions and Handlers."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "next-l25",
+          "section": {
+            "ar": "Backend و Security",
+            "en": "Backend & Security"
+          },
+          "title": {
+            "ar": "NEXT_PUBLIC_؟",
+            "en": "What does NEXT_PUBLIC_ mean?"
+          },
+          "short": {
+            "ar": "اللي بتبدأ بيه بتظهر للمتصفح.",
+            "en": "Variables that start with it are exposed to the browser."
+          },
+          "points": {
+            "ar": [
+              "قيمتها بتتحط في الكود وقت الـ build، فمتحطش فيها أسرار.",
+              "المتغيرات العادية متاحة على السيرفر بس."
+            ],
+            "en": [
+              "Their values are inlined into the code at build time, so never put secrets in them.",
+              "Regular variables are available on the server only."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "next-l26",
+          "section": {
+            "ar": "Optimization و Deployment",
+            "en": "Optimization & Deployment"
+          },
+          "title": {
+            "ar": "next/image؟",
+            "en": "What does next/image do?"
+          },
+          "short": {
+            "ar": "بيحسن الحجم والصيغة والتحميل.",
+            "en": "It optimises image size, format and loading."
+          },
+          "points": {
+            "ar": [
+              "بيقدم مقاسات مناسبة وصيغ حديثة، و lazy loading، وبيمنع الـ layout shift.",
+              "للصورة المهمة أول الصفحة استخدم preload أو loading=\"eager\"."
+            ],
+            "en": [
+              "It serves suitable sizes and modern formats, lazy loads, and prevents layout shift.",
+              "For the key image at the top of the page, use preload or loading=\"eager\"."
+            ]
+          },
+          "code": "<Image src=\"/hero.jpg\" alt=\"Hero\" width={800} height={400} preload />"
+        },
+        {
+          "id": "next-l27",
+          "section": {
+            "ar": "Optimization و Deployment",
+            "en": "Optimization & Deployment"
+          },
+          "title": {
+            "ar": "next/font و next/script؟",
+            "en": "What are next/font and next/script?"
+          },
+          "short": {
+            "ar": "تحسين تحميل الخطوط والسكريبتات.",
+            "en": "Optimised loading for fonts and scripts."
+          },
+          "points": {
+            "ar": [
+              "next/font بيستضيف الخطوط مع التطبيق ويقلل الـ layout shift.",
+              "next/script بيتحكم في توقيت التحميل بـ strategy زي afterInteractive و lazyOnload."
+            ],
+            "en": [
+              "next/font self-hosts fonts with the app and reduces layout shift.",
+              "next/script controls load timing with a strategy such as afterInteractive or lazyOnload."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "next-l28",
+          "section": {
+            "ar": "Optimization و Deployment",
+            "en": "Optimization & Deployment"
+          },
+          "title": {
+            "ar": "الـ SEO و Metadata API؟",
+            "en": "SEO and the Metadata API?"
+          },
+          "short": {
+            "ar": "metadata ثابتة أو generateMetadata ديناميكية.",
+            "en": "Static metadata, or dynamic generateMetadata."
+          },
+          "points": {
+            "ar": [
+              "وكمان ملفات sitemap و robots وصور Open Graph."
+            ],
+            "en": [
+              "There are also sitemap and robots files and Open Graph images."
+            ]
+          },
+          "code": "export async function generateMetadata({ params }) {\n  const { slug } = await params;\n  const post = await getPost(slug);\n  return { title: post.title, description: post.excerpt };\n}"
+        },
+        {
+          "id": "next-l29",
+          "section": {
+            "ar": "Optimization و Deployment",
+            "en": "Optimization & Deployment"
+          },
+          "title": {
+            "ar": "Turbopack وتقليل الـ Bundle؟",
+            "en": "Turbopack and reducing the bundle size?"
+          },
+          "short": {
+            "ar": "Turbopack هو الـ bundler الافتراضي من Next.js 16 ومكتوب بـ Rust.",
+            "en": "Turbopack is the default bundler since Next.js 16, and it is written in Rust."
+          },
+          "points": {
+            "ar": [
+              "قلل الـ Client Components، واستخدم next/dynamic، وراجع المكتبات التقيلة بالـ Bundle Analyzer."
+            ],
+            "en": [
+              "Use fewer Client Components, use next/dynamic, and review heavy libraries with the Bundle Analyzer."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "next-l30",
+          "section": {
+            "ar": "Optimization و Deployment",
+            "en": "Optimization & Deployment"
+          },
+          "title": {
+            "ar": "طرق الـ Deployment؟",
+            "en": "What are the deployment options?"
+          },
+          "short": {
+            "ar": "Vercel، أو Node.js server، أو Docker، أو Static Export.",
+            "en": "Vercel, a Node.js server, Docker, or a static export."
+          },
+          "points": {
+            "ar": [
+              "الـ Node server (next build ثم next start) و Docker بيدعموا مميزات Next.js، و output: \"standalone\" بيصغر الـ image.",
+              "Static Export (output: \"export\") بيطلع ملفات ثابتة، فمفيش SSR ولا Server Actions ولا Proxy."
+            ],
+            "en": [
+              "A Node server (next build, then next start) and Docker support Next.js features, and output: \"standalone\" shrinks the image.",
+              "A static export (output: \"export\") produces static files, so there is no SSR, no Server Actions and no proxy."
+            ]
+          },
+          "code": ""
         }
       ],
       "quiz": [
         {
-          "id": "next-q1",
+          "id": "next-q01",
           "question": {
-            "ar": "المكونات في app بتكون افتراضياً؟",
-            "en": "Components in app are by default?"
+            "ar": "Next.js بتضيف إيه فوق React؟",
+            "en": "What does Next.js add on top of React?"
+          },
+          "options": [
+            {
+              "ar": "routing و server rendering و backend endpoints",
+              "en": "Routing, server rendering and backend endpoints"
+            },
+            {
+              "ar": "لغة UI جديدة",
+              "en": "A new UI language"
+            },
+            {
+              "ar": "بديل لـ JSX",
+              "en": "A replacement for JSX"
+            },
+            {
+              "ar": "قاعدة بيانات",
+              "en": "A database"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Framework مبني على React.",
+            "en": "A framework built on React."
+          }
+        },
+        {
+          "id": "next-q02",
+          "question": {
+            "ar": "أنهي ميزة تبع الـ App Router؟",
+            "en": "Which feature belongs to the App Router?"
+          },
+          "options": [
+            {
+              "ar": "Server Components",
+              "en": "Server Components"
+            },
+            {
+              "ar": "getServerSideProps",
+              "en": "getServerSideProps"
+            },
+            {
+              "ar": "getStaticProps",
+              "en": "getStaticProps"
+            },
+            {
+              "ar": "_app.js",
+              "en": "_app.js"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "App Router الأحدث في فولدر app، و Pages Router في pages.",
+            "en": "The App Router is the newer one in the app folder; the Pages Router lives in pages."
+          }
+        },
+        {
+          "id": "next-q03",
+          "question": {
+            "ar": "فولدر app/about مفيهوش page.tsx. حالته إيه؟",
+            "en": "A folder app/about has no page.tsx inside. What is it?"
+          },
+          "options": [
+            {
+              "ar": "مش متاح كـ route",
+              "en": "Not reachable as a route"
+            },
+            {
+              "ar": "متاح على /about",
+              "en": "Available at /about"
+            },
+            {
+              "ar": "Error في الـ build",
+              "en": "A build error"
+            },
+            {
+              "ar": "بيتحول لـ /",
+              "en": "Redirected to /"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الفولدرات والملفات بتحدد الـ URLs.",
+            "en": "Folders and files define the URLs."
+          }
+        },
+        {
+          "id": "next-q04",
+          "question": {
+            "ar": "أنهي ملف بيحافظ على الـ state وانت بتتنقل بين المسارات اللي جواه؟",
+            "en": "Which file keeps its state while navigating between its child routes?"
+          },
+          "options": [
+            {
+              "ar": "layout",
+              "en": "layout"
+            },
+            {
+              "ar": "template",
+              "en": "template"
+            },
+            {
+              "ar": "page",
+              "en": "page"
+            },
+            {
+              "ar": "loading",
+              "en": "loading"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "page محتوى المسار، layout غلاف ثابت، template غلاف بيتعمل من جديد.",
+            "en": "page is the route's content, layout is a persistent wrapper, and template is a wrapper that is recreated."
+          }
+        },
+        {
+          "id": "next-q05",
+          "question": {
+            "ar": "ملف error.tsx لازم يكون إيه؟",
+            "en": "What must error.tsx be?"
+          },
+          "options": [
+            {
+              "ar": "Client Component",
+              "en": "Client Component"
+            },
+            {
+              "ar": "Server Component",
+              "en": "Server Component"
+            },
+            {
+              "ar": "Route Handler",
+              "en": "Route Handler"
+            },
+            {
+              "ar": "Layout",
+              "en": "Layout"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "لأنه Error Boundary.",
+            "en": "Because it is an Error Boundary."
+          }
+        },
+        {
+          "id": "next-q06",
+          "question": {
+            "ar": "أنهي segment بيطابق كمان المسار من غير أي أجزاء زيادة؟",
+            "en": "Which segment also matches the route with no extra parts?"
+          },
+          "options": [
+            {
+              "ar": "[[...slug]]",
+              "en": "[[...slug]]"
+            },
+            {
+              "ar": "[...slug]",
+              "en": "[...slug]"
+            },
+            {
+              "ar": "[slug]",
+              "en": "[slug]"
+            },
+            {
+              "ar": "(slug)",
+              "en": "(slug)"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "[id] جزء متغير، [...slug] أكتر من جزء، [[...slug]] اختياري.",
+            "en": "[id] is one dynamic segment, [...slug] matches several, and [[...slug]] is optional."
+          }
+        },
+        {
+          "id": "next-q07",
+          "question": {
+            "ar": "app/(shop)/cart/page.tsx بيظهر على أنهي URL؟",
+            "en": "Which URL serves app/(shop)/cart/page.tsx?"
+          },
+          "options": [
+            {
+              "ar": "/cart",
+              "en": "/cart"
+            },
+            {
+              "ar": "/shop/cart",
+              "en": "/shop/cart"
+            },
+            {
+              "ar": "/(shop)/cart",
+              "en": "/(shop)/cart"
+            },
+            {
+              "ar": "مش متاح",
+              "en": "It is not served"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "(name) للتنظيم من غير ما يظهر في الـ URL، و _name بره الـ routing.",
+            "en": "(name) organises routes without appearing in the URL, and _name is excluded from routing."
+          }
+        },
+        {
+          "id": "next-q08",
+          "question": {
+            "ar": "<Link> بيعمل prefetch إمتى في الـ production؟",
+            "en": "When does <Link> prefetch in production?"
+          },
+          "options": [
+            {
+              "ar": "لما اللينك يظهر على الشاشة",
+              "en": "When the link enters the viewport"
+            },
+            {
+              "ar": "بعد الضغط بس",
+              "en": "Only after the click"
+            },
+            {
+              "ar": "أبدًا",
+              "en": "Never"
+            },
+            {
+              "ar": "وقت الـ build لكل لينك",
+              "en": "At build time for every link"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "<Link> بيتنقل من غير reload كامل.",
+            "en": "<Link> navigates without a full page reload."
+          }
+        },
+        {
+          "id": "next-q09",
+          "question": {
+            "ar": "أنهي واحد بيحدث الصفحات الثابتة من غير build كامل؟",
+            "en": "Which one updates static pages without a full rebuild?"
+          },
+          "options": [
+            {
+              "ar": "ISR",
+              "en": "ISR"
+            },
+            {
+              "ar": "SSG",
+              "en": "SSG"
+            },
+            {
+              "ar": "CSR",
+              "en": "CSR"
+            },
+            {
+              "ar": "SSR",
+              "en": "SSR"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "في المتصفح، مع كل طلب، وقت الـ build، أو static بيتجدد.",
+            "en": "In the browser, on every request, at build time, or static that refreshes."
+          }
+        },
+        {
+          "id": "next-q10",
+          "question": {
+            "ar": "الـ components في فولدر app بتكون افتراضيًا إيه؟",
+            "en": "What are components in the app folder by default?"
           },
           "options": [
             {
@@ -6762,55 +7674,385 @@
               "en": "Client Components"
             },
             {
-              "ar": "Static HTML only",
+              "ar": "HTML ثابت بس",
               "en": "Static HTML only"
             },
             {
-              "ar": "Pages Router",
-              "en": "Pages Router"
+              "ar": "Pages Router components",
+              "en": "Pages Router components"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "إلا لو كتبت 'use client'.",
-            "en": "Unless marked 'use client'."
+            "ar": "Server هو الافتراضي في App Router، و Client للتفاعل.",
+            "en": "Server Components are the default in the App Router; Client Components are for interactivity."
           }
         },
         {
-          "id": "next-q2",
+          "id": "next-q11",
           "question": {
-            "ar": "تستخدم useState محتاج؟",
-            "en": "Using useState requires?"
+            "ar": "أحسن مكان تحط فيه \"use client\"؟",
+            "en": "Where is the best place for \"use client\"?"
           },
           "options": [
             {
-              "ar": "'use client'",
-              "en": "'use client'"
+              "ar": "أصغر component محتاج تفاعل",
+              "en": "The smallest component that needs interactivity"
             },
             {
-              "ar": "'use server'",
-              "en": "'use server'"
+              "ar": "الـ root layout",
+              "en": "The root layout"
             },
             {
-              "ar": "'use cache'",
-              "en": "'use cache'"
+              "ar": "كل الملفات",
+              "en": "Every file"
             },
             {
-              "ar": "proxy.ts",
-              "en": "proxy.ts"
+              "ar": "next.config.js",
+              "en": "next.config.js"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "الـ state في المتصفح.",
-            "en": "State lives in the client."
+            "ar": "بتحدد بداية الجزء اللي بيروح للمتصفح.",
+            "en": "It marks where the part that ships to the browser begins."
           }
         },
         {
-          "id": "next-q3",
+          "id": "next-q12",
           "question": {
-            "ar": "بديل middleware.ts في Next 16؟",
-            "en": "Next 16 replacement for middleware.ts?"
+            "ar": "أنهي واحد من أشهر أسباب الـ Hydration Error؟",
+            "en": "Which is a common cause of a hydration error?"
+          },
+          "options": [
+            {
+              "ar": "استخدام Math.random() وقت الرسم",
+              "en": "Calling Math.random() during render"
+            },
+            {
+              "ar": "استخدام useState",
+              "en": "Using useState"
+            },
+            {
+              "ar": "استخدام next/image",
+              "en": "Using next/image"
+            },
+            {
+              "ar": "استخدام layout",
+              "en": "Using a layout"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "ربط الـ HTML الجاهز بـ React، والـ Error لما الناتج يختلف.",
+            "en": "Attaching React to ready-made HTML; the error appears when the output differs."
+          }
+        },
+        {
+          "id": "next-q13",
+          "question": {
+            "ar": "وقت ما <Reviews /> بيحمل جوه Suspense، المستخدم بيشوف إيه؟",
+            "en": "While <Reviews /> loads inside Suspense, what does the user see?"
+          },
+          "options": [
+            {
+              "ar": "الـ fallback وباقي الصفحة ظاهر",
+              "en": "The fallback, with the rest of the page visible"
+            },
+            {
+              "ar": "صفحة فاضية",
+              "en": "A blank page"
+            },
+            {
+              "ar": "ولا حاجة لحد ما كله يحمل",
+              "en": "Nothing until everything loads"
+            },
+            {
+              "ar": "Error",
+              "en": "An error"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "إرسال الصفحة على أجزاء أول ما تجهز.",
+            "en": "Sending the page in pieces as soon as each one is ready."
+          }
+        },
+        {
+          "id": "next-q14",
+          "question": {
+            "ar": "أنهي استدعاء بيحتاج rendering وقت الطلب؟",
+            "en": "Which call requires request-time rendering?"
+          },
+          "options": [
+            {
+              "ar": "cookies()",
+              "en": "cookies()"
+            },
+            {
+              "ar": "generateStaticParams()",
+              "en": "generateStaticParams()"
+            },
+            {
+              "ar": "cacheTag()",
+              "en": "cacheTag()"
+            },
+            {
+              "ar": "cacheLife()",
+              "en": "cacheLife()"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Static بيتجهز مسبقًا، و Dynamic وقت الطلب.",
+            "en": "Static is prepared ahead of time; dynamic is rendered at request time."
+          }
+        },
+        {
+          "id": "next-q15",
+          "question": {
+            "ar": "في PPR إيه اللي بيتبعت الأول؟",
+            "en": "In PPR, what is sent first?"
+          },
+          "options": [
+            {
+              "ar": "الـ shell الثابت",
+              "en": "The static shell"
+            },
+            {
+              "ar": "الأجزاء الديناميكية",
+              "en": "The dynamic parts"
+            },
+            {
+              "ar": "JavaScript بس",
+              "en": "Only JavaScript"
+            },
+            {
+              "ar": "ولا حاجة لحد ما كل البيانات تجهز",
+              "en": "Nothing until all data is ready"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "صفحة واحدة فيها جزء static وجزء dynamic.",
+            "en": "A single page with a static part and a dynamic part."
+          }
+        },
+        {
+          "id": "next-q16",
+          "question": {
+            "ar": "في Pages Router، أنهي دالة بتتنفذ مع كل طلب؟",
+            "en": "In the Pages Router, which function runs on every request?"
+          },
+          "options": [
+            {
+              "ar": "getServerSideProps",
+              "en": "getServerSideProps"
+            },
+            {
+              "ar": "getStaticProps",
+              "en": "getStaticProps"
+            },
+            {
+              "ar": "generateStaticParams",
+              "en": "generateStaticParams"
+            },
+            {
+              "ar": "getStaticPaths",
+              "en": "getStaticPaths"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "App Router: await جوه Server Component. Pages: دوال مخصصة.",
+            "en": "App Router: await inside a Server Component. Pages Router: dedicated functions."
+          }
+        },
+        {
+          "id": "next-q17",
+          "question": {
+            "ar": "أنهي دالة بتدي اسم للبيانات المتخزنة عشان تلغيها بعدين؟",
+            "en": "Which function names cached data so you can invalidate it later?"
+          },
+          "options": [
+            {
+              "ar": "cacheTag",
+              "en": "cacheTag"
+            },
+            {
+              "ar": "cacheLife",
+              "en": "cacheLife"
+            },
+            {
+              "ar": "\"use cache\"",
+              "en": "\"use cache\""
+            },
+            {
+              "ar": "revalidatePath",
+              "en": "revalidatePath"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ caching بقى اختياري وصريح باستخدام \"use cache\".",
+            "en": "Caching is now opt-in and explicit with \"use cache\"."
+          }
+        },
+        {
+          "id": "next-q18",
+          "question": {
+            "ar": "المستخدم لازم يشوف التعديل بتاعه فورًا. تستخدم إيه؟",
+            "en": "The user must see their own edit immediately. Which do you use?"
+          },
+          "options": [
+            {
+              "ar": "updateTag",
+              "en": "updateTag"
+            },
+            {
+              "ar": "revalidateTag",
+              "en": "revalidateTag"
+            },
+            {
+              "ar": "revalidatePath",
+              "en": "revalidatePath"
+            },
+            {
+              "ar": "cacheLife",
+              "en": "cacheLife"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الأولى بالمسار، والتانية بالـ tag، والتالتة تحديث فوري بالـ tag.",
+            "en": "The first works by path, the second by tag, and the third is an immediate update by tag."
+          }
+        },
+        {
+          "id": "next-q19",
+          "question": {
+            "ar": "تتعامل مع الـ Server Action إزاي من ناحية الأمان؟",
+            "en": "How should you treat a Server Action from a security point of view?"
+          },
+          "options": [
+            {
+              "ar": "كـ public endpoint: تتحقق من المستخدم والمدخلات",
+              "en": "As a public endpoint: authenticate and validate"
+            },
+            {
+              "ar": "كود خاص محدش يقدر يناديه",
+              "en": "As private code no one else can call"
+            },
+            {
+              "ar": "الفورم بيأمنها لوحده",
+              "en": "The form secures it automatically"
+            },
+            {
+              "ar": "validation في المتصفح بس",
+              "en": "Validate in the browser only"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "دوال بتتنفذ على السيرفر وتتنادى من الواجهة.",
+            "en": "Functions that run on the server and are called from the UI."
+          }
+        },
+        {
+          "id": "next-q20",
+          "question": {
+            "ar": "عندك اتنين await مستقلين ورا بعض. الحل؟",
+            "en": "You have two independent awaits one after another. The fix?"
+          },
+          "options": [
+            {
+              "ar": "Promise.all",
+              "en": "Promise.all"
+            },
+            {
+              "ar": "await زيادة",
+              "en": "Another await"
+            },
+            {
+              "ar": "useEffect",
+              "en": "useEffect"
+            },
+            {
+              "ar": "setTimeout",
+              "en": "setTimeout"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "شغل الطلبات المستقلة بالتوازي.",
+            "en": "Run independent requests in parallel."
+          }
+        },
+        {
+          "id": "next-q21",
+          "question": {
+            "ar": "generateStaticParams بديل لأنهي دالة في Pages Router؟",
+            "en": "generateStaticParams replaces which Pages Router function?"
+          },
+          "options": [
+            {
+              "ar": "getStaticPaths",
+              "en": "getStaticPaths"
+            },
+            {
+              "ar": "getStaticProps",
+              "en": "getStaticProps"
+            },
+            {
+              "ar": "getServerSideProps",
+              "en": "getServerSideProps"
+            },
+            {
+              "ar": "getInitialProps",
+              "en": "getInitialProps"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بتحدد الـ dynamic routes اللي تتبني مسبقًا.",
+            "en": "It decides which dynamic routes are prebuilt."
+          }
+        },
+        {
+          "id": "next-q22",
+          "question": {
+            "ar": "webhook جاي من Stripe المفروض يكون إيه؟",
+            "en": "What should a Stripe webhook be?"
+          },
+          "options": [
+            {
+              "ar": "Route Handler",
+              "en": "Route Handler"
+            },
+            {
+              "ar": "Server Action",
+              "en": "Server Action"
+            },
+            {
+              "ar": "Client Component",
+              "en": "Client Component"
+            },
+            {
+              "ar": "Layout",
+              "en": "Layout"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Handlers لـ APIs عامة، و Actions لتعديلات من الواجهة.",
+            "en": "Handlers are for public APIs; Actions are for mutations from the UI."
+          }
+        },
+        {
+          "id": "next-q23",
+          "question": {
+            "ar": "في Next.js 16 اسم middleware.ts بقى إيه؟",
+            "en": "In Next.js 16, middleware.ts was renamed to?"
           },
           "options": [
             {
@@ -6832,158 +8074,218 @@
           ],
           "answer": 0,
           "explanation": {
-            "ar": "الاسم اتغير لتوضيح دوره.",
-            "en": "Renamed to clarify its role."
+            "ar": "كود بيتنفذ قبل ما الطلب يوصل للـ route.",
+            "en": "Code that runs before a request reaches the route."
           }
         },
         {
-          "id": "next-q4",
+          "id": "next-q24",
           "question": {
-            "ar": "متغير env يظهر في المتصفح لو بدأ بـ؟",
-            "en": "Env vars exposed to the browser start with?"
+            "ar": "فحص الصلاحيات المفروض يكون فين؟",
+            "en": "Where should permission checks live?"
           },
           "options": [
             {
-              "ar": "NEXT_PUBLIC_",
-              "en": "NEXT_PUBLIC_"
+              "ar": "قريب من البيانات: الـ DAL والـ Actions والـ Handlers",
+              "en": "Close to the data: the DAL, Actions and Handlers"
             },
             {
-              "ar": "PUBLIC_",
-              "en": "PUBLIC_"
+              "ar": "في الـ proxy بس",
+              "en": "Only in the proxy"
             },
             {
-              "ar": "NEXT_",
-              "en": "NEXT_"
+              "ar": "في الواجهة بس",
+              "en": "Only in the UI"
             },
             {
-              "ar": "CLIENT_",
-              "en": "CLIENT_"
+              "ar": "في localStorage",
+              "en": "In localStorage"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "متحطش فيه أسرار.",
-            "en": "Never put secrets there."
+            "ar": "الأولى إنت مين، والتانية مسموحلك بإيه.",
+            "en": "The first is who you are; the second is what you are allowed to do."
           }
         },
         {
-          "id": "next-q5",
+          "id": "next-q25",
           "question": {
-            "ar": "ملف الـ API في App Router؟",
-            "en": "API file in App Router?"
+            "ar": "باسورد قاعدة البيانات يتحط فين؟",
+            "en": "Where should the database password go?"
           },
           "options": [
             {
-              "ar": "route.ts",
-              "en": "route.ts"
+              "ar": "متغير عادي زي DATABASE_URL",
+              "en": "A regular variable such as DATABASE_URL"
             },
             {
-              "ar": "api.ts",
-              "en": "api.ts"
+              "ar": "NEXT_PUBLIC_DATABASE_URL",
+              "en": "NEXT_PUBLIC_DATABASE_URL"
             },
             {
-              "ar": "page.ts",
-              "en": "page.ts"
+              "ar": "جوه Client Component",
+              "en": "Inside a Client Component"
             },
             {
-              "ar": "handler.ts",
-              "en": "handler.ts"
+              "ar": "localStorage",
+              "en": "localStorage"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "يصدر GET و POST.",
-            "en": "It exports GET, POST and more."
+            "ar": "اللي بتبدأ بيه بتظهر للمتصفح.",
+            "en": "Variables that start with it are exposed to the browser."
           }
         },
         {
-          "id": "next-q6",
+          "id": "next-q26",
           "question": {
-            "ar": "ملف error.tsx لازم يكون؟",
-            "en": "error.tsx must be?"
+            "ar": "صورة الـ hero في أول الصفحة تستخدم معاها إيه؟",
+            "en": "What should the hero image at the top of the page use?"
           },
           "options": [
             {
-              "ar": "Client Component",
-              "en": "Client Component"
+              "ar": "preload",
+              "en": "preload"
             },
             {
-              "ar": "Server Component",
-              "en": "Server Component"
+              "ar": "loading=\"lazy\"",
+              "en": "loading=\"lazy\""
             },
             {
-              "ar": "Route Handler",
-              "en": "Route Handler"
+              "ar": "unoptimized",
+              "en": "unoptimized"
             },
             {
-              "ar": "Static",
-              "en": "Static"
+              "ar": "decoding=\"async\"",
+              "en": "decoding=\"async\""
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "لأنه error boundary.",
-            "en": "It is an error boundary."
+            "ar": "بيحسن الحجم والصيغة والتحميل.",
+            "en": "It optimises image size, format and loading."
           }
         },
         {
-          "id": "next-q7",
+          "id": "next-q27",
           "question": {
-            "ar": "توليد صفحات ديناميك وقت البناء؟",
-            "en": "Prerender dynamic routes at build?"
+            "ar": "أنهي strategy في next/script بتحمل السكريبت وقت فراغ المتصفح؟",
+            "en": "Which next/script strategy loads the script when the browser is idle?"
           },
           "options": [
             {
-              "ar": "generateStaticParams",
-              "en": "generateStaticParams"
+              "ar": "lazyOnload",
+              "en": "lazyOnload"
             },
             {
-              "ar": "getInitialProps",
-              "en": "getInitialProps"
+              "ar": "afterInteractive",
+              "en": "afterInteractive"
             },
             {
-              "ar": "useRouter",
-              "en": "useRouter"
+              "ar": "beforeInteractive",
+              "en": "beforeInteractive"
             },
             {
-              "ar": "generateRoutes",
-              "en": "generateRoutes"
+              "ar": "eager",
+              "en": "eager"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "بترجع قيم الـ params.",
-            "en": "It returns the param values."
+            "ar": "تحسين تحميل الخطوط والسكريبتات.",
+            "en": "Optimised loading for fonts and scripts."
           }
         },
         {
-          "id": "next-q8",
+          "id": "next-q28",
           "question": {
-            "ar": "تحديث الكاش فوراً داخل Server Action؟",
-            "en": "Immediate cache update in a Server Action?"
+            "ar": "عشان عنوان الصفحة يتغير حسب الـ slug تستخدم إيه؟",
+            "en": "To set a page title based on the post slug, use?"
           },
           "options": [
             {
-              "ar": "updateTag",
-              "en": "updateTag"
+              "ar": "generateMetadata",
+              "en": "generateMetadata"
             },
             {
-              "ar": "cacheTag",
-              "en": "cacheTag"
+              "ar": "export const metadata",
+              "en": "export const metadata"
             },
             {
-              "ar": "cacheLife",
-              "en": "cacheLife"
+              "ar": "next/head",
+              "en": "next/head"
             },
             {
-              "ar": "useRouter",
-              "en": "useRouter"
+              "ar": "document.title",
+              "en": "document.title"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "read-your-writes.",
-            "en": "Provides read-your-writes."
+            "ar": "metadata ثابتة أو generateMetadata ديناميكية.",
+            "en": "Static metadata, or dynamic generateMetadata."
+          }
+        },
+        {
+          "id": "next-q29",
+          "question": {
+            "ar": "Turbopack مكتوب بأنهي لغة؟",
+            "en": "Which language is Turbopack written in?"
+          },
+          "options": [
+            {
+              "ar": "Rust",
+              "en": "Rust"
+            },
+            {
+              "ar": "Go",
+              "en": "Go"
+            },
+            {
+              "ar": "C++",
+              "en": "C++"
+            },
+            {
+              "ar": "JavaScript",
+              "en": "JavaScript"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Turbopack هو الـ bundler الافتراضي من Next.js 16 ومكتوب بـ Rust.",
+            "en": "Turbopack is the default bundler since Next.js 16, and it is written in Rust."
+          }
+        },
+        {
+          "id": "next-q30",
+          "question": {
+            "ar": "بتخسر إيه لما تستخدم output: \"export\"؟",
+            "en": "What do you lose with output: \"export\"?"
+          },
+          "options": [
+            {
+              "ar": "SSR و Server Actions و Proxy",
+              "en": "SSR, Server Actions and the proxy"
+            },
+            {
+              "ar": "الصفحات الثابتة",
+              "en": "Static pages"
+            },
+            {
+              "ar": "الـ CSS",
+              "en": "CSS"
+            },
+            {
+              "ar": "الصور خالص",
+              "en": "Images entirely"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Vercel، أو Node.js server، أو Docker، أو Static Export.",
+            "en": "Vercel, a Node.js server, Docker, or a static export."
           }
         }
       ]
