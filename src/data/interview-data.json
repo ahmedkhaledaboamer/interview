@@ -5164,14 +5164,44 @@
           "points": {
             "ar": [
               "المتصفح مبيفهمهاش، فأداة زي Babel أو SWC بتحولها لاستدعاءات JavaScript بتنتج React elements.",
-              "بنكتب className بدل class، والـ expressions جوه {}."
+              "بنكتب className بدل class، والـ expressions جوه {}.",
+              "مع الـ JSX transform الحديث الكود بيتحول لاستدعاء jsx() من react/jsx-runtime، وزمان كان React.createElement()."
             ],
             "en": [
               "Browsers do not understand it, so a tool such as Babel or SWC turns it into JavaScript calls that produce React elements.",
-              "You write className instead of class, and expressions go inside {}."
+              "You write className instead of class, and expressions go inside {}.",
+              "With the modern JSX transform, code compiles to jsx() calls from react/jsx-runtime; it used to be React.createElement()."
             ]
           },
-          "code": ""
+          "code": "<h1 className=\"greeting\">Hello</h1>\n\n// compiles to roughly\nimport { jsx } from \"react/jsx-runtime\";\njsx(\"h1\", { className: \"greeting\", children: \"Hello\" });"
+        },
+        {
+          "id": "react-l41",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "JSX بيحمي من XSS إزاي؟",
+            "en": "How does JSX protect against injection attacks (XSS)?"
+          },
+          "short": {
+            "ar": "أي قيمة جوه {} بتتعرض كنص، مش HTML.",
+            "en": "Any value inside {} is rendered as text, not as HTML."
+          },
+          "points": {
+            "ar": [
+              "لو المستخدم كتب <script>، هيظهر كنص ومش هيتنفذ.",
+              "dangerouslySetInnerHTML بيلغي الحماية دي، فاستخدمه بس مع محتوى موثوق وبعد sanitize بمكتبة زي DOMPurify.",
+              "خلي بالك كمان من روابط href اللي بتبدأ بـ javascript:."
+            ],
+            "en": [
+              "If a user types <script>, it shows as text and never runs.",
+              "dangerouslySetInnerHTML turns this protection off, so use it only with trusted content sanitized by a library such as DOMPurify.",
+              "Also watch out for href values that start with javascript:."
+            ]
+          },
+          "code": "const content = \"<script>alert('XSS')</script>\";\n<div>{content}</div> // shown as plain text\n\n// only with trusted, sanitized HTML\n<div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(html) }} />"
         },
         {
           "id": "react-l03",
@@ -5189,10 +5219,12 @@
           },
           "points": {
             "ar": [
-              "لما الـ state تتغير، React بتبني شجرة جديدة وتقارنها بالقديمة وتعدل في الـ DOM الحقيقي الأجزاء اللي اتغيرت بس."
+              "لما الـ state تتغير، React بتبني شجرة جديدة وتقارنها بالقديمة وتعدل في الـ DOM الحقيقي الأجزاء اللي اتغيرت بس.",
+              "الـ Real DOM هو شجرة الصفحة الحقيقية في المتصفح، والـ Shadow DOM حاجة تانية خالص: ميزة في المتصفح بتعزل الـ DOM والـ CSS بتاع Web Component."
             ],
             "en": [
-              "When state changes, React builds a new tree, compares it with the old one, and updates only the changed parts of the real DOM."
+              "When state changes, React builds a new tree, compares it with the old one, and updates only the changed parts of the real DOM.",
+              "The real DOM is the browser's actual page tree, while the Shadow DOM is something else entirely: a browser feature that isolates the DOM and CSS of a Web Component."
             ]
           },
           "code": ""
@@ -5316,14 +5348,16 @@
           "points": {
             "ar": [
               "لازم تكون ثابتة وفريدة بين الإخوة.",
-              "الـ index بيعمل مشاكل لو العناصر اتمسحت أو اترتبت، فالـ state ممكن تلزق في عنصر غلط."
+              "الـ index بيعمل مشاكل لو العناصر اتمسحت أو اترتبت، فالـ state ممكن تلزق في عنصر غلط.",
+              "الـ key مش للـ lists بس: لما تغيره React بتشيل الـ component وتعمله من جديد بـ state فاضية، وده مفيد لإعادة تعيين فورم لمستخدم مختلف. بس متستخدموش عشان تجبر re-render كل شوية."
             ],
             "en": [
               "It must be stable and unique among siblings.",
-              "Using the index breaks when items are removed or reordered, and state can end up attached to the wrong item."
+              "Using the index breaks when items are removed or reordered, and state can end up attached to the wrong item.",
+              "Keys are not only for lists: changing a key makes React remount the component with fresh state, which helps reset a form for a different user. Do not use it to force constant re-renders."
             ]
           },
-          "code": ""
+          "code": "{todos.map(todo => <li key={todo.id}>{todo.text}</li>)}\n\n// reset all state when the user changes\n<ProfileForm key={userId} userId={userId} />"
         },
         {
           "id": "react-l09",
@@ -5428,6 +5462,64 @@
           "code": "function Card({ children }) {\n  return <div className=\"card\">{children}</div>;\n}\n<><h1 /><p /></>\n\n// Fragment with a key inside a list\nitems.map(item => (\n  <Fragment key={item.id}>\n    <li>{item.name}</li>\n    <li>{item.description}</li>\n  </Fragment>\n));"
         },
         {
+          "id": "react-l42",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "طرق الـ Styling في React؟",
+            "en": "How can you style React components?"
+          },
+          "short": {
+            "ar": "CSS عادي، أو CSS Modules، أو inline styles، أو CSS-in-JS، أو utility classes زي Tailwind.",
+            "en": "Plain CSS, CSS Modules, inline styles, CSS-in-JS, or utility classes such as Tailwind."
+          },
+          "points": {
+            "ar": [
+              "ملفات CSS العادية سهلة، بس الأسماء ممكن تتعارض في المشاريع الكبيرة.",
+              "CSS Modules بتعزل الـ classes لكل component.",
+              "الـ inline styles بتتكتب object بـ camelCase ومبتدعمش :hover ولا media queries.",
+              "CSS-in-JS زي styled-components بيغير الـ style حسب الـ props، و Tailwind بيستخدم utility classes جاهزة."
+            ],
+            "en": [
+              "Plain CSS files are simple, but class names can clash in large projects.",
+              "CSS Modules scope classes to each component.",
+              "Inline styles are camelCase objects and cannot do :hover or media queries.",
+              "CSS-in-JS such as styled-components changes styles from props, and Tailwind uses ready utility classes."
+            ]
+          },
+          "code": "import styles from './Button.module.css';\n\n<button className={styles.button}>Save</button>\n<button style={{ backgroundColor: 'blue', color: 'white' }}>Save</button>"
+        },
+        {
+          "id": "react-l43",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "يعني إيه Synthetic Events؟",
+            "en": "What are synthetic events?"
+          },
+          "short": {
+            "ar": "wrapper من React حوالين أحداث المتصفح بواجهة موحدة.",
+            "en": "React's cross-browser wrapper around native browser events."
+          },
+          "points": {
+            "ar": [
+              "ليها نفس الواجهة زي preventDefault و stopPropagation في كل المتصفحات.",
+              "React بتستخدم event delegation وبتحط الـ listeners على الـ root.",
+              "الأسماء camelCase زي onClick، وبتمرر دالة مش نص، والحدث الأصلي موجود في e.nativeEvent."
+            ],
+            "en": [
+              "They expose the same interface, such as preventDefault and stopPropagation, in every browser.",
+              "React uses event delegation and attaches listeners at the root.",
+              "Names are camelCase like onClick, you pass a function rather than a string, and the native event is in e.nativeEvent."
+            ]
+          },
+          "code": "function Link() {\n  const handleClick = (e) => {\n    e.preventDefault();\n    console.log('clicked');\n  };\n  return <a href=\"/\" onClick={handleClick}>Click me</a>;\n}"
+        },
+        {
           "id": "react-l13",
           "section": {
             "ar": "Hooks",
@@ -5444,11 +5536,13 @@
           "points": {
             "ar": [
               "تتنادى في أعلى مستوى بس (مش جوه شروط أو loops)، ومن component أو custom hook بس، لأن React بتعتمد على ترتيب الاستدعاء.",
-              "الاستثناء هو use اللي ينفع في شرط."
+              "الاستثناء هو use اللي ينفع في شرط.",
+              "اسم أي hook، حتى الـ custom، لازم يبدأ بـ use عشان React والـ linter يعرفوه."
             ],
             "en": [
               "Call them only at the top level (not inside conditions or loops), and only from a component or a custom hook, because React relies on call order.",
-              "The exception is use, which can be called inside a condition."
+              "The exception is use, which can be called inside a condition.",
+              "Every hook name, including custom hooks, must start with use so React and the linter can recognise it."
             ]
           },
           "code": ""
@@ -5534,6 +5628,34 @@
             ]
           },
           "code": "useEffect(() => {\n  const id = setInterval(tick, 1000);\n  return () => clearInterval(id);\n}, []);"
+        },
+        {
+          "id": "react-l44",
+          "section": {
+            "ar": "Hooks",
+            "en": "Hooks"
+          },
+          "title": {
+            "ar": "إزاي تعمل الـ Lifecycle Methods في الـ Functional Components؟",
+            "en": "How do you handle lifecycle methods in functional components?"
+          },
+          "short": {
+            "ar": "بـ useEffect: الـ dependencies بتحدد إمتى يشتغل، والـ cleanup بيقوم بدور الـ unmount.",
+            "en": "With useEffect: the dependencies decide when it runs, and the cleanup replaces unmount."
+          },
+          "points": {
+            "ar": [
+              "componentDidMount: الـ useEffect مع [].",
+              "componentDidUpdate: الـ useEffect مع الـ dependencies، وخلي بالك إنه بيشتغل في الـ mount كمان.",
+              "componentWillUnmount: الدالة اللي بترجعها من الـ effect."
+            ],
+            "en": [
+              "componentDidMount: useEffect with [].",
+              "componentDidUpdate: useEffect with dependencies; note that it also runs on mount.",
+              "componentWillUnmount: the function returned from the effect."
+            ]
+          },
+          "code": "useEffect(() => {\n  console.log('mounted');\n  return () => console.log('unmounted');\n}, []);\n\nuseEffect(() => {\n  console.log('userId changed');\n}, [userId]);"
         },
         {
           "id": "react-l17",
@@ -5779,10 +5901,12 @@
           },
           "points": {
             "ar": [
-              "استخدم React DevTools Profiler، وخلي الـ state قريبة من مكان استخدامها، واعمل memoization عند الحاجة، و code splitting، و virtualization للقوايم الطويلة."
+              "استخدم React DevTools Profiler، وخلي الـ state قريبة من مكان استخدامها، واعمل memoization عند الحاجة، و code splitting، و virtualization للقوايم الطويلة.",
+              "استخدم debounce أو throttle مع المدخلات زي البحث عشان تقلل الحسابات وطلبات الـ API."
             ],
             "en": [
-              "Use the React DevTools Profiler, keep state close to where it is used, memoize when needed, split code, and virtualize long lists."
+              "Use the React DevTools Profiler, keep state close to where it is used, memoize when needed, split code, and virtualize long lists.",
+              "Debounce or throttle inputs such as search boxes to cut calculations and API calls."
             ]
           },
           "code": ""
@@ -5904,11 +6028,13 @@
           "points": {
             "ar": [
               "بيكرر الـ render، وبيعمل setup ثم cleanup ثم setup للـ effects عشان يكشف الـ cleanup الناقص والكود غير الـ pure.",
-              "مبيأثرش على الـ production."
+              "مبيأثرش على الـ production.",
+              "كمان بيعيد تشغيل الـ ref callbacks مرة زيادة، وبيحذر من استخدام APIs قديمة. وتقدر تحطه على جزء من التطبيق بس."
             ],
             "en": [
               "It renders twice and runs effects setup, cleanup, then setup again to expose missing cleanups and impure code.",
-              "It has no effect in production."
+              "It has no effect in production.",
+              "It also re-runs ref callbacks an extra time and warns about deprecated APIs. You can apply it to just part of the app."
             ]
           },
           "code": ""
@@ -5965,7 +6091,7 @@
               "They do not catch errors in event handlers or ordinary async code."
             ]
           },
-          "code": ""
+          "code": "class ErrorBoundary extends React.Component {\n  state = { hasError: false };\n  static getDerivedStateFromError() {\n    return { hasError: true };\n  }\n  render() {\n    return this.state.hasError ? <Fallback /> : this.props.children;\n  }\n}\n\n// or with the react-error-boundary package\n<ErrorBoundary FallbackComponent={Fallback}>\n  <Dashboard />\n</ErrorBoundary>"
         },
         {
           "id": "react-l34",
@@ -7359,6 +7485,126 @@
           "explanation": {
             "ar": "Actions و hooks جديدة للفورمز والبيانات.",
             "en": "Actions and new hooks for forms and data."
+          }
+        },
+        {
+          "id": "react-q41",
+          "question": {
+            "ar": "أنهي prop بتلغي حماية React من XSS؟",
+            "en": "Which prop bypasses React's XSS protection?"
+          },
+          "options": [
+            {
+              "ar": "dangerouslySetInnerHTML",
+              "en": "dangerouslySetInnerHTML"
+            },
+            {
+              "ar": "className",
+              "en": "className"
+            },
+            {
+              "ar": "key",
+              "en": "key"
+            },
+            {
+              "ar": "children",
+              "en": "children"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "أي قيمة جوه {} بتتعرض كنص، مش HTML.",
+            "en": "Any value inside {} is rendered as text, not as HTML."
+          }
+        },
+        {
+          "id": "react-q42",
+          "question": {
+            "ar": "أنهي طريقة مبتقدرش تعمل :hover مباشرة؟",
+            "en": "Which approach cannot style :hover directly?"
+          },
+          "options": [
+            {
+              "ar": "Inline styles",
+              "en": "Inline styles"
+            },
+            {
+              "ar": "CSS Modules",
+              "en": "CSS Modules"
+            },
+            {
+              "ar": "ملف CSS عادي",
+              "en": "A plain CSS file"
+            },
+            {
+              "ar": "styled-components",
+              "en": "styled-components"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "CSS عادي، أو CSS Modules، أو inline styles، أو CSS-in-JS، أو utility classes زي Tailwind.",
+            "en": "Plain CSS, CSS Modules, inline styles, CSS-in-JS, or utility classes such as Tailwind."
+          }
+        },
+        {
+          "id": "react-q43",
+          "question": {
+            "ar": "إزاي توصل للحدث الأصلي بتاع المتصفح؟",
+            "en": "How do you reach the underlying native browser event?"
+          },
+          "options": [
+            {
+              "ar": "e.nativeEvent",
+              "en": "e.nativeEvent"
+            },
+            {
+              "ar": "e.target.event",
+              "en": "e.target.event"
+            },
+            {
+              "ar": "window.event",
+              "en": "window.event"
+            },
+            {
+              "ar": "e.original",
+              "en": "e.original"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "wrapper من React حوالين أحداث المتصفح بواجهة موحدة.",
+            "en": "React's cross-browser wrapper around native browser events."
+          }
+        },
+        {
+          "id": "react-q44",
+          "question": {
+            "ar": "أنهي جزء في useEffect بيقابل componentWillUnmount؟",
+            "en": "Which part of useEffect corresponds to componentWillUnmount?"
+          },
+          "options": [
+            {
+              "ar": "الدالة اللي بترجعها من الـ effect",
+              "en": "The function returned from the effect"
+            },
+            {
+              "ar": "الـ dependency array",
+              "en": "The dependency array"
+            },
+            {
+              "ar": "أول سطر في الـ effect",
+              "en": "The first line of the effect"
+            },
+            {
+              "ar": "useLayoutEffect",
+              "en": "useLayoutEffect"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بـ useEffect: الـ dependencies بتحدد إمتى يشتغل، والـ cleanup بيقوم بدور الـ unmount.",
+            "en": "With useEffect: the dependencies decide when it runs, and the cleanup replaces unmount."
           }
         }
       ]
