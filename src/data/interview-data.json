@@ -14121,140 +14121,1240 @@
       },
       "lessons": [
         {
-          "id": "laravel-l1",
+          "id": "laravel-l01",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ MVC ودورة الطلب",
-            "en": "MVC & Lifecycle"
+            "ar": "إيه هو Laravel؟",
+            "en": "What is Laravel?"
+          },
+          "short": {
+            "ar": "Framework لـ PHP مبني على MVC لبناء تطبيقات ويب و APIs.",
+            "en": "A PHP framework built on MVC for web apps and APIs."
           },
           "points": {
             "ar": [
-              "الطلب يدخل من public/index.php ويمر على middleware ثم route ثم controller ويرجع response."
+              "بيوفر routing و Eloquent ORM و Blade و queues و authentication جاهزين.",
+              "فيه أداة Artisan للأوامر، و Service Container لإدارة الاعتماديات."
             ],
             "en": [
-              "Requests enter public/index.php, pass middleware, hit a route and controller, return a response."
+              "It ships routing, the Eloquent ORM, Blade, queues and authentication out of the box.",
+              "It includes the Artisan CLI and a service container for managing dependencies."
             ]
           },
-          "code": "Route::get('/posts/{post}', [PostController::class, 'show']);"
+          "code": ""
         },
         {
-          "id": "laravel-l2",
+          "id": "laravel-l02",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ Routing والـ Controllers",
-            "en": "Routing & Controllers"
+            "ar": "اشرح الـ Request Lifecycle في Laravel.",
+            "en": "Explain the Laravel request lifecycle."
+          },
+          "short": {
+            "ar": "الطلب بيدخل من public/index.php ويعدي على الـ middleware والـ router لحد الـ controller ويرجع response.",
+            "en": "A request enters through public/index.php, passes the middleware and router to a controller, and returns a response."
           },
           "points": {
             "ar": [
-              "resource routes بتعمل مسارات CRUD، و route model binding بيجيب الموديل تلقائياً."
+              "index.php بيحمل الـ autoloader ويعمل bootstrap للتطبيق من bootstrap/app.php.",
+              "الـ Service Providers بتتسجل وتشتغل قبل معالجة الطلب.",
+              "الطلب بيعدي على الـ global middleware، وبعدين الـ router يختار الـ route وينفذ الـ middleware بتاعه والـ controller.",
+              "بعد إرسال الرد، الـ terminable middleware بيشتغل."
             ],
             "en": [
-              "Resource routes generate CRUD; route model binding injects the model."
+              "index.php loads the autoloader and bootstraps the app from bootstrap/app.php.",
+              "Service providers are registered and booted before the request is handled.",
+              "The request passes the global middleware, then the router picks a route and runs its middleware and controller.",
+              "After the response is sent, terminable middleware runs."
             ]
           },
-          "code": "Route::apiResource('posts', PostController::class);\npublic function show(Post $post) { return $post; }"
+          "code": ""
         },
         {
-          "id": "laravel-l3",
+          "id": "laravel-l03",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ Eloquent",
-            "en": "Eloquent"
+            "ar": "إيه هي Artisan؟",
+            "en": "What is Artisan?"
+          },
+          "short": {
+            "ar": "أداة سطر الأوامر في Laravel.",
+            "en": "Laravel's command-line tool."
           },
           "points": {
             "ar": [
-              "ORM بنمط Active Record. العلاقات hasMany و belongsTo و belongsToMany. احمي بـ fillable."
+              "بتولد ملفات زي models و controllers و migrations بأوامر make.",
+              "بتشغل الـ migrations والـ queues والـ scheduler، و tinker بيفتح REPL للتجربة.",
+              "وتقدر تكتب أوامرك الخاصة."
             ],
             "en": [
-              "Active Record ORM with hasMany, belongsTo, belongsToMany. Guard with fillable."
+              "It generates files such as models, controllers and migrations with make commands.",
+              "It runs migrations, queues and the scheduler, and tinker opens a REPL for experiments.",
+              "You can also write your own commands."
             ]
           },
-          "code": "class Post extends Model {\n  protected $fillable = ['title', 'body'];\n  public function comments() { return $this->hasMany(Comment::class); }\n}"
+          "code": "php artisan make:model Post -mfc   # model + migration + factory + controller\nphp artisan migrate\nphp artisan tinker"
         },
         {
-          "id": "laravel-l4",
+          "id": "laravel-l04",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "مشكلة N+1",
-            "en": "The N+1 Problem"
+            "ar": "هيكل مشروع Laravel؟",
+            "en": "How is a Laravel project structured?"
+          },
+          "short": {
+            "ar": "كل حاجة ليها مكان معروف، وده بيسهل الشغل في فريق.",
+            "en": "Everything has a known place, which makes teamwork easier."
           },
           "points": {
             "ar": [
-              "استعلام لكل صف. الحل eager loading بـ with."
+              "app فيه الكود الأساسي زي Models و Http/Controllers.",
+              "routes فيه web.php و api.php و console.php.",
+              "config للإعدادات، database للـ migrations والـ seeders، و resources للـ views.",
+              "storage للـ logs والملفات المرفوعة، و public هو الوحيد المتاح للويب.",
+              "من Laravel 11 الـ middleware والـ exceptions بيتظبطوا في bootstrap/app.php."
             ],
             "en": [
-              "One query per row. Fix with eager loading via with()."
+              "app holds the core code, such as Models and Http/Controllers.",
+              "routes holds web.php, api.php and console.php.",
+              "config holds settings, database holds migrations and seeders, and resources holds views.",
+              "storage holds logs and uploads, and public is the only folder exposed to the web.",
+              "Since Laravel 11, middleware and exceptions are configured in bootstrap/app.php."
             ]
           },
-          "code": "$posts = Post::with('author')->paginate(15);"
+          "code": ""
         },
         {
-          "id": "laravel-l5",
+          "id": "laravel-l05",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ Migrations",
-            "en": "Migrations"
+            "ar": "ملف .env والـ config؟",
+            "en": "How do .env and config files work?"
+          },
+          "short": {
+            "ar": ".env للقيم اللي بتختلف بين البيئات، والـ config بيقرا منها.",
+            "en": ".env holds values that differ per environment, and config files read from it."
           },
           "points": {
             "ar": [
-              "تاريخ لتغييرات قاعدة البيانات، ومعاها seeders و factories."
+              "استخدم env() جوه ملفات config بس، وفي الكود استخدم config().",
+              "لأن بعد php artisan config:cache الـ env() بترجع null بره ملفات الـ config.",
+              "متعملش commit لملف .env."
             ],
             "en": [
-              "Version control for the schema, with seeders and factories."
+              "Call env() only inside config files, and use config() everywhere else.",
+              "After php artisan config:cache, env() returns null outside config files.",
+              "Never commit the .env file."
             ]
           },
-          "code": "Schema::create('posts', function (Blueprint $table) {\n  $table->id();\n  $table->foreignId('user_id')->constrained()->cascadeOnDelete();\n  $table->timestamps();\n});"
+          "code": "// config/services.php\n'stripe' => ['key' => env('STRIPE_KEY')],\n\n// anywhere in the app\n$key = config('services.stripe.key');"
         },
         {
-          "id": "laravel-l6",
+          "id": "laravel-l06",
+          "section": {
+            "ar": "Routing و Requests",
+            "en": "Routing & Requests"
+          },
           "title": {
-            "ar": "الـ Validation والـ Middleware",
-            "en": "Validation & Middleware"
+            "ar": "الـ Routing في Laravel؟",
+            "en": "How does routing work in Laravel?"
+          },
+          "short": {
+            "ar": "بيربط URL و HTTP method بـ controller أو closure.",
+            "en": "Routes map a URL and an HTTP method to a controller or a closure."
           },
           "points": {
             "ar": [
-              "Form Request للتحقق، و middleware للفلترة قبل وبعد الطلب."
+              "بيدعم parameters إجبارية واختيارية، وأسماء للـ routes بـ name().",
+              "الـ groups بتجمع prefix و middleware لكذا route.",
+              "routes/web.php للصفحات مع session و CSRF، و routes/api.php للـ APIs."
             ],
             "en": [
-              "Form Requests validate; middleware filters requests."
+              "It supports required and optional parameters, and route names with name().",
+              "Groups share a prefix and middleware across several routes.",
+              "routes/web.php is for pages with session and CSRF; routes/api.php is for APIs."
             ]
           },
-          "code": "$data = $request->validate(['title' => 'required|max:255']);\nRoute::middleware('auth:sanctum')->group(fn() => null);"
+          "code": "Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');\n\nRoute::prefix('admin')->middleware('auth')->group(function () {\n    Route::get('/dashboard', DashboardController::class);\n});\n\nroute('posts.show', 1); // /posts/1"
         },
         {
-          "id": "laravel-l7",
+          "id": "laravel-l07",
+          "section": {
+            "ar": "Routing و Requests",
+            "en": "Routing & Requests"
+          },
           "title": {
-            "ar": "الـ Service Container",
-            "en": "Service Container"
+            "ar": "يعني إيه Route Model Binding؟",
+            "en": "What is route model binding?"
+          },
+          "short": {
+            "ar": "Laravel بتجيب الـ model من الداتابيز تلقائيًا من الـ parameter.",
+            "en": "Laravel loads the model from the database automatically from the route parameter."
           },
           "points": {
             "ar": [
-              "بيدير الاعتمادات ويحقنها. التسجيل في Service Providers، و Facades واجهة مختصرة."
+              "لو اسم الـ parameter زي اسم المتغير ونوعه model، بيدور بالـ id وبيرجع 404 لو ملقاش.",
+              "تقدر تغير المفتاح بـ {post:slug} أو getRouteKeyName()."
             ],
             "en": [
-              "Manages and injects dependencies, bound in service providers; facades are shortcuts."
+              "If the parameter name matches a type-hinted model variable, Laravel looks it up by id and returns 404 if it is missing.",
+              "You can change the key with {post:slug} or getRouteKeyName()."
             ]
           },
-          "code": "$this->app->bind(PaymentGateway::class, StripeGateway::class);"
+          "code": "Route::get('/posts/{post:slug}', function (Post $post) {\n    return $post;\n});"
         },
         {
-          "id": "laravel-l8",
+          "id": "laravel-l08",
+          "section": {
+            "ar": "Routing و Requests",
+            "en": "Routing & Requests"
+          },
           "title": {
-            "ar": "الـ Queues والـ Auth",
-            "en": "Queues & Auth"
+            "ar": "الـ Controllers وأنواعها؟",
+            "en": "What kinds of controllers are there?"
+          },
+          "short": {
+            "ar": "classes بتجمع منطق التعامل مع الطلبات.",
+            "en": "Classes that group request-handling logic."
           },
           "points": {
             "ar": [
-              "الـ jobs للمهام البطيئة. Sanctum للـ API tokens و SPA، و Policies و Gates للصلاحيات."
+              "Route::resource بيعمل 7 routes للـ CRUD، و apiResource بيعمل 5 من غير create و edit.",
+              "الـ Single Action Controller فيه __invoke بس.",
+              "خلي الـ controller رفيع، وانقل المنطق التقيل لـ services أو actions."
             ],
             "en": [
-              "Jobs handle slow work. Sanctum for tokens and SPAs; policies and gates for authorization."
+              "Route::resource creates 7 CRUD routes; apiResource creates 5, without create and edit.",
+              "A single-action controller has only __invoke.",
+              "Keep controllers thin and move heavy logic into services or actions."
             ]
           },
-          "code": "SendWelcomeEmail::dispatch($user);\nGate::authorize('update', $post);"
+          "code": "Route::apiResource('posts', PostController::class);\n// php artisan make:controller PostController --api"
+        },
+        {
+          "id": "laravel-l09",
+          "section": {
+            "ar": "Routing و Requests",
+            "en": "Routing & Requests"
+          },
+          "title": {
+            "ar": "الـ Middleware في Laravel؟",
+            "en": "What is middleware in Laravel?"
+          },
+          "short": {
+            "ar": "طبقة بتفلتر الطلب قبل أو بعد الـ controller.",
+            "en": "A layer that filters the request before or after the controller."
+          },
+          "points": {
+            "ar": [
+              "أمثلة: auth و throttle و verified.",
+              "الكود قبل $next($request) بيتنفذ قبل الـ controller، واللي بعده بيشتغل على الرد.",
+              "من Laravel 11 بتسجلها في bootstrap/app.php."
+            ],
+            "en": [
+              "Examples: auth, throttle and verified.",
+              "Code before $next($request) runs before the controller; code after it works on the response.",
+              "Since Laravel 11 you register it in bootstrap/app.php."
+            ]
+          },
+          "code": "class EnsureIsAdmin\n{\n    public function handle(Request $request, Closure $next)\n    {\n        if (! $request->user()?->is_admin) {\n            abort(403);\n        }\n        return $next($request);\n    }\n}"
+        },
+        {
+          "id": "laravel-l10",
+          "section": {
+            "ar": "Routing و Requests",
+            "en": "Routing & Requests"
+          },
+          "title": {
+            "ar": "الـ Validation و Form Requests؟",
+            "en": "Validation and form requests?"
+          },
+          "short": {
+            "ar": "class مخصصة للـ validation والصلاحية قبل ما الطلب يوصل للـ controller.",
+            "en": "A dedicated class for validation and authorization before the request reaches the controller."
+          },
+          "points": {
+            "ar": [
+              "rules() فيها القواعد، و authorize() بتحدد مين مسموحله.",
+              "لو الـ validation فشل، بيرجع للصفحة بالأخطاء، أو JSON بـ 422 في الـ API.",
+              "استخدم $request->validated() عشان تاخد القيم المتحقق منها بس."
+            ],
+            "en": [
+              "rules() holds the rules, and authorize() decides who is allowed.",
+              "If validation fails, the user is sent back with errors, or an API gets JSON with a 422.",
+              "Use $request->validated() to take only the validated values."
+            ]
+          },
+          "code": "class StorePostRequest extends FormRequest\n{\n    public function authorize(): bool { return $this->user() !== null; }\n\n    public function rules(): array\n    {\n        return ['title' => ['required', 'max:255'], 'body' => ['required']];\n    }\n}\n\npublic function store(StorePostRequest $request)\n{\n    return Post::create($request->validated());\n}"
+        },
+        {
+          "id": "laravel-l11",
+          "section": {
+            "ar": "Routing و Requests",
+            "en": "Routing & Requests"
+          },
+          "title": {
+            "ar": "إيه هو Blade؟",
+            "en": "What is Blade?"
+          },
+          "short": {
+            "ar": "محرك القوالب في Laravel.",
+            "en": "Laravel's templating engine."
+          },
+          "points": {
+            "ar": [
+              "{{ }} بتعمل escape تلقائي ضد XSS، و {!! !!} بتطبع من غير escape فاستخدمها بحذر.",
+              "فيه layouts بـ @extends و @section، و components بـ <x-name>.",
+              "@csrf بيضيف الـ token للفورم."
+            ],
+            "en": [
+              "{{ }} escapes output automatically against XSS; {!! !!} prints raw, so use it with care.",
+              "It has layouts with @extends and @section, and components with <x-name>.",
+              "@csrf adds the token to a form."
+            ]
+          },
+          "code": "<x-layout>\n    <h1>{{ $post->title }}</h1>\n    <form method=\"POST\" action=\"/posts\">\n        @csrf\n        <button>Save</button>\n    </form>\n</x-layout>"
+        },
+        {
+          "id": "laravel-l12",
+          "section": {
+            "ar": "Eloquent و Database",
+            "en": "Eloquent & Database"
+          },
+          "title": {
+            "ar": "إيه هو Eloquent؟",
+            "en": "What is Eloquent?"
+          },
+          "short": {
+            "ar": "ORM بنمط Active Record: كل model بيمثل جدول.",
+            "en": "An Active Record ORM: each model represents a table."
+          },
+          "points": {
+            "ar": [
+              "بيفترض أسماء زي إن Post جدوله posts والمفتاح id وفيه created_at و updated_at.",
+              "تقدر تغيرها بـ $table و $primaryKey و $timestamps.",
+              "الـ Query Builder متاح من الـ model نفسه."
+            ],
+            "en": [
+              "It assumes conventions: Post maps to the posts table, the key is id, and there are created_at and updated_at columns.",
+              "You can override them with $table, $primaryKey and $timestamps.",
+              "The query builder is available straight from the model."
+            ]
+          },
+          "code": "$posts = Post::where('published', true)\n    ->latest()\n    ->take(10)\n    ->get();"
+        },
+        {
+          "id": "laravel-l13",
+          "section": {
+            "ar": "Eloquent و Database",
+            "en": "Eloquent & Database"
+          },
+          "title": {
+            "ar": "الـ Relationships في Eloquent؟",
+            "en": "What relationships does Eloquent support?"
+          },
+          "short": {
+            "ar": "طرق لربط الـ models ببعض.",
+            "en": "Ways to link models to each other."
+          },
+          "points": {
+            "ar": [
+              "hasOne و belongsTo لعلاقة واحد لواحد.",
+              "hasMany و belongsTo لواحد لكتير.",
+              "belongsToMany لكتير لكتير بجدول وسيط (pivot).",
+              "morphMany و morphTo للعلاقات الـ polymorphic، زي comments على posts و videos."
+            ],
+            "en": [
+              "hasOne and belongsTo for one-to-one.",
+              "hasMany and belongsTo for one-to-many.",
+              "belongsToMany for many-to-many through a pivot table.",
+              "morphMany and morphTo for polymorphic relations, such as comments on both posts and videos."
+            ]
+          },
+          "code": "class Post extends Model\n{\n    public function author() { return $this->belongsTo(User::class, 'user_id'); }\n    public function comments() { return $this->hasMany(Comment::class); }\n    public function tags() { return $this->belongsToMany(Tag::class); }\n}"
+        },
+        {
+          "id": "laravel-l14",
+          "section": {
+            "ar": "Eloquent و Database",
+            "en": "Eloquent & Database"
+          },
+          "title": {
+            "ar": "مشكلة N+1 والـ Eager Loading؟",
+            "en": "What is the N+1 problem and eager loading?"
+          },
+          "short": {
+            "ar": "استعلام لكل صف بدل استعلام واحد، والحل Eager Loading.",
+            "en": "One query per row instead of a single query, fixed with eager loading."
+          },
+          "points": {
+            "ar": [
+              "with() بتحمل العلاقة مع الاستعلام الأساسي، و load() بعد ما الـ models تتجاب.",
+              "withCount() بتجيب العدد من غير ما تحمل العناصر.",
+              "Model::preventLazyLoading() في الـ development بيرمي Error لو حصل lazy loading."
+            ],
+            "en": [
+              "with() loads the relation alongside the main query; load() does it after the models are fetched.",
+              "withCount() fetches the count without loading the items.",
+              "Model::preventLazyLoading() in development throws an error whenever lazy loading happens."
+            ]
+          },
+          "code": "// N+1: one query for posts, then one per post\nforeach (Post::all() as $post) echo $post->author->name;\n\n// 2 queries in total\n$posts = Post::with('author')->get();"
+        },
+        {
+          "id": "laravel-l15",
+          "section": {
+            "ar": "Eloquent و Database",
+            "en": "Eloquent & Database"
+          },
+          "title": {
+            "ar": "يعني إيه Mass Assignment؟",
+            "en": "What is mass assignment protection?"
+          },
+          "short": {
+            "ar": "حماية من إن المستخدم يبعت أعمدة مش مسموحله يعدلها.",
+            "en": "Protection against users sending columns they must not change."
+          },
+          "points": {
+            "ar": [
+              "$fillable بتحدد الأعمدة المسموحة، و $guarded بتحدد الممنوعة.",
+              "من غيرها، طلب فيه is_admin=1 ممكن يرقّي المستخدم لأدمن.",
+              "الأفضل تمرر $request->validated() بدل $request->all()."
+            ],
+            "en": [
+              "$fillable lists the allowed columns; $guarded lists the forbidden ones.",
+              "Without it, a request containing is_admin=1 could promote a user to admin.",
+              "Prefer passing $request->validated() over $request->all()."
+            ]
+          },
+          "code": "class User extends Model\n{\n    protected $fillable = ['name', 'email', 'password'];\n}\n\nUser::create($request->validated());"
+        },
+        {
+          "id": "laravel-l16",
+          "section": {
+            "ar": "Eloquent و Database",
+            "en": "Eloquent & Database"
+          },
+          "title": {
+            "ar": "Migrations و Seeders و Factories؟",
+            "en": "Migrations, seeders and factories?"
+          },
+          "short": {
+            "ar": "Migrations لتاريخ الـ schema، و Seeders و Factories لبيانات تجريبية.",
+            "en": "Migrations version the schema; seeders and factories create sample data."
+          },
+          "points": {
+            "ar": [
+              "كل migration فيها up و down، و php artisan migrate بتشغل الجديد.",
+              "migrate:rollback بترجع آخر batch.",
+              "الـ Factory بتولد بيانات وهمية للاختبارات، والـ Seeder بيملا الداتابيز."
+            ],
+            "en": [
+              "Each migration has up and down, and php artisan migrate runs the new ones.",
+              "migrate:rollback undoes the last batch.",
+              "Factories generate fake data for tests, and seeders fill the database."
+            ]
+          },
+          "code": "Schema::create('posts', function (Blueprint $table) {\n    $table->id();\n    $table->foreignId('user_id')->constrained()->cascadeOnDelete();\n    $table->string('title');\n    $table->timestamps();\n});\n\nPost::factory()->count(10)->create();"
+        },
+        {
+          "id": "laravel-l17",
+          "section": {
+            "ar": "Eloquent و Database",
+            "en": "Eloquent & Database"
+          },
+          "title": {
+            "ar": "الـ Query Scopes؟",
+            "en": "What are query scopes?"
+          },
+          "short": {
+            "ar": "شروط استعلام بتتعاد استخدامها.",
+            "en": "Reusable query constraints."
+          },
+          "points": {
+            "ar": [
+              "الـ Local Scope دالة بتبدأ بـ scope وبتتنادى باسمها من غير البادئة.",
+              "الـ Global Scope بيتطبق على كل استعلامات الـ model، زي اللي بيعمله SoftDeletes."
+            ],
+            "en": [
+              "A local scope is a method prefixed with scope, called by its name without the prefix.",
+              "A global scope applies to every query on the model, as SoftDeletes does."
+            ]
+          },
+          "code": "class Post extends Model\n{\n    public function scopePublished(Builder $query): void\n    {\n        $query->where('published', true);\n    }\n}\n\nPost::published()->get();"
+        },
+        {
+          "id": "laravel-l18",
+          "section": {
+            "ar": "Eloquent و Database",
+            "en": "Eloquent & Database"
+          },
+          "title": {
+            "ar": "Accessors و Mutators و Casts؟",
+            "en": "Accessors, mutators and casts?"
+          },
+          "short": {
+            "ar": "تحويل القيم وقت القراءة والكتابة.",
+            "en": "Transforming values when reading and writing."
+          },
+          "points": {
+            "ar": [
+              "الـ Accessor بيغير القيمة وانت بتقراها، والـ Mutator وانت بتكتبها، بـ Attribute::make.",
+              "الـ casts بتحول الأعمدة لأنواع زي boolean و array و datetime و enums."
+            ],
+            "en": [
+              "An accessor changes a value as you read it and a mutator as you write it, both via Attribute::make.",
+              "Casts convert columns to types such as boolean, array, datetime and enums."
+            ]
+          },
+          "code": "protected function name(): Attribute\n{\n    return Attribute::make(\n        get: fn (string $value) => ucfirst($value),\n        set: fn (string $value) => strtolower($value),\n    );\n}\n\nprotected function casts(): array\n{\n    return ['is_admin' => 'boolean', 'settings' => 'array'];\n}"
+        },
+        {
+          "id": "laravel-l19",
+          "section": {
+            "ar": "Eloquent و Database",
+            "en": "Eloquent & Database"
+          },
+          "title": {
+            "ar": "الـ Database Transactions؟",
+            "en": "How do database transactions work?"
+          },
+          "short": {
+            "ar": "تنفيذ كذا عملية كوحدة واحدة: يا كلها تنجح يا ولا واحدة.",
+            "en": "Running several operations as one unit: either all succeed or none do."
+          },
+          "points": {
+            "ar": [
+              "DB::transaction بتعمل commit لو الـ closure خلص، و rollback لو رمى exception.",
+              "تقدر تمرر عدد محاولات في حالة الـ deadlock."
+            ],
+            "en": [
+              "DB::transaction commits if the closure finishes and rolls back if it throws.",
+              "You can pass a number of attempts to retry on deadlocks."
+            ]
+          },
+          "code": "DB::transaction(function () use ($from, $to, $amount) {\n    $from->decrement('balance', $amount);\n    $to->increment('balance', $amount);\n}, attempts: 3);"
+        },
+        {
+          "id": "laravel-l20",
+          "section": {
+            "ar": "Eloquent و Database",
+            "en": "Eloquent & Database"
+          },
+          "title": {
+            "ar": "الـ Soft Deletes؟",
+            "en": "What are soft deletes?"
+          },
+          "short": {
+            "ar": "الحذف بيحط تاريخ في deleted_at بدل ما يمسح الصف.",
+            "en": "Deleting sets deleted_at instead of removing the row."
+          },
+          "points": {
+            "ar": [
+              "ضيف الـ trait اسمه SoftDeletes وعمود softDeletes() في الـ migration.",
+              "الاستعلامات العادية بتتجاهل المحذوف، و withTrashed() بتجيبه.",
+              "restore() بترجعه، و forceDelete() بتمسحه نهائي."
+            ],
+            "en": [
+              "Add the SoftDeletes trait and a softDeletes() column in the migration.",
+              "Normal queries skip deleted rows, and withTrashed() includes them.",
+              "restore() brings a row back, and forceDelete() removes it permanently."
+            ]
+          },
+          "code": "class Post extends Model\n{\n    use SoftDeletes;\n}\n\n$post->delete(); // sets deleted_at\nPost::withTrashed()->find($id)->restore();"
+        },
+        {
+          "id": "laravel-l21",
+          "section": {
+            "ar": "Architecture",
+            "en": "Architecture"
+          },
+          "title": {
+            "ar": "الـ Service Container؟",
+            "en": "What is the service container?"
+          },
+          "short": {
+            "ar": "المسؤول عن إنشاء الـ classes وحقن اعتمادياتها.",
+            "en": "It creates classes and injects their dependencies."
+          },
+          "points": {
+            "ar": [
+              "بيحل الاعتماديات تلقائيًا من الـ type hints في الـ constructor أو الـ method.",
+              "bind بيعمل نسخة جديدة كل مرة، و singleton نسخة واحدة.",
+              "ربط interface بتنفيذ بيسهل التبديل والاختبار."
+            ],
+            "en": [
+              "It resolves dependencies automatically from type hints in constructors and methods.",
+              "bind creates a new instance each time; singleton creates one shared instance.",
+              "Binding an interface to an implementation makes swapping and testing easy."
+            ]
+          },
+          "code": "$this->app->bind(PaymentGateway::class, StripeGateway::class);\n$this->app->singleton(Cache::class, fn () => new RedisCache());\n\npublic function __construct(private PaymentGateway $payments) {}"
+        },
+        {
+          "id": "laravel-l22",
+          "section": {
+            "ar": "Architecture",
+            "en": "Architecture"
+          },
+          "title": {
+            "ar": "الـ Service Providers؟",
+            "en": "What are service providers?"
+          },
+          "short": {
+            "ar": "المكان اللي بتسجل فيه الخدمات وتظبط التطبيق.",
+            "en": "Where you register services and configure the app."
+          },
+          "points": {
+            "ar": [
+              "register() للـ bindings في الـ container بس.",
+              "boot() بيشتغل بعد تسجيل كل الـ providers، فتقدر تستخدم أي خدمة فيه.",
+              "AppServiceProvider هو المكان الافتراضي للإعدادات العامة."
+            ],
+            "en": [
+              "register() is only for container bindings.",
+              "boot() runs after every provider is registered, so any service can be used there.",
+              "AppServiceProvider is the default place for app-wide setup."
+            ]
+          },
+          "code": "class AppServiceProvider extends ServiceProvider\n{\n    public function register(): void\n    {\n        $this->app->bind(PaymentGateway::class, StripeGateway::class);\n    }\n\n    public function boot(): void\n    {\n        Model::preventLazyLoading(! app()->isProduction());\n    }\n}"
+        },
+        {
+          "id": "laravel-l23",
+          "section": {
+            "ar": "Architecture",
+            "en": "Architecture"
+          },
+          "title": {
+            "ar": "الـ Facades؟",
+            "en": "What are facades?"
+          },
+          "short": {
+            "ar": "واجهة static مختصرة لخدمات موجودة في الـ container.",
+            "en": "Static-looking shortcuts to services in the container."
+          },
+          "points": {
+            "ar": [
+              "Cache::get() بتتحول وقت التشغيل لاستدعاء على object حقيقي.",
+              "سهلة في الاختبار لأن فيها fakes زي Mail::fake().",
+              "الـ DI في الـ constructor بيوضح الاعتماديات أكتر في الـ classes الكبيرة."
+            ],
+            "en": [
+              "Cache::get() becomes a call on a real object at runtime.",
+              "They are easy to test thanks to fakes such as Mail::fake().",
+              "Constructor injection makes dependencies clearer in larger classes."
+            ]
+          },
+          "code": "Cache::put('key', 'value', 600);\n\n// in a test\nMail::fake();\n// ...\nMail::assertSent(WelcomeMail::class);"
+        },
+        {
+          "id": "laravel-l24",
+          "section": {
+            "ar": "Architecture",
+            "en": "Architecture"
+          },
+          "title": {
+            "ar": "Events و Listeners و Observers؟",
+            "en": "Events, listeners and observers?"
+          },
+          "short": {
+            "ar": "فصل الحدث عن رد الفعل عليه.",
+            "en": "Decoupling an event from the reactions to it."
+          },
+          "points": {
+            "ar": [
+              "الـ Event بيوصف اللي حصل، والـ Listener بيتصرف، وممكن يبقى ShouldQueue.",
+              "الـ Observer بيجمع أحداث model واحد زي created و updated و deleted."
+            ],
+            "en": [
+              "An event describes what happened and a listener reacts; listeners can implement ShouldQueue.",
+              "An observer groups one model's events, such as created, updated and deleted."
+            ]
+          },
+          "code": "OrderPlaced::dispatch($order);\n\nclass SendOrderConfirmation implements ShouldQueue\n{\n    public function handle(OrderPlaced $event): void\n    {\n        Mail::to($event->order->user)->send(new OrderConfirmed($event->order));\n    }\n}"
+        },
+        {
+          "id": "laravel-l25",
+          "section": {
+            "ar": "Auth و Security",
+            "en": "Auth & Security"
+          },
+          "title": {
+            "ar": "الـ Authentication في Laravel؟",
+            "en": "How does authentication work in Laravel?"
+          },
+          "short": {
+            "ar": "Laravel فيها guards و starter kits جاهزة لتسجيل الدخول.",
+            "en": "Laravel provides guards and ready-made starter kits for login."
+          },
+          "points": {
+            "ar": [
+              "الـ starter kits بتديك تسجيل دخول وتسجيل حساب وتغيير باسورد جاهزين.",
+              "Sanctum للـ API tokens والـ SPA بالـ cookies، و Passport لو محتاج OAuth2 كامل.",
+              "auth()->user() و $request->user() بيجيبوا المستخدم الحالي."
+            ],
+            "en": [
+              "Starter kits give you login, registration and password reset out of the box.",
+              "Sanctum handles API tokens and cookie-based SPA auth; Passport is for a full OAuth2 server.",
+              "auth()->user() and $request->user() return the current user."
+            ]
+          },
+          "code": "$token = $user->createToken('mobile')->plainTextToken;\n\nRoute::middleware('auth:sanctum')->get('/me', fn (Request $r) => $r->user());"
+        },
+        {
+          "id": "laravel-l26",
+          "section": {
+            "ar": "Auth و Security",
+            "en": "Auth & Security"
+          },
+          "title": {
+            "ar": "الـ Authorization بـ Gates و Policies؟",
+            "en": "Authorization with gates and policies?"
+          },
+          "short": {
+            "ar": "Gates لصلاحيات عامة، و Policies لصلاحيات خاصة بـ model.",
+            "en": "Gates handle general permissions; policies handle model-specific ones."
+          },
+          "points": {
+            "ar": [
+              "الـ Policy فيها methods زي update و delete بتاخد المستخدم والـ model.",
+              "بتستخدمها بـ Gate::authorize() أو $user->can() أو @can في Blade.",
+              "لو مش مسموح بيرجع 403."
+            ],
+            "en": [
+              "A policy has methods such as update and delete that receive the user and the model.",
+              "Use it through Gate::authorize(), $user->can() or @can in Blade.",
+              "If access is denied, the response is a 403."
+            ]
+          },
+          "code": "class PostPolicy\n{\n    public function update(User $user, Post $post): bool\n    {\n        return $user->id === $post->user_id;\n    }\n}\n\nGate::authorize('update', $post);"
+        },
+        {
+          "id": "laravel-l27",
+          "section": {
+            "ar": "Auth و Security",
+            "en": "Auth & Security"
+          },
+          "title": {
+            "ar": "الحماية المدمجة في Laravel؟",
+            "en": "What security protections are built into Laravel?"
+          },
+          "short": {
+            "ar": "Laravel بتحمي من أشهر الهجمات افتراضيًا لو استخدمتها صح.",
+            "en": "Laravel guards against common attacks by default, as long as you use it correctly."
+          },
+          "points": {
+            "ar": [
+              "CSRF: أي فورم POST في routes/web.php محتاج @csrf.",
+              "XSS: الـ {{ }} في Blade بتعمل escape.",
+              "SQL Injection: الـ Query Builder و Eloquent بيستخدموا bindings، بس خلي بالك مع DB::raw و whereRaw.",
+              "الباسوردات بـ Hash::make (bcrypt افتراضيًا)، و throttle للـ rate limiting."
+            ],
+            "en": [
+              "CSRF: every POST form in routes/web.php needs @csrf.",
+              "XSS: Blade {{ }} escapes output.",
+              "SQL injection: the query builder and Eloquent use bindings, but be careful with DB::raw and whereRaw.",
+              "Hash passwords with Hash::make (bcrypt by default), and use throttle for rate limiting."
+            ]
+          },
+          "code": "// safe: the value is bound\nUser::where('email', $email)->first();\n\n// unsafe: user input concatenated into SQL\nDB::select(\"SELECT * FROM users WHERE email = '$email'\");\n\n// safe raw query with bindings\nDB::select('SELECT * FROM users WHERE email = ?', [$email]);"
+        },
+        {
+          "id": "laravel-l28",
+          "section": {
+            "ar": "Queues و Performance و Testing",
+            "en": "Queues, Performance & Testing"
+          },
+          "title": {
+            "ar": "Queues و Jobs و Scheduler؟",
+            "en": "Queues, jobs and the scheduler?"
+          },
+          "short": {
+            "ar": "Jobs للمهام البطيئة في الخلفية، والـ Scheduler للمهام الدورية.",
+            "en": "Jobs run slow tasks in the background; the scheduler runs periodic tasks."
+          },
+          "points": {
+            "ar": [
+              "الـ Job بينفذ ShouldQueue وبيتبعت بـ dispatch()، و php artisan queue:work بيشغله.",
+              "فيه retries و backoff، والفاشل بيتسجل في failed_jobs، و Horizon بيراقب queues الـ Redis.",
+              "الـ Scheduler بيتكتب في routes/console.php ومحتاج cron واحد بيشغل schedule:run كل دقيقة."
+            ],
+            "en": [
+              "A job implements ShouldQueue, is sent with dispatch(), and php artisan queue:work runs it.",
+              "There are retries and backoff, failures are stored in failed_jobs, and Horizon monitors Redis queues.",
+              "Schedules live in routes/console.php and need a single cron entry running schedule:run every minute."
+            ]
+          },
+          "code": "class SendWelcomeEmail implements ShouldQueue\n{\n    use Queueable;\n\n    public int $tries = 3;\n\n    public function __construct(public User $user) {}\n\n    public function handle(): void\n    {\n        Mail::to($this->user)->send(new WelcomeMail($this->user));\n    }\n}\n\nSendWelcomeEmail::dispatch($user);\n\n// routes/console.php\nSchedule::command('reports:daily')->dailyAt('08:00');"
+        },
+        {
+          "id": "laravel-l29",
+          "section": {
+            "ar": "Queues و Performance و Testing",
+            "en": "Queues, Performance & Testing"
+          },
+          "title": {
+            "ar": "الـ Caching وتحسين الأداء؟",
+            "en": "Caching and performance?"
+          },
+          "short": {
+            "ar": "Cache للنتايج التقيلة، وأوامر optimize في الـ production.",
+            "en": "Cache expensive results, and run the optimize commands in production."
+          },
+          "points": {
+            "ar": [
+              "Cache::remember بترجع القيمة من الكاش أو تحسبها وتخزنها.",
+              "php artisan optimize بيعمل cache للـ config والـ routes والـ views والـ events.",
+              "استخدم eager loading و indexes، و Octane لو محتاج سرعة أعلى بإبقاء التطبيق في الذاكرة."
+            ],
+            "en": [
+              "Cache::remember returns the cached value, or computes and stores it.",
+              "php artisan optimize caches config, routes, views and events.",
+              "Use eager loading and indexes, and Octane when you need more speed by keeping the app in memory."
+            ]
+          },
+          "code": "$stats = Cache::remember('dashboard.stats', now()->addMinutes(10), function () {\n    return Order::selectRaw('count(*) as total, sum(amount) as revenue')->first();\n});"
+        },
+        {
+          "id": "laravel-l30",
+          "section": {
+            "ar": "Queues و Performance و Testing",
+            "en": "Queues, Performance & Testing"
+          },
+          "title": {
+            "ar": "الـ Testing في Laravel؟",
+            "en": "How do you test a Laravel app?"
+          },
+          "short": {
+            "ar": "Laravel بتدعم Pest و PHPUnit، مع أدوات لاختبار الـ HTTP والداتابيز.",
+            "en": "Laravel supports Pest and PHPUnit, with helpers for HTTP and database tests."
+          },
+          "points": {
+            "ar": [
+              "Feature tests بتختبر الطلب كله، و Unit tests بتختبر جزء لوحده.",
+              "RefreshDatabase بترجع الداتابيز نظيفة لكل test.",
+              "الـ fakes زي Queue::fake() و Mail::fake() بتمنع التنفيذ الحقيقي وتخليك تتأكد إنه اتطلب."
+            ],
+            "en": [
+              "Feature tests exercise a whole request; unit tests check one piece alone.",
+              "RefreshDatabase gives each test a clean database.",
+              "Fakes such as Queue::fake() and Mail::fake() stop the real work and let you assert it was requested."
+            ]
+          },
+          "code": "it('creates a post', function () {\n    $user = User::factory()->create();\n\n    $this->actingAs($user)\n        ->post('/posts', ['title' => 'Hi', 'body' => 'Text'])\n        ->assertRedirect();\n\n    $this->assertDatabaseHas('posts', ['title' => 'Hi']);\n});"
         }
       ],
       "quiz": [
         {
-          "id": "laravel-q1",
+          "id": "laravel-q01",
           "question": {
-            "ar": "حل مشكلة N+1؟",
-            "en": "Fix N+1 with?"
+            "ar": "Laravel مبني على أنهي pattern؟",
+            "en": "Which architectural pattern is Laravel built on?"
+          },
+          "options": [
+            {
+              "ar": "MVC",
+              "en": "MVC"
+            },
+            {
+              "ar": "MVVM",
+              "en": "MVVM"
+            },
+            {
+              "ar": "Flux",
+              "en": "Flux"
+            },
+            {
+              "ar": "MVP",
+              "en": "MVP"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Framework لـ PHP مبني على MVC لبناء تطبيقات ويب و APIs.",
+            "en": "A PHP framework built on MVC for web apps and APIs."
+          }
+        },
+        {
+          "id": "laravel-q02",
+          "question": {
+            "ar": "أول ملف بيستقبل أي طلب HTTP في Laravel؟",
+            "en": "Which file receives every HTTP request first?"
+          },
+          "options": [
+            {
+              "ar": "public/index.php",
+              "en": "public/index.php"
+            },
+            {
+              "ar": "routes/web.php",
+              "en": "routes/web.php"
+            },
+            {
+              "ar": "config/app.php",
+              "en": "config/app.php"
+            },
+            {
+              "ar": "app/Http/Controllers/Controller.php",
+              "en": "app/Http/Controllers/Controller.php"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الطلب بيدخل من public/index.php ويعدي على الـ middleware والـ router لحد الـ controller ويرجع response.",
+            "en": "A request enters through public/index.php, passes the middleware and router to a controller, and returns a response."
+          }
+        },
+        {
+          "id": "laravel-q03",
+          "question": {
+            "ar": "php artisan make:model Post -m بيعمل إيه؟",
+            "en": "What does php artisan make:model Post -m create?"
+          },
+          "options": [
+            {
+              "ar": "Model ومعاه migration",
+              "en": "A model plus a migration"
+            },
+            {
+              "ar": "Model بس",
+              "en": "Only a model"
+            },
+            {
+              "ar": "Controller بس",
+              "en": "Only a controller"
+            },
+            {
+              "ar": "جدول في الداتابيز على طول",
+              "en": "A database table directly"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "أداة سطر الأوامر في Laravel.",
+            "en": "Laravel's command-line tool."
+          }
+        },
+        {
+          "id": "laravel-q04",
+          "question": {
+            "ar": "أنهي فولدر بس المفروض يكون متاح للويب؟",
+            "en": "Which folder should be the only one exposed to the web?"
+          },
+          "options": [
+            {
+              "ar": "public",
+              "en": "public"
+            },
+            {
+              "ar": "storage",
+              "en": "storage"
+            },
+            {
+              "ar": "app",
+              "en": "app"
+            },
+            {
+              "ar": "config",
+              "en": "config"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "كل حاجة ليها مكان معروف، وده بيسهل الشغل في فريق.",
+            "en": "Everything has a known place, which makes teamwork easier."
+          }
+        },
+        {
+          "id": "laravel-q05",
+          "question": {
+            "ar": "ليه متستخدمش env() جوه الـ controllers؟",
+            "en": "Why avoid calling env() inside controllers?"
+          },
+          "options": [
+            {
+              "ar": "بعد config:cache بترجع null",
+              "en": "After config:cache it returns null"
+            },
+            {
+              "ar": "أبطأ من config() بكتير",
+              "en": "It is much slower than config()"
+            },
+            {
+              "ar": "مش متاحة في PHP 8",
+              "en": "It is unavailable in PHP 8"
+            },
+            {
+              "ar": "بتكشف الأسرار للمتصفح",
+              "en": "It leaks secrets to the browser"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": ".env للقيم اللي بتختلف بين البيئات، والـ config بيقرا منها.",
+            "en": ".env holds values that differ per environment, and config files read from it."
+          }
+        },
+        {
+          "id": "laravel-q06",
+          "question": {
+            "ar": "فايدة name() للـ route؟",
+            "en": "What is the benefit of naming a route?"
+          },
+          "options": [
+            {
+              "ar": "تولد الـ URL بـ route() من غير ما تكتبه",
+              "en": "You can build URLs with route() instead of hard-coding them"
+            },
+            {
+              "ar": "بتسرع الـ route",
+              "en": "It makes the route faster"
+            },
+            {
+              "ar": "بتحمي الـ route",
+              "en": "It protects the route"
+            },
+            {
+              "ar": "بتعمله cache",
+              "en": "It caches the route"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بيربط URL و HTTP method بـ controller أو closure.",
+            "en": "Routes map a URL and an HTTP method to a controller or a closure."
+          }
+        },
+        {
+          "id": "laravel-q07",
+          "question": {
+            "ar": "لو الـ model مش موجود في Route Model Binding بيحصل إيه؟",
+            "en": "What happens in route model binding when the model is not found?"
+          },
+          "options": [
+            {
+              "ar": "404 تلقائي",
+              "en": "An automatic 404"
+            },
+            {
+              "ar": "بيبعت null",
+              "en": "It passes null"
+            },
+            {
+              "ar": "500 Server Error",
+              "en": "A 500 server error"
+            },
+            {
+              "ar": "بيعمل model جديد",
+              "en": "It creates a new model"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Laravel بتجيب الـ model من الداتابيز تلقائيًا من الـ parameter.",
+            "en": "Laravel loads the model from the database automatically from the route parameter."
+          }
+        },
+        {
+          "id": "laravel-q08",
+          "question": {
+            "ar": "Route::apiResource بيشيل أنهي routes؟",
+            "en": "Which routes does Route::apiResource leave out?"
+          },
+          "options": [
+            {
+              "ar": "create و edit",
+              "en": "create and edit"
+            },
+            {
+              "ar": "index و show",
+              "en": "index and show"
+            },
+            {
+              "ar": "store و update",
+              "en": "store and update"
+            },
+            {
+              "ar": "destroy",
+              "en": "destroy"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "دول بيرجعوا فورمز HTML ومش محتاجينهم في الـ API.",
+            "en": "They return HTML forms, which an API does not need."
+          }
+        },
+        {
+          "id": "laravel-q09",
+          "question": {
+            "ar": "الكود اللي بعد $next($request) بيتنفذ إمتى؟",
+            "en": "When does the code after $next($request) run?"
+          },
+          "options": [
+            {
+              "ar": "بعد ما الرد يتجهز",
+              "en": "After the response is produced"
+            },
+            {
+              "ar": "قبل الـ controller",
+              "en": "Before the controller"
+            },
+            {
+              "ar": "مبيتنفذش",
+              "en": "Never"
+            },
+            {
+              "ar": "وقت الـ boot",
+              "en": "At boot time"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "طبقة بتفلتر الطلب قبل أو بعد الـ controller.",
+            "en": "A layer that filters the request before or after the controller."
+          }
+        },
+        {
+          "id": "laravel-q10",
+          "question": {
+            "ar": "الـ validation فشل في طلب API. الـ status code إيه؟",
+            "en": "Validation fails on an API request. Which status code comes back?"
+          },
+          "options": [
+            {
+              "ar": "422",
+              "en": "422"
+            },
+            {
+              "ar": "400",
+              "en": "400"
+            },
+            {
+              "ar": "403",
+              "en": "403"
+            },
+            {
+              "ar": "500",
+              "en": "500"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "class مخصصة للـ validation والصلاحية قبل ما الطلب يوصل للـ controller.",
+            "en": "A dedicated class for validation and authorization before the request reaches the controller."
+          }
+        },
+        {
+          "id": "laravel-q11",
+          "question": {
+            "ar": "أنهي صيغة في Blade بتطبع من غير escape؟",
+            "en": "Which Blade syntax prints without escaping?"
+          },
+          "options": [
+            {
+              "ar": "{!! $html !!}",
+              "en": "{!! $html !!}"
+            },
+            {
+              "ar": "{{ $html }}",
+              "en": "{{ $html }}"
+            },
+            {
+              "ar": "@{{ $html }}",
+              "en": "@{{ $html }}"
+            },
+            {
+              "ar": "@escape($html)",
+              "en": "@escape($html)"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "محرك القوالب في Laravel.",
+            "en": "Laravel's templating engine."
+          }
+        },
+        {
+          "id": "laravel-q12",
+          "question": {
+            "ar": "الـ model اللي اسمه Post جدوله الافتراضي إيه؟",
+            "en": "What is the default table for a model named Post?"
+          },
+          "options": [
+            {
+              "ar": "posts",
+              "en": "posts"
+            },
+            {
+              "ar": "post",
+              "en": "post"
+            },
+            {
+              "ar": "Posts",
+              "en": "Posts"
+            },
+            {
+              "ar": "tbl_post",
+              "en": "tbl_post"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "ORM بنمط Active Record: كل model بيمثل جدول.",
+            "en": "An Active Record ORM: each model represents a table."
+          }
+        },
+        {
+          "id": "laravel-q13",
+          "question": {
+            "ar": "كل post ليه tags كتير وكل tag ليه posts كتير. العلاقة إيه؟",
+            "en": "Posts have many tags and tags have many posts. Which relationship?"
+          },
+          "options": [
+            {
+              "ar": "belongsToMany",
+              "en": "belongsToMany"
+            },
+            {
+              "ar": "hasMany",
+              "en": "hasMany"
+            },
+            {
+              "ar": "hasOne",
+              "en": "hasOne"
+            },
+            {
+              "ar": "morphTo",
+              "en": "morphTo"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "طرق لربط الـ models ببعض.",
+            "en": "Ways to link models to each other."
+          }
+        },
+        {
+          "id": "laravel-q14",
+          "question": {
+            "ar": "أنهي دالة بتحل مشكلة N+1؟",
+            "en": "Which method fixes the N+1 problem?"
           },
           "options": [
             {
@@ -14266,158 +15366,338 @@
               "en": "all()"
             },
             {
-              "ar": "find()",
-              "en": "find()"
+              "ar": "first()",
+              "en": "first()"
             },
             {
-              "ar": "cache:clear",
-              "en": "cache:clear"
+              "ar": "each()",
+              "en": "each()"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "eager loading.",
-            "en": "Eager loading."
+            "ar": "استعلام لكل صف بدل استعلام واحد، والحل Eager Loading.",
+            "en": "One query per row instead of a single query, fixed with eager loading."
           }
         },
         {
-          "id": "laravel-q2",
+          "id": "laravel-q15",
           "question": {
-            "ar": "ORM الخاص بـ Laravel؟",
-            "en": "Laravel's ORM?"
+            "ar": "إزاي تحمي الـ model من Mass Assignment؟",
+            "en": "How do you protect a model against mass assignment?"
           },
           "options": [
             {
-              "ar": "Eloquent",
-              "en": "Eloquent"
+              "ar": "$fillable أو $guarded",
+              "en": "$fillable or $guarded"
             },
             {
-              "ar": "Doctrine",
-              "en": "Doctrine"
+              "ar": "$timestamps",
+              "en": "$timestamps"
             },
             {
-              "ar": "Prisma",
-              "en": "Prisma"
+              "ar": "$casts",
+              "en": "$casts"
             },
             {
-              "ar": "Hibernate",
-              "en": "Hibernate"
+              "ar": "$table",
+              "en": "$table"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "Active Record.",
-            "en": "Active Record."
+            "ar": "حماية من إن المستخدم يبعت أعمدة مش مسموحله يعدلها.",
+            "en": "Protection against users sending columns they must not change."
           }
         },
         {
-          "id": "laravel-q3",
+          "id": "laravel-q16",
           "question": {
-            "ar": "الحماية من mass assignment؟",
-            "en": "Protect against mass assignment?"
+            "ar": "أنهي أمر بيرجع آخر مجموعة migrations؟",
+            "en": "Which command undoes the last batch of migrations?"
           },
           "options": [
             {
-              "ar": "fillable أو guarded",
-              "en": "fillable or guarded"
+              "ar": "php artisan migrate:rollback",
+              "en": "php artisan migrate:rollback"
             },
             {
-              "ar": "timestamps",
-              "en": "timestamps"
+              "ar": "php artisan migrate:fresh",
+              "en": "php artisan migrate:fresh"
             },
             {
-              "ar": "middleware",
-              "en": "middleware"
+              "ar": "php artisan db:seed",
+              "en": "php artisan db:seed"
             },
             {
-              "ar": "seeder",
-              "en": "seeder"
+              "ar": "php artisan migrate:status",
+              "en": "php artisan migrate:status"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "بتحدد الأعمدة المسموحة.",
-            "en": "They restrict assignable columns."
+            "ar": "Migrations لتاريخ الـ schema، و Seeders و Factories لبيانات تجريبية.",
+            "en": "Migrations version the schema; seeders and factories create sample data."
           }
         },
         {
-          "id": "laravel-q4",
+          "id": "laravel-q17",
           "question": {
-            "ar": "مهمة بطيئة زي إرسال إيميل؟",
-            "en": "Slow task such as sending email?"
+            "ar": "scopePublished بتتنادى إزاي؟",
+            "en": "How do you call scopePublished?"
           },
           "options": [
             {
-              "ar": "Queue Job",
-              "en": "Queue Job"
+              "ar": "Post::published()",
+              "en": "Post::published()"
+            },
+            {
+              "ar": "Post::scopePublished()",
+              "en": "Post::scopePublished()"
+            },
+            {
+              "ar": "Post::scope(\"published\")",
+              "en": "Post::scope(\"published\")"
+            },
+            {
+              "ar": "Post::where(\"scope\", \"published\")",
+              "en": "Post::where(\"scope\", \"published\")"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "شروط استعلام بتتعاد استخدامها.",
+            "en": "Reusable query constraints."
+          }
+        },
+        {
+          "id": "laravel-q18",
+          "question": {
+            "ar": "عمود JSON عايزه يرجع array تلقائيًا. تستخدم إيه؟",
+            "en": "You want a JSON column to come back as an array automatically. What do you use?"
+          },
+          "options": [
+            {
+              "ar": "cast نوعه array",
+              "en": "An array cast"
+            },
+            {
+              "ar": "Accessor بيعمل json_encode",
+              "en": "An accessor that calls json_encode"
+            },
+            {
+              "ar": "$fillable",
+              "en": "$fillable"
+            },
+            {
+              "ar": "Global Scope",
+              "en": "A global scope"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "تحويل القيم وقت القراءة والكتابة.",
+            "en": "Transforming values when reading and writing."
+          }
+        },
+        {
+          "id": "laravel-q19",
+          "question": {
+            "ar": "لو حصل exception جوه DB::transaction بيحصل إيه؟",
+            "en": "What happens if an exception is thrown inside DB::transaction?"
+          },
+          "options": [
+            {
+              "ar": "rollback لكل العمليات",
+              "en": "Every operation is rolled back"
+            },
+            {
+              "ar": "commit للي خلص بس",
+              "en": "Only the finished part is committed"
+            },
+            {
+              "ar": "بيتجاهله",
+              "en": "It is ignored"
+            },
+            {
+              "ar": "بيعيد المحاولة للأبد",
+              "en": "It retries forever"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "تنفيذ كذا عملية كوحدة واحدة: يا كلها تنجح يا ولا واحدة.",
+            "en": "Running several operations as one unit: either all succeed or none do."
+          }
+        },
+        {
+          "id": "laravel-q20",
+          "question": {
+            "ar": "إزاي تجيب الصفوف المحذوفة soft delete مع الباقي؟",
+            "en": "How do you include soft-deleted rows in a query?"
+          },
+          "options": [
+            {
+              "ar": "withTrashed()",
+              "en": "withTrashed()"
+            },
+            {
+              "ar": "onlyActive()",
+              "en": "onlyActive()"
+            },
+            {
+              "ar": "withDeleted()",
+              "en": "withDeleted()"
+            },
+            {
+              "ar": "all(true)",
+              "en": "all(true)"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الحذف بيحط تاريخ في deleted_at بدل ما يمسح الصف.",
+            "en": "Deleting sets deleted_at instead of removing the row."
+          }
+        },
+        {
+          "id": "laravel-q21",
+          "question": {
+            "ar": "الفرق بين bind و singleton؟",
+            "en": "What is the difference between bind and singleton?"
+          },
+          "options": [
+            {
+              "ar": "bind نسخة جديدة كل مرة و singleton نسخة واحدة",
+              "en": "bind gives a new instance each time; singleton gives one shared instance"
+            },
+            {
+              "ar": "مفيش فرق",
+              "en": "There is no difference"
+            },
+            {
+              "ar": "singleton للـ interfaces بس",
+              "en": "singleton only works with interfaces"
+            },
+            {
+              "ar": "bind أسرع دايمًا",
+              "en": "bind is always faster"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "المسؤول عن إنشاء الـ classes وحقن اعتمادياتها.",
+            "en": "It creates classes and injects their dependencies."
+          }
+        },
+        {
+          "id": "laravel-q22",
+          "question": {
+            "ar": "الكود محتاج يستخدم خدمة تانية متسجلة. تحطه في أنهي دالة؟",
+            "en": "Your code needs another registered service. Which method should it go in?"
+          },
+          "options": [
+            {
+              "ar": "boot()",
+              "en": "boot()"
+            },
+            {
+              "ar": "register()",
+              "en": "register()"
+            },
+            {
+              "ar": "__construct()",
+              "en": "__construct()"
+            },
+            {
+              "ar": "handle()",
+              "en": "handle()"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "المكان اللي بتسجل فيه الخدمات وتظبط التطبيق.",
+            "en": "Where you register services and configure the app."
+          }
+        },
+        {
+          "id": "laravel-q23",
+          "question": {
+            "ar": "الـ Facade فعليًا بتستدعي إيه؟",
+            "en": "What does a facade actually call?"
+          },
+          "options": [
+            {
+              "ar": "object حقيقي من الـ container",
+              "en": "A real object from the container"
+            },
+            {
+              "ar": "static method حقيقية",
+              "en": "A real static method"
+            },
+            {
+              "ar": "الداتابيز مباشرة",
+              "en": "The database directly"
+            },
+            {
+              "ar": "ملف config",
+              "en": "A config file"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "واجهة static مختصرة لخدمات موجودة في الـ container.",
+            "en": "Static-looking shortcuts to services in the container."
+          }
+        },
+        {
+          "id": "laravel-q24",
+          "question": {
+            "ar": "عايز تتابع created و updated و deleted لـ model واحد في class واحدة. تستخدم إيه؟",
+            "en": "You want to handle created, updated and deleted for one model in a single class. What do you use?"
+          },
+          "options": [
+            {
+              "ar": "Observer",
+              "en": "Observer"
             },
             {
               "ar": "Middleware",
               "en": "Middleware"
             },
             {
-              "ar": "Migration",
-              "en": "Migration"
+              "ar": "Policy",
+              "en": "Policy"
             },
             {
-              "ar": "Facade",
-              "en": "Facade"
+              "ar": "Form Request",
+              "en": "Form Request"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "تتنفذ في الخلفية.",
-            "en": "Runs in the background."
+            "ar": "فصل الحدث عن رد الفعل عليه.",
+            "en": "Decoupling an event from the reactions to it."
           }
         },
         {
-          "id": "laravel-q5",
+          "id": "laravel-q25",
           "question": {
-            "ar": "أمر تنفيذ الـ migrations؟",
-            "en": "Command to run migrations?"
+            "ar": "محتاج OAuth2 server كامل. تستخدم أنهي package؟",
+            "en": "You need a full OAuth2 server. Which package do you use?"
           },
           "options": [
             {
-              "ar": "php artisan migrate",
-              "en": "php artisan migrate"
+              "ar": "Passport",
+              "en": "Passport"
             },
-            {
-              "ar": "composer migrate",
-              "en": "composer migrate"
-            },
-            {
-              "ar": "php migrate",
-              "en": "php migrate"
-            },
-            {
-              "ar": "artisan db:run",
-              "en": "artisan db:run"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "أداة Artisan.",
-            "en": "Using Artisan."
-          }
-        },
-        {
-          "id": "laravel-q6",
-          "question": {
-            "ar": "توليد token للـ API بحزمة؟",
-            "en": "First-party API tokens package?"
-          },
-          "options": [
             {
               "ar": "Sanctum",
               "en": "Sanctum"
             },
             {
-              "ar": "Blade",
-              "en": "Blade"
-            },
-            {
-              "ar": "Mix",
-              "en": "Mix"
+              "ar": "Horizon",
+              "en": "Horizon"
             },
             {
               "ar": "Scout",
@@ -14426,68 +15706,158 @@
           ],
           "answer": 0,
           "explanation": {
-            "ar": "خفيفة ومناسبة للـ SPA.",
-            "en": "Lightweight, SPA friendly."
+            "ar": "Laravel فيها guards و starter kits جاهزة لتسجيل الدخول.",
+            "en": "Laravel provides guards and ready-made starter kits for login."
           }
         },
         {
-          "id": "laravel-q7",
+          "id": "laravel-q26",
           "question": {
-            "ar": "محرك القوالب؟",
-            "en": "Templating engine?"
-          },
-          "options": [
-            {
-              "ar": "Blade",
-              "en": "Blade"
-            },
-            {
-              "ar": "Twig",
-              "en": "Twig"
-            },
-            {
-              "ar": "EJS",
-              "en": "EJS"
-            },
-            {
-              "ar": "Pug",
-              "en": "Pug"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "‏{{ }} بتعمل escape.",
-            "en": "{{ }} escapes output."
-          }
-        },
-        {
-          "id": "laravel-q8",
-          "question": {
-            "ar": "صلاحيات على موديل معين؟",
-            "en": "Per-model authorization?"
+            "ar": "المستخدم يعدل الـ posts بتاعته بس. القاعدة دي تتحط فين؟",
+            "en": "Users may edit only their own posts. Where does that rule belong?"
           },
           "options": [
             {
               "ar": "Policy",
-              "en": "Policy"
+              "en": "A policy"
+            },
+            {
+              "ar": "Middleware عام",
+              "en": "A global middleware"
+            },
+            {
+              "ar": "Migration",
+              "en": "A migration"
             },
             {
               "ar": "Seeder",
-              "en": "Seeder"
-            },
-            {
-              "ar": "Factory",
-              "en": "Factory"
-            },
-            {
-              "ar": "Route",
-              "en": "Route"
+              "en": "A seeder"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "كلاس لكل موديل.",
-            "en": "A class per model."
+            "ar": "Gates لصلاحيات عامة، و Policies لصلاحيات خاصة بـ model.",
+            "en": "Gates handle general permissions; policies handle model-specific ones."
+          }
+        },
+        {
+          "id": "laravel-q27",
+          "question": {
+            "ar": "أنهي استخدام ممكن يعمل SQL Injection؟",
+            "en": "Which usage can lead to SQL injection?"
+          },
+          "options": [
+            {
+              "ar": "whereRaw مع دمج مدخلات المستخدم في النص",
+              "en": "whereRaw with user input concatenated into the string"
+            },
+            {
+              "ar": "User::where('email', $email)",
+              "en": "User::where('email', $email)"
+            },
+            {
+              "ar": "Post::find($id)",
+              "en": "Post::find($id)"
+            },
+            {
+              "ar": "DB::select مع ? و bindings",
+              "en": "DB::select with ? and bindings"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Laravel بتحمي من أشهر الهجمات افتراضيًا لو استخدمتها صح.",
+            "en": "Laravel guards against common attacks by default, as long as you use it correctly."
+          }
+        },
+        {
+          "id": "laravel-q28",
+          "question": {
+            "ar": "أنهي أمر بيشغل الـ worker اللي بينفذ الـ jobs؟",
+            "en": "Which command starts the worker that processes jobs?"
+          },
+          "options": [
+            {
+              "ar": "php artisan queue:work",
+              "en": "php artisan queue:work"
+            },
+            {
+              "ar": "php artisan schedule:run",
+              "en": "php artisan schedule:run"
+            },
+            {
+              "ar": "php artisan serve",
+              "en": "php artisan serve"
+            },
+            {
+              "ar": "php artisan job:start",
+              "en": "php artisan job:start"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Jobs للمهام البطيئة في الخلفية، والـ Scheduler للمهام الدورية.",
+            "en": "Jobs run slow tasks in the background; the scheduler runs periodic tasks."
+          }
+        },
+        {
+          "id": "laravel-q29",
+          "question": {
+            "ar": "Cache::remember بتعمل إيه لو القيمة مش في الكاش؟",
+            "en": "What does Cache::remember do when the value is not cached?"
+          },
+          "options": [
+            {
+              "ar": "تنفذ الـ closure وتخزن النتيجة",
+              "en": "Runs the closure and stores the result"
+            },
+            {
+              "ar": "ترجع null",
+              "en": "Returns null"
+            },
+            {
+              "ar": "ترمي Exception",
+              "en": "Throws an exception"
+            },
+            {
+              "ar": "تمسح الكاش كله",
+              "en": "Clears the whole cache"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Cache للنتايج التقيلة، وأوامر optimize في الـ production.",
+            "en": "Cache expensive results, and run the optimize commands in production."
+          }
+        },
+        {
+          "id": "laravel-q30",
+          "question": {
+            "ar": "عايز تتأكد إن job اتبعتت من غير ما تتنفذ فعلًا. تستخدم إيه؟",
+            "en": "You want to check that a job was dispatched without actually running it. What do you use?"
+          },
+          "options": [
+            {
+              "ar": "Queue::fake()",
+              "en": "Queue::fake()"
+            },
+            {
+              "ar": "RefreshDatabase",
+              "en": "RefreshDatabase"
+            },
+            {
+              "ar": "actingAs()",
+              "en": "actingAs()"
+            },
+            {
+              "ar": "assertDatabaseHas()",
+              "en": "assertDatabaseHas()"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Laravel بتدعم Pest و PHPUnit، مع أدوات لاختبار الـ HTTP والداتابيز.",
+            "en": "Laravel supports Pest and PHPUnit, with helpers for HTTP and database tests."
           }
         }
       ]
