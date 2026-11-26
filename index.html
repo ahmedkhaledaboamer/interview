@@ -16,7 +16,7 @@
       // Apply saved theme/language before first paint to avoid a flash.
       (function () {
         try {
-          var theme = JSON.parse(localStorage.getItem('ip.theme') || '"light"');
+          var theme = JSON.parse(localStorage.getItem('ip.themeChoice') || '"light"');
           var lang = JSON.parse(localStorage.getItem('ip.lang') || '"en"');
           var root = document.documentElement;
           root.classList.toggle('dark', theme === 'dark');

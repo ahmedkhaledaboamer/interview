@@ -1,15 +1,34 @@
-import { createContext, useCallback, useContext, useEffect, useMemo } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import strings from '../i18n/strings.js';
-import { useLocalStorage } from './useLocalStorage.js';
+import { readStorage, useLocalStorage, writeStorage } from './useLocalStorage.js';
 
 const AppContext = createContext(null);
+const THEME_KEY = 'ip.themeChoice';
 
 const EMPTY_LIST = [];
 const EMPTY_OBJ = {};
 
 export function AppProvider({ children }) {
   const [lang, setLang] = useLocalStorage('ip.lang', 'en');
-  const [theme, setTheme] = useLocalStorage('ip.theme', 'light');
+  // Light is the default. The theme is saved only when the user toggles it, so changing the
+  // default later still reaches visitors who never picked one. The old 'ip.theme' key stored
+  // the previous dark default for everyone, so it is ignored and cleaned up.
+  const [theme, setThemeState] = useState(() => readStorage(THEME_KEY, 'light'));
+  const setTheme = useCallback((update) => {
+    setThemeState((prev) => {
+      const next = typeof update === 'function' ? update(prev) : update;
+      writeStorage(THEME_KEY, next);
+      return next;
+    });
+  }, []);
+
+  useEffect(() => {
+    try {
+      window.localStorage.removeItem('ip.theme');
+    } catch {
+      // Storage unavailable; nothing to clean up.
+    }
+  }, []);
   const [completed, setCompleted] = useLocalStorage('ip.completed', EMPTY_LIST);
   const [bestScores, setBestScores] = useLocalStorage('ip.bestScores', EMPTY_OBJ);
   const [bestExam, setBestExam] = useLocalStorage('ip.bestExam', null);
