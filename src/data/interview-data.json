@@ -13,6 +13,34 @@
       },
       "lessons": [
         {
+          "id": "js-l51",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "إيه هي JavaScript؟",
+            "en": "What is JavaScript?"
+          },
+          "short": {
+            "ar": "لغة برمجة high-level و dynamic لعمل صفحات وتطبيقات تفاعلية.",
+            "en": "A high-level, dynamic language for building interactive pages and applications."
+          },
+          "points": {
+            "ar": [
+              "بتتحكم في الصفحة (DOM)، وبترد على أفعال المستخدم (events)، وبتكلم السيرفر (fetch).",
+              "مش للفرونت بس: بتشتغل في المتصفح، وعلى السيرفر بـ Node.js و Deno و Bun، وفي الموبايل بـ React Native، والديسكتوب بـ Electron.",
+              "single-threaded وبتعتمد على الـ event loop في الشغل الـ async."
+            ],
+            "en": [
+              "It controls the page (DOM), responds to user actions (events) and talks to servers (fetch).",
+              "It is not front-end only: it runs in browsers, on servers with Node.js, Deno and Bun, on mobile with React Native, and on desktop with Electron.",
+              "It is single-threaded and relies on the event loop for async work."
+            ]
+          },
+          "code": "console.log(\"Hello World\");"
+        },
+        {
           "id": "js-l01",
           "section": {
             "ar": "الأساسيات",
@@ -30,12 +58,14 @@
             "ar": [
               "var بيحصل لها hoisting بقيمة undefined وينفع تتعرف أكتر من مرة.",
               "let و const بيحصل لهم hoisting بس مينفعش تستخدمهم قبل سطر التعريف (TDZ).",
-              "const بتمنع تغيير المرجع، لكن محتوى الـ object ممكن يتعدل."
+              "const بتمنع تغيير المرجع، لكن محتوى الـ object ممكن يتعدل.",
+              "أفضل ممارسة: const افتراضيًا، و let لو هتعيد التعيين، ومتستخدمش var. ولو عايز تمنع تعديل الـ object استخدم Object.freeze()."
             ],
             "en": [
               "var is hoisted with the value undefined and can be redeclared.",
               "let and const are hoisted too, but cannot be used before their declaration line (TDZ).",
-              "const prevents reassigning the reference, but an object's contents can still change."
+              "const prevents reassigning the reference, but an object's contents can still change.",
+              "Best practice: const by default, let when you must reassign, and never var. To stop an object from changing, use Object.freeze()."
             ]
           },
           "code": "const user = { name: \"Ali\" };\nuser.name = \"Omar\"; // works\nuser = {};          // TypeError"
@@ -109,14 +139,16 @@
           "points": {
             "ar": [
               "=== بترجع true بس لو النوع والقيمة متطابقين (وفي الـ objects لازم نفس المرجع).",
-              "== بتعمل Type Coercion وده ممكن يدي نتايج غريبة، فالأفضل تستخدم ===."
+              "== بتعمل Type Coercion وده ممكن يدي نتايج غريبة، فالأفضل تستخدم ===.",
+              "NaN مش بيساوي أي حاجة حتى نفسه، فاستخدم Number.isNaN() للتأكد."
             ],
             "en": [
               "=== is true only when type and value match (for objects, it must be the same reference).",
-              "== performs type coercion, which can give surprising results, so prefer ===."
+              "== performs type coercion, which can give surprising results, so prefer ===.",
+              "NaN is not equal to anything, not even itself, so check it with Number.isNaN()."
             ]
           },
-          "code": "0 == \"\";  // true\n0 === \"\"; // false"
+          "code": "0 == \"\";  // true\n0 === \"\"; // false\n\nNaN === NaN;        // false\nNumber.isNaN(NaN);  // true"
         },
         {
           "id": "js-l05",
@@ -136,15 +168,17 @@
             "ar": [
               "undefined بتظهر تلقائيًا في متغير من غير قيمة، أو property مش موجودة، أو دالة مش بترجع حاجة.",
               "null المبرمج هو اللي بيحطها.",
-              "null == undefined بترجع true، لكن === بترجع false."
+              "null == undefined بترجع true، لكن === بترجع false.",
+              "الـ default parameter بيشتغل مع undefined بس، مش مع null. و ??= بتعين قيمة لو المتغير null أو undefined."
             ],
             "en": [
               "undefined appears automatically for an unassigned variable, a missing property, or a function that returns nothing.",
               "null is set deliberately by the programmer.",
-              "null == undefined is true, but === is false."
+              "null == undefined is true, but === is false.",
+              "A default parameter kicks in only for undefined, not null. ??= assigns a value only when the variable is null or undefined."
             ]
           },
-          "code": ""
+          "code": "function greet(name = \"Guest\") { return name; }\ngreet(undefined); // \"Guest\"\ngreet(null);      // null\n\nuser.name ??= \"Guest\";"
         },
         {
           "id": "js-l06",
@@ -277,6 +311,34 @@
           "code": "user?.address?.city;\nuser.save?.();\nlist?.[0];"
         },
         {
+          "id": "js-l52",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "إيه هي الـ Template Literals؟",
+            "en": "What are template literals?"
+          },
+          "short": {
+            "ar": "نصوص بين backticks بتدعم ${} والأسطر المتعددة.",
+            "en": "Strings in backticks that support ${} interpolation and multiple lines."
+          },
+          "points": {
+            "ar": [
+              "أي expression ينفع جوه ${} زي العمليات والـ ternary.",
+              "بتكتب نص على كذا سطر من غير \\n.",
+              "الـ Tagged Templates بتعدي النص على دالة قبل ما يتكون، زي مكتبات الـ styling والـ SQL."
+            ],
+            "en": [
+              "Any expression works inside ${}, including arithmetic and ternaries.",
+              "You can write multi-line strings without \\n.",
+              "Tagged templates pass the string through a function first, as styling and SQL libraries do."
+            ]
+          },
+          "code": "const name = \"Alex\";\nconst msg = `Hello, ${name}. Next year you will be ${age + 1}`;\n\nconst html = `\n  <div>\n    <h1>${title}</h1>\n  </div>\n`;\n\nfunction tag(strings, ...values) { /* ... */ }\ntag`Hi ${name}`;"
+        },
+        {
           "id": "js-l11",
           "section": {
             "ar": "Scope و Functions",
@@ -372,13 +434,15 @@
           },
           "points": {
             "ar": [
-              "بنستخدمه لإخفاء البيانات، وعمل factory functions، وفي الـ callbacks والـ debounce."
+              "بنستخدمه لإخفاء البيانات، وعمل factory functions، وفي الـ callbacks والـ debounce.",
+              "فخ مشهور: var جوه loop مع setTimeout بيطبع آخر قيمة بس، والحل let أو IIFE."
             ],
             "en": [
-              "Used for data privacy, factory functions, callbacks and debounce."
+              "Used for data privacy, factory functions, callbacks and debounce.",
+              "A classic trap: var inside a loop with setTimeout prints only the final value; fix it with let or an IIFE."
             ]
           },
-          "code": "function counter() {\n  let count = 0;\n  return () => ++count;\n}\nconst c = counter();\nc(); // 1\nc(); // 2"
+          "code": "function counter() {\n  let count = 0;\n  return () => ++count;\n}\nconst c = counter();\nc(); // 1\nc(); // 2\n\nfor (var i = 0; i < 3; i++) setTimeout(() => console.log(i)); // 3 3 3\nfor (let i = 0; i < 3; i++) setTimeout(() => console.log(i)); // 0 1 2"
         },
         {
           "id": "js-l15",
@@ -451,7 +515,8 @@
               "كـ method: الـ object اللي قبل النقطة.",
               "استدعاء عادي: undefined في strict mode، وإلا الـ global.",
               "Arrow: this بتاع الـ scope المحيط.",
-              "Event listener بدالة عادية: العنصر اللي عليه الـ listener."
+              "Event listener بدالة عادية: العنصر اللي عليه الـ listener.",
+              "فخ مشهور: لو خدت الـ method في متغير لوحدها، this بيضيع. الحل bind أو arrow function."
             ],
             "en": [
               "With new: the new object.",
@@ -459,10 +524,11 @@
               "As a method: the object before the dot.",
               "Plain call: undefined in strict mode, otherwise the global object.",
               "Arrow function: the this of the surrounding scope.",
-              "Event listener with a regular function: the element the listener is attached to."
+              "Event listener with a regular function: the element the listener is attached to.",
+              "A classic trap: storing a method in a separate variable loses this. Fix it with bind or an arrow function."
             ]
           },
-          "code": ""
+          "code": "const fn = user.greet;\nfn();                      // this is lost\nconst bound = user.greet.bind(user);\nbound();                   // works"
         },
         {
           "id": "js-l18",
@@ -1066,12 +1132,14 @@
             "ar": [
               "دالة async دايمًا بترجع Promise.",
               "await بتوقف الدالة دي بس من غير ما تعطل الـ thread.",
-              "الأخطاء بنمسكها بـ try/catch، و fetch مبترفضش في حالة 404 أو 500 فلازم تشيك على ok."
+              "الأخطاء بنمسكها بـ try/catch، و fetch مبترفضش في حالة 404 أو 500 فلازم تشيك على ok.",
+              "شغل الطلبات المستقلة بالتوازي بـ Promise.all بدل await ورا بعض. وفي الـ modules تقدر تستخدم await في أعلى الملف (top-level await)."
             ],
             "en": [
               "An async function always returns a promise.",
               "await pauses only that function, without blocking the thread.",
-              "Catch errors with try/catch. fetch does not reject on 404 or 500, so check res.ok."
+              "Catch errors with try/catch. fetch does not reject on 404 or 500, so check res.ok.",
+              "Run independent requests in parallel with Promise.all instead of awaiting them one by one. In modules you can use await at the top level."
             ]
           },
           "code": "try {\n  const res = await fetch(url);\n  if (!res.ok) throw new Error(res.status);\n} catch (e) {\n  console.error(e);\n}"
@@ -1105,6 +1173,64 @@
             ]
           },
           "code": ""
+        },
+        {
+          "id": "js-l53",
+          "section": {
+            "ar": "DOM و Browser",
+            "en": "DOM & Browser"
+          },
+          "title": {
+            "ar": "إيه هو الـ DOM؟",
+            "en": "What is the DOM?"
+          },
+          "short": {
+            "ar": "تمثيل صفحة الـ HTML كشجرة nodes تقدر JavaScript تقراها وتعدلها.",
+            "en": "A tree of nodes representing the HTML page, which JavaScript can read and change."
+          },
+          "points": {
+            "ar": [
+              "تختار العناصر بـ querySelector و querySelectorAll و getElementById.",
+              "تعدل بـ textContent و classList و setAttribute، وتضيف بـ createElement و append، وتشيل بـ remove().",
+              "textContent أأمن من innerHTML، لأن innerHTML مع مدخلات المستخدم ممكن يعمل XSS.",
+              "التعديلات الكتير على الـ DOM مكلفة، وده سبب فكرة الـ Virtual DOM في React."
+            ],
+            "en": [
+              "Select elements with querySelector, querySelectorAll and getElementById.",
+              "Change them with textContent, classList and setAttribute, add with createElement and append, and delete with remove().",
+              "textContent is safer than innerHTML, because innerHTML with user input can cause XSS.",
+              "Frequent DOM changes are expensive, which is why React uses a Virtual DOM."
+            ]
+          },
+          "code": "const card = document.querySelector(\".card\");\ncard.textContent = \"New text\";\ncard.classList.toggle(\"active\");\n\nconst div = document.createElement(\"div\");\ndiv.textContent = \"I'm new!\";\ndocument.body.append(div);"
+        },
+        {
+          "id": "js-l54",
+          "section": {
+            "ar": "DOM و Browser",
+            "en": "DOM & Browser"
+          },
+          "title": {
+            "ar": "الـ Events و addEventListener؟",
+            "en": "Events and addEventListener?"
+          },
+          "short": {
+            "ar": "حدث بيحصل في المتصفح زي click أو input، وبنسمعله بـ addEventListener.",
+            "en": "An action in the browser such as click or input, which you listen to with addEventListener."
+          },
+          "points": {
+            "ar": [
+              "الـ event object فيه target و type و key، و preventDefault() و stopPropagation().",
+              "options: once بيشيل الـ listener بعد أول مرة، و passive بيحسن أداء الـ scroll، و capture للـ capturing phase.",
+              "removeEventListener لازم ياخد نفس مرجع الدالة، فمتستخدمش arrow function مباشرة لو هتشيله."
+            ],
+            "en": [
+              "The event object has target, type and key, plus preventDefault() and stopPropagation().",
+              "Options: once removes the listener after the first call, passive improves scroll performance, and capture uses the capture phase.",
+              "removeEventListener needs the same function reference, so do not pass an inline arrow function if you plan to remove it."
+            ]
+          },
+          "code": "function handleClick(e) {\n  console.log(e.type, e.target);\n}\n\nbutton.addEventListener(\"click\", handleClick, { once: true });\nbutton.removeEventListener(\"click\", handleClick);"
         },
         {
           "id": "js-l42",
@@ -1308,15 +1434,17 @@
             "ar": [
               "ESM هو المعيار الرسمي، تحليله static فبيدعم Tree Shaking، وبيدعم top-level await.",
               "CommonJS تحميله متزامن وأصله من Node.",
-              "والإصدارات الحديثة من Node بتسمح بـ require لـ ESM في حالات معينة."
+              "والإصدارات الحديثة من Node بتسمح بـ require لـ ESM في حالات معينة.",
+              "import() الديناميكي بيحمل الـ module وقت الحاجة (code splitting)، وتقدر تستورد JSON بـ with { type: \"json\" }."
             ],
             "en": [
               "ESM is the official standard; it is statically analysable, so it supports tree shaking and top-level await.",
               "CommonJS loads synchronously and comes from Node.",
-              "Recent Node versions allow require() of ESM in some cases."
+              "Recent Node versions allow require() of ESM in some cases.",
+              "Dynamic import() loads a module only when needed (code splitting), and you can import JSON with with { type: \"json\" }."
             ]
           },
-          "code": ""
+          "code": "const { renderChart } = await import(\"./chart.js\");\nimport config from \"./config.json\" with { type: \"json\" };"
         },
         {
           "id": "js-l50",
@@ -1347,6 +1475,36 @@
             ]
           },
           "code": ""
+        },
+        {
+          "id": "js-l55",
+          "section": {
+            "ar": "مواضيع متقدمة",
+            "en": "Advanced Topics"
+          },
+          "title": {
+            "ar": "إيه الجديد في JavaScript (ES2025)؟",
+            "en": "What is new in modern JavaScript (ES2025)?"
+          },
+          "short": {
+            "ar": "Iterator helpers و methods جديدة للـ Set و Promise.try و JSON modules و RegExp.escape.",
+            "en": "Iterator helpers, new Set methods, Promise.try, JSON modules and RegExp.escape."
+          },
+          "points": {
+            "ar": [
+              "Iterator helpers زي map و filter و take و toArray على أي iterator، وبتشتغل lazy عنصر عنصر.",
+              "Set بقى فيه union و intersection و difference و isSubsetOf.",
+              "Promise.try بتلف دالة sync أو async في Promise.",
+              "ومن الحاجات اللي بتيجي بعد كده: Temporal API بديل Date، و using للتنظيف التلقائي للموارد."
+            ],
+            "en": [
+              "Iterator helpers such as map, filter, take and toArray work on any iterator, lazily, one item at a time.",
+              "Sets gained union, intersection, difference and isSubsetOf.",
+              "Promise.try wraps a sync or async function in a promise.",
+              "Coming next: the Temporal API to replace Date, and using for automatic resource cleanup."
+            ]
+          },
+          "code": "function* numbers() { yield 1; yield 2; yield 3; yield 4; }\nnumbers().map(x => x * 2).filter(x => x > 4).toArray(); // [6, 8]\n\nnew Set([1, 2]).union(new Set([2, 3]));         // Set {1, 2, 3}\nnew Set([1, 2]).intersection(new Set([2, 3]));  // Set {2}"
         }
       ],
       "quiz": [
@@ -2848,6 +3006,156 @@
           "explanation": {
             "ar": "السيرفر هو اللي بيبعت هيدر السماح.",
             "en": "Only the server can send the allow header."
+          }
+        },
+        {
+          "id": "js-q51",
+          "question": {
+            "ar": "JavaScript بتشتغل فين؟",
+            "en": "Where can JavaScript run?"
+          },
+          "options": [
+            {
+              "ar": "المتصفح والسيرفر والموبايل والديسكتوب",
+              "en": "Browsers, servers, mobile and desktop"
+            },
+            {
+              "ar": "المتصفح بس",
+              "en": "Only in browsers"
+            },
+            {
+              "ar": "السيرفر بس",
+              "en": "Only on servers"
+            },
+            {
+              "ar": "جوه ملفات HTML بس",
+              "en": "Only inside HTML files"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "لغة برمجة high-level و dynamic لعمل صفحات وتطبيقات تفاعلية.",
+            "en": "A high-level, dynamic language for building interactive pages and applications."
+          }
+        },
+        {
+          "id": "js-q52",
+          "question": {
+            "ar": "ناتج `Total: ${2 + 3}`؟",
+            "en": "What does `Total: ${2 + 3}` produce?"
+          },
+          "options": [
+            {
+              "ar": "\"Total: 5\"",
+              "en": "\"Total: 5\""
+            },
+            {
+              "ar": "\"Total: ${2 + 3}\"",
+              "en": "\"Total: ${2 + 3}\""
+            },
+            {
+              "ar": "\"Total: 23\"",
+              "en": "\"Total: 23\""
+            },
+            {
+              "ar": "SyntaxError",
+              "en": "SyntaxError"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "نصوص بين backticks بتدعم ${} والأسطر المتعددة.",
+            "en": "Strings in backticks that support ${} interpolation and multiple lines."
+          }
+        },
+        {
+          "id": "js-q53",
+          "question": {
+            "ar": "أنهي method بترجع أول عنصر بيطابق CSS selector؟",
+            "en": "Which method returns the first element matching a CSS selector?"
+          },
+          "options": [
+            {
+              "ar": "querySelector",
+              "en": "querySelector"
+            },
+            {
+              "ar": "querySelectorAll",
+              "en": "querySelectorAll"
+            },
+            {
+              "ar": "getElementsByClassName",
+              "en": "getElementsByClassName"
+            },
+            {
+              "ar": "createElement",
+              "en": "createElement"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "تمثيل صفحة الـ HTML كشجرة nodes تقدر JavaScript تقراها وتعدلها.",
+            "en": "A tree of nodes representing the HTML page, which JavaScript can read and change."
+          }
+        },
+        {
+          "id": "js-q54",
+          "question": {
+            "ar": "أنهي option بيشيل الـ listener تلقائيًا بعد أول مرة؟",
+            "en": "Which option removes the listener automatically after it fires once?"
+          },
+          "options": [
+            {
+              "ar": "once: true",
+              "en": "once: true"
+            },
+            {
+              "ar": "passive: true",
+              "en": "passive: true"
+            },
+            {
+              "ar": "capture: true",
+              "en": "capture: true"
+            },
+            {
+              "ar": "single: true",
+              "en": "single: true"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "حدث بيحصل في المتصفح زي click أو input، وبنسمعله بـ addEventListener.",
+            "en": "An action in the browser such as click or input, which you listen to with addEventListener."
+          }
+        },
+        {
+          "id": "js-q55",
+          "question": {
+            "ar": "أنهي ميزة اتضافت في ES2025؟",
+            "en": "Which feature was added in ES2025?"
+          },
+          "options": [
+            {
+              "ar": "Iterator helpers",
+              "en": "Iterator helpers"
+            },
+            {
+              "ar": "Optional chaining",
+              "en": "Optional chaining"
+            },
+            {
+              "ar": "let و const",
+              "en": "let and const"
+            },
+            {
+              "ar": "async/await",
+              "en": "async/await"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "optional chaining في ES2020، و let و const في ES2015، و async/await في ES2017.",
+            "en": "Optional chaining arrived in ES2020, let and const in ES2015, and async/await in ES2017."
           }
         }
       ]
