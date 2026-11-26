@@ -3991,142 +3991,620 @@
       },
       "lessons": [
         {
-          "id": "oop-l1",
+          "id": "oop-l01",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الكلاس والكائن",
-            "en": "Class & Object"
+            "ar": "يعني إيه OOP؟",
+            "en": "What is OOP?"
+          },
+          "short": {
+            "ar": "أسلوب برمجة بيعتمد على الـ Objects.",
+            "en": "A programming style built around objects."
           },
           "points": {
             "ar": [
-              "الكلاس قالب، والـ object نسخة منه ليها بيانات وسلوك."
+              "بيجمع البيانات والسلوك اللي بيشتغل عليها مع بعض، فالكود يبقى منظم وسهل إعادة استخدامه وصيانته.",
+              "الـ Procedural بيركز على خطوات ودوال منفصلة عن البيانات."
             ],
             "en": [
-              "A class is a blueprint; an object is an instance with state and behaviour."
+              "It bundles data with the behaviour that works on it, so code stays organised, reusable and easy to maintain.",
+              "Procedural code focuses on steps and functions kept separate from the data."
             ]
           },
-          "code": "class User {\n  constructor(public name: string) {}\n  greet() { return 'Hi ' + this.name; }\n}\nconst u = new User('Sara');"
+          "code": ""
         },
         {
-          "id": "oop-l2",
+          "id": "oop-l02",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "التغليف",
-            "en": "Encapsulation"
+            "ar": "الفرق بين Class و Object؟",
+            "en": "What is the difference between a class and an object?"
+          },
+          "short": {
+            "ar": "الـ Class قالب، والـ Object نسخة منه.",
+            "en": "A class is a blueprint; an object is an instance of it."
           },
           "points": {
             "ar": [
-              "إخفاء البيانات الداخلية والتعامل معاها من خلال methods بتحمي قواعدها."
+              "كل object ليه قيم خاصة بيه وبيشارك نفس الـ methods."
             ],
             "en": [
-              "Hide internal state and expose methods that protect its rules."
+              "Each object has its own values and shares the same methods."
             ]
           },
-          "code": "class Account {\n  #balance = 0;\n  deposit(x: number) { if (x > 0) this.#balance += x; }\n  get balance() { return this.#balance; }\n}"
+          "code": "class Car { constructor(public brand: string) {} }\nconst myCar = new Car(\"BMW\");"
         },
         {
-          "id": "oop-l3",
+          "id": "oop-l03",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الوراثة",
-            "en": "Inheritance"
+            "ar": "المبادئ الأربعة؟",
+            "en": "What are the four pillars of OOP?"
+          },
+          "short": {
+            "ar": "Encapsulation و Abstraction و Inheritance و Polymorphism.",
+            "en": "Encapsulation, abstraction, inheritance and polymorphism."
           },
           "points": {
             "ar": [
-              "كلاس بياخد خصائص كلاس تاني. استخدمها لعلاقة \"is a\" بس."
+              "الأول بيحمي البيانات، والتاني بيخبي التعقيد، والتالت بيعيد استخدام الكود، والرابع بيخلي نفس الواجهة ليها سلوك مختلف."
             ],
             "en": [
-              "A class reuses another class. Use it only for real \"is a\" relationships."
+              "The first protects data, the second hides complexity, the third reuses code, and the fourth lets one interface behave differently."
             ]
           },
-          "code": "class Employee extends User {\n  work() { return this.name + ' is working'; }\n}"
+          "code": ""
         },
         {
-          "id": "oop-l4",
+          "id": "oop-l04",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "تعدد الأشكال",
-            "en": "Polymorphism"
+            "ar": "Encapsulation؟",
+            "en": "What is encapsulation?"
+          },
+          "short": {
+            "ar": "تجميع البيانات والسلوك والتحكم في الوصول ليها.",
+            "en": "Bundling data with behaviour and controlling access to it."
           },
           "points": {
             "ar": [
-              "نفس الـ method بتتصرف بشكل مختلف حسب النوع."
+              "بنخلي البيانات private ونعدلها من methods بتتحقق من القيم."
             ],
             "en": [
-              "The same method behaves differently per type."
+              "Keep the data private and change it only through methods that validate the values."
             ]
           },
-          "code": "interface Shape { area(): number }\nclass Circle implements Shape { constructor(private r: number) {} area() { return Math.PI * this.r ** 2; } }\nclass Square implements Shape { constructor(private s: number) {} area() { return this.s ** 2; } }"
+          "code": "class Account {\n  private balance = 0;\n  deposit(amount: number) {\n    if (amount <= 0) throw new Error(\"Invalid\");\n    this.balance += amount;\n  }\n  getBalance() { return this.balance; }\n}"
         },
         {
-          "id": "oop-l5",
+          "id": "oop-l05",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "التجريد",
-            "en": "Abstraction"
+            "ar": "Abstraction والفرق بينه وبين Encapsulation؟",
+            "en": "What is abstraction, and how does it differ from encapsulation?"
+          },
+          "short": {
+            "ar": "Abstraction بيظهر \"بيعمل إيه\"، و Encapsulation بيحمي \"الحالة الداخلية\".",
+            "en": "Abstraction shows \"what it does\"; encapsulation protects \"the internal state\"."
           },
           "points": {
             "ar": [
-              "تظهر المهم وتخفي التفاصيل. abstract class ممكن يبقى فيها كود، و interface عقد بس."
+              "الـ Abstraction قرار تصميم بنطبقه بـ interfaces و abstract classes.",
+              "زي العربية: بتدوس بنزين من غير ما تعرف الموتور شغال إزاي."
             ],
             "en": [
-              "Expose what matters, hide details. Abstract classes may hold code; interfaces are contracts."
+              "Abstraction is a design decision, applied with interfaces and abstract classes.",
+              "Like a car: you press the accelerator without knowing how the engine works."
             ]
           },
-          "code": "abstract class Payment {\n  abstract charge(amount: number): Promise<void>;\n  log(msg: string) { console.log(msg); }\n}"
+          "code": "interface PaymentGateway { pay(amount: number): Promise<void>; }"
         },
         {
-          "id": "oop-l6",
+          "id": "oop-l06",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "مبادئ SOLID",
-            "en": "SOLID"
+            "ar": "Inheritance وأنواعه؟",
+            "en": "What is inheritance, and what types are there?"
+          },
+          "short": {
+            "ar": "class بتورث خصائص وسلوك من class تانية.",
+            "en": "A class inherits properties and behaviour from another class."
           },
           "points": {
             "ar": [
-              "S مسؤولية واحدة. O مفتوح للإضافة مقفول للتعديل. L الابن يحل محل الأب.",
-              "I واجهات صغيرة. D اعتمد على التجريد مش التنفيذ."
+              "أنواعه: Single و Multilevel و Hierarchical و Multiple و Hybrid.",
+              "و TypeScript بتسمح لـ class إنها تورث من class واحدة بس."
             ],
             "en": [
-              "Single responsibility, Open/closed, Liskov substitution.",
-              "Interface segregation, Dependency inversion."
+              "Types: single, multilevel, hierarchical, multiple and hybrid.",
+              "TypeScript lets a class extend only one class."
             ]
           },
-          "code": "class OrderService {\n  constructor(private repo: OrderRepository) {} // abstraction\n}"
+          "code": "class Animal { eat() {} }\nclass Dog extends Animal { bark() {} }"
         },
         {
-          "id": "oop-l7",
+          "id": "oop-l07",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "التركيب مقابل الوراثة",
-            "en": "Composition vs Inheritance"
+            "ar": "Polymorphism؟",
+            "en": "What is polymorphism?"
+          },
+          "short": {
+            "ar": "نفس الاستدعاء بيدي سلوك مختلف حسب الـ object.",
+            "en": "The same call behaves differently depending on the object."
           },
           "points": {
             "ar": [
-              "التركيب (has a) أمرن من سلاسل الوراثة العميقة."
+              "بيخليك تتعامل مع أنواع مختلفة بنفس الواجهة من غير شروط كتير."
             ],
             "en": [
-              "Composition (has a) is more flexible than deep inheritance chains."
+              "It lets you handle different types through one interface without lots of conditions."
             ]
           },
-          "code": "class Car { constructor(private engine: Engine) {} start() { this.engine.run(); } }"
+          "code": "interface Shape { area(): number; }\nclass Square implements Shape {\n  constructor(private s: number) {}\n  area() { return this.s ** 2; }\n}\nclass Circle implements Shape {\n  constructor(private r: number) {}\n  area() { return Math.PI * this.r ** 2; }\n}\nconst shapes: Shape[] = [new Square(2), new Circle(1)];\nshapes.forEach(s => console.log(s.area()));"
         },
         {
-          "id": "oop-l8",
+          "id": "oop-l08",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "أنماط التصميم",
-            "en": "Design Patterns"
+            "ar": "Overloading و Overriding؟",
+            "en": "What are overloading and overriding?"
+          },
+          "short": {
+            "ar": "Overloading نفس الاسم بـ parameters مختلفة، و Overriding الابن بيعيد تعريف method الأب.",
+            "en": "Overloading is one name with different parameters; overriding is a subclass redefining a parent method."
           },
           "points": {
             "ar": [
-              "Singleton نسخة واحدة، Factory بتنشئ كائنات، Strategy بتبدل الخوارزمية، Observer بتبلغ المشتركين، Repository بتعزل البيانات."
+              "في TypeScript الـ Overloading عبارة عن كذا signature وتنفيذ واحد."
             ],
             "en": [
-              "Singleton, Factory, Strategy, Observer and Repository solve recurring design problems."
+              "In TypeScript, overloading means several signatures with a single implementation."
             ]
           },
-          "code": "class Checkout {\n  constructor(private pay: PaymentStrategy) {}\n  run(total: number) { return this.pay.charge(total); }\n}"
+          "code": "class Printer {\n  print(v: string): void;\n  print(v: number): void;\n  print(v: string | number) { console.log(v); }\n}\nclass ColorPrinter extends Printer {\n  override print(v: string | number) { console.log(\"🎨\", v); }\n}"
+        },
+        {
+          "id": "oop-l09",
+          "section": {
+            "ar": "المفاهيم المهمة",
+            "en": "Key Concepts"
+          },
+          "title": {
+            "ar": "الـ Constructor وأنواعه؟",
+            "en": "What is a constructor, and what kinds are there?"
+          },
+          "short": {
+            "ar": "method بتتنفذ عند إنشاء object.",
+            "en": "A method that runs when an object is created."
+          },
+          "points": {
+            "ar": [
+              "في OOP عمومًا فيه Default و Parameterized و Copy، وأحيانًا Private.",
+              "TypeScript بتسمح بتنفيذ constructor واحد، وفيها اختصار للخصائص."
+            ],
+            "en": [
+              "In OOP generally there are default, parameterised and copy constructors, and sometimes private ones.",
+              "TypeScript allows a single constructor implementation, with a shorthand for declaring properties."
+            ]
+          },
+          "code": "class User {\n  constructor(public name: string, private age = 18) {}\n}"
+        },
+        {
+          "id": "oop-l10",
+          "section": {
+            "ar": "المفاهيم المهمة",
+            "en": "Key Concepts"
+          },
+          "title": {
+            "ar": "Access Modifiers؟",
+            "en": "What are access modifiers?"
+          },
+          "short": {
+            "ar": "public للكل، private للـ class بس، protected للـ class وأبنائها.",
+            "en": "public is open to all, private is for the class only, and protected is for the class and its subclasses."
+          },
+          "points": {
+            "ar": [
+              "public هو الافتراضي.",
+              "private في TS فحص وقت الـ compile، و # خصوصية حقيقية وقت التشغيل."
+            ],
+            "en": [
+              "public is the default.",
+              "TypeScript private is a compile-time check, while # gives real privacy at runtime."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "oop-l11",
+          "section": {
+            "ar": "المفاهيم المهمة",
+            "en": "Key Concepts"
+          },
+          "title": {
+            "ar": "static؟",
+            "en": "What does static mean?"
+          },
+          "short": {
+            "ar": "عضو تابع للـ class نفسها مش للـ object.",
+            "en": "A member that belongs to the class itself, not to its objects."
+          },
+          "points": {
+            "ar": [
+              "مناسب للدوال المساعدة والثوابت والـ factory methods."
+            ],
+            "en": [
+              "It suits helper functions, constants and factory methods."
+            ]
+          },
+          "code": "class MathUtil {\n  static readonly PI = 3.14;\n  static double(n: number) { return n * 2; }\n}\nMathUtil.double(4);"
+        },
+        {
+          "id": "oop-l12",
+          "section": {
+            "ar": "المفاهيم المهمة",
+            "en": "Key Concepts"
+          },
+          "title": {
+            "ar": "Abstract Class و Interface؟",
+            "en": "Abstract class versus interface?"
+          },
+          "short": {
+            "ar": "الأولى فيها تنفيذ جزئي، والتانية عقد بس.",
+            "en": "The first has partial implementation; the second is only a contract."
+          },
+          "points": {
+            "ar": [
+              "استخدم abstract class لما الأبناء يشاركوا كود وحالة، و interface لما عايز تحدد قدرة لأنواع مختلفة.",
+              "وينفع تعمل implements لأكتر من interface."
+            ],
+            "en": [
+              "Use an abstract class when subclasses share code and state, and an interface to describe a capability across different types.",
+              "A class can implement several interfaces."
+            ]
+          },
+          "code": "abstract class Employee {\n  abstract salary(): number;\n  report() { return `Salary: ${this.salary()}`; }\n}"
+        },
+        {
+          "id": "oop-l13",
+          "section": {
+            "ar": "المفاهيم المهمة",
+            "en": "Key Concepts"
+          },
+          "title": {
+            "ar": "this و super؟",
+            "en": "What are this and super?"
+          },
+          "short": {
+            "ar": "this للـ object الحالي، و super للأب.",
+            "en": "this is the current object; super is the parent."
+          },
+          "points": {
+            "ar": [
+              "في constructor الابن لازم تنادي super() قبل استخدام this."
+            ],
+            "en": [
+              "In a subclass constructor you must call super() before using this."
+            ]
+          },
+          "code": "class Manager extends User {\n  constructor(name: string, public team: number) {\n    super(name);\n  }\n}"
+        },
+        {
+          "id": "oop-l14",
+          "section": {
+            "ar": "المفاهيم المهمة",
+            "en": "Key Concepts"
+          },
+          "title": {
+            "ar": "Static و Dynamic Binding؟",
+            "en": "What are static and dynamic binding?"
+          },
+          "short": {
+            "ar": "الأول بيتحدد وقت الـ compile، والتاني وقت التشغيل.",
+            "en": "The first is decided at compile time; the second at runtime."
+          },
+          "points": {
+            "ar": [
+              "في لغات زي Java الـ Overloading مثال للـ Static، والـ Overriding للـ Dynamic.",
+              "في JavaScript البحث عن الـ method بيحصل وقت التشغيل."
+            ],
+            "en": [
+              "In languages such as Java, overloading is an example of static binding and overriding of dynamic binding.",
+              "In JavaScript, method lookup happens at runtime."
+            ]
+          },
+          "code": "const a: Animal = new Dog();\na.eat(); // resolved from the actual object"
+        },
+        {
+          "id": "oop-l15",
+          "section": {
+            "ar": "المفاهيم المهمة",
+            "en": "Key Concepts"
+          },
+          "title": {
+            "ar": "الـ Diamond Problem؟",
+            "en": "What is the diamond problem?"
+          },
+          "short": {
+            "ar": "غموض لما class تورث من اتنين ليهم أب مشترك.",
+            "en": "Ambiguity when a class inherits from two classes that share a parent."
+          },
+          "points": {
+            "ar": [
+              "لو الاتنين غيروا نفس الـ method، أنهي واحدة تتورث؟",
+              "C++ بتحلها بـ virtual inheritance، و Python بترتيب MRO.",
+              "Java و TypeScript بيمنعوا وراثة أكتر من class ويسمحوا بأكتر من interface، و TS كمان ممكن تستخدم Mixins."
+            ],
+            "en": [
+              "If both override the same method, which one is inherited?",
+              "C++ solves it with virtual inheritance, and Python with its MRO order.",
+              "Java and TypeScript forbid extending more than one class but allow many interfaces, and TypeScript can also use mixins."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "oop-l16",
+          "section": {
+            "ar": "التصميم",
+            "en": "Design"
+          },
+          "title": {
+            "ar": "Association و Aggregation و Composition؟",
+            "en": "What are association, aggregation and composition?"
+          },
+          "short": {
+            "ar": "علاقة عامة، و \"has-a\" ضعيفة، و \"has-a\" قوية.",
+            "en": "A general relationship, a weak \"has-a\", and a strong \"has-a\"."
+          },
+          "points": {
+            "ar": [
+              "Association: دكتور ومريض.",
+              "Aggregation: فريق ولاعيبة، واللاعب يفضل موجود لو الفريق اتلغى.",
+              "Composition: بيت وأوض، والأوض مبتبقاش موجودة من غير البيت."
+            ],
+            "en": [
+              "Association: a doctor and a patient.",
+              "Aggregation: a team and its players; a player still exists if the team is dissolved.",
+              "Composition: a house and its rooms; the rooms do not exist without the house."
+            ]
+          },
+          "code": "class Team { constructor(private players: Player[]) {} } // aggregation\nclass House { private rooms = [new Room()]; }            // composition"
+        },
+        {
+          "id": "oop-l17",
+          "section": {
+            "ar": "التصميم",
+            "en": "Design"
+          },
+          "title": {
+            "ar": "Composition over Inheritance؟",
+            "en": "What does \"composition over inheritance\" mean?"
+          },
+          "short": {
+            "ar": "ابني السلوك بتركيب objects بدل الوراثة العميقة.",
+            "en": "Build behaviour by combining objects instead of deep inheritance."
+          },
+          "points": {
+            "ar": [
+              "بيدي مرونة أكتر وترابط أقل، وتقدر تغير السلوك بسهولة."
+            ],
+            "en": [
+              "It gives more flexibility and less coupling, and behaviour is easy to swap."
+            ]
+          },
+          "code": "interface Logger { log(m: string): void; }\nclass OrderService {\n  constructor(private logger: Logger) {}\n  create() { this.logger.log(\"created\"); }\n}"
+        },
+        {
+          "id": "oop-l18",
+          "section": {
+            "ar": "التصميم",
+            "en": "Design"
+          },
+          "title": {
+            "ar": "Coupling و Cohesion؟",
+            "en": "What are coupling and cohesion?"
+          },
+          "short": {
+            "ar": "المطلوب Low Coupling و High Cohesion.",
+            "en": "Aim for low coupling and high cohesion."
+          },
+          "points": {
+            "ar": [
+              "الـ Coupling مدى اعتماد الأجزاء على بعض.",
+              "الـ Cohesion مدى ترابط مسؤوليات الجزء الواحد."
+            ],
+            "en": [
+              "Coupling is how much parts depend on each other.",
+              "Cohesion is how closely related one part's responsibilities are."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "oop-l19",
+          "section": {
+            "ar": "التصميم",
+            "en": "Design"
+          },
+          "title": {
+            "ar": "SOLID؟",
+            "en": "What is SOLID?"
+          },
+          "short": {
+            "ar": "5 مبادئ لتصميم كود سهل الصيانة.",
+            "en": "Five principles for designing maintainable code."
+          },
+          "points": {
+            "ar": [
+              "S (Single Responsibility): الـ class ليها سبب واحد للتغيير.",
+              "O (Open/Closed): مفتوحة للتوسيع ومقفولة للتعديل.",
+              "L (Liskov Substitution): الابن ينفع يحل محل الأب من غير ما يكسر السلوك.",
+              "I (Interface Segregation): interfaces صغيرة أحسن من واحدة ضخمة.",
+              "D (Dependency Inversion): اعتمد على abstractions مش تفاصيل."
+            ],
+            "en": [
+              "S (Single Responsibility): a class has one reason to change.",
+              "O (Open/Closed): open for extension, closed for modification.",
+              "L (Liskov Substitution): a subclass can replace its parent without breaking behaviour.",
+              "I (Interface Segregation): small interfaces beat one huge interface.",
+              "D (Dependency Inversion): depend on abstractions, not details."
+            ]
+          },
+          "code": "interface Discount { apply(price: number): number; }\nclass VipDiscount implements Discount {\n  apply(p: number) { return p * 0.8; }\n}\nclass Checkout {\n  constructor(private discount: Discount) {}   // D\n  total(p: number) { return this.discount.apply(p); } // O\n}"
+        },
+        {
+          "id": "oop-l20",
+          "section": {
+            "ar": "التصميم",
+            "en": "Design"
+          },
+          "title": {
+            "ar": "الـ Design Patterns؟",
+            "en": "What are design patterns?"
+          },
+          "short": {
+            "ar": "حلول مجربة لمشاكل تصميم متكررة.",
+            "en": "Proven solutions to recurring design problems."
+          },
+          "points": {
+            "ar": [
+              "Singleton: نسخة واحدة.",
+              "Factory: إنشاء objects من غير ربط الكود بالـ class.",
+              "Observer: إبلاغ المشتركين بأي تغيير.",
+              "Strategy: تبديل الخوارزمية وقت التشغيل (زي مثال Discount)."
+            ],
+            "en": [
+              "Singleton: a single instance.",
+              "Factory: creating objects without tying the code to a concrete class.",
+              "Observer: notifying subscribers of every change.",
+              "Strategy: swapping the algorithm at runtime (like the Discount example)."
+            ]
+          },
+          "code": "// Singleton\nclass Config {\n  private static instance: Config;\n  private constructor() {}\n  static get() { return (this.instance ??= new Config()); }\n}\n\n// Factory\nfunction createShape(type: \"square\" | \"circle\"): Shape {\n  return type === \"square\" ? new Square(1) : new Circle(1);\n}\n\n// Observer\nclass Subject {\n  private subs: ((msg: string) => void)[] = [];\n  subscribe(fn: (msg: string) => void) { this.subs.push(fn); }\n  notify(msg: string) { this.subs.forEach(fn => fn(msg)); }\n}"
         }
       ],
       "quiz": [
         {
-          "id": "oop-q1",
+          "id": "oop-q01",
           "question": {
-            "ar": "إخفاء البيانات الداخلية اسمه؟",
-            "en": "Hiding internal state is called?"
+            "ar": "الـ OOP بيجمع إيه مع بعض؟",
+            "en": "What does OOP bundle together?"
+          },
+          "options": [
+            {
+              "ar": "البيانات والسلوك اللي بيشتغل عليها",
+              "en": "Data and the behaviour that works on it"
+            },
+            {
+              "ar": "الدوال بس",
+              "en": "Functions only"
+            },
+            {
+              "ar": "HTML و CSS",
+              "en": "HTML and CSS"
+            },
+            {
+              "ar": "جداول الداتابيز",
+              "en": "Database tables"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "أسلوب برمجة بيعتمد على الـ Objects.",
+            "en": "A programming style built around objects."
+          }
+        },
+        {
+          "id": "oop-q02",
+          "question": {
+            "ar": "في const myCar = new Car(\"BMW\")، الـ myCar يبقى إيه؟",
+            "en": "In const myCar = new Car(\"BMW\"), what is myCar?"
+          },
+          "options": [
+            {
+              "ar": "object (نسخة من الـ class)",
+              "en": "An object (an instance of the class)"
+            },
+            {
+              "ar": "class",
+              "en": "class"
+            },
+            {
+              "ar": "interface",
+              "en": "interface"
+            },
+            {
+              "ar": "method",
+              "en": "method"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Class قالب، والـ Object نسخة منه.",
+            "en": "A class is a blueprint; an object is an instance of it."
+          }
+        },
+        {
+          "id": "oop-q03",
+          "question": {
+            "ar": "أنهي واحد مش من المبادئ الأربعة؟",
+            "en": "Which of these is NOT one of the four pillars?"
+          },
+          "options": [
+            {
+              "ar": "Compilation",
+              "en": "Compilation"
+            },
+            {
+              "ar": "Encapsulation",
+              "en": "Encapsulation"
+            },
+            {
+              "ar": "Inheritance",
+              "en": "Inheritance"
+            },
+            {
+              "ar": "Polymorphism",
+              "en": "Polymorphism"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Encapsulation و Abstraction و Inheritance و Polymorphism.",
+            "en": "Encapsulation, abstraction, inheritance and polymorphism."
+          }
+        },
+        {
+          "id": "oop-q04",
+          "question": {
+            "ar": "إخفاء balance وإتاحة deposit() اللي بتتحقق من القيمة اسمه إيه؟",
+            "en": "Hiding balance and exposing a deposit() that validates the amount is called?"
           },
           "options": [
             {
@@ -4142,21 +4620,81 @@
               "en": "Polymorphism"
             },
             {
-              "ar": "Recursion",
-              "en": "Recursion"
+              "ar": "Composition",
+              "en": "Composition"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "التغليف بيحمي الـ state.",
-            "en": "Encapsulation protects state."
+            "ar": "تجميع البيانات والسلوك والتحكم في الوصول ليها.",
+            "en": "Bundling data with behaviour and controlling access to it."
           }
         },
         {
-          "id": "oop-q2",
+          "id": "oop-q05",
           "question": {
-            "ar": "نفس الـ method بسلوك مختلف؟",
-            "en": "Same method, different behaviour?"
+            "ar": "interface اسمه PaymentGateway فيه pay() بس، ده مثال على إيه؟",
+            "en": "A PaymentGateway interface exposing only pay() is an example of?"
+          },
+          "options": [
+            {
+              "ar": "Abstraction",
+              "en": "Abstraction"
+            },
+            {
+              "ar": "Inheritance",
+              "en": "Inheritance"
+            },
+            {
+              "ar": "Overloading",
+              "en": "Overloading"
+            },
+            {
+              "ar": "Coupling",
+              "en": "Coupling"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Abstraction بيظهر \"بيعمل إيه\"، و Encapsulation بيحمي \"الحالة الداخلية\".",
+            "en": "Abstraction shows \"what it does\"; encapsulation protects \"the internal state\"."
+          }
+        },
+        {
+          "id": "oop-q06",
+          "question": {
+            "ar": "الـ class في TypeScript تقدر تعمل extends لكام class؟",
+            "en": "How many classes can a TypeScript class extend?"
+          },
+          "options": [
+            {
+              "ar": "واحدة بس",
+              "en": "Only one"
+            },
+            {
+              "ar": "اتنين",
+              "en": "Two"
+            },
+            {
+              "ar": "أي عدد",
+              "en": "Any number"
+            },
+            {
+              "ar": "ولا واحدة",
+              "en": "None"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "class بتورث خصائص وسلوك من class تانية.",
+            "en": "A class inherits properties and behaviour from another class."
+          }
+        },
+        {
+          "id": "oop-q07",
+          "question": {
+            "ar": "shapes.forEach(s => s.area()) وكل شكل بينفذ area() مختلفة. ده إيه؟",
+            "en": "shapes.forEach(s => s.area()) runs a different area() for each shape. This shows?"
           },
           "options": [
             {
@@ -4168,25 +4706,355 @@
               "en": "Encapsulation"
             },
             {
-              "ar": "Abstraction",
-              "en": "Abstraction"
+              "ar": "Aggregation",
+              "en": "Aggregation"
             },
             {
-              "ar": "Composition",
-              "en": "Composition"
+              "ar": "Static binding",
+              "en": "Static binding"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "تعدد الأشكال.",
-            "en": "That is polymorphism."
+            "ar": "نفس الاستدعاء بيدي سلوك مختلف حسب الـ object.",
+            "en": "The same call behaves differently depending on the object."
           }
         },
         {
-          "id": "oop-q3",
+          "id": "oop-q08",
           "question": {
-            "ar": "حرف D في SOLID؟",
-            "en": "The D in SOLID?"
+            "ar": "الـ Overloading في TypeScript معناه إيه؟",
+            "en": "What does overloading mean in TypeScript?"
+          },
+          "options": [
+            {
+              "ar": "كذا signature وتنفيذ واحد",
+              "en": "Several signatures, one implementation"
+            },
+            {
+              "ar": "كذا تنفيذ كامل لنفس الدالة",
+              "en": "Several full implementations of one function"
+            },
+            {
+              "ar": "إعادة تعريف method الأب",
+              "en": "Redefining a parent method"
+            },
+            {
+              "ar": "مش مدعوم خالص",
+              "en": "It is not supported at all"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Overloading نفس الاسم بـ parameters مختلفة، و Overriding الابن بيعيد تعريف method الأب.",
+            "en": "Overloading is one name with different parameters; overriding is a subclass redefining a parent method."
+          }
+        },
+        {
+          "id": "oop-q09",
+          "question": {
+            "ar": "constructor(public name: string) في TypeScript بيعمل إيه؟",
+            "en": "What does constructor(public name: string) do in TypeScript?"
+          },
+          "options": [
+            {
+              "ar": "بيعرف خاصية name ويحط فيها القيمة",
+              "en": "Declares a name property and assigns it"
+            },
+            {
+              "ar": "ولا حاجة",
+              "en": "Nothing"
+            },
+            {
+              "ar": "بيخلي name static",
+              "en": "Makes name static"
+            },
+            {
+              "ar": "بيعمل getter بس",
+              "en": "Creates only a getter"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "method بتتنفذ عند إنشاء object.",
+            "en": "A method that runs when an object is created."
+          }
+        },
+        {
+          "id": "oop-q10",
+          "question": {
+            "ar": "الـ access modifier الافتراضي في TypeScript؟",
+            "en": "What is the default access modifier in TypeScript?"
+          },
+          "options": [
+            {
+              "ar": "public",
+              "en": "public"
+            },
+            {
+              "ar": "private",
+              "en": "private"
+            },
+            {
+              "ar": "protected",
+              "en": "protected"
+            },
+            {
+              "ar": "readonly",
+              "en": "readonly"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "public للكل، private للـ class بس، protected للـ class وأبنائها.",
+            "en": "public is open to all, private is for the class only, and protected is for the class and its subclasses."
+          }
+        },
+        {
+          "id": "oop-q11",
+          "question": {
+            "ar": "إزاي تنادي static method اسمها double؟",
+            "en": "How do you call a static method named double?"
+          },
+          "options": [
+            {
+              "ar": "MathUtil.double(4)",
+              "en": "MathUtil.double(4)"
+            },
+            {
+              "ar": "new MathUtil().double(4)",
+              "en": "new MathUtil().double(4)"
+            },
+            {
+              "ar": "this.double(4)",
+              "en": "this.double(4)"
+            },
+            {
+              "ar": "double(4)",
+              "en": "double(4)"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "عضو تابع للـ class نفسها مش للـ object.",
+            "en": "A member that belongs to the class itself, not to its objects."
+          }
+        },
+        {
+          "id": "oop-q12",
+          "question": {
+            "ar": "الأبناء محتاجين يشاركوا كود وحالة. تستخدم إيه؟",
+            "en": "Subclasses need to share code and state. What do you use?"
+          },
+          "options": [
+            {
+              "ar": "abstract class",
+              "en": "abstract class"
+            },
+            {
+              "ar": "interface",
+              "en": "interface"
+            },
+            {
+              "ar": "type alias",
+              "en": "type alias"
+            },
+            {
+              "ar": "enum",
+              "en": "enum"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الأولى فيها تنفيذ جزئي، والتانية عقد بس.",
+            "en": "The first has partial implementation; the second is only a contract."
+          }
+        },
+        {
+          "id": "oop-q13",
+          "question": {
+            "ar": "في constructor الابن، إيه اللي لازم ييجي قبل استخدام this؟",
+            "en": "In a subclass constructor, what must come before using this?"
+          },
+          "options": [
+            {
+              "ar": "super()",
+              "en": "super()"
+            },
+            {
+              "ar": "new()",
+              "en": "new()"
+            },
+            {
+              "ar": "this.init()",
+              "en": "this.init()"
+            },
+            {
+              "ar": "return",
+              "en": "return"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "this للـ object الحالي، و super للأب.",
+            "en": "this is the current object; super is the parent."
+          }
+        },
+        {
+          "id": "oop-q14",
+          "question": {
+            "ar": "الـ Overriding مثال على إيه؟",
+            "en": "Overriding is an example of?"
+          },
+          "options": [
+            {
+              "ar": "Dynamic binding",
+              "en": "Dynamic binding"
+            },
+            {
+              "ar": "Static binding",
+              "en": "Static binding"
+            },
+            {
+              "ar": "Overloading",
+              "en": "Overloading"
+            },
+            {
+              "ar": "Encapsulation",
+              "en": "Encapsulation"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الأول بيتحدد وقت الـ compile، والتاني وقت التشغيل.",
+            "en": "The first is decided at compile time; the second at runtime."
+          }
+        },
+        {
+          "id": "oop-q15",
+          "question": {
+            "ar": "Python بتحل الـ Diamond Problem إزاي؟",
+            "en": "How does Python resolve the diamond problem?"
+          },
+          "options": [
+            {
+              "ar": "بترتيب الـ MRO",
+              "en": "With the MRO order"
+            },
+            {
+              "ar": "بـ virtual inheritance",
+              "en": "With virtual inheritance"
+            },
+            {
+              "ar": "بتمنع الوراثة المتعددة",
+              "en": "By forbidding multiple inheritance"
+            },
+            {
+              "ar": "بالـ Mixins بس",
+              "en": "Only with mixins"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "غموض لما class تورث من اتنين ليهم أب مشترك.",
+            "en": "Ambiguity when a class inherits from two classes that share a parent."
+          }
+        },
+        {
+          "id": "oop-q16",
+          "question": {
+            "ar": "بيت وأوضه (الأوض مبتبقاش موجودة من غير البيت) نوع العلاقة إيه؟",
+            "en": "A house and its rooms (rooms cannot exist without the house) is?"
+          },
+          "options": [
+            {
+              "ar": "Composition",
+              "en": "Composition"
+            },
+            {
+              "ar": "Aggregation",
+              "en": "Aggregation"
+            },
+            {
+              "ar": "Association",
+              "en": "Association"
+            },
+            {
+              "ar": "Inheritance",
+              "en": "Inheritance"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "علاقة عامة، و \"has-a\" ضعيفة، و \"has-a\" قوية.",
+            "en": "A general relationship, a weak \"has-a\", and a strong \"has-a\"."
+          }
+        },
+        {
+          "id": "oop-q17",
+          "question": {
+            "ar": "أهم ميزة للـ Composition عن الـ Inheritance؟",
+            "en": "The main advantage of composition over inheritance?"
+          },
+          "options": [
+            {
+              "ar": "مرونة أكتر وترابط أقل",
+              "en": "More flexibility and less coupling"
+            },
+            {
+              "ar": "تنفيذ أسرع",
+              "en": "Faster execution"
+            },
+            {
+              "ar": "ملفات أقل",
+              "en": "Fewer files"
+            },
+            {
+              "ar": "مش محتاج interfaces",
+              "en": "No interfaces needed"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "ابني السلوك بتركيب objects بدل الوراثة العميقة.",
+            "en": "Build behaviour by combining objects instead of deep inheritance."
+          }
+        },
+        {
+          "id": "oop-q18",
+          "question": {
+            "ar": "التصميم الكويس بيستهدف إيه؟",
+            "en": "What does good design aim for?"
+          },
+          "options": [
+            {
+              "ar": "Low Coupling و High Cohesion",
+              "en": "Low coupling and high cohesion"
+            },
+            {
+              "ar": "High Coupling و Low Cohesion",
+              "en": "High coupling and low cohesion"
+            },
+            {
+              "ar": "High Coupling و High Cohesion",
+              "en": "High coupling and high cohesion"
+            },
+            {
+              "ar": "Low Coupling و Low Cohesion",
+              "en": "Low coupling and low cohesion"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "المطلوب Low Coupling و High Cohesion.",
+            "en": "Aim for low coupling and high cohesion."
+          }
+        },
+        {
+          "id": "oop-q19",
+          "question": {
+            "ar": "أنهي مبدأ بيقول اعتمد على abstractions مش تفاصيل؟",
+            "en": "Which principle says to depend on abstractions, not details?"
           },
           "options": [
             {
@@ -4194,31 +5062,35 @@
               "en": "Dependency Inversion"
             },
             {
-              "ar": "Dynamic Dispatch",
-              "en": "Dynamic Dispatch"
+              "ar": "Single Responsibility",
+              "en": "Single Responsibility"
             },
             {
-              "ar": "Data Driven",
-              "en": "Data Driven"
+              "ar": "Liskov Substitution",
+              "en": "Liskov Substitution"
             },
             {
-              "ar": "Don't Repeat",
-              "en": "Don't Repeat"
+              "ar": "Open/Closed",
+              "en": "Open/Closed"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "اعتمد على التجريد.",
-            "en": "Depend on abstractions."
+            "ar": "5 مبادئ لتصميم كود سهل الصيانة.",
+            "en": "Five principles for designing maintainable code."
           }
         },
         {
-          "id": "oop-q4",
+          "id": "oop-q20",
           "question": {
-            "ar": "نمط بيضمن نسخة واحدة؟",
-            "en": "Pattern ensuring one instance?"
+            "ar": "تبديل خوارزمية الخصم وقت التشغيل ده أنهي pattern؟",
+            "en": "Swapping the discount algorithm at runtime is which pattern?"
           },
           "options": [
+            {
+              "ar": "Strategy",
+              "en": "Strategy"
+            },
             {
               "ar": "Singleton",
               "en": "Singleton"
@@ -4230,136 +5102,12 @@
             {
               "ar": "Observer",
               "en": "Observer"
-            },
-            {
-              "ar": "Strategy",
-              "en": "Strategy"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "نسخة واحدة مشتركة.",
-            "en": "One shared instance."
-          }
-        },
-        {
-          "id": "oop-q5",
-          "question": {
-            "ar": "ينفع تعمل new من abstract class؟",
-            "en": "Can you instantiate an abstract class?"
-          },
-          "options": [
-            {
-              "ar": "لأ",
-              "en": "No"
-            },
-            {
-              "ar": "أيوه",
-              "en": "Yes"
-            },
-            {
-              "ar": "لو فيها كود",
-              "en": "If it has code"
-            },
-            {
-              "ar": "مرة واحدة",
-              "en": "Once"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "لازم كلاس ابن.",
-            "en": "You need a concrete subclass."
-          }
-        },
-        {
-          "id": "oop-q6",
-          "question": {
-            "ar": "علاقة \"has a\" معناها؟",
-            "en": "A \"has a\" relationship means?"
-          },
-          "options": [
-            {
-              "ar": "Composition",
-              "en": "Composition"
-            },
-            {
-              "ar": "Inheritance",
-              "en": "Inheritance"
-            },
-            {
-              "ar": "Overloading",
-              "en": "Overloading"
-            },
-            {
-              "ar": "Hoisting",
-              "en": "Hoisting"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الكائن بيحتوي كائن.",
-            "en": "An object contains another."
-          }
-        },
-        {
-          "id": "oop-q7",
-          "question": {
-            "ar": "كلاس بيعمل إيميل وفواتير وحفظ داتا بيكسر أنهي مبدأ؟",
-            "en": "A class doing email, invoices and storage breaks?"
-          },
-          "options": [
-            {
-              "ar": "Single Responsibility",
-              "en": "Single Responsibility"
-            },
-            {
-              "ar": "Liskov",
-              "en": "Liskov"
-            },
-            {
-              "ar": "Interface Segregation",
-              "en": "Interface Segregation"
-            },
-            {
-              "ar": "Encapsulation",
-              "en": "Encapsulation"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "مسؤوليات كتير في كلاس واحد.",
-            "en": "Too many responsibilities."
-          }
-        },
-        {
-          "id": "oop-q8",
-          "question": {
-            "ar": "Overriding معناها؟",
-            "en": "Overriding means?"
-          },
-          "options": [
-            {
-              "ar": "الابن يعيد تعريف method الأب",
-              "en": "A subclass redefines a parent method"
-            },
-            {
-              "ar": "حذف method",
-              "en": "Deleting a method"
-            },
-            {
-              "ar": "إخفاء كلاس",
-              "en": "Hiding a class"
-            },
-            {
-              "ar": "نسخ object",
-              "en": "Copying an object"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "أساس الـ polymorphism.",
-            "en": "The basis of runtime polymorphism."
+            "ar": "حلول مجربة لمشاكل تصميم متكررة.",
+            "en": "Proven solutions to recurring design problems."
           }
         }
       ]
