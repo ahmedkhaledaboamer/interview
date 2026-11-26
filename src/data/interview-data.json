@@ -8298,290 +8298,1392 @@
       },
       "lessons": [
         {
-          "id": "node-l1",
+          "id": "node-l01",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "ما هو Node.js",
-            "en": "What is Node.js"
+            "ar": "إيه هي Node.js؟",
+            "en": "What is Node.js?"
+          },
+          "short": {
+            "ar": "Runtime بيشغل JavaScript بره المتصفح.",
+            "en": "A runtime that runs JavaScript outside the browser."
           },
           "points": {
             "ar": [
-              "بيئة تشغيل JavaScript على محرك V8، بتعتمد على non-blocking I/O و event loop."
+              "مش لغة ولا Framework.",
+              "مبنية على محرك V8 ومكتبة libuv، ومناسبة لتطبيقات الـ I/O زي الـ APIs والـ real-time."
             ],
             "en": [
-              "A JavaScript runtime on V8 built around non-blocking I/O and an event loop."
+              "It is neither a language nor a framework.",
+              "It is built on the V8 engine and the libuv library, and suits I/O-heavy apps such as APIs and real-time services."
             ]
           },
-          "code": "import { readFile } from 'node:fs/promises';\nconst text = await readFile('a.txt', 'utf8');"
+          "code": ""
         },
         {
-          "id": "node-l2",
+          "id": "node-l02",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ Event Loop",
-            "en": "Event Loop"
+            "ar": "الفرق بين JS في المتصفح وفي Node؟",
+            "en": "How does JavaScript in the browser differ from JavaScript in Node?"
+          },
+          "short": {
+            "ar": "نفس اللغة، بس الـ APIs مختلفة.",
+            "en": "Same language, different APIs."
           },
           "points": {
             "ar": [
-              "مراحل منها timers و poll و check. process.nextTick قبل الـ Promises، و setImmediate في مرحلة check."
+              "المتصفح فيه window و document.",
+              "Node فيها process و fs و http ووصول لنظام التشغيل، ومفيهاش DOM."
             ],
             "en": [
-              "Phases include timers, poll and check. nextTick runs before promises; setImmediate runs in check."
+              "The browser has window and document.",
+              "Node has process, fs, http and operating-system access, but no DOM."
             ]
           },
-          "code": "setImmediate(() => console.log('immediate'));\nprocess.nextTick(() => console.log('tick'));"
+          "code": ""
         },
         {
-          "id": "node-l3",
+          "id": "node-l03",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ Modules",
-            "en": "Modules"
+            "ar": "V8 و libuv؟",
+            "en": "What are V8 and libuv?"
+          },
+          "short": {
+            "ar": "V8 بينفذ JavaScript، و libuv بتدير الـ async I/O.",
+            "en": "V8 runs JavaScript, and libuv handles async I/O."
           },
           "points": {
             "ar": [
-              "ESM بـ import/export، و CommonJS بـ require/module.exports."
+              "V8 بيحول الكود لـ machine code وبيدير الذاكرة.",
+              "libuv بتوفر الـ Event Loop والـ Thread Pool."
             ],
             "en": [
-              "ESM uses import/export; CommonJS uses require/module.exports."
+              "V8 compiles code to machine code and manages memory.",
+              "libuv provides the event loop and the thread pool."
             ]
           },
-          "code": "export const sum = (a, b) => a + b;\nimport { sum } from './math.js';"
+          "code": ""
         },
         {
-          "id": "node-l4",
+          "id": "node-l04",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ Streams",
-            "en": "Streams"
+            "ar": "Single-threaded و Non-blocking I/O؟",
+            "en": "What do single-threaded and non-blocking I/O mean?"
+          },
+          "short": {
+            "ar": "كود JS بيشتغل على thread رئيسي، ومبيستناش عمليات الـ I/O.",
+            "en": "JS code runs on one main thread and does not wait for I/O."
           },
           "points": {
             "ar": [
-              "معالجة البيانات على أجزاء، و pipeline بتظبط الـ backpressure والأخطاء."
+              "الشبكة بيتولاها نظام التشغيل، وبعض العمليات بتروح للـ Thread Pool، ولما تخلص الـ callback بيرجع للـ Event Loop.",
+              "فتقدر تخدم طلبات كتير مع بعض."
             ],
             "en": [
-              "Process data in chunks; pipeline handles backpressure and errors."
+              "The operating system handles networking, some operations go to the thread pool, and when they finish the callback returns to the event loop.",
+              "That lets Node serve many requests at once."
             ]
           },
-          "code": "await pipeline(createReadStream('big.log'), createGzip(), createWriteStream('big.gz'));"
+          "code": ""
         },
         {
-          "id": "node-l5",
+          "id": "node-l05",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ Express والـ Middleware",
-            "en": "Express & Middleware"
+            "ar": "Blocking و Non-blocking؟",
+            "en": "What is the difference between blocking and non-blocking?"
+          },
+          "short": {
+            "ar": "Blocking بيوقف التنفيذ لحد ما يخلص.",
+            "en": "Blocking code stops execution until it finishes."
           },
           "points": {
             "ar": [
-              "الـ middleware دالة (req, res, next). معالج الأخطاء بياخد ٤ معاملات."
+              "تجنب الدوال الـ Sync جوه السيرفر لأنها بتعطل كل الطلبات."
             ],
             "en": [
-              "Middleware is (req, res, next). Error middleware takes four arguments."
+              "Avoid Sync functions inside a server, because they hold up every request."
             ]
           },
-          "code": "app.use(express.json());\napp.get('/users/:id', (req, res) => res.json({ id: req.params.id }));\napp.use((err, req, res, next) => res.status(500).json({ message: 'Server error' }));"
+          "code": "const a = fs.readFileSync(\"f.txt\");     // blocking\nconst b = await fs.promises.readFile(\"f.txt\");"
         },
         {
-          "id": "node-l6",
+          "id": "node-l06",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الأمان",
+            "ar": "CommonJS و ES Modules؟",
+            "en": "CommonJS versus ES Modules?"
+          },
+          "short": {
+            "ar": "require مقابل import.",
+            "en": "require versus import."
+          },
+          "points": {
+            "ar": [
+              "CommonJS تحميله متزامن.",
+              "ESM هو المعيار، وبيدعم تحليل static و top-level await، وبيتفعل بـ .mjs أو \"type\": \"module\".",
+              "والإصدارات الحديثة بتسمح بـ require لـ ESM لو مفيهوش top-level await."
+            ],
+            "en": [
+              "CommonJS loads synchronously.",
+              "ESM is the standard; it supports static analysis and top-level await, and is enabled with .mjs or \"type\": \"module\".",
+              "Recent versions allow require() of ESM as long as it has no top-level await."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l07",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "module.exports و exports؟",
+            "en": "module.exports versus exports?"
+          },
+          "short": {
+            "ar": "exports مجرد مرجع لـ module.exports.",
+            "en": "exports is just a reference to module.exports."
+          },
+          "points": {
+            "ar": [
+              "اللي بيرجع من require هو module.exports.",
+              "لو عملت إعادة تعيين لـ exports الربط بيتكسر."
+            ],
+            "en": [
+              "require returns module.exports.",
+              "If you reassign exports, the link is broken."
+            ]
+          },
+          "code": "exports.add = add;     // works\nexports = { add };     // does not work\nmodule.exports = { add };"
+        },
+        {
+          "id": "node-l08",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "npm و أنواع الـ dependencies؟",
+            "en": "What is npm, and what kinds of dependencies are there?"
+          },
+          "short": {
+            "ar": "npm مدير الحزم، و devDependencies للتطوير بس.",
+            "en": "npm is the package manager, and devDependencies are for development only."
+          },
+          "points": {
+            "ar": [
+              "dependencies محتاجها التطبيق وقت التشغيل زي express.",
+              "devDependencies زي أدوات الاختبار، وتقدر تستبعدها بـ npm ci --omit=dev."
+            ],
+            "en": [
+              "dependencies are needed at runtime, such as express.",
+              "devDependencies include testing tools, and you can skip them with npm ci --omit=dev."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l09",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "package-lock.json و ^ و ~؟",
+            "en": "What are package-lock.json, ^ and ~?"
+          },
+          "short": {
+            "ar": "الملف بيثبت الإصدارات بالظبط.",
+            "en": "The file locks the exact versions."
+          },
+          "points": {
+            "ar": [
+              "^1.2.3 بتسمح بتحديثات minor و patch، و ~1.2.3 بتسمح بـ patch بس.",
+              "npm ci بيثبت حسب الـ lock file، فمناسب للـ CI."
+            ],
+            "en": [
+              "^1.2.3 allows minor and patch updates; ~1.2.3 allows patch updates only.",
+              "npm ci installs exactly what the lock file says, so it suits CI."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l10",
+          "section": {
+            "ar": "Event Loop و Async",
+            "en": "Event Loop & Async"
+          },
+          "title": {
+            "ar": "اشرح الـ Event Loop ومراحله.",
+            "en": "Explain the event loop and its phases."
+          },
+          "short": {
+            "ar": "حلقة بتنفذ الـ callbacks على مراحل.",
+            "en": "A loop that runs callbacks in phases."
+          },
+          "points": {
+            "ar": [
+              "Timers: setTimeout و setInterval.",
+              "Pending callbacks: بعض عمليات النظام المؤجلة.",
+              "Idle / Prepare: داخلية.",
+              "Poll: استقبال أحداث الـ I/O.",
+              "Check: setImmediate.",
+              "Close: أحداث الإغلاق.",
+              "وبين الـ callbacks بيتنفذ nextTick والـ Promises."
+            ],
+            "en": [
+              "Timers: setTimeout and setInterval.",
+              "Pending callbacks: some deferred system operations.",
+              "Idle / Prepare: internal use.",
+              "Poll: receiving I/O events.",
+              "Check: setImmediate.",
+              "Close: close events.",
+              "nextTick and promise callbacks run between callbacks."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l11",
+          "section": {
+            "ar": "Event Loop و Async",
+            "en": "Event Loop & Async"
+          },
+          "title": {
+            "ar": "nextTick و setImmediate و setTimeout؟",
+            "en": "How do nextTick, setImmediate and setTimeout compare?"
+          },
+          "short": {
+            "ar": "nextTick الأسبق، و setImmediate في مرحلة check.",
+            "en": "nextTick runs first, and setImmediate runs in the check phase."
+          },
+          "points": {
+            "ar": [
+              "nextTick بيتنفذ بعد العملية الحالية، وفي CommonJS قبل الـ Promises.",
+              "ترتيب setTimeout(0) و setImmediate في الكود الرئيسي مش مضمون، لكن جوه I/O callback الـ setImmediate الأول."
+            ],
+            "en": [
+              "nextTick runs right after the current operation, and in CommonJS before promises.",
+              "The order of setTimeout(0) and setImmediate in main code is not guaranteed, but inside an I/O callback setImmediate runs first."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l12",
+          "section": {
+            "ar": "Event Loop و Async",
+            "en": "Event Loop & Async"
+          },
+          "title": {
+            "ar": "الـ Thread Pool؟",
+            "en": "What is the thread pool?"
+          },
+          "short": {
+            "ar": "مجموعة threads في libuv، عددها 4 افتراضيًا.",
+            "en": "A set of libuv threads, 4 by default."
+          },
+          "points": {
+            "ar": [
+              "بتستخدمه fs و dns.lookup و zlib وبعض دوال crypto زي pbkdf2.",
+              "تقدر تغير العدد بـ UV_THREADPOOL_SIZE."
+            ],
+            "en": [
+              "It is used by fs, dns.lookup, zlib and some crypto functions such as pbkdf2.",
+              "You can change the size with UV_THREADPOOL_SIZE."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l13",
+          "section": {
+            "ar": "Event Loop و Async",
+            "en": "Event Loop & Async"
+          },
+          "title": {
+            "ar": "Callbacks و Promises و async/await؟",
+            "en": "Callbacks, promises and async/await?"
+          },
+          "short": {
+            "ar": "ثلاث طرق للتعامل مع الـ async.",
+            "en": "Three ways to handle async code."
+          },
+          "points": {
+            "ar": [
+              "الـ callbacks ممكن تعمل تداخل، والـ Promises بتسمح بالـ chaining، و async/await أوضح.",
+              "وتقدر تحول دالة قديمة بـ util.promisify."
+            ],
+            "en": [
+              "Callbacks can nest deeply, promises allow chaining, and async/await is the clearest.",
+              "You can convert an old function with util.promisify."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l14",
+          "section": {
+            "ar": "Event Loop و Async",
+            "en": "Event Loop & Async"
+          },
+          "title": {
+            "ar": "Error-first Callback؟",
+            "en": "What is an error-first callback?"
+          },
+          "short": {
+            "ar": "أول parameter هو الخطأ.",
+            "en": "The first parameter is the error."
+          },
+          "points": {
+            "ar": [
+              "لو فيه خطأ بيتبعت في err، ولو مفيش بيكون null والنتيجة في الـ parameter التاني."
+            ],
+            "en": [
+              "If something fails the error arrives in err; otherwise err is null and the result is in the second parameter."
+            ]
+          },
+          "code": "fs.readFile(\"f.txt\", (err, data) => {\n  if (err) return console.error(err);\n  console.log(data);\n});"
+        },
+        {
+          "id": "node-l15",
+          "section": {
+            "ar": "Event Loop و Async",
+            "en": "Event Loop & Async"
+          },
+          "title": {
+            "ar": "EventEmitter؟",
+            "en": "What is EventEmitter?"
+          },
+          "short": {
+            "ar": "class لإرسال الأحداث والاستماع ليها.",
+            "en": "A class for emitting events and listening to them."
+          },
+          "points": {
+            "ar": [
+              "الـ listeners بتتنفذ بشكل متزامن بالترتيب.",
+              "حدث error من غير listener بيرمي exception."
+            ],
+            "en": [
+              "Listeners run synchronously, in order.",
+              "An error event with no listener throws an exception."
+            ]
+          },
+          "code": "const bus = new EventEmitter();\nbus.on(\"order\", id => console.log(id));\nbus.emit(\"order\", 1);"
+        },
+        {
+          "id": "node-l16",
+          "section": {
+            "ar": "Streams و Files",
+            "en": "Streams & Files"
+          },
+          "title": {
+            "ar": "الـ Streams وأنواعها؟",
+            "en": "What are streams and their types?"
+          },
+          "short": {
+            "ar": "معالجة البيانات على أجزاء.",
+            "en": "Processing data in chunks."
+          },
+          "points": {
+            "ar": [
+              "Readable للقراءة، Writable للكتابة، Duplex للاتنين، و Transform بيعدل البيانات وهي معدية زي الضغط."
+            ],
+            "en": [
+              "Readable reads, Writable writes, Duplex does both, and Transform changes data as it passes through, as compression does."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l17",
+          "section": {
+            "ar": "Streams و Files",
+            "en": "Streams & Files"
+          },
+          "title": {
+            "ar": "Backpressure و pipeline؟",
+            "en": "What are backpressure and pipeline?"
+          },
+          "short": {
+            "ar": "لما المصدر أسرع من المستقبل.",
+            "en": "When the source is faster than the destination."
+          },
+          "points": {
+            "ar": [
+              "write() بترجع false فتستنى حدث drain.",
+              "pipeline بتدير ده تلقائيًا وبتتعامل مع الأخطاء وتقفل الـ streams."
+            ],
+            "en": [
+              "write() returns false, so you wait for the drain event.",
+              "pipeline handles this automatically, deals with errors and closes the streams."
+            ]
+          },
+          "code": "await pipeline(\n  fs.createReadStream(\"in.txt\"),\n  zlib.createGzip(),\n  fs.createWriteStream(\"in.txt.gz\")\n);"
+        },
+        {
+          "id": "node-l18",
+          "section": {
+            "ar": "Streams و Files",
+            "en": "Streams & Files"
+          },
+          "title": {
+            "ar": "الـ Buffer؟",
+            "en": "What is a Buffer?"
+          },
+          "short": {
+            "ar": "مساحة ذاكرة للبيانات الـ binary.",
+            "en": "A block of memory for binary data."
+          },
+          "points": {
+            "ar": [
+              "بيستخدم مع الملفات والشبكة."
+            ],
+            "en": [
+              "It is used with files and the network."
+            ]
+          },
+          "code": "const buf = Buffer.from(\"Hi\", \"utf8\");\nbuf.toString(\"base64\");"
+        },
+        {
+          "id": "node-l19",
+          "section": {
+            "ar": "Streams و Files",
+            "en": "Streams & Files"
+          },
+          "title": {
+            "ar": "readFile و createReadStream؟",
+            "en": "readFile versus createReadStream?"
+          },
+          "short": {
+            "ar": "الأولى بتحمل الملف كله، والتانية على أجزاء.",
+            "en": "The first loads the whole file; the second reads it in chunks."
+          },
+          "points": {
+            "ar": [
+              "readFile مناسبة للملفات الصغيرة.",
+              "الـ stream أنسب للكبيرة لأنه بيوفر الذاكرة ويبدأ المعالجة بدري."
+            ],
+            "en": [
+              "readFile suits small files.",
+              "A stream suits large files because it saves memory and starts processing early."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l20",
+          "section": {
+            "ar": "Concurrency و Performance",
+            "en": "Concurrency & Performance"
+          },
+          "title": {
+            "ar": "cluster و worker_threads و child_process؟",
+            "en": "cluster, worker_threads and child_process?"
+          },
+          "short": {
+            "ar": "عمليات للسيرفر، و threads للحسابات، وعمليات لتشغيل برامج.",
+            "en": "Processes for the server, threads for computation, and processes for running programs."
+          },
+          "points": {
+            "ar": [
+              "cluster بيشغل كذا process بيشاركوا نفس الـ port.",
+              "worker_threads جوه نفس الـ process وينفع يشاركوا ذاكرة.",
+              "child_process لتشغيل أوامر أو سكريبتات منفصلة."
+            ],
+            "en": [
+              "cluster runs several processes that share the same port.",
+              "worker_threads run inside the same process and can share memory.",
+              "child_process runs separate commands or scripts."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l21",
+          "section": {
+            "ar": "Concurrency و Performance",
+            "en": "Concurrency & Performance"
+          },
+          "title": {
+            "ar": "المهام التقيلة على الـ CPU؟",
+            "en": "How do you handle CPU-heavy tasks?"
+          },
+          "short": {
+            "ar": "ابعدها عن الـ main thread.",
+            "en": "Move them off the main thread."
+          },
+          "points": {
+            "ar": [
+              "استخدم worker_threads (والأفضل pool)، أو queue مع workers منفصلين، أو خدمة مستقلة."
+            ],
+            "en": [
+              "Use worker_threads (ideally a pool), a queue with separate workers, or a separate service."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l22",
+          "section": {
+            "ar": "Concurrency و Performance",
+            "en": "Concurrency & Performance"
+          },
+          "title": {
+            "ar": "الـ Scaling و PM2؟",
+            "en": "Scaling and PM2?"
+          },
+          "short": {
+            "ar": "شغل كذا instance ووزع الحمل.",
+            "en": "Run several instances and spread the load."
+          },
+          "points": {
+            "ar": [
+              "رأسيًا بـ cluster، وأفقيًا بكذا سيرفر ورا Load Balancer.",
+              "خلي التطبيق stateless.",
+              "PM2 بيدير العمليات ويعيد تشغيلها وبيدعم cluster mode."
+            ],
+            "en": [
+              "Scale vertically with cluster, and horizontally with several servers behind a load balancer.",
+              "Keep the app stateless.",
+              "PM2 manages and restarts processes and supports cluster mode."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l23",
+          "section": {
+            "ar": "Concurrency و Performance",
+            "en": "Concurrency & Performance"
+          },
+          "title": {
+            "ar": "الـ Caching بـ Redis؟",
+            "en": "Caching with Redis?"
+          },
+          "short": {
+            "ar": "تخزين النتايج المتكررة في الذاكرة.",
+            "en": "Keeping repeated results in memory."
+          },
+          "points": {
+            "ar": [
+              "نمط Cache-aside: دور في Redis، ولو ملقتش هات من الداتابيز وخزن بمدة انتهاء، واعمل invalidation مع التعديل."
+            ],
+            "en": [
+              "Cache-aside pattern: check Redis; on a miss, load from the database and store it with an expiry, and invalidate on updates."
+            ]
+          },
+          "code": "const hit = await redis.get(key);\nif (hit) return JSON.parse(hit);\nconst data = await getUser(id);\nawait redis.set(key, JSON.stringify(data), { EX: 60 });\nreturn data;"
+        },
+        {
+          "id": "node-l24",
+          "section": {
+            "ar": "Concurrency و Performance",
+            "en": "Concurrency & Performance"
+          },
+          "title": {
+            "ar": "Memory Leaks ومشاكل الأداء؟",
+            "en": "How do you investigate memory leaks and performance problems?"
+          },
+          "short": {
+            "ar": "راقب الذاكرة واعمل profiling.",
+            "en": "Monitor memory and profile."
+          },
+          "points": {
+            "ar": [
+              "استخدم process.memoryUsage() و --inspect مع Chrome DevTools وقارن heap snapshots، و --cpu-prof للأداء.",
+              "الأسباب الشائعة: caches من غير حد و listeners متشالتش."
+            ],
+            "en": [
+              "Use process.memoryUsage() and --inspect with Chrome DevTools, compare heap snapshots, and use --cpu-prof for performance.",
+              "Common causes: unbounded caches and listeners that are never removed."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l25",
+          "section": {
+            "ar": "Concurrency و Performance",
+            "en": "Concurrency & Performance"
+          },
+          "title": {
+            "ar": "الـ Message Queues؟",
+            "en": "What are message queues?"
+          },
+          "short": {
+            "ar": "طابور لتنفيذ المهام في الخلفية.",
+            "en": "A queue for running tasks in the background."
+          },
+          "points": {
+            "ar": [
+              "زي BullMQ و RabbitMQ و Kafka.",
+              "بتستخدم للإيميلات ومعالجة الصور، وبتدعم retries وفصل الخدمات.",
+              "خلي المهام idempotent لأنها ممكن تتكرر."
+            ],
+            "en": [
+              "Examples: BullMQ, RabbitMQ and Kafka.",
+              "They are used for emails and image processing, and support retries and decoupled services.",
+              "Make jobs idempotent, because they may run more than once."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l26",
+          "section": {
+            "ar": "Express و APIs",
+            "en": "Express & APIs"
+          },
+          "title": {
+            "ar": "Express و NestJS و Fastify؟",
+            "en": "Express, NestJS and Fastify?"
+          },
+          "short": {
+            "ar": "Express بسيط، NestJS منظم، Fastify سريع.",
+            "en": "Express is simple, NestJS is structured, Fastify is fast."
+          },
+          "points": {
+            "ar": [
+              "Express مرن و minimal.",
+              "NestJS مبني بـ TypeScript وفيه modules و dependency injection.",
+              "Fastify أداؤه عالي وبيدعم schema validation."
+            ],
+            "en": [
+              "Express is flexible and minimal.",
+              "NestJS is built with TypeScript and has modules and dependency injection.",
+              "Fastify is high-performance and supports schema validation."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l27",
+          "section": {
+            "ar": "Express و APIs",
+            "en": "Express & APIs"
+          },
+          "title": {
+            "ar": "الـ Middleware؟",
+            "en": "What is middleware?"
+          },
+          "short": {
+            "ar": "دالة بتتنفذ بين الطلب والرد.",
+            "en": "A function that runs between the request and the response."
+          },
+          "points": {
+            "ar": [
+              "أنواعه: application و router و built-in و third-party و error handling.",
+              "لازم تنادي next() أو ترد."
+            ],
+            "en": [
+              "Types: application, router, built-in, third-party and error handling.",
+              "It must either call next() or send a response."
+            ]
+          },
+          "code": "app.use((req, res, next) => {\n  console.log(req.method, req.url);\n  next();\n});"
+        },
+        {
+          "id": "node-l28",
+          "section": {
+            "ar": "Express و APIs",
+            "en": "Express & APIs"
+          },
+          "title": {
+            "ar": "مبادئ REST؟",
+            "en": "What are the principles of REST?"
+          },
+          "short": {
+            "ar": "Resources ليها URLs وبنتعامل معاها بـ HTTP methods.",
+            "en": "Resources have URLs and are handled with HTTP methods."
+          },
+          "points": {
+            "ar": [
+              "أهمها: client-server، و stateless، و cacheable، و uniform interface، و layered system.",
+              "مثال: GET /users/5."
+            ],
+            "en": [
+              "The main ones: client-server, stateless, cacheable, uniform interface and layered system.",
+              "Example: GET /users/5."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l29",
+          "section": {
+            "ar": "Express و APIs",
+            "en": "Express & APIs"
+          },
+          "title": {
+            "ar": "PUT و PATCH والـ Status Codes؟",
+            "en": "PUT versus PATCH, and the main status codes?"
+          },
+          "short": {
+            "ar": "PUT يستبدل، و PATCH يعدل جزء.",
+            "en": "PUT replaces; PATCH updates part of a resource."
+          },
+          "points": {
+            "ar": [
+              "PUT بطبيعته idempotent، و PATCH مش مضمون.",
+              "الأكواد: 200 نجاح، 201 اتعمل، 204 من غير محتوى، 400 طلب غلط، 401 غير مسجل، 403 ممنوع، 404 مش موجود، 409 تعارض، 429 طلبات كتير، 500 خطأ سيرفر."
+            ],
+            "en": [
+              "PUT is idempotent by nature; PATCH is not guaranteed to be.",
+              "Codes: 200 OK, 201 created, 204 no content, 400 bad request, 401 not authenticated, 403 forbidden, 404 not found, 409 conflict, 429 too many requests, 500 server error."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l30",
+          "section": {
+            "ar": "Express و APIs",
+            "en": "Express & APIs"
+          },
+          "title": {
+            "ar": "params و query و body؟",
+            "en": "params, query and body?"
+          },
+          "short": {
+            "ar": "من المسار، ومن بعد ?، ومن محتوى الطلب.",
+            "en": "From the path, from after the ?, and from the request content."
+          },
+          "points": {
+            "ar": [
+              "body محتاج parser زي express.json()."
+            ],
+            "en": [
+              "body needs a parser such as express.json()."
+            ]
+          },
+          "code": "app.use(express.json());\n// PATCH /users/5?notify=true\napp.patch(\"/users/:id\", (req, res) => {\n  const { id } = req.params;\n  const { notify } = req.query;\n  res.json({ id, notify, ...req.body });\n});"
+        },
+        {
+          "id": "node-l31",
+          "section": {
+            "ar": "Express و APIs",
+            "en": "Express & APIs"
+          },
+          "title": {
+            "ar": "Error Handling مركزي؟",
+            "en": "How do you handle errors centrally?"
+          },
+          "short": {
+            "ar": "error middleware بأربع parameters في الآخر.",
+            "en": "An error middleware with four parameters, registered last."
+          },
+          "points": {
+            "ar": [
+              "Operational زي فشل الاتصال ودي تتعالج، و Programmer Errors هي bugs لازم تتصلح.",
+              "و Express 5 بيمسك الـ rejected promises تلقائيًا."
+            ],
+            "en": [
+              "Operational errors, such as a failed connection, should be handled; programmer errors are bugs that must be fixed.",
+              "Express 5 catches rejected promises automatically."
+            ]
+          },
+          "code": "app.use((err, req, res, next) => {\n  console.error(err);\n  const status = err.status || 500;\n  res.status(status).json({\n    message: status < 500 ? err.message : \"Server error\",\n  });\n});"
+        },
+        {
+          "id": "node-l32",
+          "section": {
+            "ar": "Express و APIs",
+            "en": "Express & APIs"
+          },
+          "title": {
+            "ar": "uncaughtException و unhandledRejection؟",
+            "en": "What are uncaughtException and unhandledRejection?"
+          },
+          "short": {
+            "ar": "آخر خط دفاع للأخطاء اللي محدش مسكها.",
+            "en": "The last line of defence for errors nobody caught."
+          },
+          "points": {
+            "ar": [
+              "سجل الخطأ واقفل التطبيق بأمان وسيب الـ process manager يشغله تاني، لأن حالته ممكن تكون مش سليمة."
+            ],
+            "en": [
+              "Log the error, shut down safely and let the process manager restart the app, because its state may be corrupt."
+            ]
+          },
+          "code": "process.on(\"uncaughtException\", err => {\n  console.error(err);\n  process.exit(1);\n});"
+        },
+        {
+          "id": "node-l33",
+          "section": {
+            "ar": "Security",
             "en": "Security"
           },
+          "title": {
+            "ar": "Authentication و Authorization؟",
+            "en": "Authentication versus authorization?"
+          },
+          "short": {
+            "ar": "إنت مين؟ ومسموحلك بإيه؟",
+            "en": "Who are you, and what are you allowed to do?"
+          },
           "points": {
             "ar": [
-              "validation و parameterized queries و hashing بـ argon2 أو bcrypt و rate limiting والأسرار في env."
+              "الأولى تسجيل الدخول، والتانية الأدوار والصلاحيات.",
+              "ولازم تتأكد كمان إن المورد يخص المستخدم."
             ],
             "en": [
-              "Validate input, parameterize queries, hash passwords, rate limit, keep secrets in env."
+              "The first is logging in; the second is roles and permissions.",
+              "You must also check that the resource belongs to the user."
             ]
           },
-          "code": "const hash = await argon2.hash(password);\nawait db.query('SELECT * FROM users WHERE email = $1', [email]);"
+          "code": ""
         },
         {
-          "id": "node-l7",
+          "id": "node-l34",
+          "section": {
+            "ar": "Security",
+            "en": "Security"
+          },
           "title": {
-            "ar": "التوسع",
-            "en": "Scaling"
+            "ar": "JWT و Sessions و Refresh Token؟",
+            "en": "JWT, sessions and refresh tokens?"
+          },
+          "short": {
+            "ar": "Session بتتخزن في السيرفر، و JWT بيانات موقعة مع العميل.",
+            "en": "A session is stored on the server; a JWT is signed data kept by the client."
           },
           "points": {
             "ar": [
-              "cluster لعدة processes، و worker_threads للشغل التقيل على الـ CPU، والـ state المشتركة في Redis."
+              "الـ Session سهل إلغاؤها.",
+              "الـ JWT مش محتاج تخزين بس إلغاؤه أصعب، ومحتواه مقروء مش مشفر.",
+              "خلي الـ access token عمره قصير، والـ refresh token يجدده، وخزنه في cookie HttpOnly مع rotation."
             ],
             "en": [
-              "cluster for multiple processes, worker_threads for CPU work, Redis for shared state."
+              "A session is easy to revoke.",
+              "A JWT needs no storage but is harder to revoke, and its contents are readable, not encrypted.",
+              "Keep access tokens short-lived, renew them with a refresh token, and store that in an HttpOnly cookie with rotation."
             ]
           },
-          "code": "const worker = new Worker('./heavy.js', { workerData: input });"
+          "code": ""
         },
         {
-          "id": "node-l8",
+          "id": "node-l35",
+          "section": {
+            "ar": "Security",
+            "en": "Security"
+          },
           "title": {
-            "ar": "الإغلاق الآمن",
-            "en": "Graceful Shutdown"
+            "ar": "تخزين الباسوردات؟",
+            "en": "How should passwords be stored?"
+          },
+          "short": {
+            "ar": "Hashing بخوارزمية بطيئة مع salt.",
+            "en": "Hashed with a slow algorithm and a salt."
           },
           "points": {
             "ar": [
-              "عند SIGTERM وقف استقبال الطلبات وخلص الجاري واقفل الاتصالات."
+              "استخدم Argon2id أو scrypt أو bcrypt، مش MD5 ولا SHA-256 لوحدها."
             ],
             "en": [
-              "On SIGTERM stop accepting requests, finish in-flight work, close connections."
+              "Use Argon2id, scrypt or bcrypt, not MD5 or plain SHA-256."
             ]
           },
-          "code": "process.on('SIGTERM', () => server.close(() => db.end()));"
+          "code": "const hash = await bcrypt.hash(password, 12);\nconst ok = await bcrypt.compare(password, hash);"
+        },
+        {
+          "id": "node-l36",
+          "section": {
+            "ar": "Security",
+            "en": "Security"
+          },
+          "title": {
+            "ar": "الحماية من Injection و XSS و CSRF؟",
+            "en": "How do you protect against injection, XSS and CSRF?"
+          },
+          "short": {
+            "ar": "Validation و parameterized queries و escaping و tokens.",
+            "en": "Validation, parameterized queries, escaping and tokens."
+          },
+          "points": {
+            "ar": [
+              "في SQL متدمجش المدخلات في النص، وفي NoSQL اتأكد من الأنواع.",
+              "XSS: escaping للمخرجات و CSP.",
+              "CSRF: cookies بـ SameSite و CSRF token."
+            ],
+            "en": [
+              "In SQL never concatenate input into the query; in NoSQL check the types.",
+              "XSS: escape output and use CSP.",
+              "CSRF: SameSite cookies and a CSRF token."
+            ]
+          },
+          "code": "db.query(\"SELECT * FROM users WHERE id = $1\", [id]);"
+        },
+        {
+          "id": "node-l37",
+          "section": {
+            "ar": "Security",
+            "en": "Security"
+          },
+          "title": {
+            "ar": "CORS و Rate Limiting و Helmet؟",
+            "en": "CORS, rate limiting and Helmet?"
+          },
+          "short": {
+            "ar": "تحكم في الـ origins، وحد للطلبات، و headers أمان.",
+            "en": "Origin control, request limits, and security headers."
+          },
+          "points": {
+            "ar": [
+              "CORS بيحدد مين يقرا الرد في المتصفح ومش بديل للـ authentication.",
+              "Rate Limiting بيقلل الـ brute force.",
+              "Helmet بيضيف HTTP headers للحماية."
+            ],
+            "en": [
+              "CORS decides who can read the response in a browser, and it is no substitute for authentication.",
+              "Rate limiting reduces brute-force attacks.",
+              "Helmet adds protective HTTP headers."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l38",
+          "section": {
+            "ar": "Database و Production",
+            "en": "Database & Production"
+          },
+          "title": {
+            "ar": "Connection Pooling و ORM؟",
+            "en": "Connection pooling and ORMs?"
+          },
+          "short": {
+            "ar": "الـ Pool بيعيد استخدام الاتصالات.",
+            "en": "A pool reuses database connections."
+          },
+          "points": {
+            "ar": [
+              "بيوفر تكلفة فتح اتصال مع كل طلب.",
+              "الـ ORM زي Prisma أسرع في التطوير وأأمن في الأنواع، وكتابة SQL بتدي تحكم أكبر.",
+              "وخلي بالك من مشكلة N+1."
+            ],
+            "en": [
+              "It saves the cost of opening a connection for every request.",
+              "An ORM such as Prisma is faster to develop with and type-safe, while raw SQL gives more control.",
+              "Watch out for the N+1 problem."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l39",
+          "section": {
+            "ar": "Database و Production",
+            "en": "Database & Production"
+          },
+          "title": {
+            "ar": "الـ Environment Variables والأسرار؟",
+            "en": "Environment variables and secrets?"
+          },
+          "short": {
+            "ar": "برّه الكود ومتترفعش على Git.",
+            "en": "Kept outside the code and never committed to Git."
+          },
+          "points": {
+            "ar": [
+              "استخدم .env محليًا (بـ dotenv أو --env-file) وأضفه لـ .gitignore.",
+              "وفي الـ production استخدم Secrets Manager.",
+              "واتأكد من القيم وقت التشغيل."
+            ],
+            "en": [
+              "Use a .env file locally (with dotenv or --env-file) and add it to .gitignore.",
+              "In production use a secrets manager.",
+              "Validate the values at startup."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "node-l40",
+          "section": {
+            "ar": "Database و Production",
+            "en": "Database & Production"
+          },
+          "title": {
+            "ar": "Graceful Shutdown؟",
+            "en": "What is a graceful shutdown?"
+          },
+          "short": {
+            "ar": "قفل التطبيق بعد ما يخلص الطلبات الحالية.",
+            "en": "Shutting the app down after it finishes the current requests."
+          },
+          "points": {
+            "ar": [
+              "استقبل SIGTERM، وقف الطلبات الجديدة، واقفل الاتصالات، وحط مهلة قصوى."
+            ],
+            "en": [
+              "Handle SIGTERM, stop accepting new requests, close connections, and set a hard timeout."
+            ]
+          },
+          "code": "process.on(\"SIGTERM\", () => {\n  setTimeout(() => process.exit(1), 10000).unref();\n  server.close(async () => {\n    await db.end();\n    process.exit(0);\n  });\n});"
         }
       ],
       "quiz": [
         {
-          "id": "node-q1",
+          "id": "node-q01",
           "question": {
-            "ar": "Node مبني على أنهي محرك؟",
-            "en": "Which engine powers Node?"
+            "ar": "أدق وصف لـ Node.js؟",
+            "en": "What best describes Node.js?"
           },
           "options": [
+            {
+              "ar": "Runtime لـ JavaScript",
+              "en": "A JavaScript runtime"
+            },
+            {
+              "ar": "لغة برمجة",
+              "en": "A programming language"
+            },
+            {
+              "ar": "Framework",
+              "en": "A framework"
+            },
+            {
+              "ar": "قاعدة بيانات",
+              "en": "A database"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Runtime بيشغل JavaScript بره المتصفح.",
+            "en": "A runtime that runs JavaScript outside the browser."
+          }
+        },
+        {
+          "id": "node-q02",
+          "question": {
+            "ar": "أنهي واحد موجود في Node ومش موجود في المتصفح؟",
+            "en": "Which one exists in Node but not in the browser?"
+          },
+          "options": [
+            {
+              "ar": "fs",
+              "en": "fs"
+            },
+            {
+              "ar": "document",
+              "en": "document"
+            },
+            {
+              "ar": "window",
+              "en": "window"
+            },
+            {
+              "ar": "localStorage",
+              "en": "localStorage"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "نفس اللغة، بس الـ APIs مختلفة.",
+            "en": "Same language, different APIs."
+          }
+        },
+        {
+          "id": "node-q03",
+          "question": {
+            "ar": "مين اللي بيوفر الـ Event Loop والـ Thread Pool؟",
+            "en": "Which one provides the event loop and the thread pool?"
+          },
+          "options": [
+            {
+              "ar": "libuv",
+              "en": "libuv"
+            },
             {
               "ar": "V8",
               "en": "V8"
             },
             {
-              "ar": "SpiderMonkey",
-              "en": "SpiderMonkey"
+              "ar": "npm",
+              "en": "npm"
             },
             {
-              "ar": "JavaScriptCore",
-              "en": "JavaScriptCore"
-            },
-            {
-              "ar": "Chakra",
-              "en": "Chakra"
+              "ar": "Express",
+              "en": "Express"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "محرك Chrome.",
-            "en": "Chrome's engine."
+            "ar": "V8 بينفذ JavaScript، و libuv بتدير الـ async I/O.",
+            "en": "V8 runs JavaScript, and libuv handles async I/O."
           }
         },
         {
-          "id": "node-q2",
+          "id": "node-q04",
           "question": {
-            "ar": "لشغل تقيل على الـ CPU؟",
-            "en": "For CPU-heavy work use?"
+            "ar": "Node بتخدم طلبات كتير على thread واحد إزاي؟",
+            "en": "How does Node serve many requests on a single thread?"
           },
           "options": [
             {
-              "ar": "worker_threads",
-              "en": "worker_threads"
+              "ar": "الـ I/O بيتنفذ بره والـ callbacks بترجع عن طريق الـ Event Loop",
+              "en": "I/O runs elsewhere and callbacks come back through the event loop"
             },
             {
-              "ar": "setTimeout",
-              "en": "setTimeout"
+              "ar": "بتفتح thread لكل طلب",
+              "en": "It opens a thread per request"
             },
             {
-              "ar": "Promise.all",
-              "en": "Promise.all"
+              "ar": "بتستنى كل طلب يخلص قبل اللي بعده",
+              "en": "It waits for each request to finish before the next"
             },
             {
-              "ar": "nextTick",
-              "en": "nextTick"
+              "ar": "بتستخدم كذا محرك V8",
+              "en": "It uses several V8 engines"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "عشان متعملش block للـ event loop.",
-            "en": "Keeps the event loop free."
+            "ar": "كود JS بيشتغل على thread رئيسي، ومبيستناش عمليات الـ I/O.",
+            "en": "JS code runs on one main thread and does not wait for I/O."
           }
         },
         {
-          "id": "node-q3",
+          "id": "node-q05",
           "question": {
-            "ar": "error middleware في Express بياخد كام معامل؟",
-            "en": "Express error middleware takes how many args?"
+            "ar": "ليه تتجنب readFileSync جوه request handler؟",
+            "en": "Why avoid readFileSync inside a request handler?"
           },
           "options": [
             {
-              "ar": "4",
-              "en": "4"
+              "ar": "بيعطل كل الطلبات التانية",
+              "en": "It blocks every other request"
             },
             {
-              "ar": "2",
-              "en": "2"
+              "ar": "مبيقراش نصوص",
+              "en": "It cannot read text"
             },
             {
-              "ar": "3",
-              "en": "3"
+              "ar": "اتلغى من Node",
+              "en": "It was removed from Node"
             },
             {
-              "ar": "1",
-              "en": "1"
+              "ar": "بيشتغل في ESM بس",
+              "en": "It only works in ESM"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "(err, req, res, next)",
-            "en": "(err, req, res, next)"
+            "ar": "Blocking بيوقف التنفيذ لحد ما يخلص.",
+            "en": "Blocking code stops execution until it finishes."
           }
         },
         {
-          "id": "node-q4",
+          "id": "node-q06",
           "question": {
-            "ar": "أنهي يتنفذ الأول؟",
-            "en": "Which runs first?"
+            "ar": "إزاي تفعل ESM لملفات .js؟",
+            "en": "How do you enable ESM for .js files?"
           },
           "options": [
             {
-              "ar": "process.nextTick",
-              "en": "process.nextTick"
+              "ar": "\"type\": \"module\" في package.json",
+              "en": "\"type\": \"module\" in package.json"
             },
+            {
+              "ar": "تغير الامتداد لـ .cjs",
+              "en": "Rename the files to .cjs"
+            },
+            {
+              "ar": "تستخدم require",
+              "en": "Use require"
+            },
+            {
+              "ar": "تضيف \"use strict\"",
+              "en": "Add \"use strict\""
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "require مقابل import.",
+            "en": "require versus import."
+          }
+        },
+        {
+          "id": "node-q07",
+          "question": {
+            "ar": "require() بترجع إيه؟",
+            "en": "What does require() return?"
+          },
+          "options": [
+            {
+              "ar": "module.exports",
+              "en": "module.exports"
+            },
+            {
+              "ar": "exports",
+              "en": "exports"
+            },
+            {
+              "ar": "this",
+              "en": "this"
+            },
+            {
+              "ar": "undefined",
+              "en": "undefined"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "exports مجرد مرجع لـ module.exports.",
+            "en": "exports is just a reference to module.exports."
+          }
+        },
+        {
+          "id": "node-q08",
+          "question": {
+            "ar": "مكتبة اختبار زي Jest تتحط فين؟",
+            "en": "Where does a testing library such as Jest belong?"
+          },
+          "options": [
+            {
+              "ar": "devDependencies",
+              "en": "devDependencies"
+            },
+            {
+              "ar": "dependencies",
+              "en": "dependencies"
+            },
+            {
+              "ar": "peerDependencies",
+              "en": "peerDependencies"
+            },
+            {
+              "ar": "engines",
+              "en": "engines"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "npm مدير الحزم، و devDependencies للتطوير بس.",
+            "en": "npm is the package manager, and devDependencies are for development only."
+          }
+        },
+        {
+          "id": "node-q09",
+          "question": {
+            "ar": "~1.2.3 بتسمح بأنهي إصدار؟",
+            "en": "Which version does ~1.2.3 allow?"
+          },
+          "options": [
+            {
+              "ar": "1.2.9",
+              "en": "1.2.9"
+            },
+            {
+              "ar": "1.3.0",
+              "en": "1.3.0"
+            },
+            {
+              "ar": "2.0.0",
+              "en": "2.0.0"
+            },
+            {
+              "ar": "1.1.0",
+              "en": "1.1.0"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "~ بتسمح بتحديثات الـ patch بس.",
+            "en": "~ only allows patch updates."
+          }
+        },
+        {
+          "id": "node-q10",
+          "question": {
+            "ar": "الـ setImmediate بيتنفذ في أنهي مرحلة؟",
+            "en": "In which phase do setImmediate callbacks run?"
+          },
+          "options": [
+            {
+              "ar": "Check",
+              "en": "Check"
+            },
+            {
+              "ar": "Timers",
+              "en": "Timers"
+            },
+            {
+              "ar": "Poll",
+              "en": "Poll"
+            },
+            {
+              "ar": "Close",
+              "en": "Close"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "حلقة بتنفذ الـ callbacks على مراحل.",
+            "en": "A loop that runs callbacks in phases."
+          }
+        },
+        {
+          "id": "node-q11",
+          "question": {
+            "ar": "جوه I/O callback، مين يتنفذ الأول؟",
+            "en": "Inside an I/O callback, which runs first?"
+          },
+          "options": [
             {
               "ar": "setImmediate",
               "en": "setImmediate"
             },
             {
-              "ar": "setTimeout 0",
-              "en": "setTimeout 0"
+              "ar": "setTimeout(0)",
+              "en": "setTimeout(0)"
             },
             {
-              "ar": "I/O callback",
-              "en": "I/O callback"
+              "ar": "عشوائي",
+              "en": "It is random"
+            },
+            {
+              "ar": "ولا واحد بيتنفذ",
+              "en": "Neither runs"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "nextTick ليه أعلى أولوية.",
-            "en": "nextTick has the highest priority."
+            "ar": "nextTick الأسبق، و setImmediate في مرحلة check.",
+            "en": "nextTick runs first, and setImmediate runs in the check phase."
           }
         },
         {
-          "id": "node-q5",
+          "id": "node-q12",
           "question": {
-            "ar": "لقراءة ملف ضخم بكفاءة؟",
-            "en": "Efficiently read a huge file?"
-          },
-          "options": [
-            {
-              "ar": "Streams",
-              "en": "Streams"
-            },
-            {
-              "ar": "readFileSync",
-              "en": "readFileSync"
-            },
-            {
-              "ar": "JSON.parse",
-              "en": "JSON.parse"
-            },
-            {
-              "ar": "require",
-              "en": "require"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "أجزاء صغيرة في الذاكرة.",
-            "en": "Chunked memory use."
-          }
-        },
-        {
-          "id": "node-q6",
-          "question": {
-            "ar": "حجم libuv thread pool الافتراضي؟",
-            "en": "Default libuv thread pool size?"
+            "ar": "حجم الـ Thread Pool الافتراضي؟",
+            "en": "Default thread pool size?"
           },
           "options": [
             {
@@ -8603,68 +9705,848 @@
           ],
           "answer": 0,
           "explanation": {
-            "ar": "يتغير بـ UV_THREADPOOL_SIZE.",
-            "en": "Set with UV_THREADPOOL_SIZE."
+            "ar": "مجموعة threads في libuv، عددها 4 افتراضيًا.",
+            "en": "A set of libuv threads, 4 by default."
           }
         },
         {
-          "id": "node-q7",
+          "id": "node-q13",
           "question": {
-            "ar": "تخزين الباسورد الصح؟",
-            "en": "Correct password storage?"
+            "ar": "أنهي دالة بتحول دالة callback لدالة بترجع Promise؟",
+            "en": "Which function turns a callback-style function into one that returns a promise?"
           },
           "options": [
             {
-              "ar": "Hash بـ argon2 أو bcrypt",
-              "en": "Hash with argon2 or bcrypt"
+              "ar": "util.promisify",
+              "en": "util.promisify"
             },
             {
-              "ar": "نص عادي",
-              "en": "Plain text"
+              "ar": "util.inspect",
+              "en": "util.inspect"
+            },
+            {
+              "ar": "Promise.all",
+              "en": "Promise.all"
+            },
+            {
+              "ar": "process.nextTick",
+              "en": "process.nextTick"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "ثلاث طرق للتعامل مع الـ async.",
+            "en": "Three ways to handle async code."
+          }
+        },
+        {
+          "id": "node-q14",
+          "question": {
+            "ar": "في error-first callback، أول argument بيكون إيه لو كله نجح؟",
+            "en": "In an error-first callback, what is the first argument when everything succeeds?"
+          },
+          "options": [
+            {
+              "ar": "null",
+              "en": "null"
+            },
+            {
+              "ar": "البيانات",
+              "en": "The data"
+            },
+            {
+              "ar": "true",
+              "en": "true"
+            },
+            {
+              "ar": "Error فاضي",
+              "en": "An empty Error"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "أول parameter هو الخطأ.",
+            "en": "The first parameter is the error."
+          }
+        },
+        {
+          "id": "node-q15",
+          "question": {
+            "ar": "إيه اللي يحصل لو عملت emit لحدث error ومفيش listener؟",
+            "en": "What happens if you emit an error event with no listener?"
+          },
+          "options": [
+            {
+              "ar": "بيرمي exception",
+              "en": "It throws an exception"
+            },
+            {
+              "ar": "بيتجاهله",
+              "en": "It is ignored"
+            },
+            {
+              "ar": "بيطبعه بس",
+              "en": "It is only logged"
+            },
+            {
+              "ar": "بيعيد المحاولة",
+              "en": "It retries"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "class لإرسال الأحداث والاستماع ليها.",
+            "en": "A class for emitting events and listening to them."
+          }
+        },
+        {
+          "id": "node-q16",
+          "question": {
+            "ar": "zlib.createGzip() نوعه إيه؟",
+            "en": "What type of stream is zlib.createGzip()?"
+          },
+          "options": [
+            {
+              "ar": "Transform",
+              "en": "Transform"
+            },
+            {
+              "ar": "Readable",
+              "en": "Readable"
+            },
+            {
+              "ar": "Writable",
+              "en": "Writable"
+            },
+            {
+              "ar": "Buffer",
+              "en": "Buffer"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "معالجة البيانات على أجزاء.",
+            "en": "Processing data in chunks."
+          }
+        },
+        {
+          "id": "node-q17",
+          "question": {
+            "ar": "لما write() ترجع false تستنى أنهي حدث؟",
+            "en": "When write() returns false, which event should you wait for?"
+          },
+          "options": [
+            {
+              "ar": "drain",
+              "en": "drain"
+            },
+            {
+              "ar": "end",
+              "en": "end"
+            },
+            {
+              "ar": "close",
+              "en": "close"
+            },
+            {
+              "ar": "data",
+              "en": "data"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "لما المصدر أسرع من المستقبل.",
+            "en": "When the source is faster than the destination."
+          }
+        },
+        {
+          "id": "node-q18",
+          "question": {
+            "ar": "ناتج Buffer.from(\"Hi\").toString(\"base64\")؟",
+            "en": "What does Buffer.from(\"Hi\").toString(\"base64\") return?"
+          },
+          "options": [
+            {
+              "ar": "\"SGk=\"",
+              "en": "\"SGk=\""
+            },
+            {
+              "ar": "\"Hi\"",
+              "en": "\"Hi\""
+            },
+            {
+              "ar": "\"4869\"",
+              "en": "\"4869\""
+            },
+            {
+              "ar": "undefined",
+              "en": "undefined"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "\"Hi\" بالـ base64 هي \"SGk=\".",
+            "en": "\"Hi\" in base64 is \"SGk=\"."
+          }
+        },
+        {
+          "id": "node-q19",
+          "question": {
+            "ar": "عشان تقرا ملف log حجمه 5GB تستخدم إيه؟",
+            "en": "To read a 5GB log file, use?"
+          },
+          "options": [
+            {
+              "ar": "createReadStream",
+              "en": "createReadStream"
+            },
+            {
+              "ar": "readFile",
+              "en": "readFile"
+            },
+            {
+              "ar": "readFileSync",
+              "en": "readFileSync"
+            },
+            {
+              "ar": "JSON.parse",
+              "en": "JSON.parse"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الأولى بتحمل الملف كله، والتانية على أجزاء.",
+            "en": "The first loads the whole file; the second reads it in chunks."
+          }
+        },
+        {
+          "id": "node-q20",
+          "question": {
+            "ar": "أنهي واحد ينفع يشارك ذاكرة مع الـ main thread؟",
+            "en": "Which one can share memory with the main thread?"
+          },
+          "options": [
+            {
+              "ar": "worker_threads",
+              "en": "worker_threads"
+            },
+            {
+              "ar": "cluster",
+              "en": "cluster"
+            },
+            {
+              "ar": "child_process",
+              "en": "child_process"
+            },
+            {
+              "ar": "pm2",
+              "en": "pm2"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "عمليات للسيرفر، و threads للحسابات، وعمليات لتشغيل برامج.",
+            "en": "Processes for the server, threads for computation, and processes for running programs."
+          }
+        },
+        {
+          "id": "node-q21",
+          "question": {
+            "ar": "تصغير صور مع كل رفع. أحسن طريقة؟",
+            "en": "Resizing images on every upload. Best approach?"
+          },
+          "options": [
+            {
+              "ar": "worker_threads أو queue",
+              "en": "worker_threads or a job queue"
+            },
+            {
+              "ar": "تشغله جوه الـ request handler",
+              "en": "Run it inside the request handler"
+            },
+            {
+              "ar": "setTimeout",
+              "en": "setTimeout"
+            },
+            {
+              "ar": "process.nextTick",
+              "en": "process.nextTick"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "ابعدها عن الـ main thread.",
+            "en": "Move them off the main thread."
+          }
+        },
+        {
+          "id": "node-q22",
+          "question": {
+            "ar": "ليه تخلي التطبيق stateless وانت بتعمل scaling؟",
+            "en": "Why keep the app stateless when scaling?"
+          },
+          "options": [
+            {
+              "ar": "أي instance يقدر يخدم أي طلب",
+              "en": "Any instance can serve any request"
+            },
+            {
+              "ar": "بيستهلك CPU أقل",
+              "en": "It uses less CPU"
+            },
+            {
+              "ar": "PM2 بيطلب كده",
+              "en": "PM2 requires it"
+            },
+            {
+              "ar": "مش هتحتاج داتابيز",
+              "en": "You no longer need a database"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "شغل كذا instance ووزع الحمل.",
+            "en": "Run several instances and spread the load."
+          }
+        },
+        {
+          "id": "node-q23",
+          "question": {
+            "ar": "في Cache-aside، لو الكاش فاضي بتعمل إيه؟",
+            "en": "In cache-aside, what do you do on a cache miss?"
+          },
+          "options": [
+            {
+              "ar": "تجيب من الداتابيز وتخزن بمدة انتهاء",
+              "en": "Load from the database and store it with an expiry"
+            },
+            {
+              "ar": "ترجع Error",
+              "en": "Return an error"
+            },
+            {
+              "ar": "تستنى الكاش يتملي",
+              "en": "Wait for the cache to fill"
+            },
+            {
+              "ar": "تعيد تشغيل Redis",
+              "en": "Restart Redis"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "تخزين النتايج المتكررة في الذاكرة.",
+            "en": "Keeping repeated results in memory."
+          }
+        },
+        {
+          "id": "node-q24",
+          "question": {
+            "ar": "أحسن طريقة تعرف بيها إيه اللي بيسرب ذاكرة؟",
+            "en": "Best way to find what is leaking memory?"
+          },
+          "options": [
+            {
+              "ar": "تقارن heap snapshots",
+              "en": "Compare heap snapshots"
+            },
+            {
+              "ar": "تعيد التشغيل كتير",
+              "en": "Restart more often"
+            },
+            {
+              "ar": "تزود الـ RAM",
+              "en": "Add more RAM"
+            },
+            {
+              "ar": "تستخدم var",
+              "en": "Use var"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "راقب الذاكرة واعمل profiling.",
+            "en": "Monitor memory and profile."
+          }
+        },
+        {
+          "id": "node-q25",
+          "question": {
+            "ar": "ليه المهام في الـ queue لازم تكون idempotent؟",
+            "en": "Why should queued jobs be idempotent?"
+          },
+          "options": [
+            {
+              "ar": "لأنها ممكن تتنفذ أكتر من مرة",
+              "en": "They may run more than once"
+            },
+            {
+              "ar": "عشان تبقى أسرع",
+              "en": "So they run faster"
+            },
+            {
+              "ar": "الـ queue بيطلب JSON",
+              "en": "Queues require JSON"
+            },
+            {
+              "ar": "عشان متتعملش retries",
+              "en": "To avoid retries"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "طابور لتنفيذ المهام في الخلفية.",
+            "en": "A queue for running tasks in the background."
+          }
+        },
+        {
+          "id": "node-q26",
+          "question": {
+            "ar": "أنهي framework مبني على modules و dependency injection؟",
+            "en": "Which framework is built around modules and dependency injection?"
+          },
+          "options": [
+            {
+              "ar": "NestJS",
+              "en": "NestJS"
+            },
+            {
+              "ar": "Express",
+              "en": "Express"
+            },
+            {
+              "ar": "Fastify",
+              "en": "Fastify"
+            },
+            {
+              "ar": "Koa",
+              "en": "Koa"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Express بسيط، NestJS منظم، Fastify سريع.",
+            "en": "Express is simple, NestJS is structured, Fastify is fast."
+          }
+        },
+        {
+          "id": "node-q27",
+          "question": {
+            "ar": "middleware مبينادي next() ومبيردش. النتيجة؟",
+            "en": "A middleware neither calls next() nor responds. The result?"
+          },
+          "options": [
+            {
+              "ar": "الطلب بيفضل معلق",
+              "en": "The request hangs"
+            },
+            {
+              "ar": "404 تلقائي",
+              "en": "An automatic 404"
+            },
+            {
+              "ar": "التطبيق بيقع",
+              "en": "The app crashes"
+            },
+            {
+              "ar": "بيكمل عادي",
+              "en": "It continues normally"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "دالة بتتنفذ بين الطلب والرد.",
+            "en": "A function that runs between the request and the response."
+          }
+        },
+        {
+          "id": "node-q28",
+          "question": {
+            "ar": "أنهي واحد من مبادئ REST؟",
+            "en": "Which one is a REST principle?"
+          },
+          "options": [
+            {
+              "ar": "Stateless",
+              "en": "Stateless"
+            },
+            {
+              "ar": "لازم sessions على السيرفر",
+              "en": "Server-side sessions are required"
+            },
+            {
+              "ar": "endpoint واحد لكل حاجة",
+              "en": "One endpoint for everything"
+            },
+            {
+              "ar": "طلبات POST بس",
+              "en": "POST requests only"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Resources ليها URLs وبنتعامل معاها بـ HTTP methods.",
+            "en": "Resources have URLs and are handled with HTTP methods."
+          }
+        },
+        {
+          "id": "node-q29",
+          "question": {
+            "ar": "المستخدم مسجل دخول بس مش مسموحله. أنهي status code؟",
+            "en": "The user is logged in but not allowed. Which status code?"
+          },
+          "options": [
+            {
+              "ar": "403",
+              "en": "403"
+            },
+            {
+              "ar": "401",
+              "en": "401"
+            },
+            {
+              "ar": "404",
+              "en": "404"
+            },
+            {
+              "ar": "400",
+              "en": "400"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "401 لما مش مسجل، و 403 لما مسجل بس ممنوع.",
+            "en": "401 means not authenticated; 403 means authenticated but forbidden."
+          }
+        },
+        {
+          "id": "node-q30",
+          "question": {
+            "ar": "في PATCH /users/5?notify=true، الـ notify موجودة فين؟",
+            "en": "In PATCH /users/5?notify=true, where is notify?"
+          },
+          "options": [
+            {
+              "ar": "req.query",
+              "en": "req.query"
+            },
+            {
+              "ar": "req.params",
+              "en": "req.params"
+            },
+            {
+              "ar": "req.body",
+              "en": "req.body"
+            },
+            {
+              "ar": "req.headers",
+              "en": "req.headers"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "من المسار، ومن بعد ?، ومن محتوى الطلب.",
+            "en": "From the path, from after the ?, and from the request content."
+          }
+        },
+        {
+          "id": "node-q31",
+          "question": {
+            "ar": "الـ error middleware في Express بياخد كام parameter؟",
+            "en": "How many parameters does Express error middleware take?"
+          },
+          "options": [
+            {
+              "ar": "4",
+              "en": "4"
+            },
+            {
+              "ar": "3",
+              "en": "3"
+            },
+            {
+              "ar": "2",
+              "en": "2"
+            },
+            {
+              "ar": "1",
+              "en": "1"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "error middleware بأربع parameters في الآخر.",
+            "en": "An error middleware with four parameters, registered last."
+          }
+        },
+        {
+          "id": "node-q32",
+          "question": {
+            "ar": "بعد uncaughtException تعمل إيه؟",
+            "en": "What should you do after an uncaughtException?"
+          },
+          "options": [
+            {
+              "ar": "تسجل الخطأ وتقفل وتسيب الـ process manager يشغله",
+              "en": "Log it, exit, and let the process manager restart"
+            },
+            {
+              "ar": "تتجاهله وتكمل",
+              "en": "Ignore it and carry on"
+            },
+            {
+              "ar": "تعيد آخر طلب",
+              "en": "Replay the last request"
+            },
+            {
+              "ar": "تمسح الـ console",
+              "en": "Clear the console"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "آخر خط دفاع للأخطاء اللي محدش مسكها.",
+            "en": "The last line of defence for errors nobody caught."
+          }
+        },
+        {
+          "id": "node-q33",
+          "question": {
+            "ar": "مستخدم عدّل /orders/42 وهو طلب واحد تاني. إيه الفحص الناقص؟",
+            "en": "A user edits /orders/42, which belongs to someone else. Which check is missing?"
+          },
+          "options": [
+            {
+              "ar": "التأكد إن المورد يخص المستخدم",
+              "en": "Checking the resource belongs to the user"
+            },
+            {
+              "ar": "تسجيل الدخول",
+              "en": "Authentication"
+            },
+            {
+              "ar": "Rate limiting",
+              "en": "Rate limiting"
+            },
+            {
+              "ar": "CORS",
+              "en": "CORS"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "إنت مين؟ ومسموحلك بإيه؟",
+            "en": "Who are you, and what are you allowed to do?"
+          }
+        },
+        {
+          "id": "node-q34",
+          "question": {
+            "ar": "محتوى الـ JWT العادي مشفر؟",
+            "en": "Is the payload of a standard JWT encrypted?"
+          },
+          "options": [
+            {
+              "ar": "لأ، مقروء وموقّع بس",
+              "en": "No, it is readable and only signed"
+            },
+            {
+              "ar": "أيوه",
+              "en": "Yes"
+            },
+            {
+              "ar": "لو فيه HTTPS",
+              "en": "Only over HTTPS"
+            },
+            {
+              "ar": "الـ refresh token بس",
+              "en": "Only refresh tokens"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Session بتتخزن في السيرفر، و JWT بيانات موقعة مع العميل.",
+            "en": "A session is stored on the server; a JWT is signed data kept by the client."
+          }
+        },
+        {
+          "id": "node-q35",
+          "question": {
+            "ar": "أنهي واحدة مناسبة لتخزين الباسوردات؟",
+            "en": "Which one is suitable for storing passwords?"
+          },
+          "options": [
+            {
+              "ar": "Argon2id",
+              "en": "Argon2id"
+            },
+            {
+              "ar": "MD5",
+              "en": "MD5"
+            },
+            {
+              "ar": "SHA-256",
+              "en": "SHA-256"
             },
             {
               "ar": "Base64",
               "en": "Base64"
-            },
-            {
-              "ar": "تشفير بمفتاح في الكود",
-              "en": "Encrypt with a hardcoded key"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "hashing بطيء ومعاه salt.",
-            "en": "Slow salted hashing."
+            "ar": "Hashing بخوارزمية بطيئة مع salt.",
+            "en": "Hashed with a slow algorithm and a salt."
           }
         },
         {
-          "id": "node-q8",
+          "id": "node-q36",
           "question": {
-            "ar": "حدث error في EventEmitter من غير listener؟",
-            "en": "An unhandled 'error' event on an EventEmitter?"
+            "ar": "الحماية من SQL Injection بـ؟",
+            "en": "How do you prevent SQL injection?"
           },
           "options": [
             {
-              "ar": "بيرمي استثناء",
-              "en": "Throws"
+              "ar": "Parameterized queries",
+              "en": "Parameterized queries"
             },
             {
-              "ar": "بيتجاهل",
-              "en": "Is ignored"
+              "ar": "دمج النصوص",
+              "en": "String concatenation"
             },
             {
-              "ar": "بيعيد المحاولة",
-              "en": "Retries"
+              "ar": "CORS",
+              "en": "CORS"
             },
             {
-              "ar": "بيطبع بس",
-              "en": "Only logs"
+              "ar": "Base64",
+              "en": "Base64"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "وممكن يوقع الـ process.",
-            "en": "It can crash the process."
+            "ar": "Validation و parameterized queries و escaping و tokens.",
+            "en": "Validation, parameterized queries, escaping and tokens."
+          }
+        },
+        {
+          "id": "node-q37",
+          "question": {
+            "ar": "أحسن حاجة تبطّأ محاولات الـ brute force على تسجيل الدخول؟",
+            "en": "What best slows down brute-force login attempts?"
+          },
+          "options": [
+            {
+              "ar": "Rate limiting",
+              "en": "Rate limiting"
+            },
+            {
+              "ar": "CORS",
+              "en": "CORS"
+            },
+            {
+              "ar": "Helmet",
+              "en": "Helmet"
+            },
+            {
+              "ar": "الضغط",
+              "en": "Compression"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "تحكم في الـ origins، وحد للطلبات، و headers أمان.",
+            "en": "Origin control, request limits, and security headers."
+          }
+        },
+        {
+          "id": "node-q38",
+          "question": {
+            "ar": "أهم فايدة للـ Connection Pooling؟",
+            "en": "Main benefit of connection pooling?"
+          },
+          "options": [
+            {
+              "ar": "بيوفر فتح اتصال جديد مع كل طلب",
+              "en": "No new connection for every request"
+            },
+            {
+              "ar": "بيشفر الاستعلامات",
+              "en": "It encrypts queries"
+            },
+            {
+              "ar": "بيحل مشكلة N+1",
+              "en": "It solves N+1"
+            },
+            {
+              "ar": "بديل للـ ORM",
+              "en": "It replaces the ORM"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ Pool بيعيد استخدام الاتصالات.",
+            "en": "A pool reuses database connections."
+          }
+        },
+        {
+          "id": "node-q39",
+          "question": {
+            "ar": "أنهي flag مدمج في Node بيحمل ملف .env؟",
+            "en": "Which built-in Node flag loads a .env file?"
+          },
+          "options": [
+            {
+              "ar": "--env-file",
+              "en": "--env-file"
+            },
+            {
+              "ar": "--inspect",
+              "en": "--inspect"
+            },
+            {
+              "ar": "--cpu-prof",
+              "en": "--cpu-prof"
+            },
+            {
+              "ar": "--watch",
+              "en": "--watch"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "برّه الكود ومتترفعش على Git.",
+            "en": "Kept outside the code and never committed to Git."
+          }
+        },
+        {
+          "id": "node-q40",
+          "question": {
+            "ar": "أنهي signal عادةً بيبدأ الـ Graceful Shutdown؟",
+            "en": "Which signal usually starts a graceful shutdown?"
+          },
+          "options": [
+            {
+              "ar": "SIGTERM",
+              "en": "SIGTERM"
+            },
+            {
+              "ar": "SIGKILL",
+              "en": "SIGKILL"
+            },
+            {
+              "ar": "SIGSTOP",
+              "en": "SIGSTOP"
+            },
+            {
+              "ar": "SIGHUP",
+              "en": "SIGHUP"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "SIGKILL مينفعش تمسكه أصلًا.",
+            "en": "SIGKILL cannot be caught at all."
           }
         }
       ]
