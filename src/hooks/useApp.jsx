@@ -9,7 +9,7 @@ const EMPTY_OBJ = {};
 
 export function AppProvider({ children }) {
   const [lang, setLang] = useLocalStorage('ip.lang', 'en');
-  const [theme, setTheme] = useLocalStorage('ip.theme', 'dark');
+  const [theme, setTheme] = useLocalStorage('ip.theme', 'light');
   const [completed, setCompleted] = useLocalStorage('ip.completed', EMPTY_LIST);
   const [bestScores, setBestScores] = useLocalStorage('ip.bestScores', EMPTY_OBJ);
   const [bestExam, setBestExam] = useLocalStorage('ip.bestExam', null);
