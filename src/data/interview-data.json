@@ -15870,144 +15870,1104 @@
       },
       "lessons": [
         {
-          "id": "python-l1",
-          "title": {
+          "id": "python-l01",
+          "section": {
             "ar": "الأساسيات",
             "en": "Basics"
           },
+          "title": {
+            "ar": "إيه هي Python؟",
+            "en": "What is Python?"
+          },
+          "short": {
+            "ar": "لغة high-level مفسرة، dynamically و strongly typed.",
+            "en": "A high-level interpreted language that is dynamically and strongly typed."
+          },
           "points": {
             "ar": [
-              "لغة ديناميكية قوية الأنواع، والمسافات البادئة بتحدد البلوكات."
+              "CPython بيحول الكود لـ bytecode والـ Python Virtual Machine بتنفذه.",
+              "Dynamic يعني النوع بيتحدد وقت التشغيل، و Strong يعني مفيش تحويل ضمني غريب زي \"1\" + 1.",
+              "المسافات البادئة بتحدد البلوكات."
             ],
             "en": [
-              "Dynamically but strongly typed; indentation defines blocks."
+              "CPython compiles code to bytecode, which the Python Virtual Machine runs.",
+              "Dynamic means types are decided at runtime; strong means no odd implicit conversions such as \"1\" + 1.",
+              "Indentation defines code blocks."
             ]
           },
-          "code": "name = \"Ali\"\nprint(f\"Hi {name}\")"
+          "code": "x = 5        # int\nx = \"five\"   # now a str: dynamic\n\"1\" + 1      # TypeError: strong typing"
         },
         {
-          "id": "python-l2",
+          "id": "python-l02",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "هياكل البيانات",
+            "ar": "الفرق بين Mutable و Immutable؟",
+            "en": "Mutable versus immutable types?"
+          },
+          "short": {
+            "ar": "Mutable بيتعدل في مكانه، و Immutable أي تعديل بيعمل object جديد.",
+            "en": "Mutable objects change in place; changing an immutable one creates a new object."
+          },
+          "points": {
+            "ar": [
+              "Mutable: list و dict و set.",
+              "Immutable: int و float و str و tuple و frozenset.",
+              "المتغير بيشاور على object، فمتغيرين ممكن يشاوروا على نفس الـ list."
+            ],
+            "en": [
+              "Mutable: list, dict and set.",
+              "Immutable: int, float, str, tuple and frozenset.",
+              "A variable points to an object, so two variables can point to the same list."
+            ]
+          },
+          "code": "a = [1]\nb = a\nb.append(2)\nprint(a)  # [1, 2]"
+        },
+        {
+          "id": "python-l03",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "الفرق بين is و ==؟",
+            "en": "What is the difference between is and ==?"
+          },
+          "short": {
+            "ar": "is بتقارن الهوية (نفس الـ object)، و == بتقارن القيمة.",
+            "en": "is compares identity (the same object); == compares value."
+          },
+          "points": {
+            "ar": [
+              "استخدم is مع None و True و False.",
+              "متعتمدش على is مع الأرقام أو النصوص، لأن الـ caching بتاع CPython ممكن يدي نتايج مضللة."
+            ],
+            "en": [
+              "Use is with None, True and False.",
+              "Do not rely on is with numbers or strings; CPython's caching can give misleading results."
+            ]
+          },
+          "code": "a = [1, 2]\nb = [1, 2]\na == b  # True\na is b  # False"
+        },
+        {
+          "id": "python-l04",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
+          "title": {
+            "ar": "الـ Slicing؟",
+            "en": "How does slicing work?"
+          },
+          "short": {
+            "ar": "استخراج جزء من sequence بـ [start:stop:step].",
+            "en": "Extracting part of a sequence with [start:stop:step]."
+          },
+          "points": {
+            "ar": [
+              "الـ stop مش محسوب، والأرقام السالبة بتعد من الآخر.",
+              "[::-1] بيعكس، و [:] بيعمل shallow copy."
+            ],
+            "en": [
+              "stop is excluded, and negative numbers count from the end.",
+              "[::-1] reverses, and [:] makes a shallow copy."
+            ]
+          },
+          "code": "nums = [0, 1, 2, 3, 4, 5]\nnums[1:4]   # [1, 2, 3]\nnums[-2:]   # [4, 5]\nnums[::2]   # [0, 2, 4]\nnums[::-1]  # [5, 4, 3, 2, 1, 0]"
+        },
+        {
+          "id": "python-l05",
+          "section": {
+            "ar": "Data Structures",
             "en": "Data Structures"
           },
-          "points": {
-            "ar": [
-              "list قابلة للتعديل، tuple لأ، set بدون تكرار، dict مفتاح وقيمة."
-            ],
-            "en": [
-              "list is mutable, tuple immutable, set is unique, dict maps keys to values."
-            ]
-          },
-          "code": "nums = [1, 2, 2]\nunique = set(nums)\nuser = {\"name\": \"Ali\"}"
-        },
-        {
-          "id": "python-l3",
           "title": {
-            "ar": "الـ Comprehensions",
-            "en": "Comprehensions"
+            "ar": "الفرق بين list و tuple و set و dict؟",
+            "en": "list, tuple, set and dict: what is the difference?"
+          },
+          "short": {
+            "ar": "list مرتبة وقابلة للتعديل، tuple ثابتة، set من غير تكرار، dict مفتاح وقيمة.",
+            "en": "list is ordered and mutable, tuple is immutable, set has no duplicates, dict maps keys to values."
           },
           "points": {
             "ar": [
-              "طريقة مختصرة لبناء القوائم والقواميس."
+              "البحث في set و dict متوسطه O(1)، وفي list و tuple O(n).",
+              "الـ tuple مناسبة للبيانات الثابتة وممكن تبقى مفتاح في dict."
             ],
             "en": [
-              "Concise syntax to build lists, sets and dicts."
+              "Membership checks on set and dict average O(1); on list and tuple they are O(n).",
+              "Tuples suit fixed data and can be dict keys."
             ]
           },
-          "code": "squares = [x * x for x in range(10) if x % 2 == 0]"
+          "code": "ids = {1, 2, 3}\n2 in ids          # fast\nuser = {\"name\": \"Ali\"}\npoint = (3, 4)"
         },
         {
-          "id": "python-l4",
+          "id": "python-l06",
+          "section": {
+            "ar": "Data Structures",
+            "en": "Data Structures"
+          },
           "title": {
-            "ar": "الدوال",
-            "en": "Functions"
+            "ar": "الـ dict بيشتغل إزاي؟",
+            "en": "How does a dict work?"
+          },
+          "short": {
+            "ar": "Hash table بيربط مفاتيح بقيم.",
+            "en": "A hash table mapping keys to values."
           },
           "points": {
             "ar": [
-              "args* و kwargs**. بلاش قيمة افتراضية قابلة للتعديل لأنها بتتشارك."
+              "المفتاح لازم يكون hashable، يعني immutable زي str و int و tuple.",
+              "من Python 3.7 الـ dict بيحافظ على ترتيب الإضافة.",
+              "get() بترجع قيمة افتراضية بدل KeyError."
             ],
             "en": [
-              "*args and **kwargs. Avoid mutable default values; they are shared."
+              "Keys must be hashable, meaning immutable types such as str, int and tuple.",
+              "Since Python 3.7, dicts keep insertion order.",
+              "get() returns a default instead of raising KeyError."
             ]
           },
-          "code": "def add(item, items=None):\n    items = items or []\n    items.append(item)\n    return items"
+          "code": "ages = {\"ali\": 30}\nages.get(\"omar\", 0)   # 0\nages.setdefault(\"sara\", 25)"
         },
         {
-          "id": "python-l5",
+          "id": "python-l07",
+          "section": {
+            "ar": "Data Structures",
+            "en": "Data Structures"
+          },
           "title": {
-            "ar": "الـ Decorators والـ Generators",
-            "en": "Decorators & Generators"
+            "ar": "الـ Comprehensions؟",
+            "en": "What are comprehensions?"
+          },
+          "short": {
+            "ar": "طريقة مختصرة لبناء list و dict و set.",
+            "en": "A concise way to build lists, dicts and sets."
           },
           "points": {
             "ar": [
-              "decorator بتغلف دالة. generator بيرجع القيم واحدة واحدة بـ yield."
+              "ممكن تضيف شرط بـ if.",
+              "لو استخدمت أقواس عادية بتعمل generator expression بيحسب القيم واحدة واحدة.",
+              "متعقدهاش، لو بقت صعبة استخدم loop عادي."
             ],
             "en": [
-              "Decorators wrap functions; generators yield values lazily."
+              "You can add a condition with if.",
+              "Round brackets create a generator expression that yields values lazily.",
+              "Keep them simple; if one gets hard to read, use a normal loop."
             ]
           },
-          "code": "def count(n):\n    for i in range(n):\n        yield i"
+          "code": "squares = [x * x for x in range(10) if x % 2 == 0]\nlookup = {u[\"id\"]: u for u in users}\ntotal = sum(x * x for x in range(10))"
         },
         {
-          "id": "python-l6",
+          "id": "python-l08",
+          "section": {
+            "ar": "Data Structures",
+            "en": "Data Structures"
+          },
           "title": {
-            "ar": "الـ OOP",
+            "ar": "Shallow Copy و Deep Copy؟",
+            "en": "Shallow copy versus deep copy?"
+          },
+          "short": {
+            "ar": "الـ shallow بتنسخ أول مستوى بس، والـ deep بتنسخ كل المستويات.",
+            "en": "A shallow copy copies only the first level; a deep copy copies every level."
+          },
+          "points": {
+            "ar": [
+              "copy.copy() و list.copy() و [:] نسخ سطحي، فالعناصر الداخلية مشتركة.",
+              "copy.deepcopy() بتنسخ كل حاجة."
+            ],
+            "en": [
+              "copy.copy(), list.copy() and [:] are shallow, so nested items stay shared.",
+              "copy.deepcopy() copies everything."
+            ]
+          },
+          "code": "import copy\na = [[1, 2]]\nb = copy.copy(a)\nb[0].append(3)\nprint(a)  # [[1, 2, 3]]\nc = copy.deepcopy(a)"
+        },
+        {
+          "id": "python-l09",
+          "section": {
+            "ar": "Data Structures",
+            "en": "Data Structures"
+          },
+          "title": {
+            "ar": "أدوات collections المفيدة؟",
+            "en": "Which collections tools are worth knowing?"
+          },
+          "short": {
+            "ar": "Counter و defaultdict و deque و namedtuple.",
+            "en": "Counter, defaultdict, deque and namedtuple."
+          },
+          "points": {
+            "ar": [
+              "Counter بيعد التكرار، و defaultdict بيدي قيمة افتراضية للمفتاح الجديد.",
+              "deque إضافة وحذف من الطرفين بـ O(1)، مناسب للـ queues.",
+              "namedtuple tuple ليها أسماء للحقول."
+            ],
+            "en": [
+              "Counter counts occurrences, and defaultdict supplies a default for new keys.",
+              "deque adds and removes at both ends in O(1), which suits queues.",
+              "namedtuple is a tuple with named fields."
+            ]
+          },
+          "code": "from collections import Counter, defaultdict, deque\nCounter(\"banana\").most_common(1)  # [(\"a\", 3)]\ngroups = defaultdict(list)\nqueue = deque([1, 2]); queue.popleft()"
+        },
+        {
+          "id": "python-l10",
+          "section": {
+            "ar": "Functions و Iterators",
+            "en": "Functions & Iterators"
+          },
+          "title": {
+            "ar": "*args و **kwargs؟",
+            "en": "What are *args and **kwargs?"
+          },
+          "short": {
+            "ar": "*args بتجمع arguments بالترتيب، و **kwargs بتجمع arguments بالاسم.",
+            "en": "*args collects positional arguments; **kwargs collects keyword arguments."
+          },
+          "points": {
+            "ar": [
+              "args بتبقى tuple، و kwargs بتبقى dict.",
+              "نفس النجوم بتستخدم لفرد القيم وقت النداء."
+            ],
+            "en": [
+              "args becomes a tuple, and kwargs becomes a dict.",
+              "The same stars unpack values when calling a function."
+            ]
+          },
+          "code": "def log(*args, **kwargs):\n    print(args, kwargs)\n\nlog(1, 2, level=\"info\")  # (1, 2) {\"level\": \"info\"}\nlog(*[1, 2], **{\"level\": \"x\"})"
+        },
+        {
+          "id": "python-l11",
+          "section": {
+            "ar": "Functions و Iterators",
+            "en": "Functions & Iterators"
+          },
+          "title": {
+            "ar": "مشكلة الـ Mutable Default Argument؟",
+            "en": "What is the mutable default argument problem?"
+          },
+          "short": {
+            "ar": "القيمة الافتراضية بتتحسب مرة واحدة وقت تعريف الدالة.",
+            "en": "Default values are evaluated once, when the function is defined."
+          },
+          "points": {
+            "ar": [
+              "فلو كانت list، كل النداءات بتشارك نفس الـ list.",
+              "الحل: استخدم None واعمل الـ list جوه الدالة."
+            ],
+            "en": [
+              "If the default is a list, every call shares that same list.",
+              "The fix: default to None and create the list inside the function."
+            ]
+          },
+          "code": "def add(x, items=None):\n    if items is None:\n        items = []\n    items.append(x)\n    return items"
+        },
+        {
+          "id": "python-l12",
+          "section": {
+            "ar": "Functions و Iterators",
+            "en": "Functions & Iterators"
+          },
+          "title": {
+            "ar": "الـ Scope وقاعدة LEGB؟",
+            "en": "Scope and the LEGB rule?"
+          },
+          "short": {
+            "ar": "البحث عن المتغير بيمشي Local ثم Enclosing ثم Global ثم Built-in.",
+            "en": "Name lookup goes Local, then Enclosing, then Global, then Built-in."
+          },
+          "points": {
+            "ar": [
+              "عشان تعدل متغير global جوه دالة استخدم global.",
+              "وعشان تعدل متغير في الدالة اللي بره استخدم nonlocal."
+            ],
+            "en": [
+              "Use global to modify a module-level variable inside a function.",
+              "Use nonlocal to modify a variable of the enclosing function."
+            ]
+          },
+          "code": "def counter():\n    n = 0\n    def inc():\n        nonlocal n\n        n += 1\n        return n\n    return inc"
+        },
+        {
+          "id": "python-l13",
+          "section": {
+            "ar": "Functions و Iterators",
+            "en": "Functions & Iterators"
+          },
+          "title": {
+            "ar": "الـ Decorators؟",
+            "en": "What are decorators?"
+          },
+          "short": {
+            "ar": "دالة بتاخد دالة وترجع دالة جديدة بسلوك إضافي.",
+            "en": "A function that takes a function and returns a new one with extra behaviour."
+          },
+          "points": {
+            "ar": [
+              "بتعتمد على الـ closures، و @ مجرد اختصار لـ f = decorator(f).",
+              "استخدم functools.wraps عشان تحافظ على اسم الدالة والـ docstring.",
+              "أمثلة: logging و caching و التحقق من الصلاحيات."
+            ],
+            "en": [
+              "They rely on closures, and @ is shorthand for f = decorator(f).",
+              "Use functools.wraps to keep the original function's name and docstring.",
+              "Examples: logging, caching and permission checks."
+            ]
+          },
+          "code": "import functools, time\n\ndef timed(fn):\n    @functools.wraps(fn)\n    def wrapper(*args, **kwargs):\n        start = time.perf_counter()\n        result = fn(*args, **kwargs)\n        print(fn.__name__, time.perf_counter() - start)\n        return result\n    return wrapper\n\n@timed\ndef work(): ..."
+        },
+        {
+          "id": "python-l14",
+          "section": {
+            "ar": "Functions و Iterators",
+            "en": "Functions & Iterators"
+          },
+          "title": {
+            "ar": "الـ Generators و yield؟",
+            "en": "What are generators and yield?"
+          },
+          "short": {
+            "ar": "دوال بترجع القيم واحدة واحدة وبتحافظ على حالتها بين كل قيمة.",
+            "en": "Functions that yield values one at a time and keep their state between them."
+          },
+          "points": {
+            "ar": [
+              "نداء الدالة بيرجع generator object، والتنفيذ بيبدأ مع next() أو for.",
+              "بتوفر الذاكرة مع البيانات الكبيرة أو اللانهائية.",
+              "yield from بتسلم القيم من generator تاني."
+            ],
+            "en": [
+              "Calling the function returns a generator object; execution starts with next() or a for loop.",
+              "They save memory with large or infinite data.",
+              "yield from delegates to another generator."
+            ]
+          },
+          "code": "def read_lines(path):\n    with open(path) as f:\n        for line in f:\n            yield line.rstrip()\n\nfor line in read_lines(\"big.log\"):\n    ..."
+        },
+        {
+          "id": "python-l15",
+          "section": {
+            "ar": "Functions و Iterators",
+            "en": "Functions & Iterators"
+          },
+          "title": {
+            "ar": "الفرق بين Iterable و Iterator؟",
+            "en": "Iterable versus iterator?"
+          },
+          "short": {
+            "ar": "Iterable حاجة تقدر تلف عليها، و Iterator بيرجع العنصر اللي بعده.",
+            "en": "An iterable can be looped over; an iterator returns the next item."
+          },
+          "points": {
+            "ar": [
+              "الـ Iterable فيه __iter__، والـ Iterator فيه __iter__ و __next__.",
+              "for بتنادي iter() وبعدين next() لحد StopIteration.",
+              "الـ Iterator بيخلص بعد لفة واحدة."
+            ],
+            "en": [
+              "An iterable has __iter__; an iterator has both __iter__ and __next__.",
+              "A for loop calls iter() and then next() until StopIteration.",
+              "An iterator is exhausted after one pass."
+            ]
+          },
+          "code": "it = iter([1, 2])\nnext(it)  # 1\nnext(it)  # 2\nnext(it)  # StopIteration"
+        },
+        {
+          "id": "python-l16",
+          "section": {
+            "ar": "Functions و Iterators",
+            "en": "Functions & Iterators"
+          },
+          "title": {
+            "ar": "الـ Context Managers و with؟",
+            "en": "Context managers and with?"
+          },
+          "short": {
+            "ar": "بيضمنوا إن المورد يتقفل حتى لو حصل خطأ.",
+            "en": "They guarantee a resource is released even if an error occurs."
+          },
+          "points": {
+            "ar": [
+              "بيعتمدوا على __enter__ و __exit__.",
+              "contextlib.contextmanager بيخليك تكتب واحد بـ generator.",
+              "أمثلة: الملفات والـ locks واتصالات الداتابيز."
+            ],
+            "en": [
+              "They rely on __enter__ and __exit__.",
+              "contextlib.contextmanager lets you write one as a generator.",
+              "Examples: files, locks and database connections."
+            ]
+          },
+          "code": "from contextlib import contextmanager\n\n@contextmanager\ndef timer():\n    start = time.perf_counter()\n    yield\n    print(time.perf_counter() - start)\n\nwith open(\"a.txt\") as f, timer():\n    data = f.read()"
+        },
+        {
+          "id": "python-l17",
+          "section": {
+            "ar": "OOP",
             "en": "OOP"
           },
+          "title": {
+            "ar": "الـ Classes و self و __init__؟",
+            "en": "Classes, self and __init__?"
+          },
+          "short": {
+            "ar": "self هو الـ object الحالي، و __init__ بتهيئه بعد ما يتعمل.",
+            "en": "self is the current object, and __init__ initialises it after it is created."
+          },
           "points": {
             "ar": [
-              "self هو الكائن الحالي، و __init__ للتهيئة، وفيه وراثة متعددة بترتيب MRO."
+              "__new__ هي اللي بتنشئ الـ object، و __init__ بتحط القيم.",
+              "self لازم يبقى أول parameter في الـ instance methods."
             ],
             "en": [
-              "self is the instance, __init__ initialises, multiple inheritance follows the MRO."
+              "__new__ creates the object, and __init__ sets its values.",
+              "self must be the first parameter of instance methods."
             ]
           },
-          "code": "class User:\n    def __init__(self, name):\n        self.name = name"
+          "code": "class User:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        return f\"Hi {self.name}\""
         },
         {
-          "id": "python-l7",
+          "id": "python-l18",
+          "section": {
+            "ar": "OOP",
+            "en": "OOP"
+          },
           "title": {
-            "ar": "الأخطاء والملفات",
-            "en": "Errors & Files"
+            "ar": "instance و classmethod و staticmethod؟",
+            "en": "Instance methods, classmethod and staticmethod?"
+          },
+          "short": {
+            "ar": "instance بتاخد self، و classmethod بتاخد cls، و staticmethod مبتاخدش حاجة.",
+            "en": "Instance methods get self, classmethods get cls, and staticmethods get neither."
           },
           "points": {
             "ar": [
-              "try/except/finally، و with بتقفل الموارد تلقائياً."
+              "classmethod مناسبة للـ factory methods وبتشتغل صح مع الوراثة.",
+              "staticmethod دالة عادية متجمعة جوه الـ class.",
+              "الـ class attributes مشتركة بين كل الـ objects."
             ],
             "en": [
-              "try/except/finally; with closes resources automatically."
+              "classmethods suit factory methods and work correctly with inheritance.",
+              "A staticmethod is a plain function grouped inside the class.",
+              "Class attributes are shared by every object."
             ]
           },
-          "code": "with open(\"a.txt\") as f:\n    data = f.read()"
+          "code": "class User:\n    count = 0  # class attribute\n\n    @classmethod\n    def from_dict(cls, d):\n        return cls(d[\"name\"])\n\n    @staticmethod\n    def valid_name(name):\n        return bool(name.strip())"
         },
         {
-          "id": "python-l8",
+          "id": "python-l19",
+          "section": {
+            "ar": "OOP",
+            "en": "OOP"
+          },
           "title": {
-            "ar": "الـ GIL والتزامن",
-            "en": "Concurrency"
+            "ar": "الوراثة و super() والـ MRO؟",
+            "en": "Inheritance, super() and the MRO?"
+          },
+          "short": {
+            "ar": "Python بتدعم وراثة متعددة، والـ MRO بيحدد ترتيب البحث عن الـ methods.",
+            "en": "Python supports multiple inheritance, and the MRO decides the method lookup order."
           },
           "points": {
             "ar": [
-              "في CPython التقليدي الـ GIL بيمنع تنفيذ threads لكود Python بالتوازي. asyncio للـ I/O و multiprocessing للـ CPU.",
-              "فيه نسخ free-threaded من غير GIL في الإصدارات الحديثة."
+              "super() بتنادي اللي بعدك في الـ MRO، مش بالضرورة الأب المباشر.",
+              "الترتيب بيتحسب بخوارزمية C3، وتقدر تشوفه بـ ClassName.__mro__."
             ],
             "en": [
-              "In standard CPython the GIL limits parallel threads. Use asyncio for I/O and multiprocessing for CPU.",
-              "Newer versions also offer free-threaded builds."
+              "super() calls the next class in the MRO, not necessarily the direct parent.",
+              "The order is computed with the C3 algorithm, and you can inspect it with ClassName.__mro__."
             ]
           },
-          "code": "async def main():\n    a, b = await asyncio.gather(fetch(1), fetch(2))"
+          "code": "class A: ...\nclass B(A): ...\nclass C(A): ...\nclass D(B, C): ...\n\nD.__mro__  # D, B, C, A, object"
+        },
+        {
+          "id": "python-l20",
+          "section": {
+            "ar": "OOP",
+            "en": "OOP"
+          },
+          "title": {
+            "ar": "الـ Dunder Methods؟",
+            "en": "What are dunder (magic) methods?"
+          },
+          "short": {
+            "ar": "methods بين __ بتتنادى تلقائيًا مع العمليات المدمجة.",
+            "en": "Methods wrapped in __ that built-in operations call automatically."
+          },
+          "points": {
+            "ar": [
+              "__str__ للعرض للمستخدم، و __repr__ للمطور والـ debugging.",
+              "__eq__ و __lt__ للمقارنة، و __len__ لـ len()، و __add__ لعلامة +."
+            ],
+            "en": [
+              "__str__ is for end users; __repr__ is for developers and debugging.",
+              "__eq__ and __lt__ handle comparison, __len__ handles len(), and __add__ handles +."
+            ]
+          },
+          "code": "class Money:\n    def __init__(self, amount):\n        self.amount = amount\n    def __add__(self, other):\n        return Money(self.amount + other.amount)\n    def __repr__(self):\n        return f\"Money({self.amount})\""
+        },
+        {
+          "id": "python-l21",
+          "section": {
+            "ar": "OOP",
+            "en": "OOP"
+          },
+          "title": {
+            "ar": "التغليف و @property؟",
+            "en": "Encapsulation and @property?"
+          },
+          "short": {
+            "ar": "Python بتعتمد على الاتفاق مش المنع، و @property بتتحكم في الوصول.",
+            "en": "Python relies on convention rather than enforcement, and @property controls access."
+          },
+          "points": {
+            "ar": [
+              "_name معناها داخلي بالاتفاق.",
+              "__name بتعمل name mangling لـ _ClassName__name عشان تقلل التعارض في الوراثة، مش خصوصية حقيقية.",
+              "@property بتخليك تضيف validation من غير ما تغير طريقة الاستخدام."
+            ],
+            "en": [
+              "_name means internal by convention.",
+              "__name triggers name mangling to _ClassName__name to reduce clashes in subclasses; it is not true privacy.",
+              "@property lets you add validation without changing how the attribute is used."
+            ]
+          },
+          "code": "class Account:\n    def __init__(self):\n        self._balance = 0\n\n    @property\n    def balance(self):\n        return self._balance\n\n    @balance.setter\n    def balance(self, value):\n        if value < 0:\n            raise ValueError(\"negative\")\n        self._balance = value"
+        },
+        {
+          "id": "python-l22",
+          "section": {
+            "ar": "OOP",
+            "en": "OOP"
+          },
+          "title": {
+            "ar": "الـ dataclasses؟",
+            "en": "What are dataclasses?"
+          },
+          "short": {
+            "ar": "decorator بيولد __init__ و __repr__ و __eq__ تلقائيًا.",
+            "en": "A decorator that generates __init__, __repr__ and __eq__ automatically."
+          },
+          "points": {
+            "ar": [
+              "مناسبة للـ classes اللي بتشيل بيانات.",
+              "frozen=True بتخليها immutable، و field(default_factory=list) للقيم الـ mutable."
+            ],
+            "en": [
+              "They suit classes that mainly hold data.",
+              "frozen=True makes instances immutable, and field(default_factory=list) handles mutable defaults."
+            ]
+          },
+          "code": "from dataclasses import dataclass, field\n\n@dataclass(frozen=True)\nclass Point:\n    x: int\n    y: int = 0\n\n@dataclass\nclass Cart:\n    items: list = field(default_factory=list)"
+        },
+        {
+          "id": "python-l23",
+          "section": {
+            "ar": "Concurrency و Memory",
+            "en": "Concurrency & Memory"
+          },
+          "title": {
+            "ar": "إيه هو الـ GIL؟",
+            "en": "What is the GIL?"
+          },
+          "short": {
+            "ar": "قفل في CPython التقليدي بيخلي thread واحد بس ينفذ Python bytecode في نفس اللحظة.",
+            "en": "A lock in standard CPython that lets only one thread run Python bytecode at a time."
+          },
+          "points": {
+            "ar": [
+              "الـ threads مفيدة للـ I/O لأن الـ GIL بيتساب وقت الانتظار.",
+              "للشغل التقيل على الـ CPU استخدم multiprocessing.",
+              "الإصدارات الحديثة فيها كمان builds من غير GIL (free-threaded)."
+            ],
+            "en": [
+              "Threads still help with I/O because the GIL is released while waiting.",
+              "For CPU-heavy work use multiprocessing.",
+              "Recent versions also offer free-threaded builds without the GIL."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "python-l24",
+          "section": {
+            "ar": "Concurrency و Memory",
+            "en": "Concurrency & Memory"
+          },
+          "title": {
+            "ar": "threading و multiprocessing و asyncio؟",
+            "en": "threading, multiprocessing and asyncio?"
+          },
+          "short": {
+            "ar": "threads للـ I/O، و processes للـ CPU، و asyncio لآلاف عمليات الـ I/O على thread واحد.",
+            "en": "Threads for I/O, processes for CPU work, and asyncio for thousands of I/O tasks on one thread."
+          },
+          "points": {
+            "ar": [
+              "multiprocessing كل process ليها interpreter وذاكرة منفصلة.",
+              "concurrent.futures بتديك ThreadPoolExecutor و ProcessPoolExecutor بواجهة واحدة.",
+              "asyncio محتاج مكتبات async، والكود الـ blocking بيوقف الـ event loop."
+            ],
+            "en": [
+              "With multiprocessing each process has its own interpreter and memory.",
+              "concurrent.futures offers ThreadPoolExecutor and ProcessPoolExecutor behind one interface.",
+              "asyncio needs async libraries, and blocking code stalls the event loop."
+            ]
+          },
+          "code": "from concurrent.futures import ProcessPoolExecutor\n\nwith ProcessPoolExecutor() as pool:\n    results = list(pool.map(heavy_calc, numbers))"
+        },
+        {
+          "id": "python-l25",
+          "section": {
+            "ar": "Concurrency و Memory",
+            "en": "Concurrency & Memory"
+          },
+          "title": {
+            "ar": "asyncio بيشتغل إزاي؟",
+            "en": "How does asyncio work?"
+          },
+          "short": {
+            "ar": "event loop بيبدل بين coroutines وقت ما تستنى I/O.",
+            "en": "An event loop switches between coroutines while they wait for I/O."
+          },
+          "points": {
+            "ar": [
+              "async def بتعمل coroutine، و await بتوقفها لحد ما النتيجة تيجي.",
+              "asyncio.gather بتشغل كذا coroutine مع بعض.",
+              "متستخدمش time.sleep جوه async، استخدم asyncio.sleep."
+            ],
+            "en": [
+              "async def defines a coroutine, and await pauses it until the result arrives.",
+              "asyncio.gather runs several coroutines concurrently.",
+              "Never use time.sleep inside async code; use asyncio.sleep."
+            ]
+          },
+          "code": "import asyncio\n\nasync def fetch(i):\n    await asyncio.sleep(1)\n    return i\n\nasync def main():\n    results = await asyncio.gather(fetch(1), fetch(2))\n\nasyncio.run(main())"
+        },
+        {
+          "id": "python-l26",
+          "section": {
+            "ar": "Concurrency و Memory",
+            "en": "Concurrency & Memory"
+          },
+          "title": {
+            "ar": "إدارة الذاكرة في Python؟",
+            "en": "How does Python manage memory?"
+          },
+          "short": {
+            "ar": "Reference Counting، ومعاه Garbage Collector للـ cycles.",
+            "en": "Reference counting, plus a garbage collector for cycles."
+          },
+          "points": {
+            "ar": [
+              "كل object ليه عداد مراجع، ولما يوصل صفر بيتمسح على طول.",
+              "الـ gc module بيكتشف المراجع الدائرية اللي العداد مش بيحلها.",
+              "del بتشيل مرجع، مش بالضرورة بتمسح الـ object."
+            ],
+            "en": [
+              "Each object has a reference count, and it is freed as soon as the count hits zero.",
+              "The gc module finds reference cycles that counting alone cannot free.",
+              "del removes a reference; it does not necessarily destroy the object."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "python-l27",
+          "section": {
+            "ar": "Errors و Tooling",
+            "en": "Errors & Tooling"
+          },
+          "title": {
+            "ar": "الـ Exceptions في Python؟",
+            "en": "How do exceptions work in Python?"
+          },
+          "short": {
+            "ar": "try و except و else و finally.",
+            "en": "try, except, else and finally."
+          },
+          "points": {
+            "ar": [
+              "else بيتنفذ لو مفيش exception، و finally بيتنفذ دايمًا.",
+              "امسك exceptions محددة، ومتستخدمش except: فاضية.",
+              "raise ... from e بتحافظ على السبب الأصلي، وتقدر تعمل exceptions خاصة بيك."
+            ],
+            "en": [
+              "else runs when no exception occurred, and finally always runs.",
+              "Catch specific exceptions, and never use a bare except:.",
+              "raise ... from e keeps the original cause, and you can define your own exceptions."
+            ]
+          },
+          "code": "class PaymentError(Exception): ...\n\ntry:\n    charge()\nexcept TimeoutError as e:\n    raise PaymentError(\"gateway down\") from e\nelse:\n    print(\"charged\")\nfinally:\n    close()"
+        },
+        {
+          "id": "python-l28",
+          "section": {
+            "ar": "Errors و Tooling",
+            "en": "Errors & Tooling"
+          },
+          "title": {
+            "ar": "Modules و Packages و __name__؟",
+            "en": "Modules, packages and __name__?"
+          },
+          "short": {
+            "ar": "الـ module ملف .py، والـ package فولدر فيه modules.",
+            "en": "A module is a .py file; a package is a folder of modules."
+          },
+          "points": {
+            "ar": [
+              "الـ module بيتنفذ مرة واحدة أول import وبعدين بيتخزن في sys.modules.",
+              "__name__ بيبقى \"__main__\" لو الملف اتشغل مباشرة."
+            ],
+            "en": [
+              "A module runs once on first import and is then cached in sys.modules.",
+              "__name__ equals \"__main__\" when the file is run directly."
+            ]
+          },
+          "code": "def main():\n    ...\n\nif __name__ == \"__main__\":\n    main()"
+        },
+        {
+          "id": "python-l29",
+          "section": {
+            "ar": "Errors و Tooling",
+            "en": "Errors & Tooling"
+          },
+          "title": {
+            "ar": "Virtual Environments وإدارة الحزم؟",
+            "en": "Virtual environments and package management?"
+          },
+          "short": {
+            "ar": "بيئة معزولة لكل مشروع بحزمها وإصداراتها.",
+            "en": "An isolated environment per project, with its own packages and versions."
+          },
+          "points": {
+            "ar": [
+              "python -m venv .venv بتعمل البيئة، و pip بيسطب الحزم.",
+              "pyproject.toml هو المعيار الحديث لإعدادات المشروع، و requirements.txt لسه منتشر.",
+              "أدوات زي uv و Poetry بتدير الاعتماديات والـ lock file."
+            ],
+            "en": [
+              "python -m venv .venv creates the environment, and pip installs packages.",
+              "pyproject.toml is the modern standard for project settings, and requirements.txt is still common.",
+              "Tools such as uv and Poetry manage dependencies and a lock file."
+            ]
+          },
+          "code": "python -m venv .venv\nsource .venv/bin/activate   # Windows: .venv\\Scripts\\activate\npip install requests\npip freeze > requirements.txt"
+        },
+        {
+          "id": "python-l30",
+          "section": {
+            "ar": "Errors و Tooling",
+            "en": "Errors & Tooling"
+          },
+          "title": {
+            "ar": "Type Hints والـ Testing؟",
+            "en": "Type hints and testing?"
+          },
+          "short": {
+            "ar": "Type hints للتوثيق والفحص بأدوات، و pytest للاختبارات.",
+            "en": "Type hints document and enable tool checks; pytest runs tests."
+          },
+          "points": {
+            "ar": [
+              "الـ type hints مش بتتفحص وقت التشغيل، أدوات زي mypy أو pyright هي اللي بتفحصها.",
+              "pytest بيستخدم assert عادي، والـ fixtures بتجهز البيانات.",
+              "unittest.mock بيبدل الاعتماديات في الاختبار."
+            ],
+            "en": [
+              "Type hints are not checked at runtime; tools such as mypy or pyright check them.",
+              "pytest uses plain assert, and fixtures prepare data.",
+              "unittest.mock replaces dependencies in tests."
+            ]
+          },
+          "code": "def total(prices: list[float], tax: float = 0.14) -> float:\n    return sum(prices) * (1 + tax)\n\ndef test_total():\n    assert total([100]) == 114"
         }
       ],
       "quiz": [
         {
-          "id": "python-q1",
+          "id": "python-q01",
           "question": {
-            "ar": "أنهي نوع غير قابل للتعديل؟",
-            "en": "Which type is immutable?"
+            "ar": "نظام الأنواع في Python؟",
+            "en": "How is Python typed?"
           },
           "options": [
+            {
+              "ar": "Dynamic و Strong",
+              "en": "Dynamically and strongly"
+            },
+            {
+              "ar": "Static و Strong",
+              "en": "Statically and strongly"
+            },
+            {
+              "ar": "Dynamic و Weak",
+              "en": "Dynamically and weakly"
+            },
+            {
+              "ar": "Static و Weak",
+              "en": "Statically and weakly"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "لغة high-level مفسرة، dynamically و strongly typed.",
+            "en": "A high-level interpreted language that is dynamically and strongly typed."
+          }
+        },
+        {
+          "id": "python-q02",
+          "question": {
+            "ar": "أنهي نوع Mutable؟",
+            "en": "Which type is mutable?"
+          },
+          "options": [
+            {
+              "ar": "list",
+              "en": "list"
+            },
+            {
+              "ar": "tuple",
+              "en": "tuple"
+            },
+            {
+              "ar": "str",
+              "en": "str"
+            },
+            {
+              "ar": "frozenset",
+              "en": "frozenset"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Mutable بيتعدل في مكانه، و Immutable أي تعديل بيعمل object جديد.",
+            "en": "Mutable objects change in place; changing an immutable one creates a new object."
+          }
+        },
+        {
+          "id": "python-q03",
+          "question": {
+            "ar": "الطريقة الصح تتأكد إن x قيمته None؟",
+            "en": "The idiomatic way to check whether x is None?"
+          },
+          "options": [
+            {
+              "ar": "x is None",
+              "en": "x is None"
+            },
+            {
+              "ar": "x === None",
+              "en": "x === None"
+            },
+            {
+              "ar": "x.isNone()",
+              "en": "x.isNone()"
+            },
+            {
+              "ar": "type(x) == null",
+              "en": "type(x) == null"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "is بتقارن الهوية (نفس الـ object)، و == بتقارن القيمة.",
+            "en": "is compares identity (the same object); == compares value."
+          }
+        },
+        {
+          "id": "python-q04",
+          "question": {
+            "ar": "ناتج [1, 2, 3, 4][::-1]؟",
+            "en": "What is [1, 2, 3, 4][::-1]?"
+          },
+          "options": [
+            {
+              "ar": "[4, 3, 2, 1]",
+              "en": "[4, 3, 2, 1]"
+            },
+            {
+              "ar": "[1, 2, 3, 4]",
+              "en": "[1, 2, 3, 4]"
+            },
+            {
+              "ar": "[4]",
+              "en": "[4]"
+            },
+            {
+              "ar": "[1, 4]",
+              "en": "[1, 4]"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "استخراج جزء من sequence بـ [start:stop:step].",
+            "en": "Extracting part of a sequence with [start:stop:step]."
+          }
+        },
+        {
+          "id": "python-q05",
+          "question": {
+            "ar": "أسرع حاجة تتأكد بيها إن عنصر موجود في بيانات كبيرة؟",
+            "en": "Fastest structure for membership checks on large data?"
+          },
+          "options": [
+            {
+              "ar": "set",
+              "en": "set"
+            },
+            {
+              "ar": "list",
+              "en": "list"
+            },
+            {
+              "ar": "tuple",
+              "en": "tuple"
+            },
+            {
+              "ar": "str",
+              "en": "str"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "list مرتبة وقابلة للتعديل، tuple ثابتة، set من غير تكرار، dict مفتاح وقيمة.",
+            "en": "list is ordered and mutable, tuple is immutable, set has no duplicates, dict maps keys to values."
+          }
+        },
+        {
+          "id": "python-q06",
+          "question": {
+            "ar": "أنهي واحد ينفع يكون مفتاح في dict؟",
+            "en": "Which of these can be a dict key?"
+          },
+          "options": [
+            {
+              "ar": "(1, 2)",
+              "en": "(1, 2)"
+            },
+            {
+              "ar": "[1, 2]",
+              "en": "[1, 2]"
+            },
+            {
+              "ar": "{1: 2}",
+              "en": "{1: 2}"
+            },
+            {
+              "ar": "{1, 2}",
+              "en": "{1, 2}"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ tuple immutable فهي hashable.",
+            "en": "A tuple is immutable, so it is hashable."
+          }
+        },
+        {
+          "id": "python-q07",
+          "question": {
+            "ar": "(x * x for x in range(10)) بتعمل إيه؟",
+            "en": "What does (x * x for x in range(10)) create?"
+          },
+          "options": [
+            {
+              "ar": "generator",
+              "en": "A generator"
+            },
+            {
+              "ar": "list",
+              "en": "A list"
+            },
+            {
+              "ar": "tuple",
+              "en": "A tuple"
+            },
+            {
+              "ar": "set",
+              "en": "A set"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "طريقة مختصرة لبناء list و dict و set.",
+            "en": "A concise way to build lists, dicts and sets."
+          }
+        },
+        {
+          "id": "python-q08",
+          "question": {
+            "ar": "بعد b = a.copy() وتعديل list جوه b، الأصل بيتأثر؟",
+            "en": "After b = a.copy() and changing a nested list in b, is a affected?"
+          },
+          "options": [
+            {
+              "ar": "أيوه، لأن النسخ سطحي",
+              "en": "Yes, because the copy is shallow"
+            },
+            {
+              "ar": "لأ أبدًا",
+              "en": "Never"
+            },
+            {
+              "ar": "بيرمي Error",
+              "en": "It raises an error"
+            },
+            {
+              "ar": "لو كانت tuple بس",
+              "en": "Only for tuples"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ shallow بتنسخ أول مستوى بس، والـ deep بتنسخ كل المستويات.",
+            "en": "A shallow copy copies only the first level; a deep copy copies every level."
+          }
+        },
+        {
+          "id": "python-q09",
+          "question": {
+            "ar": "أنسب structure لـ queue بتضيف وتشيل من الطرفين؟",
+            "en": "Best structure for a queue that adds and removes at both ends?"
+          },
+          "options": [
+            {
+              "ar": "deque",
+              "en": "deque"
+            },
+            {
+              "ar": "list",
+              "en": "list"
+            },
+            {
+              "ar": "tuple",
+              "en": "tuple"
+            },
+            {
+              "ar": "Counter",
+              "en": "Counter"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "list.pop(0) بطيئة O(n).",
+            "en": "list.pop(0) is slow, O(n)."
+          }
+        },
+        {
+          "id": "python-q10",
+          "question": {
+            "ar": "جوه def f(**kwargs)، الـ kwargs نوعها إيه؟",
+            "en": "Inside def f(**kwargs), what type is kwargs?"
+          },
+          "options": [
+            {
+              "ar": "dict",
+              "en": "dict"
+            },
             {
               "ar": "tuple",
               "en": "tuple"
@@ -16017,115 +16977,411 @@
               "en": "list"
             },
             {
-              "ar": "dict",
-              "en": "dict"
-            },
-            {
               "ar": "set",
               "en": "set"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "الـ tuple ثابت.",
-            "en": "Tuples cannot change."
+            "ar": "*args بتجمع arguments بالترتيب، و **kwargs بتجمع arguments بالاسم.",
+            "en": "*args collects positional arguments; **kwargs collects keyword arguments."
           }
         },
         {
-          "id": "python-q2",
+          "id": "python-q11",
           "question": {
-            "ar": "is و == الفرق؟",
-            "en": "is vs ==?"
+            "ar": "def add(x, items=[]): items.append(x); return items. ناتج add(1) وبعدين add(2)؟",
+            "en": "def add(x, items=[]): items.append(x); return items. What does add(2) return after add(1)?"
           },
           "options": [
             {
-              "ar": "is للهوية و == للقيمة",
-              "en": "is checks identity, == equality"
+              "ar": "[1, 2]",
+              "en": "[1, 2]"
             },
             {
-              "ar": "العكس",
-              "en": "The reverse"
+              "ar": "[2]",
+              "en": "[2]"
             },
             {
-              "ar": "مفيش فرق",
-              "en": "No difference"
+              "ar": "[1]",
+              "en": "[1]"
             },
             {
-              "ar": "is للأرقام بس",
-              "en": "is is for numbers only"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "استخدم is مع None.",
-            "en": "Use is with None."
-          }
-        },
-        {
-          "id": "python-q3",
-          "question": {
-            "ar": "الكلمة اللي بتعمل generator؟",
-            "en": "Keyword that creates a generator?"
-          },
-          "options": [
-            {
-              "ar": "yield",
-              "en": "yield"
-            },
-            {
-              "ar": "return",
-              "en": "return"
-            },
-            {
-              "ar": "async",
-              "en": "async"
-            },
-            {
-              "ar": "lambda",
-              "en": "lambda"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "بتوقف وتكمل.",
-            "en": "It pauses and resumes."
-          }
-        },
-        {
-          "id": "python-q4",
-          "question": {
-            "ar": "ناتج len(set([1,1,2]))؟",
-            "en": "len(set([1,1,2]))?"
-          },
-          "options": [
-            {
-              "ar": "2",
-              "en": "2"
-            },
-            {
-              "ar": "3",
-              "en": "3"
-            },
-            {
-              "ar": "1",
-              "en": "1"
-            },
-            {
-              "ar": "خطأ",
+              "ar": "Error",
               "en": "Error"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "الـ set بيشيل التكرار.",
-            "en": "Sets remove duplicates."
+            "ar": "القيمة الافتراضية بتتحسب مرة واحدة وقت تعريف الدالة.",
+            "en": "Default values are evaluated once, when the function is defined."
           }
         },
         {
-          "id": "python-q5",
+          "id": "python-q12",
           "question": {
-            "ar": "للشغل التقيل على CPU في CPython التقليدي؟",
-            "en": "CPU-bound work in standard CPython?"
+            "ar": "عشان تعدل متغير في الدالة اللي بره تستخدم إيه؟",
+            "en": "What lets you modify a variable of the enclosing function?"
+          },
+          "options": [
+            {
+              "ar": "nonlocal",
+              "en": "nonlocal"
+            },
+            {
+              "ar": "global",
+              "en": "global"
+            },
+            {
+              "ar": "static",
+              "en": "static"
+            },
+            {
+              "ar": "var",
+              "en": "var"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "البحث عن المتغير بيمشي Local ثم Enclosing ثم Global ثم Built-in.",
+            "en": "Name lookup goes Local, then Enclosing, then Global, then Built-in."
+          }
+        },
+        {
+          "id": "python-q13",
+          "question": {
+            "ar": "ليه بنستخدم functools.wraps؟",
+            "en": "Why use functools.wraps?"
+          },
+          "options": [
+            {
+              "ar": "عشان تحافظ على اسم الدالة والـ docstring",
+              "en": "To keep the function's name and docstring"
+            },
+            {
+              "ar": "عشان الدالة تبقى أسرع",
+              "en": "To make the function faster"
+            },
+            {
+              "ar": "عشان تبقى async",
+              "en": "To make it async"
+            },
+            {
+              "ar": "عشان تمنع الـ recursion",
+              "en": "To prevent recursion"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "دالة بتاخد دالة وترجع دالة جديدة بسلوك إضافي.",
+            "en": "A function that takes a function and returns a new one with extra behaviour."
+          }
+        },
+        {
+          "id": "python-q14",
+          "question": {
+            "ar": "نداء دالة فيها yield بيرجع إيه؟",
+            "en": "What does calling a function that contains yield return?"
+          },
+          "options": [
+            {
+              "ar": "generator object",
+              "en": "A generator object"
+            },
+            {
+              "ar": "أول قيمة",
+              "en": "The first value"
+            },
+            {
+              "ar": "list بكل القيم",
+              "en": "A list of all values"
+            },
+            {
+              "ar": "None",
+              "en": "None"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "دوال بترجع القيم واحدة واحدة وبتحافظ على حالتها بين كل قيمة.",
+            "en": "Functions that yield values one at a time and keep their state between them."
+          }
+        },
+        {
+          "id": "python-q15",
+          "question": {
+            "ar": "أنهي method الـ iterator لازم ينفذها عشان يرجع العنصر اللي بعده؟",
+            "en": "Which method must an iterator implement to return the next item?"
+          },
+          "options": [
+            {
+              "ar": "__next__",
+              "en": "__next__"
+            },
+            {
+              "ar": "__getitem__",
+              "en": "__getitem__"
+            },
+            {
+              "ar": "__call__",
+              "en": "__call__"
+            },
+            {
+              "ar": "__len__",
+              "en": "__len__"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Iterable حاجة تقدر تلف عليها، و Iterator بيرجع العنصر اللي بعده.",
+            "en": "An iterable can be looped over; an iterator returns the next item."
+          }
+        },
+        {
+          "id": "python-q16",
+          "question": {
+            "ar": "إيه اللي بيضمن إن الملف يتقفل حتى لو حصل Error؟",
+            "en": "What guarantees a file is closed even if an error occurs?"
+          },
+          "options": [
+            {
+              "ar": "with open(...)",
+              "en": "with open(...)"
+            },
+            {
+              "ar": "f = open(...) لوحدها",
+              "en": "f = open(...) on its own"
+            },
+            {
+              "ar": "del f",
+              "en": "del f"
+            },
+            {
+              "ar": "الـ Garbage Collector بس",
+              "en": "Only the garbage collector"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بيضمنوا إن المورد يتقفل حتى لو حصل خطأ.",
+            "en": "They guarantee a resource is released even if an error occurs."
+          }
+        },
+        {
+          "id": "python-q17",
+          "question": {
+            "ar": "__init__ بتعمل إيه؟",
+            "en": "What does __init__ do?"
+          },
+          "options": [
+            {
+              "ar": "بتهيئ object اتعمل خلاص",
+              "en": "Initialises an object that already exists"
+            },
+            {
+              "ar": "بتحجز الذاكرة وتنشئ الـ object",
+              "en": "Allocates memory and creates the object"
+            },
+            {
+              "ar": "بتمسح الـ object",
+              "en": "Destroys the object"
+            },
+            {
+              "ar": "static method",
+              "en": "It is a static method"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "self هو الـ object الحالي، و __init__ بتهيئه بعد ما يتعمل.",
+            "en": "self is the current object, and __init__ initialises it after it is created."
+          }
+        },
+        {
+          "id": "python-q18",
+          "question": {
+            "ar": "أنهي decorator بيخلي الـ method تاخد الـ class كأول argument؟",
+            "en": "Which decorator makes a method receive the class as its first argument?"
+          },
+          "options": [
+            {
+              "ar": "@classmethod",
+              "en": "@classmethod"
+            },
+            {
+              "ar": "@staticmethod",
+              "en": "@staticmethod"
+            },
+            {
+              "ar": "@property",
+              "en": "@property"
+            },
+            {
+              "ar": "@dataclass",
+              "en": "@dataclass"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "instance بتاخد self، و classmethod بتاخد cls، و staticmethod مبتاخدش حاجة.",
+            "en": "Instance methods get self, classmethods get cls, and staticmethods get neither."
+          }
+        },
+        {
+          "id": "python-q19",
+          "question": {
+            "ar": "إزاي تشوف ترتيب الـ MRO لـ class؟",
+            "en": "How do you inspect a class's method resolution order?"
+          },
+          "options": [
+            {
+              "ar": "ClassName.__mro__",
+              "en": "ClassName.__mro__"
+            },
+            {
+              "ar": "dir(ClassName)",
+              "en": "dir(ClassName)"
+            },
+            {
+              "ar": "vars(ClassName)",
+              "en": "vars(ClassName)"
+            },
+            {
+              "ar": "type(ClassName)",
+              "en": "type(ClassName)"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Python بتدعم وراثة متعددة، والـ MRO بيحدد ترتيب البحث عن الـ methods.",
+            "en": "Python supports multiple inheritance, and the MRO decides the method lookup order."
+          }
+        },
+        {
+          "id": "python-q20",
+          "question": {
+            "ar": "أنهي method معمولة للمطورين والـ debugging؟",
+            "en": "Which method is meant for developers and debugging?"
+          },
+          "options": [
+            {
+              "ar": "__repr__",
+              "en": "__repr__"
+            },
+            {
+              "ar": "__str__",
+              "en": "__str__"
+            },
+            {
+              "ar": "__len__",
+              "en": "__len__"
+            },
+            {
+              "ar": "__call__",
+              "en": "__call__"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "methods بين __ بتتنادى تلقائيًا مع العمليات المدمجة.",
+            "en": "Methods wrapped in __ that built-in operations call automatically."
+          }
+        },
+        {
+          "id": "python-q21",
+          "question": {
+            "ar": "البادئة __ قبل اسم الخاصية بتعمل إيه؟",
+            "en": "What does a double-underscore prefix on an attribute do?"
+          },
+          "options": [
+            {
+              "ar": "Name mangling",
+              "en": "Name mangling"
+            },
+            {
+              "ar": "خصوصية حقيقية زي private",
+              "en": "True privacy like private"
+            },
+            {
+              "ar": "بتخليها ثابتة",
+              "en": "Makes it a constant"
+            },
+            {
+              "ar": "ولا حاجة",
+              "en": "Nothing"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Python بتعتمد على الاتفاق مش المنع، و @property بتتحكم في الوصول.",
+            "en": "Python relies on convention rather than enforcement, and @property controls access."
+          }
+        },
+        {
+          "id": "python-q22",
+          "question": {
+            "ar": "أنهي decorator بيولد __init__ تلقائيًا؟",
+            "en": "Which decorator generates __init__ automatically?"
+          },
+          "options": [
+            {
+              "ar": "@dataclass",
+              "en": "@dataclass"
+            },
+            {
+              "ar": "@property",
+              "en": "@property"
+            },
+            {
+              "ar": "@staticmethod",
+              "en": "@staticmethod"
+            },
+            {
+              "ar": "@functools.wraps",
+              "en": "@functools.wraps"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "decorator بيولد __init__ و __repr__ و __eq__ تلقائيًا.",
+            "en": "A decorator that generates __init__, __repr__ and __eq__ automatically."
+          }
+        },
+        {
+          "id": "python-q23",
+          "question": {
+            "ar": "الـ threads في CPython التقليدي مناسبة لإيه؟",
+            "en": "In standard CPython, what are threads best suited for?"
+          },
+          "options": [
+            {
+              "ar": "المهام المعتمدة على I/O",
+              "en": "I/O-bound tasks"
+            },
+            {
+              "ar": "الحسابات التقيلة على الـ CPU",
+              "en": "CPU-heavy computation"
+            },
+            {
+              "ar": "حسابات الـ GPU",
+              "en": "GPU computation"
+            },
+            {
+              "ar": "ولا حاجة",
+              "en": "Nothing"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "قفل في CPython التقليدي بيخلي thread واحد بس ينفذ Python bytecode في نفس اللحظة.",
+            "en": "A lock in standard CPython that lets only one thread run Python bytecode at a time."
+          }
+        },
+        {
+          "id": "python-q24",
+          "question": {
+            "ar": "شغل تقيل على الـ CPU في CPython التقليدي تستخدم إيه؟",
+            "en": "CPU-heavy work in standard CPython: what do you use?"
           },
           "options": [
             {
@@ -16133,112 +17389,202 @@
               "en": "multiprocessing"
             },
             {
+              "ar": "threading",
+              "en": "threading"
+            },
+            {
               "ar": "asyncio",
               "en": "asyncio"
             },
             {
               "ar": "generators",
-              "en": "generators"
-            },
-            {
-              "ar": "decorators",
-              "en": "decorators"
+              "en": "Generators"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "كل process ليها مفسر.",
-            "en": "Each process has its own interpreter."
+            "ar": "threads للـ I/O، و processes للـ CPU، و asyncio لآلاف عمليات الـ I/O على thread واحد.",
+            "en": "Threads for I/O, processes for CPU work, and asyncio for thousands of I/O tasks on one thread."
           }
         },
         {
-          "id": "python-q6",
+          "id": "python-q25",
           "question": {
-            "ar": "قيمة 7 // 2؟",
-            "en": "7 // 2 equals?"
+            "ar": "إزاي تشغل اتنين coroutines مع بعض؟",
+            "en": "How do you run two coroutines concurrently?"
           },
           "options": [
             {
-              "ar": "3",
-              "en": "3"
+              "ar": "asyncio.gather()",
+              "en": "asyncio.gather()"
             },
             {
-              "ar": "3.5",
-              "en": "3.5"
+              "ar": "time.sleep()",
+              "en": "time.sleep()"
             },
             {
-              "ar": "4",
-              "en": "4"
+              "ar": "threading.Lock()",
+              "en": "threading.Lock()"
             },
             {
-              "ar": "1",
-              "en": "1"
+              "ar": "map()",
+              "en": "map()"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "قسمة صحيحة.",
-            "en": "Floor division."
+            "ar": "event loop بيبدل بين coroutines وقت ما تستنى I/O.",
+            "en": "An event loop switches between coroutines while they wait for I/O."
           }
         },
         {
-          "id": "python-q7",
+          "id": "python-q26",
           "question": {
-            "ar": "فايدة with؟",
-            "en": "What does with do?"
+            "ar": "الآلية الأساسية لإدارة الذاكرة في CPython؟",
+            "en": "The main memory-management mechanism in CPython?"
           },
           "options": [
             {
-              "ar": "إدارة الموارد وإغلاقها",
-              "en": "Manages and releases resources"
+              "ar": "Reference Counting",
+              "en": "Reference Counting"
             },
             {
-              "ar": "تكرار",
-              "en": "Loops"
+              "ar": "Manual free()",
+              "en": "Manual free()"
             },
             {
-              "ar": "استيراد",
-              "en": "Imports"
+              "ar": "Ownership و Borrowing",
+              "en": "Ownership و Borrowing"
             },
             {
-              "ar": "تعريف كلاس",
-              "en": "Defines a class"
+              "ar": "Mark-and-Sweep بس",
+              "en": "Mark-and-Sweep بس"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "context manager.",
-            "en": "A context manager."
+            "ar": "Reference Counting، ومعاه Garbage Collector للـ cycles.",
+            "en": "Reference counting, plus a garbage collector for cycles."
           }
         },
         {
-          "id": "python-q8",
+          "id": "python-q27",
           "question": {
-            "ar": "@decorator بتعمل إيه؟",
-            "en": "What does @decorator do?"
+            "ar": "بلوك else في try بيتنفذ إمتى؟",
+            "en": "When does the else block of a try statement run?"
           },
           "options": [
             {
-              "ar": "بتغلف دالة بسلوك إضافي",
-              "en": "Wraps a function with extra behaviour"
+              "ar": "لو مفيش exception",
+              "en": "When no exception was raised"
             },
             {
-              "ar": "بتحذفها",
-              "en": "Deletes it"
+              "ar": "دايمًا",
+              "en": "Always"
             },
             {
-              "ar": "بتخليها async",
-              "en": "Makes it async"
+              "ar": "لو حصل exception",
+              "en": "When an exception was raised"
             },
             {
-              "ar": "تعليق",
-              "en": "Is a comment"
+              "ar": "قبل try",
+              "en": "Before try"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "دالة بتاخد دالة.",
-            "en": "A function taking a function."
+            "ar": "try و except و else و finally.",
+            "en": "try, except, else and finally."
+          }
+        },
+        {
+          "id": "python-q28",
+          "question": {
+            "ar": "if __name__ == \"__main__\" بيبقى True إمتى؟",
+            "en": "When is if __name__ == \"__main__\" true?"
+          },
+          "options": [
+            {
+              "ar": "لما الملف يتشغل مباشرة",
+              "en": "When the file is run directly"
+            },
+            {
+              "ar": "لما يتعمله import",
+              "en": "When it is imported"
+            },
+            {
+              "ar": "دايمًا",
+              "en": "Always"
+            },
+            {
+              "ar": "جوه الـ packages بس",
+              "en": "Only inside packages"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ module ملف .py، والـ package فولدر فيه modules.",
+            "en": "A module is a .py file; a package is a folder of modules."
+          }
+        },
+        {
+          "id": "python-q29",
+          "question": {
+            "ar": "ليه تستخدم Virtual Environment؟",
+            "en": "Why use a virtual environment?"
+          },
+          "options": [
+            {
+              "ar": "تعزل حزم كل مشروع عن التاني",
+              "en": "To isolate each project's packages"
+            },
+            {
+              "ar": "تسرع الكود",
+              "en": "To make code faster"
+            },
+            {
+              "ar": "تشفر الكود",
+              "en": "To encrypt the code"
+            },
+            {
+              "ar": "مطلوب عشان Python تشتغل",
+              "en": "Python cannot run without one"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بيئة معزولة لكل مشروع بحزمها وإصداراتها.",
+            "en": "An isolated environment per project, with its own packages and versions."
+          }
+        },
+        {
+          "id": "python-q30",
+          "question": {
+            "ar": "الـ type hints بتتفحص وقت التشغيل؟",
+            "en": "Are type hints enforced at runtime?"
+          },
+          "options": [
+            {
+              "ar": "لأ، أدوات زي mypy هي اللي بتفحصها",
+              "en": "No, tools such as mypy check them"
+            },
+            {
+              "ar": "أيوه دايمًا",
+              "en": "Yes, always"
+            },
+            {
+              "ar": "في Python 3.12 بس",
+              "en": "Only in Python 3.12"
+            },
+            {
+              "ar": "لو استخدمت dataclass",
+              "en": "Only with dataclasses"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Type hints للتوثيق والفحص بأدوات، و pytest للاختبارات.",
+            "en": "Type hints document and enable tool checks; pytest runs tests."
           }
         }
       ]
@@ -16251,140 +17597,1134 @@
       },
       "lessons": [
         {
-          "id": "rn-l1",
+          "id": "rn-l01",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "ما هو React Native",
-            "en": "What is React Native"
+            "ar": "إيه هو React Native؟",
+            "en": "What is React Native?"
+          },
+          "short": {
+            "ar": "Framework لبناء تطبيقات موبايل native بـ React و JavaScript.",
+            "en": "A framework for building native mobile apps with React and JavaScript."
           },
           "points": {
             "ar": [
-              "تبني تطبيقات موبايل بـ React بمكونات native حقيقية. Expo هو الإطار الموصى به."
+              "الكود بيرسم views native حقيقية، مش WebView.",
+              "نفس الكود غالبًا بيشتغل على iOS و Android."
             ],
             "en": [
-              "Build mobile apps with React using real native views. Expo is the recommended framework."
+              "Your code renders real native views, not a WebView.",
+              "The same code usually runs on both iOS and Android."
             ]
           },
-          "code": "npx create-expo-app@latest"
+          "code": ""
         },
         {
-          "id": "rn-l2",
+          "id": "rn-l02",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "المكونات الأساسية",
-            "en": "Core Components"
+            "ar": "الفرق بين React Native و React للويب؟",
+            "en": "How does React Native differ from React on the web?"
+          },
+          "short": {
+            "ar": "نفس React، بس المكونات والـ styling مختلفين ومفيش DOM.",
+            "en": "Same React, but different components and styling, and no DOM."
           },
           "points": {
             "ar": [
-              "View و Text و Image و TextInput و Pressable و ScrollView. النص لازم يكون جوه Text."
+              "بدل div و span بتستخدم View و Text.",
+              "مفيش ملفات CSS، الـ styles objects بـ JavaScript.",
+              "الـ events زي onPress بدل onClick."
             ],
             "en": [
-              "View, Text, Image, TextInput, Pressable, ScrollView. Strings must be inside Text."
+              "Instead of div and span you use View and Text.",
+              "There are no CSS files; styles are JavaScript objects.",
+              "Events such as onPress replace onClick."
             ]
           },
-          "code": "<Pressable onPress={save}><Text>Save</Text></Pressable>"
+          "code": ""
         },
         {
-          "id": "rn-l3",
+          "id": "rn-l03",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ Styling",
-            "en": "Styling"
+            "ar": "Expo ولا Bare React Native؟",
+            "en": "Expo or bare React Native?"
+          },
+          "short": {
+            "ar": "Expo هو الـ framework الموصى بيه، وبيسهل الإعداد والبناء والنشر.",
+            "en": "Expo is the recommended framework and simplifies setup, builds and releases."
           },
           "points": {
             "ar": [
-              "StyleSheet و Flexbox، والاتجاه الافتراضي column."
+              "بيوفر مكتبات جاهزة للكاميرا والإشعارات وغيرها، و Expo Router للتنقل.",
+              "EAS Build بيبني التطبيق في الـ cloud، و config plugins بتعدل الإعدادات الـ native.",
+              "تقدر تكتب native code برضه من خلال prebuild أو development builds."
             ],
             "en": [
-              "StyleSheet with Flexbox; default direction is column."
+              "It ships ready libraries for the camera, notifications and more, plus Expo Router for navigation.",
+              "EAS Build builds the app in the cloud, and config plugins adjust native settings.",
+              "You can still write native code through prebuild or development builds."
             ]
           },
-          "code": "const s = StyleSheet.create({ row: { flexDirection: 'row', gap: 8 } });"
+          "code": "npx create-expo-app@latest my-app\neas build --platform android"
         },
         {
-          "id": "rn-l4",
+          "id": "rn-l04",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "القوائم",
-            "en": "Lists"
+            "ar": "المعمارية الجديدة (New Architecture)؟",
+            "en": "What is the New Architecture?"
+          },
+          "short": {
+            "ar": "JSI و Fabric و TurboModules بدل الـ bridge القديم.",
+            "en": "JSI, Fabric and TurboModules, replacing the old bridge."
           },
           "points": {
             "ar": [
-              "FlatList بتعرض العناصر الظاهرة تقريباً بس، أحسن من ScrollView للقوائم الكبيرة."
+              "الـ bridge القديم كان بيبعت رسايل JSON بشكل async بين JS والـ native.",
+              "JSI بيخلي JavaScript تنادي الـ native مباشرة.",
+              "Fabric هو نظام الرسم الجديد، و TurboModules بتتحمل وقت الحاجة. وبقت مفعلة افتراضيًا في الإصدارات الحديثة."
             ],
             "en": [
-              "FlatList virtualizes items; prefer it over ScrollView for long lists."
+              "The old bridge sent async JSON messages between JS and native.",
+              "JSI lets JavaScript call native code directly.",
+              "Fabric is the new renderer and TurboModules load lazily. It is enabled by default in recent versions."
             ]
           },
-          "code": "<FlatList data={users} keyExtractor={u => u.id} renderItem={({ item }) => <Text>{item.name}</Text>} />"
+          "code": ""
         },
         {
-          "id": "rn-l5",
+          "id": "rn-l05",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "الـ Navigation",
-            "en": "Navigation"
+            "ar": "إيه هو Hermes؟",
+            "en": "What is Hermes?"
+          },
+          "short": {
+            "ar": "محرك JavaScript معمول مخصوص لـ React Native، وهو الافتراضي.",
+            "en": "A JavaScript engine built for React Native, and the default."
           },
           "points": {
             "ar": [
-              "React Navigation أو Expo Router المبني على الملفات. أنواعه stack و tabs و drawer."
+              "بيحول الكود لـ bytecode وقت الـ build، فالتطبيق بيفتح أسرع.",
+              "بيستهلك ذاكرة أقل وحجم التطبيق بيقل."
             ],
             "en": [
-              "React Navigation or file-based Expo Router: stack, tabs, drawer."
+              "It compiles code to bytecode at build time, so the app starts faster.",
+              "It uses less memory and reduces app size."
             ]
           },
-          "code": "router.push('/profile/1');"
+          "code": ""
         },
         {
-          "id": "rn-l6",
+          "id": "rn-l06",
+          "section": {
+            "ar": "الأساسيات",
+            "en": "Basics"
+          },
           "title": {
-            "ar": "التخزين",
-            "en": "Storage"
+            "ar": "إيه هو Metro؟",
+            "en": "What is Metro?"
+          },
+          "short": {
+            "ar": "الـ bundler الافتراضي في React Native.",
+            "en": "The default bundler for React Native."
           },
           "points": {
             "ar": [
-              "AsyncStorage للبيانات العادية، و SecureStore للـ tokens."
+              "بيجمع ملفات JavaScript في bundle واحد وبيخدمه للتطبيق وقت التطوير.",
+              "بيدعم Fast Refresh عشان تشوف التعديل فورًا من غير ما الـ state تضيع."
             ],
             "en": [
-              "AsyncStorage for plain data, SecureStore for tokens."
+              "It bundles JavaScript files and serves them to the app during development.",
+              "It powers Fast Refresh, so edits show instantly without losing state."
             ]
           },
-          "code": "await SecureStore.setItemAsync('token', token);"
+          "code": ""
         },
         {
-          "id": "rn-l7",
+          "id": "rn-l07",
+          "section": {
+            "ar": "Components و Styling",
+            "en": "Components & Styling"
+          },
           "title": {
-            "ar": "المنصات",
-            "en": "Platform Differences"
+            "ar": "المكونات الأساسية؟",
+            "en": "What are the core components?"
+          },
+          "short": {
+            "ar": "View و Text و Image و TextInput و Pressable و ScrollView و FlatList.",
+            "en": "View, Text, Image, TextInput, Pressable, ScrollView and FlatList."
           },
           "points": {
             "ar": [
-              "Platform.select أو ملفات ios. و android. وراعي الـ safe areas."
+              "أي نص لازم يكون جوه Text، وإلا التطبيق بيرمي Error.",
+              "Modal للنوافذ المنبثقة، و ActivityIndicator لمؤشر التحميل."
             ],
             "en": [
-              "Platform.select or .ios/.android files; respect safe areas."
+              "Any text must sit inside Text, or the app throws an error.",
+              "Modal shows overlays, and ActivityIndicator shows a loading spinner."
             ]
           },
-          "code": "const pad = Platform.select({ ios: 12, android: 8 });"
+          "code": "<View>\n  <Text>Hello</Text>\n  <Pressable onPress={save}>\n    <Text>Save</Text>\n  </Pressable>\n</View>"
         },
         {
-          "id": "rn-l8",
+          "id": "rn-l08",
+          "section": {
+            "ar": "Components و Styling",
+            "en": "Components & Styling"
+          },
           "title": {
-            "ar": "المعمارية والأداء",
-            "en": "Architecture & Performance"
+            "ar": "الـ Styling في React Native؟",
+            "en": "How does styling work in React Native?"
+          },
+          "short": {
+            "ar": "objects بـ JavaScript عن طريق StyleSheet، والخصائص camelCase.",
+            "en": "JavaScript objects via StyleSheet, with camelCase properties."
           },
           "points": {
             "ar": [
-              "المعمارية الجديدة JSI و Fabric و TurboModules، ومحرك Hermes. قلل الـ re-renders وشغل الأنيميشن على UI thread."
+              "الأرقام من غير وحدات، وبتتحسب بالـ density-independent pixels.",
+              "مفيش cascading، إلا إن Text جوه Text بيورث الـ style.",
+              "تقدر تمرر array من الـ styles، والأخير بيكسب."
             ],
             "en": [
-              "New Architecture: JSI, Fabric, TurboModules, with Hermes. Reduce re-renders and animate on the UI thread."
+              "Numbers have no units and are density-independent pixels.",
+              "There is no cascade, except that nested Text inherits text styles.",
+              "You can pass an array of styles, and the last one wins."
             ]
           },
-          "code": "const style = useAnimatedStyle(() => ({ opacity: opacity.value }));"
+          "code": "const styles = StyleSheet.create({\n  card: { padding: 16, borderRadius: 12, backgroundColor: '#fff' },\n  title: { fontSize: 18, fontWeight: '600' },\n});\n\n<View style={[styles.card, isActive && { borderWidth: 2 }]} />"
+        },
+        {
+          "id": "rn-l09",
+          "section": {
+            "ar": "Components و Styling",
+            "en": "Components & Styling"
+          },
+          "title": {
+            "ar": "الـ Flexbox في React Native؟",
+            "en": "How does Flexbox work in React Native?"
+          },
+          "short": {
+            "ar": "كل View هو flex container، والاتجاه الافتراضي column.",
+            "en": "Every View is a flex container, and the default direction is column."
+          },
+          "points": {
+            "ar": [
+              "flex: 1 بيخلي العنصر ياخد المساحة الفاضية.",
+              "justifyContent على المحور الأساسي، و alignItems على المحور التاني.",
+              "gap مدعوم للمسافات بين العناصر."
+            ],
+            "en": [
+              "flex: 1 makes an element take the remaining space.",
+              "justifyContent works on the main axis and alignItems on the cross axis.",
+              "gap is supported for spacing between children."
+            ]
+          },
+          "code": "<View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-between', gap: 8 }}>\n  <Text>Left</Text>\n  <Text>Right</Text>\n</View>"
+        },
+        {
+          "id": "rn-l10",
+          "section": {
+            "ar": "Components و Styling",
+            "en": "Components & Styling"
+          },
+          "title": {
+            "ar": "Pressable و Touchables؟",
+            "en": "Pressable versus the Touchable components?"
+          },
+          "short": {
+            "ar": "Pressable هو الأحدث والأمرن للتعامل مع اللمس.",
+            "en": "Pressable is the newer, more flexible way to handle touches."
+          },
+          "points": {
+            "ar": [
+              "بيديك حالة pressed عشان تغير الشكل وقت الضغط.",
+              "فيه onPress و onLongPress و hitSlop لتكبير مساحة اللمس.",
+              "TouchableOpacity لسه شغال بس Pressable هو الموصى بيه."
+            ],
+            "en": [
+              "It exposes a pressed state so you can change the look while pressing.",
+              "It has onPress, onLongPress and hitSlop to enlarge the touch area.",
+              "TouchableOpacity still works, but Pressable is recommended."
+            ]
+          },
+          "code": "<Pressable\n  onPress={save}\n  hitSlop={8}\n  style={({ pressed }) => [styles.btn, pressed && { opacity: 0.6 }]}\n>\n  <Text>Save</Text>\n</Pressable>"
+        },
+        {
+          "id": "rn-l11",
+          "section": {
+            "ar": "Components و Styling",
+            "en": "Components & Styling"
+          },
+          "title": {
+            "ar": "FlatList و ScrollView؟",
+            "en": "FlatList versus ScrollView?"
+          },
+          "short": {
+            "ar": "FlatList بيرسم العناصر الظاهرة بس، و ScrollView بيرسم كله مرة واحدة.",
+            "en": "FlatList renders only the visible items; ScrollView renders everything at once."
+          },
+          "points": {
+            "ar": [
+              "استخدم FlatList للقوايم الطويلة، و ScrollView للمحتوى القصير.",
+              "keyExtractor بيدي مفتاح ثابت لكل عنصر، و SectionList للقوايم المقسمة.",
+              "مكتبات زي FlashList بتدي أداء أعلى في القوايم الضخمة."
+            ],
+            "en": [
+              "Use FlatList for long lists and ScrollView for short content.",
+              "keyExtractor gives each item a stable key, and SectionList handles grouped lists.",
+              "Libraries such as FlashList perform even better on huge lists."
+            ]
+          },
+          "code": "<FlatList\n  data={users}\n  keyExtractor={u => u.id}\n  renderItem={({ item }) => <UserRow user={item} />}\n  onEndReached={loadMore}\n/>"
+        },
+        {
+          "id": "rn-l12",
+          "section": {
+            "ar": "Components و Styling",
+            "en": "Components & Styling"
+          },
+          "title": {
+            "ar": "TextInput والكيبورد؟",
+            "en": "TextInput and the keyboard?"
+          },
+          "short": {
+            "ar": "TextInput للإدخال، و KeyboardAvoidingView عشان الكيبورد ميغطيش المحتوى.",
+            "en": "TextInput handles input, and KeyboardAvoidingView stops the keyboard covering content."
+          },
+          "points": {
+            "ar": [
+              "غالبًا بيبقى controlled بـ value و onChangeText.",
+              "keyboardType بيغير نوع الكيبورد، و secureTextEntry للباسوردات.",
+              "Keyboard.dismiss() بتقفل الكيبورد."
+            ],
+            "en": [
+              "It is usually controlled with value and onChangeText.",
+              "keyboardType changes the keyboard, and secureTextEntry hides passwords.",
+              "Keyboard.dismiss() closes the keyboard."
+            ]
+          },
+          "code": "<KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>\n  <TextInput\n    value={password}\n    onChangeText={setPassword}\n    secureTextEntry\n    placeholder=\"Password\"\n  />\n</KeyboardAvoidingView>"
+        },
+        {
+          "id": "rn-l13",
+          "section": {
+            "ar": "Components و Styling",
+            "en": "Components & Styling"
+          },
+          "title": {
+            "ar": "الصور في React Native؟",
+            "en": "How do images work in React Native?"
+          },
+          "short": {
+            "ar": "الصور المحلية بـ require، والصور من النت بـ uri ولازم مقاس.",
+            "en": "Local images use require; remote images use a uri and need a size."
+          },
+          "points": {
+            "ar": [
+              "الصورة من النت من غير width و height مش هتظهر.",
+              "resizeMode أو contentFit بيحدد طريقة ملء المساحة.",
+              "expo-image بيدعم caching و placeholders."
+            ],
+            "en": [
+              "A remote image without width and height will not show.",
+              "resizeMode or contentFit decides how the image fills its box.",
+              "expo-image adds caching and placeholders."
+            ]
+          },
+          "code": "<Image source={require('./logo.png')} />\n<Image source={{ uri: 'https://example.com/a.jpg' }} style={{ width: 120, height: 120 }} />"
+        },
+        {
+          "id": "rn-l14",
+          "section": {
+            "ar": "Components و Styling",
+            "en": "Components & Styling"
+          },
+          "title": {
+            "ar": "Safe Areas ومقاسات الشاشة؟",
+            "en": "Safe areas and screen dimensions?"
+          },
+          "short": {
+            "ar": "Safe Area بتبعد المحتوى عن الـ notch وشريط الحالة، و useWindowDimensions للمقاسات.",
+            "en": "Safe areas keep content clear of the notch and status bar; useWindowDimensions gives the size."
+          },
+          "points": {
+            "ar": [
+              "react-native-safe-area-context بيدي SafeAreaView و useSafeAreaInsets.",
+              "useWindowDimensions بيتحدث تلقائيًا لما الشاشة تلف."
+            ],
+            "en": [
+              "react-native-safe-area-context provides SafeAreaView and useSafeAreaInsets.",
+              "useWindowDimensions updates automatically when the screen rotates."
+            ]
+          },
+          "code": "const insets = useSafeAreaInsets();\nconst { width } = useWindowDimensions();\n\n<View style={{ paddingTop: insets.top, flexDirection: width > 600 ? 'row' : 'column' }} />"
+        },
+        {
+          "id": "rn-l15",
+          "section": {
+            "ar": "Navigation و State",
+            "en": "Navigation & State"
+          },
+          "title": {
+            "ar": "التنقل في React Native؟",
+            "en": "How does navigation work in React Native?"
+          },
+          "short": {
+            "ar": "React Navigation هو الأشهر، و Expo Router بيبني فوقه بنظام الملفات.",
+            "en": "React Navigation is the most popular, and Expo Router builds on it with file-based routes."
+          },
+          "points": {
+            "ar": [
+              "الأنواع: stack للصفحات فوق بعض، و tabs، و drawer.",
+              "في Expo Router كل ملف جوه app بيبقى route، و _layout بيحدد نوع التنقل."
+            ],
+            "en": [
+              "Types: stack for screens on top of each other, tabs, and drawer.",
+              "In Expo Router every file inside app becomes a route, and _layout sets the navigator type."
+            ]
+          },
+          "code": "// app/_layout.tsx\nimport { Stack } from 'expo-router';\nexport default function Layout() {\n  return <Stack />;\n}"
+        },
+        {
+          "id": "rn-l16",
+          "section": {
+            "ar": "Navigation و State",
+            "en": "Navigation & State"
+          },
+          "title": {
+            "ar": "الـ Params والـ Deep Links؟",
+            "en": "Route params and deep links?"
+          },
+          "short": {
+            "ar": "بتبعت بيانات بين الشاشات، والـ Deep Link بيفتح شاشة معينة من رابط.",
+            "en": "Params pass data between screens, and deep links open a specific screen from a URL."
+          },
+          "points": {
+            "ar": [
+              "ابعت IDs مش objects كاملة، والشاشة تجيب البيانات بنفسها.",
+              "في Expo Router الملف [id].tsx بيعمل route ديناميكي، و useLocalSearchParams بتقرا القيمة.",
+              "الـ Deep Links محتاجة scheme في الإعدادات."
+            ],
+            "en": [
+              "Pass IDs rather than whole objects, and let the screen fetch its own data.",
+              "In Expo Router a file named [id].tsx creates a dynamic route, and useLocalSearchParams reads the value.",
+              "Deep links need a scheme in the app config."
+            ]
+          },
+          "code": "// app/user/[id].tsx\nexport default function User() {\n  const { id } = useLocalSearchParams<{ id: string }>();\n  return <Text>User {id}</Text>;\n}\n\nrouter.push('/user/42');"
+        },
+        {
+          "id": "rn-l17",
+          "section": {
+            "ar": "Navigation و State",
+            "en": "Navigation & State"
+          },
+          "title": {
+            "ar": "إدارة الـ State؟",
+            "en": "How do you manage state?"
+          },
+          "short": {
+            "ar": "useState و Context للبسيط، و Zustand أو Redux Toolkit للـ global، و TanStack Query لبيانات السيرفر.",
+            "en": "useState and Context for simple cases, Zustand or Redux Toolkit for global state, and TanStack Query for server data."
+          },
+          "points": {
+            "ar": [
+              "خلي الـ state قريبة من مكان استخدامها.",
+              "Context مناسب للـ theme والمستخدم، مش للبيانات اللي بتتغير كتير.",
+              "TanStack Query بيدير الـ caching و refetching والـ loading."
+            ],
+            "en": [
+              "Keep state close to where it is used.",
+              "Context suits theme and user data, not values that change often.",
+              "TanStack Query handles caching, refetching and loading states."
+            ]
+          },
+          "code": "const useCart = create(set => ({\n  items: [],\n  add: item => set(s => ({ items: [...s.items, item] })),\n}));"
+        },
+        {
+          "id": "rn-l18",
+          "section": {
+            "ar": "Navigation و State",
+            "en": "Navigation & State"
+          },
+          "title": {
+            "ar": "التخزين على الجهاز؟",
+            "en": "How do you store data on the device?"
+          },
+          "short": {
+            "ar": "AsyncStorage للبيانات العادية، و SecureStore أو Keychain للـ tokens.",
+            "en": "AsyncStorage for ordinary data, and SecureStore or Keychain for tokens."
+          },
+          "points": {
+            "ar": [
+              "AsyncStorage مش مشفر، فمتحطش فيه أسرار.",
+              "expo-secure-store بيستخدم Keychain في iOS و Keystore في Android.",
+              "MMKV أسرع للقراءة والكتابة الكتير، و SQLite للبيانات الكبيرة."
+            ],
+            "en": [
+              "AsyncStorage is not encrypted, so keep secrets out of it.",
+              "expo-secure-store uses the iOS Keychain and the Android Keystore.",
+              "MMKV is faster for frequent reads and writes, and SQLite suits large data."
+            ]
+          },
+          "code": "await SecureStore.setItemAsync('token', token);\nconst token = await SecureStore.getItemAsync('token');"
+        },
+        {
+          "id": "rn-l19",
+          "section": {
+            "ar": "Native و Platform",
+            "en": "Native & Platform"
+          },
+          "title": {
+            "ar": "كود خاص بكل منصة؟",
+            "en": "How do you write platform-specific code?"
+          },
+          "short": {
+            "ar": "Platform.OS و Platform.select، أو ملفات .ios و .android.",
+            "en": "Platform.OS and Platform.select, or .ios and .android files."
+          },
+          "points": {
+            "ar": [
+              "Platform.select بيختار قيمة حسب المنصة.",
+              "ملف Button.ios.tsx و Button.android.tsx، و Metro بيختار الصح تلقائيًا."
+            ],
+            "en": [
+              "Platform.select picks a value per platform.",
+              "With Button.ios.tsx and Button.android.tsx, Metro picks the right file automatically."
+            ]
+          },
+          "code": "const shadow = Platform.select({\n  ios: { shadowOpacity: 0.2, shadowRadius: 6 },\n  android: { elevation: 4 },\n});"
+        },
+        {
+          "id": "rn-l20",
+          "section": {
+            "ar": "Native و Platform",
+            "en": "Native & Platform"
+          },
+          "title": {
+            "ar": "الـ Native Modules؟",
+            "en": "What are native modules?"
+          },
+          "short": {
+            "ar": "كود Swift أو Kotlin بتناديه من JavaScript لما تحتاج API مش متاح.",
+            "en": "Swift or Kotlin code you call from JavaScript when you need an API that is not available."
+          },
+          "points": {
+            "ar": [
+              "في المعمارية الجديدة بتتعمل كـ TurboModules.",
+              "Expo Modules API بتسهل كتابتها بـ Swift و Kotlin.",
+              "دور الأول على مكتبة موجودة قبل ما تكتب واحد."
+            ],
+            "en": [
+              "In the New Architecture they are built as TurboModules.",
+              "The Expo Modules API makes writing them in Swift and Kotlin easier.",
+              "Look for an existing library before writing your own."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "rn-l21",
+          "section": {
+            "ar": "Native و Platform",
+            "en": "Native & Platform"
+          },
+          "title": {
+            "ar": "الـ Permissions؟",
+            "en": "How do you handle permissions?"
+          },
+          "short": {
+            "ar": "بتطلبها وقت التشغيل قبل ما تستخدم الخاصية.",
+            "en": "You request them at runtime, right before using the feature."
+          },
+          "points": {
+            "ar": [
+              "اطلب الإذن في الوقت المناسب واشرح السبب للمستخدم.",
+              "لازم تكتب رسالة الاستخدام في Info.plist لـ iOS، وفي Expo بتتحط في app.json.",
+              "اتعامل مع الرفض بشكل لطيف ووجه المستخدم للإعدادات لو احتاج."
+            ],
+            "en": [
+              "Ask at the right moment and explain why.",
+              "iOS needs a usage description in Info.plist; in Expo it goes in app.json.",
+              "Handle refusal gracefully and point the user to Settings if needed."
+            ]
+          },
+          "code": "const [permission, requestPermission] = useCameraPermissions();\nif (!permission?.granted) {\n  return <Button title=\"Allow camera\" onPress={requestPermission} />;\n}"
+        },
+        {
+          "id": "rn-l22",
+          "section": {
+            "ar": "Native و Platform",
+            "en": "Native & Platform"
+          },
+          "title": {
+            "ar": "الـ Push Notifications؟",
+            "en": "How do push notifications work?"
+          },
+          "short": {
+            "ar": "التطبيق بياخد token من الجهاز ويبعته للسيرفر، والسيرفر يبعت عن طريق APNs أو FCM.",
+            "en": "The app gets a device token and sends it to your server, which delivers through APNs or FCM."
+          },
+          "points": {
+            "ar": [
+              "APNs لـ iOS و FCM لـ Android.",
+              "expo-notifications بيسهل الطلب والاستقبال، و Expo Push Service ممكن يبعت للاتنين.",
+              "لازم إذن من المستخدم، والـ token ممكن يتغير فحدثه."
+            ],
+            "en": [
+              "APNs serves iOS and FCM serves Android.",
+              "expo-notifications simplifies asking and receiving, and the Expo Push Service can send to both.",
+              "You need user permission, and tokens can change, so keep them updated."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "rn-l23",
+          "section": {
+            "ar": "Performance",
+            "en": "Performance"
+          },
+          "title": {
+            "ar": "الـ Threads في React Native؟",
+            "en": "Which threads does React Native use?"
+          },
+          "short": {
+            "ar": "JS thread للمنطق، و UI thread للرسم واللمس.",
+            "en": "A JS thread for logic and a UI thread for drawing and touch."
+          },
+          "points": {
+            "ar": [
+              "لو الـ JS thread اتعطل بحسابات تقيلة، الأنيميشن واللمس بيتقطعوا.",
+              "الهدف 60 frame في الثانية، يعني حوالي 16ms لكل frame."
+            ],
+            "en": [
+              "If heavy work blocks the JS thread, animations and touches stutter.",
+              "The goal is 60 frames per second, about 16 ms per frame."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "rn-l24",
+          "section": {
+            "ar": "Performance",
+            "en": "Performance"
+          },
+          "title": {
+            "ar": "تقليل الـ Re-renders؟",
+            "en": "How do you reduce re-renders?"
+          },
+          "short": {
+            "ar": "ثبت المراجع وقسم الـ components واعمل memo للعناصر التقيلة.",
+            "en": "Stabilise references, split components and memoize heavy items."
+          },
+          "points": {
+            "ar": [
+              "React.memo لعنصر القايمة، و useCallback لـ renderItem والـ handlers.",
+              "متعرفش objects و functions جديدة جوه الـ JSX لعناصر متعمل لها memo.",
+              "الـ React Compiler بيعمل جزء كبير من ده تلقائيًا."
+            ],
+            "en": [
+              "Use React.memo for list items, and useCallback for renderItem and handlers.",
+              "Avoid creating new objects and functions in JSX for memoized children.",
+              "The React Compiler does much of this automatically."
+            ]
+          },
+          "code": "const Row = memo(function Row({ item }) {\n  return <Text>{item.name}</Text>;\n});\n\nconst renderItem = useCallback(({ item }) => <Row item={item} />, []);"
+        },
+        {
+          "id": "rn-l25",
+          "section": {
+            "ar": "Performance",
+            "en": "Performance"
+          },
+          "title": {
+            "ar": "الأنيميشن؟",
+            "en": "How do you build smooth animations?"
+          },
+          "short": {
+            "ar": "شغل الأنيميشن على الـ UI thread بـ Reanimated أو useNativeDriver.",
+            "en": "Run animations on the UI thread with Reanimated or useNativeDriver."
+          },
+          "points": {
+            "ar": [
+              "Animated مع useNativeDriver: true بيبعت الأنيميشن للـ native.",
+              "Reanimated بيشغل worklets على الـ UI thread، فالأنيميشن ميتأثرش لو الـ JS مشغول.",
+              "Gesture Handler مع Reanimated للإيماءات السلسة."
+            ],
+            "en": [
+              "Animated with useNativeDriver: true hands the animation to native code.",
+              "Reanimated runs worklets on the UI thread, so animations stay smooth when JS is busy.",
+              "Combine Gesture Handler with Reanimated for smooth gestures."
+            ]
+          },
+          "code": "const opacity = useSharedValue(0);\nconst style = useAnimatedStyle(() => ({ opacity: opacity.value }));\n\nuseEffect(() => { opacity.value = withTiming(1); }, []);\n\n<Animated.View style={style} />"
+        },
+        {
+          "id": "rn-l26",
+          "section": {
+            "ar": "Performance",
+            "en": "Performance"
+          },
+          "title": {
+            "ar": "الـ Debugging والـ Profiling؟",
+            "en": "Debugging and profiling?"
+          },
+          "short": {
+            "ar": "React Native DevTools للـ debugging، والـ Profiler لقياس الـ renders.",
+            "en": "React Native DevTools for debugging, and the Profiler for measuring renders."
+          },
+          "points": {
+            "ar": [
+              "React Native DevTools فيه console و breakpoints و React Profiler.",
+              "Perf Monitor بيعرض الـ FPS للـ JS والـ UI.",
+              "Flipper اتشال من القالب الافتراضي، وقيس دايمًا على release build."
+            ],
+            "en": [
+              "React Native DevTools has a console, breakpoints and the React Profiler.",
+              "The Perf Monitor shows JS and UI FPS.",
+              "Flipper is no longer in the default template, and always measure on a release build."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "rn-l27",
+          "section": {
+            "ar": "Data و Testing و Release",
+            "en": "Data, Testing & Release"
+          },
+          "title": {
+            "ar": "التعامل مع الـ API والشبكة؟",
+            "en": "Working with APIs and the network?"
+          },
+          "short": {
+            "ar": "fetch أو axios، مع التعامل مع الأخطاء والـ offline.",
+            "en": "fetch or axios, with proper handling of errors and offline states."
+          },
+          "points": {
+            "ar": [
+              "ألغي الطلبات القديمة بـ AbortController لما الشاشة تتقفل.",
+              "NetInfo بيعرفك لو الجهاز offline.",
+              "TanStack Query بيدير الـ retries والـ caching وإعادة الجلب لما التطبيق يرجع."
+            ],
+            "en": [
+              "Cancel stale requests with AbortController when the screen closes.",
+              "NetInfo tells you when the device is offline.",
+              "TanStack Query handles retries, caching and refetching when the app returns to the foreground."
+            ]
+          },
+          "code": "useEffect(() => {\n  const controller = new AbortController();\n  fetch(url, { signal: controller.signal })\n    .then(r => r.json())\n    .then(setData)\n    .catch(() => {});\n  return () => controller.abort();\n}, [url]);"
+        },
+        {
+          "id": "rn-l28",
+          "section": {
+            "ar": "Data و Testing و Release",
+            "en": "Data, Testing & Release"
+          },
+          "title": {
+            "ar": "الـ Testing؟",
+            "en": "How do you test a React Native app?"
+          },
+          "short": {
+            "ar": "Jest و React Native Testing Library للمكونات، و Maestro أو Detox للـ E2E.",
+            "en": "Jest and React Native Testing Library for components; Maestro or Detox for E2E."
+          },
+          "points": {
+            "ar": [
+              "RNTL بيختبر زي ما المستخدم بيشوف: دور على النص واضغط.",
+              "الـ E2E بيشغل التطبيق الحقيقي على جهاز أو محاكي."
+            ],
+            "en": [
+              "RNTL tests the way users see the app: find text, then press.",
+              "E2E tests drive the real app on a device or simulator."
+            ]
+          },
+          "code": "test('adds item', () => {\n  render(<Cart />);\n  fireEvent.press(screen.getByText('Add'));\n  expect(screen.getByText('1 item')).toBeTruthy();\n});"
+        },
+        {
+          "id": "rn-l29",
+          "section": {
+            "ar": "Data و Testing و Release",
+            "en": "Data, Testing & Release"
+          },
+          "title": {
+            "ar": "الـ OTA Updates؟",
+            "en": "What are OTA updates?"
+          },
+          "short": {
+            "ar": "تحديث كود JavaScript والـ assets من غير نسخة جديدة على المتجر.",
+            "en": "Updating JavaScript and assets without a new store release."
+          },
+          "points": {
+            "ar": [
+              "EAS Update أو expo-updates بينزلوا الـ bundle الجديد.",
+              "أي تغيير في الـ native code محتاج build جديد ومراجعة المتجر.",
+              "التزم بسياسات المتاجر، ومتغيرش وظيفة التطبيق الأساسية بالـ OTA."
+            ],
+            "en": [
+              "EAS Update or expo-updates downloads the new bundle.",
+              "Any native code change needs a new build and store review.",
+              "Follow store policies, and do not change the app's core purpose via OTA."
+            ]
+          },
+          "code": ""
+        },
+        {
+          "id": "rn-l30",
+          "section": {
+            "ar": "Data و Testing و Release",
+            "en": "Data, Testing & Release"
+          },
+          "title": {
+            "ar": "النشر على المتاجر؟",
+            "en": "How do you release to the stores?"
+          },
+          "short": {
+            "ar": "build موقّع، ورقم إصدار جديد، ورفع للمتجر ومراجعة.",
+            "en": "A signed build, a new version number, then upload and review."
+          },
+          "points": {
+            "ar": [
+              "Android محتاج keystore للتوقيع، و iOS محتاج certificates و provisioning profiles.",
+              "versionCode في Android و buildNumber في iOS لازم يزيدوا مع كل رفع.",
+              "EAS Submit بيرفع للمتاجر، و TestFlight و Internal Testing للتجربة قبل النشر."
+            ],
+            "en": [
+              "Android needs a keystore for signing; iOS needs certificates and provisioning profiles.",
+              "versionCode on Android and buildNumber on iOS must increase with every upload.",
+              "EAS Submit uploads to the stores, and TestFlight and Internal Testing let you test before release."
+            ]
+          },
+          "code": "// app.json\n{\n  \"expo\": {\n    \"version\": \"1.2.0\",\n    \"ios\": { \"buildNumber\": \"12\" },\n    \"android\": { \"versionCode\": 12 }\n  }\n}"
         }
       ],
       "quiz": [
         {
-          "id": "rn-q1",
+          "id": "rn-q01",
           "question": {
-            "ar": "لقائمة طويلة تستخدم؟",
-            "en": "For a long list use?"
+            "ar": "React Native بيرسم الواجهة بإيه؟",
+            "en": "What does React Native render the UI with?"
+          },
+          "options": [
+            {
+              "ar": "Native views حقيقية",
+              "en": "Real native views"
+            },
+            {
+              "ar": "WebView",
+              "en": "A WebView"
+            },
+            {
+              "ar": "Canvas",
+              "en": "A canvas"
+            },
+            {
+              "ar": "HTML و CSS",
+              "en": "HTML and CSS"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Framework لبناء تطبيقات موبايل native بـ React و JavaScript.",
+            "en": "A framework for building native mobile apps with React and JavaScript."
+          }
+        },
+        {
+          "id": "rn-q02",
+          "question": {
+            "ar": "بديل <div> في React Native؟",
+            "en": "What is the equivalent of <div> in React Native?"
+          },
+          "options": [
+            {
+              "ar": "View",
+              "en": "View"
+            },
+            {
+              "ar": "Box",
+              "en": "Box"
+            },
+            {
+              "ar": "Section",
+              "en": "Section"
+            },
+            {
+              "ar": "Container",
+              "en": "Container"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "نفس React، بس المكونات والـ styling مختلفين ومفيش DOM.",
+            "en": "Same React, but different components and styling, and no DOM."
+          }
+        },
+        {
+          "id": "rn-q03",
+          "question": {
+            "ar": "أنهي خدمة بتبني التطبيق في الـ cloud؟",
+            "en": "Which service builds the app in the cloud?"
+          },
+          "options": [
+            {
+              "ar": "EAS Build",
+              "en": "EAS Build"
+            },
+            {
+              "ar": "Metro",
+              "en": "Metro"
+            },
+            {
+              "ar": "Hermes",
+              "en": "Hermes"
+            },
+            {
+              "ar": "Fabric",
+              "en": "Fabric"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Expo هو الـ framework الموصى بيه، وبيسهل الإعداد والبناء والنشر.",
+            "en": "Expo is the recommended framework and simplifies setup, builds and releases."
+          }
+        },
+        {
+          "id": "rn-q04",
+          "question": {
+            "ar": "إيه اللي خلّى JavaScript تنادي الـ native مباشرة من غير الـ bridge؟",
+            "en": "What lets JavaScript call native code directly, without the bridge?"
+          },
+          "options": [
+            {
+              "ar": "JSI",
+              "en": "JSI"
+            },
+            {
+              "ar": "Metro",
+              "en": "Metro"
+            },
+            {
+              "ar": "Expo Go",
+              "en": "Expo Go"
+            },
+            {
+              "ar": "AsyncStorage",
+              "en": "AsyncStorage"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "JSI و Fabric و TurboModules بدل الـ bridge القديم.",
+            "en": "JSI, Fabric and TurboModules, replacing the old bridge."
+          }
+        },
+        {
+          "id": "rn-q05",
+          "question": {
+            "ar": "أهم ميزة لـ Hermes؟",
+            "en": "The main benefit of Hermes?"
+          },
+          "options": [
+            {
+              "ar": "فتح أسرع للتطبيق وذاكرة أقل",
+              "en": "Faster startup and lower memory use"
+            },
+            {
+              "ar": "بيشغل HTML",
+              "en": "It runs HTML"
+            },
+            {
+              "ar": "بيستبدل الـ native views",
+              "en": "It replaces native views"
+            },
+            {
+              "ar": "بيكتب كود Swift",
+              "en": "It writes Swift code"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "محرك JavaScript معمول مخصوص لـ React Native، وهو الافتراضي.",
+            "en": "A JavaScript engine built for React Native, and the default."
+          }
+        },
+        {
+          "id": "rn-q06",
+          "question": {
+            "ar": "الـ bundler الافتراضي في React Native؟",
+            "en": "Which bundler does React Native use by default?"
+          },
+          "options": [
+            {
+              "ar": "Metro",
+              "en": "Metro"
+            },
+            {
+              "ar": "Webpack",
+              "en": "Webpack"
+            },
+            {
+              "ar": "Vite",
+              "en": "Vite"
+            },
+            {
+              "ar": "Parcel",
+              "en": "Parcel"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ bundler الافتراضي في React Native.",
+            "en": "The default bundler for React Native."
+          }
+        },
+        {
+          "id": "rn-q07",
+          "question": {
+            "ar": "إيه اللي يحصل لو كتبت نص مباشرة جوه View؟",
+            "en": "What happens if you put raw text directly inside a View?"
+          },
+          "options": [
+            {
+              "ar": "Error",
+              "en": "An error"
+            },
+            {
+              "ar": "بيظهر عادي",
+              "en": "It renders normally"
+            },
+            {
+              "ar": "بيتجاهله",
+              "en": "It is ignored"
+            },
+            {
+              "ar": "بيتحول لصورة",
+              "en": "It becomes an image"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "View و Text و Image و TextInput و Pressable و ScrollView و FlatList.",
+            "en": "View, Text, Image, TextInput, Pressable, ScrollView and FlatList."
+          }
+        },
+        {
+          "id": "rn-q08",
+          "question": {
+            "ar": "width: 100 في React Native وحدتها إيه؟",
+            "en": "What unit is width: 100 in React Native?"
+          },
+          "options": [
+            {
+              "ar": "density-independent pixels",
+              "en": "Density-independent pixels"
+            },
+            {
+              "ar": "pixels حقيقية",
+              "en": "Physical pixels"
+            },
+            {
+              "ar": "rem",
+              "en": "rem"
+            },
+            {
+              "ar": "نسبة مئوية",
+              "en": "Percent"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "objects بـ JavaScript عن طريق StyleSheet، والخصائص camelCase.",
+            "en": "JavaScript objects via StyleSheet, with camelCase properties."
+          }
+        },
+        {
+          "id": "rn-q09",
+          "question": {
+            "ar": "flexDirection الافتراضي في React Native؟",
+            "en": "What is the default flexDirection in React Native?"
+          },
+          "options": [
+            {
+              "ar": "column",
+              "en": "column"
+            },
+            {
+              "ar": "row",
+              "en": "row"
+            },
+            {
+              "ar": "row-reverse",
+              "en": "row-reverse"
+            },
+            {
+              "ar": "none",
+              "en": "none"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "عكس الويب اللي افتراضيه row.",
+            "en": "Unlike the web, where the default is row."
+          }
+        },
+        {
+          "id": "rn-q10",
+          "question": {
+            "ar": "أنهي prop بتكبر مساحة اللمس من غير ما تكبر الشكل؟",
+            "en": "Which prop enlarges the touch area without changing the look?"
+          },
+          "options": [
+            {
+              "ar": "hitSlop",
+              "en": "hitSlop"
+            },
+            {
+              "ar": "padding",
+              "en": "padding"
+            },
+            {
+              "ar": "onLongPress",
+              "en": "onLongPress"
+            },
+            {
+              "ar": "zIndex",
+              "en": "zIndex"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Pressable هو الأحدث والأمرن للتعامل مع اللمس.",
+            "en": "Pressable is the newer, more flexible way to handle touches."
+          }
+        },
+        {
+          "id": "rn-q11",
+          "question": {
+            "ar": "قايمة فيها 5000 عنصر. تستخدم إيه؟",
+            "en": "A list with 5,000 items. What do you use?"
           },
           "options": [
             {
@@ -16406,45 +18746,195 @@
           ],
           "answer": 0,
           "explanation": {
-            "ar": "virtualization.",
-            "en": "Virtualization."
+            "ar": "FlatList بيرسم العناصر الظاهرة بس، و ScrollView بيرسم كله مرة واحدة.",
+            "en": "FlatList renders only the visible items; ScrollView renders everything at once."
           }
         },
         {
-          "id": "rn-q2",
+          "id": "rn-q12",
           "question": {
-            "ar": "flexDirection الافتراضي؟",
-            "en": "Default flexDirection?"
+            "ar": "إزاي تخفي الباسورد في TextInput؟",
+            "en": "How do you hide a password in a TextInput?"
           },
           "options": [
             {
-              "ar": "column",
-              "en": "column"
+              "ar": "secureTextEntry",
+              "en": "secureTextEntry"
             },
             {
-              "ar": "row",
-              "en": "row"
+              "ar": "hidden",
+              "en": "hidden"
             },
             {
-              "ar": "grid",
-              "en": "grid"
+              "ar": "type=\"password\"",
+              "en": "type=\"password\""
             },
             {
-              "ar": "none",
-              "en": "none"
+              "ar": "mask",
+              "en": "mask"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "عكس الويب.",
-            "en": "Unlike the web."
+            "ar": "TextInput للإدخال، و KeyboardAvoidingView عشان الكيبورد ميغطيش المحتوى.",
+            "en": "TextInput handles input, and KeyboardAvoidingView stops the keyboard covering content."
           }
         },
         {
-          "id": "rn-q3",
+          "id": "rn-q13",
           "question": {
-            "ar": "تخزين token بأمان؟",
-            "en": "Store a token securely?"
+            "ar": "صورة من النت من غير width و height بيحصل لها إيه؟",
+            "en": "What happens to a remote image with no width or height?"
+          },
+          "options": [
+            {
+              "ar": "مش بتظهر",
+              "en": "It does not show"
+            },
+            {
+              "ar": "بتظهر بمقاسها الأصلي",
+              "en": "It shows at its natural size"
+            },
+            {
+              "ar": "Error وقت الـ build",
+              "en": "A build error"
+            },
+            {
+              "ar": "بتملا الشاشة",
+              "en": "It fills the screen"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الصور المحلية بـ require، والصور من النت بـ uri ولازم مقاس.",
+            "en": "Local images use require; remote images use a uri and need a size."
+          }
+        },
+        {
+          "id": "rn-q14",
+          "question": {
+            "ar": "أنهي hook بيدي مقاس الشاشة ويتحدث مع اللف؟",
+            "en": "Which hook gives the screen size and updates on rotation?"
+          },
+          "options": [
+            {
+              "ar": "useWindowDimensions",
+              "en": "useWindowDimensions"
+            },
+            {
+              "ar": "useRef",
+              "en": "useRef"
+            },
+            {
+              "ar": "useLayoutEffect",
+              "en": "useLayoutEffect"
+            },
+            {
+              "ar": "useId",
+              "en": "useId"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Safe Area بتبعد المحتوى عن الـ notch وشريط الحالة، و useWindowDimensions للمقاسات.",
+            "en": "Safe areas keep content clear of the notch and status bar; useWindowDimensions gives the size."
+          }
+        },
+        {
+          "id": "rn-q15",
+          "question": {
+            "ar": "Expo Router مبني فوق أنهي مكتبة؟",
+            "en": "Which library is Expo Router built on?"
+          },
+          "options": [
+            {
+              "ar": "React Navigation",
+              "en": "React Navigation"
+            },
+            {
+              "ar": "React Router",
+              "en": "React Router"
+            },
+            {
+              "ar": "Redux",
+              "en": "Redux"
+            },
+            {
+              "ar": "Metro",
+              "en": "Metro"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "React Navigation هو الأشهر، و Expo Router بيبني فوقه بنظام الملفات.",
+            "en": "React Navigation is the most popular, and Expo Router builds on it with file-based routes."
+          }
+        },
+        {
+          "id": "rn-q16",
+          "question": {
+            "ar": "في Expo Router إزاي تعمل route ديناميكي لـ /user/42؟",
+            "en": "In Expo Router, how do you create a dynamic route for /user/42?"
+          },
+          "options": [
+            {
+              "ar": "app/user/[id].tsx",
+              "en": "app/user/[id].tsx"
+            },
+            {
+              "ar": "app/user/:id.tsx",
+              "en": "app/user/:id.tsx"
+            },
+            {
+              "ar": "app/user/{id}.tsx",
+              "en": "app/user/{id}.tsx"
+            },
+            {
+              "ar": "app/user/id.dynamic.tsx",
+              "en": "app/user/id.dynamic.tsx"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "بتبعت بيانات بين الشاشات، والـ Deep Link بيفتح شاشة معينة من رابط.",
+            "en": "Params pass data between screens, and deep links open a specific screen from a URL."
+          }
+        },
+        {
+          "id": "rn-q17",
+          "question": {
+            "ar": "أنسب أداة لبيانات جاية من API مع caching؟",
+            "en": "Best tool for API data with caching?"
+          },
+          "options": [
+            {
+              "ar": "TanStack Query",
+              "en": "TanStack Query"
+            },
+            {
+              "ar": "useRef",
+              "en": "useRef"
+            },
+            {
+              "ar": "Context",
+              "en": "Context"
+            },
+            {
+              "ar": "AsyncStorage",
+              "en": "AsyncStorage"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "useState و Context للبسيط، و Zustand أو Redux Toolkit للـ global، و TanStack Query لبيانات السيرفر.",
+            "en": "useState and Context for simple cases, Zustand or Redux Toolkit for global state, and TanStack Query for server data."
+          }
+        },
+        {
+          "id": "rn-q18",
+          "question": {
+            "ar": "تخزن الـ access token فين؟",
+            "en": "Where should you store an access token?"
           },
           "options": [
             {
@@ -16456,168 +18946,378 @@
               "en": "AsyncStorage"
             },
             {
-              "ar": "state",
-              "en": "state"
+              "ar": "state بس",
+              "en": "Component state only"
             },
             {
-              "ar": "Text",
-              "en": "Text"
+              "ar": "ملف JSON في التطبيق",
+              "en": "A JSON file in the app"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "تخزين مشفر.",
-            "en": "Encrypted storage."
+            "ar": "AsyncStorage للبيانات العادية، و SecureStore أو Keychain للـ tokens.",
+            "en": "AsyncStorage for ordinary data, and SecureStore or Keychain for tokens."
           }
         },
         {
-          "id": "rn-q4",
+          "id": "rn-q19",
           "question": {
-            "ar": "بديل div؟",
-            "en": "Equivalent of div?"
+            "ar": "عندك Button.ios.tsx و Button.android.tsx. تعمل import إزاي؟",
+            "en": "You have Button.ios.tsx and Button.android.tsx. How do you import it?"
           },
           "options": [
             {
-              "ar": "View",
-              "en": "View"
+              "ar": "import Button from './Button'",
+              "en": "import Button from './Button'"
             },
             {
-              "ar": "Box",
-              "en": "Box"
+              "ar": "import Button from './Button.ios'",
+              "en": "import Button from './Button.ios'"
             },
             {
-              "ar": "Section",
-              "en": "Section"
+              "ar": "import Button from './Button.native'",
+              "en": "import Button from './Button.native'"
             },
             {
-              "ar": "Frame",
-              "en": "Frame"
+              "ar": "لازم تعمل import للاتنين",
+              "en": "You must import both"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "الحاوية الأساسية.",
-            "en": "The basic container."
+            "ar": "Platform.OS و Platform.select، أو ملفات .ios و .android.",
+            "en": "Platform.OS and Platform.select, or .ios and .android files."
           }
         },
         {
-          "id": "rn-q5",
+          "id": "rn-q20",
           "question": {
-            "ar": "محرك JavaScript الافتراضي؟",
-            "en": "Default JS engine?"
+            "ar": "إمتى تكتب native module؟",
+            "en": "When should you write a native module?"
           },
           "options": [
             {
-              "ar": "Hermes",
-              "en": "Hermes"
+              "ar": "لما تحتاج API native مش متاح في JavaScript",
+              "en": "When you need a native API that JavaScript cannot reach"
             },
             {
-              "ar": "V8",
-              "en": "V8"
+              "ar": "لكل شاشة",
+              "en": "For every screen"
             },
             {
-              "ar": "SpiderMonkey",
-              "en": "SpiderMonkey"
+              "ar": "للـ styling",
+              "en": "For styling"
             },
             {
-              "ar": "Deno",
-              "en": "Deno"
+              "ar": "عشان التنقل بين الشاشات",
+              "en": "For navigating between screens"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "محسن للموبايل.",
-            "en": "Optimized for mobile."
+            "ar": "كود Swift أو Kotlin بتناديه من JavaScript لما تحتاج API مش متاح.",
+            "en": "Swift or Kotlin code you call from JavaScript when you need an API that is not available."
           }
         },
         {
-          "id": "rn-q6",
+          "id": "rn-q21",
           "question": {
-            "ar": "النص المباشر جوه View؟",
-            "en": "Raw text inside a View?"
+            "ar": "أحسن وقت تطلب فيه إذن الكاميرا؟",
+            "en": "When is the best time to request camera permission?"
           },
           "options": [
             {
-              "ar": "خطأ",
-              "en": "Error"
+              "ar": "لما المستخدم يحتاج الكاميرا فعلًا",
+              "en": "When the user actually needs the camera"
             },
             {
-              "ar": "يظهر عادي",
-              "en": "Renders fine"
+              "ar": "أول ما التطبيق يفتح",
+              "en": "As soon as the app opens"
             },
             {
-              "ar": "يتجاهل",
-              "en": "Ignored"
+              "ar": "وقت التسطيب",
+              "en": "During installation"
             },
             {
-              "ar": "يتحول صورة",
-              "en": "Becomes an image"
+              "ar": "مش محتاج تطلبه",
+              "en": "You never need to ask"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "لازم Text.",
-            "en": "Wrap it in Text."
+            "ar": "بتطلبها وقت التشغيل قبل ما تستخدم الخاصية.",
+            "en": "You request them at runtime, right before using the feature."
           }
         },
         {
-          "id": "rn-q7",
+          "id": "rn-q22",
           "question": {
-            "ar": "التنقل المبني على الملفات؟",
-            "en": "File-based navigation?"
+            "ar": "مين بيوصل الإشعارات لأجهزة Android؟",
+            "en": "Which service delivers notifications to Android devices?"
           },
           "options": [
             {
-              "ar": "Expo Router",
-              "en": "Expo Router"
+              "ar": "FCM",
+              "en": "FCM"
             },
             {
-              "ar": "Redux",
-              "en": "Redux"
+              "ar": "APNs",
+              "en": "APNs"
             },
             {
               "ar": "Metro",
               "en": "Metro"
             },
             {
-              "ar": "Fabric",
-              "en": "Fabric"
+              "ar": "Hermes",
+              "en": "Hermes"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "المسارات من الملفات.",
-            "en": "Routes come from files."
+            "ar": "التطبيق بياخد token من الجهاز ويبعته للسيرفر، والسيرفر يبعت عن طريق APNs أو FCM.",
+            "en": "The app gets a device token and sends it to your server, which delivers through APNs or FCM."
           }
         },
         {
-          "id": "rn-q8",
+          "id": "rn-q23",
           "question": {
-            "ar": "Fabric هو؟",
-            "en": "What is Fabric?"
+            "ar": "حسابات تقيلة على الـ JS thread بتعمل إيه؟",
+            "en": "What does heavy computation on the JS thread cause?"
           },
           "options": [
             {
-              "ar": "نظام العرض الجديد",
-              "en": "The new renderer"
+              "ar": "تقطيع في الأنيميشن واللمس",
+              "en": "Stuttering animations and touches"
             },
             {
-              "ar": "مكتبة تخزين",
-              "en": "A storage library"
+              "ar": "تطبيق أسرع",
+              "en": "A faster app"
             },
             {
-              "ar": "أداة اختبار",
-              "en": "A test tool"
+              "ar": "ولا حاجة",
+              "en": "Nothing"
             },
             {
-              "ar": "bundler",
-              "en": "bundler"
+              "ar": "Error وقت الـ build",
+              "en": "A build error"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "جزء من المعمارية الجديدة.",
-            "en": "Part of the New Architecture."
+            "ar": "JS thread للمنطق، و UI thread للرسم واللمس.",
+            "en": "A JS thread for logic and a UI thread for drawing and touch."
+          }
+        },
+        {
+          "id": "rn-q24",
+          "question": {
+            "ar": "أنهي حاجة بتمنع عنصر القايمة يعمل re-render من غير داعي؟",
+            "en": "What stops a list row from re-rendering needlessly?"
+          },
+          "options": [
+            {
+              "ar": "React.memo",
+              "en": "React.memo"
+            },
+            {
+              "ar": "useState",
+              "en": "useState"
+            },
+            {
+              "ar": "ScrollView",
+              "en": "ScrollView"
+            },
+            {
+              "ar": "console.log",
+              "en": "console.log"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "ثبت المراجع وقسم الـ components واعمل memo للعناصر التقيلة.",
+            "en": "Stabilise references, split components and memoize heavy items."
+          }
+        },
+        {
+          "id": "rn-q25",
+          "question": {
+            "ar": "Reanimated بيشغل الأنيميشن فين؟",
+            "en": "Where does Reanimated run animations?"
+          },
+          "options": [
+            {
+              "ar": "على الـ UI thread",
+              "en": "On the UI thread"
+            },
+            {
+              "ar": "على الـ JS thread بس",
+              "en": "Only on the JS thread"
+            },
+            {
+              "ar": "على السيرفر",
+              "en": "On the server"
+            },
+            {
+              "ar": "في WebView",
+              "en": "In a WebView"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "شغل الأنيميشن على الـ UI thread بـ Reanimated أو useNativeDriver.",
+            "en": "Run animations on the UI thread with Reanimated or useNativeDriver."
+          }
+        },
+        {
+          "id": "rn-q26",
+          "question": {
+            "ar": "تقيس الأداء الحقيقي على أنهي build؟",
+            "en": "Which build should you measure real performance on?"
+          },
+          "options": [
+            {
+              "ar": "Release build",
+              "en": "A release build"
+            },
+            {
+              "ar": "Debug build",
+              "en": "A debug build"
+            },
+            {
+              "ar": "Expo Go بس",
+              "en": "Expo Go only"
+            },
+            {
+              "ar": "المحاكي بس",
+              "en": "The simulator only"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ debug build أبطأ بكتير ومش بيعكس الواقع.",
+            "en": "Debug builds are much slower and misleading."
+          }
+        },
+        {
+          "id": "rn-q27",
+          "question": {
+            "ar": "إزاي تلغي طلب لما الشاشة تتقفل؟",
+            "en": "How do you cancel a request when the screen unmounts?"
+          },
+          "options": [
+            {
+              "ar": "AbortController",
+              "en": "AbortController"
+            },
+            {
+              "ar": "setTimeout",
+              "en": "setTimeout"
+            },
+            {
+              "ar": "Promise.race",
+              "en": "Promise.race"
+            },
+            {
+              "ar": "NetInfo",
+              "en": "NetInfo"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "fetch أو axios، مع التعامل مع الأخطاء والـ offline.",
+            "en": "fetch or axios, with proper handling of errors and offline states."
+          }
+        },
+        {
+          "id": "rn-q28",
+          "question": {
+            "ar": "أنهي أداة للـ E2E testing؟",
+            "en": "Which tool is used for E2E testing?"
+          },
+          "options": [
+            {
+              "ar": "Maestro",
+              "en": "Maestro"
+            },
+            {
+              "ar": "Metro",
+              "en": "Metro"
+            },
+            {
+              "ar": "Hermes",
+              "en": "Hermes"
+            },
+            {
+              "ar": "Babel",
+              "en": "Babel"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Jest و React Native Testing Library للمكونات، و Maestro أو Detox للـ E2E.",
+            "en": "Jest and React Native Testing Library for components; Maestro or Detox for E2E."
+          }
+        },
+        {
+          "id": "rn-q29",
+          "question": {
+            "ar": "ينفع تضيف native module جديد بـ OTA Update؟",
+            "en": "Can an OTA update add a new native module?"
+          },
+          "options": [
+            {
+              "ar": "لأ، محتاج build جديد",
+              "en": "No, it needs a new build"
+            },
+            {
+              "ar": "أيوه",
+              "en": "Yes"
+            },
+            {
+              "ar": "على Android بس",
+              "en": "Only on Android"
+            },
+            {
+              "ar": "لو صغير",
+              "en": "Only if it is small"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "تحديث كود JavaScript والـ assets من غير نسخة جديدة على المتجر.",
+            "en": "Updating JavaScript and assets without a new store release."
+          }
+        },
+        {
+          "id": "rn-q30",
+          "question": {
+            "ar": "أنهي رقم لازم يزيد مع كل رفع على Google Play؟",
+            "en": "Which number must increase with every Google Play upload?"
+          },
+          "options": [
+            {
+              "ar": "versionCode",
+              "en": "versionCode"
+            },
+            {
+              "ar": "buildNumber",
+              "en": "buildNumber"
+            },
+            {
+              "ar": "bundleIdentifier",
+              "en": "bundleIdentifier"
+            },
+            {
+              "ar": "scheme",
+              "en": "scheme"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "build موقّع، ورقم إصدار جديد، ورفع للمتجر ومراجعة.",
+            "en": "A signed build, a new version number, then upload and review."
           }
         }
       ]
