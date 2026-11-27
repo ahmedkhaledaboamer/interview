@@ -5185,10 +5185,6 @@
       "lessons": [
         {
           "id": "js-l01",
-          "section": {
-            "ar": "الأساسيات",
-            "en": "Basics"
-          },
           "title": {
             "ar": "إيه الفرق بين var و let و const؟",
             "en": "What is the difference between var, let and const?"
@@ -5208,15 +5204,10 @@
               "let and const are block-scoped.",
               "const cannot be reassigned, but if it holds an object you can still mutate its contents."
             ]
-          },
-          "code": "const user = { name: \"Ali\" };\nuser.name = \"Omar\"; // works\nuser = {};          // TypeError"
+          }
         },
         {
           "id": "js-l02",
-          "section": {
-            "ar": "الأساسيات",
-            "en": "Basics"
-          },
           "title": {
             "ar": "يعني إيه Hoisting؟",
             "en": "What is hoisting?"
@@ -5236,15 +5227,31 @@
               "var is initialized as undefined.",
               "let and const stay in the Temporal Dead Zone until their declaration line."
             ]
-          },
-          "code": "console.log(a); // undefined\nvar a = 1;\n\nconsole.log(b); // ReferenceError (TDZ)\nlet b = 2;"
+          }
         },
         {
           "id": "js-l03",
-          "section": {
-            "ar": "الأساسيات",
-            "en": "Basics"
+          "title": {
+            "ar": "يعني إيه Closure؟",
+            "en": "What is a closure?"
           },
+          "short": {
+            "ar": "دالة بتفتكر متغيرات النطاق الخارجي حتى بعد ما الدالة الأم تخلص.",
+            "en": "A function that remembers the variables of its outer scope even after the outer function has finished."
+          },
+          "points": {
+            "ar": [
+              "الدالة الداخلية بتفتكر متغيرات الدالة اللي اتعرفت جواها حتى بعد ما الدالة الأم تخلص.",
+              "بنستخدمها في الـ private data وفي الـ factories."
+            ],
+            "en": [
+              "An inner function keeps access to the variables of the function it was defined in, even after that outer function returns.",
+              "Used for private state and factories."
+            ]
+          }
+        },
+        {
+          "id": "js-l04",
           "title": {
             "ar": "الفرق بين == و ===؟",
             "en": "What is the difference between == and ===?"
@@ -5264,97 +5271,10 @@
               "=== compares value and type with no coercion.",
               "Prefer === in practice."
             ]
-          },
-          "code": "5 == \"5\";  // true\n5 === \"5\"; // false"
-        },
-        {
-          "id": "js-l04",
-          "section": {
-            "ar": "الأساسيات",
-            "en": "Basics"
-          },
-          "title": {
-            "ar": "الفرق بين null و undefined؟",
-            "en": "What is the difference between null and undefined?"
-          },
-          "short": {
-            "ar": "undefined يعني المتغير اتعرف وماخدش قيمة، و null يعني \"مفيش قيمة\" إنت اللي حاطها قصدًا.",
-            "en": "undefined means declared but never assigned; null is an intentional \"no value\" you assign yourself."
-          },
-          "points": {
-            "ar": [
-              "undefined معناها إن المتغير اتعرف بس ماخدش قيمة.",
-              "null معناها \"مفيش قيمة\" وإنت اللي بتحطها قصدًا.",
-              "خد بالك إن typeof null بترجع \"object\" وده bug قديم في اللغة."
-            ],
-            "en": [
-              "undefined means a variable was declared but never assigned a value.",
-              "null is an intentional \"no value\" that you assign yourself.",
-              "Note that typeof null returns \"object\", a historical bug."
-            ]
-          },
-          "code": "let a;\nconsole.log(a);        // undefined\nlet b = null;\nconsole.log(typeof b); // \"object\""
+          }
         },
         {
           "id": "js-l05",
-          "section": {
-            "ar": "الأساسيات",
-            "en": "Basics"
-          },
-          "title": {
-            "ar": "الفرق بين Primitive و Reference types؟",
-            "en": "What is the difference between primitive and reference types?"
-          },
-          "short": {
-            "ar": "الـ Primitives بتتنسخ بالقيمة، والـ objects والـ arrays والـ functions بتتنسخ بالـ reference.",
-            "en": "Primitives are copied by value; objects, arrays and functions are copied by reference."
-          },
-          "points": {
-            "ar": [
-              "الـ Primitives (string و number و boolean و null و undefined و symbol و bigint) بتتنسخ بالقيمة.",
-              "الـ objects والـ arrays والـ functions بتتنسخ بالـ reference.",
-              "يعني متغيرين ممكن يشاوروا على نفس الـ object وأي تعديل من واحد بيبان في التاني."
-            ],
-            "en": [
-              "Primitives (string, number, boolean, null, undefined, symbol, bigint) are copied by value.",
-              "Objects, arrays and functions are copied by reference.",
-              "So two variables can point to the same object, and a change through one shows in the other."
-            ]
-          },
-          "code": "const a = { n: 1 };\nconst b = a;\nb.n = 2;\nconsole.log(a.n); // 2"
-        },
-        {
-          "id": "js-l06",
-          "section": {
-            "ar": "النطاق والدوال",
-            "en": "Scope & Functions"
-          },
-          "title": {
-            "ar": "يعني إيه Closure؟",
-            "en": "What is a closure?"
-          },
-          "short": {
-            "ar": "دالة بتفتكر متغيرات النطاق الخارجي حتى بعد ما الدالة الأم تخلص.",
-            "en": "A function that remembers the variables of its outer scope even after the outer function has finished."
-          },
-          "points": {
-            "ar": [
-              "الدالة الداخلية بتفتكر متغيرات الدالة اللي اتعرفت جواها حتى بعد ما الدالة الأم تخلص.",
-              "بنستخدمها في الـ private data وفي الـ factories."
-            ],
-            "en": [
-              "An inner function keeps access to the variables of the function it was defined in, even after that outer function returns.",
-              "Used for private state and factories."
-            ]
-          },
-          "code": "function counter() {\n  let count = 0;\n  return () => ++count;\n}\nconst next = counter();\nnext(); // 1\nnext(); // 2"
-        },
-        {
-          "id": "js-l07",
-          "section": {
-            "ar": "النطاق والدوال",
-            "en": "Scope & Functions"
-          },
           "title": {
             "ar": "قيمة this بتتحدد إزاي؟",
             "en": "How is this determined?"
@@ -5376,15 +5296,10 @@
               "Arrow functions inherit this lexically from the surrounding scope.",
               "You can set it explicitly with call, apply or bind."
             ]
-          },
-          "code": "const user = {\n  name: \"Ali\",\n  hi() { return this.name; },\n};\nuser.hi();          // \"Ali\"\nconst f = user.hi;\nf();                // undefined (strict)"
+          }
         },
         {
-          "id": "js-l08",
-          "section": {
-            "ar": "النطاق والدوال",
-            "en": "Scope & Functions"
-          },
+          "id": "js-l06",
           "title": {
             "ar": "الفرق بين Arrow function والدالة العادية؟",
             "en": "What is the difference between arrow and regular functions?"
@@ -5404,69 +5319,58 @@
               "They cannot be used with new.",
               "They have shorter syntax."
             ]
+          }
+        },
+        {
+          "id": "js-l07",
+          "title": {
+            "ar": "إيه هو الـ Event Loop؟",
+            "en": "What is the Event Loop?"
           },
-          "code": "const add = (a, b) => a + b;\n\nconst Foo = () => {};\nnew Foo(); // TypeError: Foo is not a constructor"
+          "short": {
+            "ar": "الآلية اللي بتنقل الـ callbacks من الطوابير للـ Call Stack لما يفضى.",
+            "en": "The mechanism that moves callbacks from the queues to the Call Stack when it is empty."
+          },
+          "points": {
+            "ar": [
+              "الـ JS single-threaded، والـ Call Stack بينفذ الكود.",
+              "العمليات الـ async بتروح للـ Web APIs وبعدين لطوابير الانتظار.",
+              "الـ Event Loop بيشوف لو الـ Stack فاضي وينقل له الـ callbacks.",
+              "الـ Microtasks (Promises) ليها أولوية على الـ Macrotasks (setTimeout)."
+            ],
+            "en": [
+              "JS is single-threaded, and the Call Stack runs code.",
+              "Async work goes to the Web APIs and then to queues.",
+              "The Event Loop moves callbacks to the stack when it is empty.",
+              "Microtasks (Promises) run before macrotasks (setTimeout)."
+            ]
+          }
+        },
+        {
+          "id": "js-l08",
+          "title": {
+            "ar": "الفرق بين Promise و async/await؟",
+            "en": "What is the difference between Promise and async/await?"
+          },
+          "short": {
+            "ar": "الـ async/await هي syntax أسهل فوق الـ Promises.",
+            "en": "async/await is syntactic sugar over Promises."
+          },
+          "points": {
+            "ar": [
+              "الـ async/await هي syntax أسهل فوق الـ Promises.",
+              "بتخلي الكود الـ async شكله متسلسل.",
+              "الأخطاء بتتمسك بـ try/catch."
+            ],
+            "en": [
+              "async/await is syntactic sugar over Promises.",
+              "It makes async code read sequentially.",
+              "Errors are handled with try/catch."
+            ]
+          }
         },
         {
           "id": "js-l09",
-          "section": {
-            "ar": "النطاق والدوال",
-            "en": "Scope & Functions"
-          },
-          "title": {
-            "ar": "الفرق بين call و apply و bind؟",
-            "en": "What is the difference between call, apply and bind?"
-          },
-          "short": {
-            "ar": "التلاتة بيحددوا this يدويًا: call و apply بينفذوا فورًا، و bind بترجع دالة جديدة.",
-            "en": "All three set this explicitly: call and apply invoke immediately, bind returns a new function."
-          },
-          "points": {
-            "ar": [
-              "call بتنفذ الدالة فورًا والـ arguments مفصولة.",
-              "apply بتنفذ فورًا والـ arguments في array.",
-              "bind بترجع دالة جديدة this ثابتة فيها وبتتنفذ بعدين."
-            ],
-            "en": [
-              "call invokes immediately with arguments listed one by one.",
-              "apply invokes immediately with an array of arguments.",
-              "bind returns a new function with this fixed, to be called later."
-            ]
-          },
-          "code": "function greet(greeting, mark) {\n  return greeting + \" \" + this.name + mark;\n}\nconst u = { name: \"Ali\" };\ngreet.call(u, \"Hi\", \"!\");\ngreet.apply(u, [\"Hi\", \"!\"]);\nconst g = greet.bind(u);\ng(\"Hi\", \"!\");"
-        },
-        {
-          "id": "js-l10",
-          "section": {
-            "ar": "النطاق والدوال",
-            "en": "Scope & Functions"
-          },
-          "title": {
-            "ar": "الفرق بين Spread و Rest؟",
-            "en": "What is the difference between spread and rest?"
-          },
-          "short": {
-            "ar": "الاتنين بيستخدموا ... : الـ Spread بيفرد، والـ Rest بيجمع.",
-            "en": "Both use ... : spread expands, rest collects."
-          },
-          "points": {
-            "ar": [
-              "الـ Spread بيفرد array أو object لعناصره ([...a, ...b]).",
-              "الـ Rest بيجمع الباقي في array (function f(...args))."
-            ],
-            "en": [
-              "Spread expands an iterable or object into individual elements ([...a, ...b]).",
-              "Rest collects the remaining items into an array (function f(...args))."
-            ]
-          },
-          "code": "const all = [...[1, 2], ...[3]]; // [1, 2, 3]\n\nfunction sum(...nums) {\n  return nums.reduce((a, b) => a + b, 0);\n}"
-        },
-        {
-          "id": "js-l11",
-          "section": {
-            "ar": "الـ Arrays والـ Objects",
-            "en": "Arrays & Objects"
-          },
           "title": {
             "ar": "الفرق بين map و forEach و filter و reduce؟",
             "en": "What is the difference between map, forEach, filter and reduce?"
@@ -5488,41 +5392,10 @@
               "filter returns the elements that pass a test.",
               "reduce folds the array into a single value."
             ]
-          },
-          "code": "const n = [1, 2, 3, 4];\nn.map(x => x * 2);          // [2, 4, 6, 8]\nn.filter(x => x % 2 === 0); // [2, 4]\nn.reduce((a, b) => a + b, 0); // 10"
+          }
         },
         {
-          "id": "js-l12",
-          "section": {
-            "ar": "الـ Arrays والـ Objects",
-            "en": "Arrays & Objects"
-          },
-          "title": {
-            "ar": "الفرق بين Shallow Copy و Deep Copy؟",
-            "en": "What is the difference between a shallow and a deep copy?"
-          },
-          "short": {
-            "ar": "الـ Shallow بينسخ المستوى الأول بس، والـ Deep بينسخ كل حاجة.",
-            "en": "A shallow copy duplicates only the top level; a deep copy duplicates everything."
-          },
-          "points": {
-            "ar": [
-              "الـ Shallow (زي spread {...obj}) بينسخ المستوى الأول بس، والـ objects المتداخلة بتفضل مشتركة.",
-              "الـ Deep بينسخ كل حاجة، مثلًا بـ structuredClone()."
-            ],
-            "en": [
-              "A shallow copy (e.g. spread {...obj}) copies only the top level; nested objects remain shared.",
-              "A deep copy duplicates everything, e.g. with structuredClone()."
-            ]
-          },
-          "code": "const a = { info: { age: 20 } };\nconst s = { ...a };\ns.info.age = 30; // a.info.age is 30 too\n\nconst d = structuredClone(a);\nd.info.age = 40; // a is unchanged"
-        },
-        {
-          "id": "js-l13",
-          "section": {
-            "ar": "الـ OOP والـ Prototypes",
-            "en": "OOP & Prototypes"
-          },
+          "id": "js-l10",
           "title": {
             "ar": "يعني إيه Prototype و Prototypal Inheritance؟",
             "en": "What is the prototype and prototypal inheritance?"
@@ -5542,15 +5415,52 @@
               "If a property is not found, JS walks up the prototype chain.",
               "class is syntax on top of this system."
             ]
-          },
-          "code": "const animal = { eats: true };\nconst dog = Object.create(animal);\nconsole.log(dog.eats); // true (from the prototype)"
+          }
         },
         {
-          "id": "js-l14",
-          "section": {
-            "ar": "الـ JavaScript الـ Asynchronous",
-            "en": "Asynchronous JavaScript"
+          "id": "js-l11",
+          "title": {
+            "ar": "الفرق بين Shallow Copy و Deep Copy؟",
+            "en": "What is the difference between a shallow and a deep copy?"
           },
+          "short": {
+            "ar": "الـ Shallow بينسخ المستوى الأول بس، والـ Deep بينسخ كل حاجة.",
+            "en": "A shallow copy duplicates only the top level; a deep copy duplicates everything."
+          },
+          "points": {
+            "ar": [
+              "الـ Shallow (زي spread {...obj}) بينسخ المستوى الأول بس، والـ objects المتداخلة بتفضل مشتركة.",
+              "الـ Deep بينسخ كل حاجة، مثلًا بـ structuredClone()."
+            ],
+            "en": [
+              "A shallow copy (e.g. spread {...obj}) copies only the top level; nested objects remain shared.",
+              "A deep copy duplicates everything, e.g. with structuredClone()."
+            ]
+          }
+        },
+        {
+          "id": "js-l12",
+          "title": {
+            "ar": "يعني إيه Debounce و Throttle؟",
+            "en": "What is the difference between debounce and throttle?"
+          },
+          "short": {
+            "ar": "الـ Debounce بينفذ بعد ما الاستدعاء يقف فترة، والـ Throttle بينفذ مرة كل فترة ثابتة.",
+            "en": "Debounce runs after calls stop for a while; throttle runs at most once per interval."
+          },
+          "points": {
+            "ar": [
+              "الـ Debounce بينفذ الدالة بعد ما المستخدم يبطل يستدعيها فترة معينة (زي البحث).",
+              "الـ Throttle بينفذها مرة كل فترة ثابتة مهما اتكرر الاستدعاء (زي الـ scroll)."
+            ],
+            "en": [
+              "Debounce runs the function after the user stops triggering it for a set time (e.g. a search input).",
+              "Throttle runs it at most once per interval, however often it is triggered (e.g. scroll)."
+            ]
+          }
+        },
+        {
+          "id": "js-l13",
           "title": {
             "ar": "إيه الفرق بين Sync و Async؟",
             "en": "What is the difference between sync and async?"
@@ -5576,69 +5486,30 @@
           "code": "console.log(\"1\");\nsetTimeout(() => console.log(\"2\"), 0);\nconsole.log(\"3\");\n// Output: 1, 3, 2"
         },
         {
+          "id": "js-l14",
+          "title": {
+            "ar": "الفرق بين call و apply و bind؟",
+            "en": "What is the difference between call, apply and bind?"
+          },
+          "short": {
+            "ar": "التلاتة بيحددوا this يدويًا: call و apply بينفذوا فورًا، و bind بترجع دالة جديدة.",
+            "en": "All three set this explicitly: call and apply invoke immediately, bind returns a new function."
+          },
+          "points": {
+            "ar": [
+              "call بتنفذ الدالة فورًا والـ arguments مفصولة.",
+              "apply بتنفذ فورًا والـ arguments في array.",
+              "bind بترجع دالة جديدة this ثابتة فيها وبتتنفذ بعدين."
+            ],
+            "en": [
+              "call invokes immediately with arguments listed one by one.",
+              "apply invokes immediately with an array of arguments.",
+              "bind returns a new function with this fixed, to be called later."
+            ]
+          }
+        },
+        {
           "id": "js-l15",
-          "section": {
-            "ar": "الـ JavaScript الـ Asynchronous",
-            "en": "Asynchronous JavaScript"
-          },
-          "title": {
-            "ar": "إيه هو الـ Event Loop؟",
-            "en": "What is the Event Loop?"
-          },
-          "short": {
-            "ar": "الآلية اللي بتنقل الـ callbacks من الطوابير للـ Call Stack لما يفضى.",
-            "en": "The mechanism that moves callbacks from the queues to the Call Stack when it is empty."
-          },
-          "points": {
-            "ar": [
-              "الـ JS single-threaded، والـ Call Stack بينفذ الكود.",
-              "العمليات الـ async بتروح للـ Web APIs وبعدين لطوابير الانتظار.",
-              "الـ Event Loop بيشوف لو الـ Stack فاضي وينقل له الـ callbacks.",
-              "الـ Microtasks (Promises) ليها أولوية على الـ Macrotasks (setTimeout)."
-            ],
-            "en": [
-              "JS is single-threaded, and the Call Stack runs code.",
-              "Async work goes to the Web APIs and then to queues.",
-              "The Event Loop moves callbacks to the stack when it is empty.",
-              "Microtasks (Promises) run before macrotasks (setTimeout)."
-            ]
-          },
-          "code": "setTimeout(() => console.log(\"timeout\"), 0);\nPromise.resolve().then(() => console.log(\"promise\"));\n// promise, timeout"
-        },
-        {
-          "id": "js-l16",
-          "section": {
-            "ar": "الـ JavaScript الـ Asynchronous",
-            "en": "Asynchronous JavaScript"
-          },
-          "title": {
-            "ar": "الفرق بين Promise و async/await؟",
-            "en": "What is the difference between Promise and async/await?"
-          },
-          "short": {
-            "ar": "الـ async/await هي syntax أسهل فوق الـ Promises.",
-            "en": "async/await is syntactic sugar over Promises."
-          },
-          "points": {
-            "ar": [
-              "الـ async/await هي syntax أسهل فوق الـ Promises.",
-              "بتخلي الكود الـ async شكله متسلسل.",
-              "الأخطاء بتتمسك بـ try/catch."
-            ],
-            "en": [
-              "async/await is syntactic sugar over Promises.",
-              "It makes async code read sequentially.",
-              "Errors are handled with try/catch."
-            ]
-          },
-          "code": "// Promise\nfetch(url).then(r => r.json()).catch(console.error);\n\n// async/await\nasync function load() {\n  try {\n    const r = await fetch(url);\n    return await r.json();\n  } catch (err) {\n    console.error(err);\n  }\n}"
-        },
-        {
-          "id": "js-l17",
-          "section": {
-            "ar": "الـ JavaScript الـ Asynchronous",
-            "en": "Asynchronous JavaScript"
-          },
           "title": {
             "ar": "الفرق بين Promise.all و allSettled و race و any؟",
             "en": "What is the difference between Promise.all, allSettled, race and any?"
@@ -5660,15 +5531,10 @@
               "race settles with the first promise to finish, success or failure.",
               "any resolves with the first success and rejects only if all fail."
             ]
-          },
-          "code": "const results = await Promise.allSettled([p1, p2]);\n// [{ status: \"fulfilled\", value }, { status: \"rejected\", reason }]"
+          }
         },
         {
-          "id": "js-l18",
-          "section": {
-            "ar": "الـ DOM والمتصفح",
-            "en": "DOM & Browser"
-          },
+          "id": "js-l16",
           "title": {
             "ar": "يعني إيه Event Bubbling و Event Delegation؟",
             "en": "What are event bubbling and event delegation?"
@@ -5688,41 +5554,77 @@
               "Delegation uses that: attach one listener to a parent and check event.target.",
               "It also works for elements added later and saves memory."
             ]
-          },
-          "code": "list.addEventListener(\"click\", (e) => {\n  if (e.target.matches(\"li\")) {\n    console.log(e.target.textContent);\n  }\n});"
+          }
         },
         {
-          "id": "js-l19",
-          "section": {
-            "ar": "الـ DOM والمتصفح",
-            "en": "DOM & Browser"
-          },
+          "id": "js-l17",
           "title": {
-            "ar": "يعني إيه Debounce و Throttle؟",
-            "en": "What is the difference between debounce and throttle?"
+            "ar": "الفرق بين null و undefined؟",
+            "en": "What is the difference between null and undefined?"
           },
           "short": {
-            "ar": "الـ Debounce بينفذ بعد ما الاستدعاء يقف فترة، والـ Throttle بينفذ مرة كل فترة ثابتة.",
-            "en": "Debounce runs after calls stop for a while; throttle runs at most once per interval."
+            "ar": "undefined يعني المتغير اتعرف وماخدش قيمة، و null يعني \"مفيش قيمة\" إنت اللي حاطها قصدًا.",
+            "en": "undefined means declared but never assigned; null is an intentional \"no value\" you assign yourself."
           },
           "points": {
             "ar": [
-              "الـ Debounce بينفذ الدالة بعد ما المستخدم يبطل يستدعيها فترة معينة (زي البحث).",
-              "الـ Throttle بينفذها مرة كل فترة ثابتة مهما اتكرر الاستدعاء (زي الـ scroll)."
+              "undefined معناها إن المتغير اتعرف بس ماخدش قيمة.",
+              "null معناها \"مفيش قيمة\" وإنت اللي بتحطها قصدًا.",
+              "خد بالك إن typeof null بترجع \"object\" وده bug قديم في اللغة."
             ],
             "en": [
-              "Debounce runs the function after the user stops triggering it for a set time (e.g. a search input).",
-              "Throttle runs it at most once per interval, however often it is triggered (e.g. scroll)."
+              "undefined means a variable was declared but never assigned a value.",
+              "null is an intentional \"no value\" that you assign yourself.",
+              "Note that typeof null returns \"object\", a historical bug."
             ]
+          }
+        },
+        {
+          "id": "js-l18",
+          "title": {
+            "ar": "الفرق بين Primitive و Reference types؟",
+            "en": "What is the difference between primitive and reference types?"
           },
-          "code": "function debounce(fn, ms) {\n  let t;\n  return (...args) => {\n    clearTimeout(t);\n    t = setTimeout(() => fn(...args), ms);\n  };\n}"
+          "short": {
+            "ar": "الـ Primitives بتتنسخ بالقيمة، والـ objects والـ arrays والـ functions بتتنسخ بالـ reference.",
+            "en": "Primitives are copied by value; objects, arrays and functions are copied by reference."
+          },
+          "points": {
+            "ar": [
+              "الـ Primitives (string و number و boolean و null و undefined و symbol و bigint) بتتنسخ بالقيمة.",
+              "الـ objects والـ arrays والـ functions بتتنسخ بالـ reference.",
+              "يعني متغيرين ممكن يشاوروا على نفس الـ object وأي تعديل من واحد بيبان في التاني."
+            ],
+            "en": [
+              "Primitives (string, number, boolean, null, undefined, symbol, bigint) are copied by value.",
+              "Objects, arrays and functions are copied by reference.",
+              "So two variables can point to the same object, and a change through one shows in the other."
+            ]
+          }
+        },
+        {
+          "id": "js-l19",
+          "title": {
+            "ar": "الفرق بين Spread و Rest؟",
+            "en": "What is the difference between spread and rest?"
+          },
+          "short": {
+            "ar": "الاتنين بيستخدموا ... : الـ Spread بيفرد، والـ Rest بيجمع.",
+            "en": "Both use ... : spread expands, rest collects."
+          },
+          "points": {
+            "ar": [
+              "الـ Spread بيفرد array أو object لعناصره ([...a, ...b]).",
+              "الـ Rest بيجمع الباقي في array (function f(...args))."
+            ],
+            "en": [
+              "Spread expands an iterable or object into individual elements ([...a, ...b]).",
+              "Rest collects the remaining items into an array (function f(...args))."
+            ]
+          }
         },
         {
           "id": "js-l20",
-          "section": {
-            "ar": "مواضيع متقدمة",
-            "en": "Advanced Topics"
-          },
           "title": {
             "ar": "الفرق بين ES Modules و CommonJS؟",
             "en": "What is the difference between ES Modules and CommonJS?"
@@ -5742,15 +5644,10 @@
               "CommonJS uses require/module.exports, is dynamic and loads synchronously.",
               "CommonJS is the older Node.js style."
             ]
-          },
-          "code": "// ES Modules\nimport { sum } from \"./math.js\";\nexport const x = 1;\n\n// CommonJS\nconst { sum } = require(\"./math\");\nmodule.exports = { x: 1 };"
+          }
         },
         {
           "id": "js-l21",
-          "section": {
-            "ar": "مواضيع متقدمة",
-            "en": "Advanced Topics"
-          },
           "title": {
             "ar": "إيه هو الـ Memory Leak وإزاي بيحصل في JS؟",
             "en": "What is a memory leak and how does it happen in JS?"
@@ -5770,8 +5667,7 @@
               "Common causes: forgotten timers or event listeners, accidental globals, and closures holding large objects.",
               "Fix it by removing listeners and clearing timers when you no longer need them."
             ]
-          },
-          "code": "const id = setInterval(tick, 1000);\nwindow.addEventListener(\"resize\", onResize);\n\n// cleanup\nclearInterval(id);\nwindow.removeEventListener(\"resize\", onResize);"
+          }
         }
       ],
       "quiz": [
@@ -5838,96 +5734,6 @@
         {
           "id": "js-q03",
           "question": {
-            "ar": "ناتج 5 === \"5\" إيه؟",
-            "en": "What does 5 === \"5\" return?"
-          },
-          "options": [
-            {
-              "ar": "false",
-              "en": "false"
-            },
-            {
-              "ar": "true",
-              "en": "true"
-            },
-            {
-              "ar": "undefined",
-              "en": "undefined"
-            },
-            {
-              "ar": "TypeError",
-              "en": "TypeError"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "=== مبتعملش تحويل نوع، والنوعين مختلفين.",
-            "en": "=== does no coercion, and the types differ."
-          }
-        },
-        {
-          "id": "js-q04",
-          "question": {
-            "ar": "typeof null بترجع إيه؟",
-            "en": "What does typeof null return?"
-          },
-          "options": [
-            {
-              "ar": "\"object\"",
-              "en": "\"object\""
-            },
-            {
-              "ar": "\"null\"",
-              "en": "\"null\""
-            },
-            {
-              "ar": "\"undefined\"",
-              "en": "\"undefined\""
-            },
-            {
-              "ar": "\"number\"",
-              "en": "\"number\""
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "ده bug تاريخي في اللغة.",
-            "en": "It is a historical bug in the language."
-          }
-        },
-        {
-          "id": "js-q05",
-          "question": {
-            "ar": "لو const b = a و a عبارة عن object، وعدلت b.n، إيه اللي يحصل لـ a.n؟",
-            "en": "If const b = a where a is an object, and you change b.n, what happens to a.n?"
-          },
-          "options": [
-            {
-              "ar": "بيتغير هو كمان لأنهم بيشاوروا على نفس الـ object",
-              "en": "It changes too, because both point to the same object"
-            },
-            {
-              "ar": "مبيتغيرش لأن b نسخة منفصلة",
-              "en": "It stays the same, because b is a separate copy"
-            },
-            {
-              "ar": "بيحصل TypeError لأن b متعرفة بـ const",
-              "en": "A TypeError is thrown because b is a const"
-            },
-            {
-              "ar": "a.n بيبقى undefined",
-              "en": "a.n becomes undefined"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الـ objects بتتنسخ بالـ reference.",
-            "en": "Objects are copied by reference."
-          }
-        },
-        {
-          "id": "js-q06",
-          "question": {
             "ar": "إيه أشهر استخدام للـ Closure؟",
             "en": "What is a common use of closures?"
           },
@@ -5956,7 +5762,37 @@
           }
         },
         {
-          "id": "js-q07",
+          "id": "js-q04",
+          "question": {
+            "ar": "ناتج 5 === \"5\" إيه؟",
+            "en": "What does 5 === \"5\" return?"
+          },
+          "options": [
+            {
+              "ar": "false",
+              "en": "false"
+            },
+            {
+              "ar": "true",
+              "en": "true"
+            },
+            {
+              "ar": "undefined",
+              "en": "undefined"
+            },
+            {
+              "ar": "TypeError",
+              "en": "TypeError"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "=== مبتعملش تحويل نوع، والنوعين مختلفين.",
+            "en": "=== does no coercion, and the types differ."
+          }
+        },
+        {
+          "id": "js-q05",
           "question": {
             "ar": "قيمة this بتتحدد بإيه؟",
             "en": "What determines the value of this?"
@@ -5986,7 +5822,7 @@
           }
         },
         {
-          "id": "js-q08",
+          "id": "js-q06",
           "question": {
             "ar": "أنهي حاجة مينفعش تعملها بالـ arrow function؟",
             "en": "Which of these can you not do with an arrow function?"
@@ -6016,187 +5852,7 @@
           }
         },
         {
-          "id": "js-q09",
-          "question": {
-            "ar": "أنهي واحدة بترجع دالة جديدة بدل ما تنفذ فورًا؟",
-            "en": "Which one returns a new function instead of invoking immediately?"
-          },
-          "options": [
-            {
-              "ar": "bind",
-              "en": "bind"
-            },
-            {
-              "ar": "call",
-              "en": "call"
-            },
-            {
-              "ar": "apply",
-              "en": "apply"
-            },
-            {
-              "ar": "التلاتة بينفذوا فورًا",
-              "en": "All three invoke immediately"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "bind بترجع دالة this ثابتة فيها.",
-            "en": "bind returns a function with this fixed."
-          }
-        },
-        {
-          "id": "js-q10",
-          "question": {
-            "ar": "في function f(...args)، الـ ... اسمها إيه؟",
-            "en": "In function f(...args), what is the ... called?"
-          },
-          "options": [
-            {
-              "ar": "Rest، بتجمع الـ arguments في array",
-              "en": "Rest: it collects the arguments into an array"
-            },
-            {
-              "ar": "Spread، بتفرد الـ array",
-              "en": "Spread: it expands the array"
-            },
-            {
-              "ar": "Destructuring",
-              "en": "Destructuring"
-            },
-            {
-              "ar": "Optional chaining",
-              "en": "Optional chaining"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "في الـ parameters بتبقى Rest لأنها بتجمع الباقي.",
-            "en": "In parameters it is rest, because it gathers the remaining items."
-          }
-        },
-        {
-          "id": "js-q11",
-          "question": {
-            "ar": "أنهي method مبترجعش أي قيمة؟",
-            "en": "Which method returns nothing?"
-          },
-          "options": [
-            {
-              "ar": "forEach",
-              "en": "forEach"
-            },
-            {
-              "ar": "map",
-              "en": "map"
-            },
-            {
-              "ar": "filter",
-              "en": "filter"
-            },
-            {
-              "ar": "reduce",
-              "en": "reduce"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "forEach بترجع undefined.",
-            "en": "forEach returns undefined."
-          }
-        },
-        {
-          "id": "js-q12",
-          "question": {
-            "ar": "أنهي طريقة بتعمل Deep Copy؟",
-            "en": "Which of these makes a deep copy?"
-          },
-          "options": [
-            {
-              "ar": "structuredClone(obj)",
-              "en": "structuredClone(obj)"
-            },
-            {
-              "ar": "{...obj}",
-              "en": "{...obj}"
-            },
-            {
-              "ar": "Object.assign({}, obj)",
-              "en": "Object.assign({}, obj)"
-            },
-            {
-              "ar": "const copy = obj",
-              "en": "const copy = obj"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الـ spread و Object.assign بيعملوا shallow copy بس.",
-            "en": "Spread and Object.assign only make shallow copies."
-          }
-        },
-        {
-          "id": "js-q13",
-          "question": {
-            "ar": "لو property مش موجودة في الـ object، الـ JS بتعمل إيه؟",
-            "en": "If a property is not found on an object, what does JS do?"
-          },
-          "options": [
-            {
-              "ar": "بتدور عليها في الـ prototype chain",
-              "en": "It looks it up the prototype chain"
-            },
-            {
-              "ar": "بترمي error على طول",
-              "en": "It throws an error immediately"
-            },
-            {
-              "ar": "بتعملها بقيمة null",
-              "en": "It creates it with the value null"
-            },
-            {
-              "ar": "بتدور عليها في الـ global scope",
-              "en": "It looks it up in the global scope"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "لو وصلت لآخر السلسلة من غير ما تلاقيها بترجع undefined.",
-            "en": "If it reaches the end of the chain without finding it, it returns undefined."
-          }
-        },
-        {
-          "id": "js-q14",
-          "question": {
-            "ar": "إيه ناتج: console.log(\"1\"); setTimeout(() => console.log(\"2\"), 0); console.log(\"3\");",
-            "en": "What is the output of: console.log(\"1\"); setTimeout(() => console.log(\"2\"), 0); console.log(\"3\");"
-          },
-          "options": [
-            {
-              "ar": "1, 3, 2",
-              "en": "1, 3, 2"
-            },
-            {
-              "ar": "1, 2, 3",
-              "en": "1, 2, 3"
-            },
-            {
-              "ar": "2, 1, 3",
-              "en": "2, 1, 3"
-            },
-            {
-              "ar": "3, 2, 1",
-              "en": "3, 2, 1"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الـ setTimeout بيتنفذ بعد ما الكود الـ sync يخلص حتى لو الوقت 0.",
-            "en": "setTimeout runs after the sync code finishes, even with a delay of 0."
-          }
-        },
-        {
-          "id": "js-q15",
+          "id": "js-q07",
           "question": {
             "ar": "مين بيتنفذ الأول: Promise.then ولا setTimeout(..., 0)؟",
             "en": "Which runs first: Promise.then or setTimeout(..., 0)?"
@@ -6226,7 +5882,7 @@
           }
         },
         {
-          "id": "js-q16",
+          "id": "js-q08",
           "question": {
             "ar": "إزاي بتمسك الأخطاء مع async/await؟",
             "en": "How do you handle errors with async/await?"
@@ -6256,7 +5912,187 @@
           }
         },
         {
-          "id": "js-q17",
+          "id": "js-q09",
+          "question": {
+            "ar": "أنهي method مبترجعش أي قيمة؟",
+            "en": "Which method returns nothing?"
+          },
+          "options": [
+            {
+              "ar": "forEach",
+              "en": "forEach"
+            },
+            {
+              "ar": "map",
+              "en": "map"
+            },
+            {
+              "ar": "filter",
+              "en": "filter"
+            },
+            {
+              "ar": "reduce",
+              "en": "reduce"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "forEach بترجع undefined.",
+            "en": "forEach returns undefined."
+          }
+        },
+        {
+          "id": "js-q10",
+          "question": {
+            "ar": "لو property مش موجودة في الـ object، الـ JS بتعمل إيه؟",
+            "en": "If a property is not found on an object, what does JS do?"
+          },
+          "options": [
+            {
+              "ar": "بتدور عليها في الـ prototype chain",
+              "en": "It looks it up the prototype chain"
+            },
+            {
+              "ar": "بترمي error على طول",
+              "en": "It throws an error immediately"
+            },
+            {
+              "ar": "بتعملها بقيمة null",
+              "en": "It creates it with the value null"
+            },
+            {
+              "ar": "بتدور عليها في الـ global scope",
+              "en": "It looks it up in the global scope"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "لو وصلت لآخر السلسلة من غير ما تلاقيها بترجع undefined.",
+            "en": "If it reaches the end of the chain without finding it, it returns undefined."
+          }
+        },
+        {
+          "id": "js-q11",
+          "question": {
+            "ar": "أنهي طريقة بتعمل Deep Copy؟",
+            "en": "Which of these makes a deep copy?"
+          },
+          "options": [
+            {
+              "ar": "structuredClone(obj)",
+              "en": "structuredClone(obj)"
+            },
+            {
+              "ar": "{...obj}",
+              "en": "{...obj}"
+            },
+            {
+              "ar": "Object.assign({}, obj)",
+              "en": "Object.assign({}, obj)"
+            },
+            {
+              "ar": "const copy = obj",
+              "en": "const copy = obj"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ spread و Object.assign بيعملوا shallow copy بس.",
+            "en": "Spread and Object.assign only make shallow copies."
+          }
+        },
+        {
+          "id": "js-q12",
+          "question": {
+            "ar": "أنسب حاجة لخانة بحث بتبعت request مع كل حرف؟",
+            "en": "What fits best for a search input that sends a request on every keystroke?"
+          },
+          "options": [
+            {
+              "ar": "Debounce",
+              "en": "Debounce"
+            },
+            {
+              "ar": "Throttle",
+              "en": "Throttle"
+            },
+            {
+              "ar": "setInterval",
+              "en": "setInterval"
+            },
+            {
+              "ar": "Promise.race",
+              "en": "Promise.race"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "Debounce بيستنى المستخدم يبطل كتابة وبعدين يبعت.",
+            "en": "Debounce waits until the user stops typing, then sends."
+          }
+        },
+        {
+          "id": "js-q13",
+          "question": {
+            "ar": "إيه ناتج: console.log(\"1\"); setTimeout(() => console.log(\"2\"), 0); console.log(\"3\");",
+            "en": "What is the output of: console.log(\"1\"); setTimeout(() => console.log(\"2\"), 0); console.log(\"3\");"
+          },
+          "options": [
+            {
+              "ar": "1, 3, 2",
+              "en": "1, 3, 2"
+            },
+            {
+              "ar": "1, 2, 3",
+              "en": "1, 2, 3"
+            },
+            {
+              "ar": "2, 1, 3",
+              "en": "2, 1, 3"
+            },
+            {
+              "ar": "3, 2, 1",
+              "en": "3, 2, 1"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ setTimeout بيتنفذ بعد ما الكود الـ sync يخلص حتى لو الوقت 0.",
+            "en": "setTimeout runs after the sync code finishes, even with a delay of 0."
+          }
+        },
+        {
+          "id": "js-q14",
+          "question": {
+            "ar": "أنهي واحدة بترجع دالة جديدة بدل ما تنفذ فورًا؟",
+            "en": "Which one returns a new function instead of invoking immediately?"
+          },
+          "options": [
+            {
+              "ar": "bind",
+              "en": "bind"
+            },
+            {
+              "ar": "call",
+              "en": "call"
+            },
+            {
+              "ar": "apply",
+              "en": "apply"
+            },
+            {
+              "ar": "التلاتة بينفذوا فورًا",
+              "en": "All three invoke immediately"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "bind بترجع دالة this ثابتة فيها.",
+            "en": "bind returns a function with this fixed."
+          }
+        },
+        {
+          "id": "js-q15",
           "question": {
             "ar": "أنهي واحدة بتستنى كل الـ promises وترجع نتيجة كل واحد حتى لو فيه فشل؟",
             "en": "Which one waits for all promises and reports each result, even if some fail?"
@@ -6286,7 +6122,7 @@
           }
         },
         {
-          "id": "js-q18",
+          "id": "js-q16",
           "question": {
             "ar": "ميزة الـ Event Delegation إيه؟",
             "en": "What is an advantage of event delegation?"
@@ -6316,33 +6152,93 @@
           }
         },
         {
-          "id": "js-q19",
+          "id": "js-q17",
           "question": {
-            "ar": "أنسب حاجة لخانة بحث بتبعت request مع كل حرف؟",
-            "en": "What fits best for a search input that sends a request on every keystroke?"
+            "ar": "typeof null بترجع إيه؟",
+            "en": "What does typeof null return?"
           },
           "options": [
             {
-              "ar": "Debounce",
-              "en": "Debounce"
+              "ar": "\"object\"",
+              "en": "\"object\""
             },
             {
-              "ar": "Throttle",
-              "en": "Throttle"
+              "ar": "\"null\"",
+              "en": "\"null\""
             },
             {
-              "ar": "setInterval",
-              "en": "setInterval"
+              "ar": "\"undefined\"",
+              "en": "\"undefined\""
             },
             {
-              "ar": "Promise.race",
-              "en": "Promise.race"
+              "ar": "\"number\"",
+              "en": "\"number\""
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "Debounce بيستنى المستخدم يبطل كتابة وبعدين يبعت.",
-            "en": "Debounce waits until the user stops typing, then sends."
+            "ar": "ده bug تاريخي في اللغة.",
+            "en": "It is a historical bug in the language."
+          }
+        },
+        {
+          "id": "js-q18",
+          "question": {
+            "ar": "لو const b = a و a عبارة عن object، وعدلت b.n، إيه اللي يحصل لـ a.n؟",
+            "en": "If const b = a where a is an object, and you change b.n, what happens to a.n?"
+          },
+          "options": [
+            {
+              "ar": "بيتغير هو كمان لأنهم بيشاوروا على نفس الـ object",
+              "en": "It changes too, because both point to the same object"
+            },
+            {
+              "ar": "مبيتغيرش لأن b نسخة منفصلة",
+              "en": "It stays the same, because b is a separate copy"
+            },
+            {
+              "ar": "بيحصل TypeError لأن b متعرفة بـ const",
+              "en": "A TypeError is thrown because b is a const"
+            },
+            {
+              "ar": "a.n بيبقى undefined",
+              "en": "a.n becomes undefined"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "الـ objects بتتنسخ بالـ reference.",
+            "en": "Objects are copied by reference."
+          }
+        },
+        {
+          "id": "js-q19",
+          "question": {
+            "ar": "في function f(...args)، الـ ... اسمها إيه؟",
+            "en": "In function f(...args), what is the ... called?"
+          },
+          "options": [
+            {
+              "ar": "Rest، بتجمع الـ arguments في array",
+              "en": "Rest: it collects the arguments into an array"
+            },
+            {
+              "ar": "Spread، بتفرد الـ array",
+              "en": "Spread: it expands the array"
+            },
+            {
+              "ar": "Destructuring",
+              "en": "Destructuring"
+            },
+            {
+              "ar": "Optional chaining",
+              "en": "Optional chaining"
+            }
+          ],
+          "answer": 0,
+          "explanation": {
+            "ar": "في الـ parameters بتبقى Rest لأنها بتجمع الباقي.",
+            "en": "In parameters it is rest, because it gathers the remaining items."
           }
         },
         {
