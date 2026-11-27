@@ -5184,34 +5184,6 @@
       },
       "lessons": [
         {
-          "id": "js-l51",
-          "section": {
-            "ar": "الأساسيات",
-            "en": "Basics"
-          },
-          "title": {
-            "ar": "إيه هي JavaScript؟",
-            "en": "What is JavaScript?"
-          },
-          "short": {
-            "ar": "لغة برمجة high-level و dynamic لعمل صفحات وتطبيقات تفاعلية.",
-            "en": "A high-level, dynamic language for building interactive pages and applications."
-          },
-          "points": {
-            "ar": [
-              "بتتحكم في الصفحة (DOM)، وبترد على أفعال المستخدم (events)، وبتكلم السيرفر (fetch).",
-              "مش للفرونت بس: بتشتغل في المتصفح، وعلى السيرفر بـ Node.js و Deno و Bun، وفي الموبايل بـ React Native، والديسكتوب بـ Electron.",
-              "single-threaded وبتعتمد على الـ event loop في الشغل الـ async."
-            ],
-            "en": [
-              "It controls the page (DOM), responds to user actions (events) and talks to servers (fetch).",
-              "It is not front-end only: it runs in browsers, on servers with Node.js, Deno and Bun, on mobile with React Native, and on desktop with Electron.",
-              "It is single-threaded and relies on the event loop for async work."
-            ]
-          },
-          "code": "console.log(\"Hello World\");"
-        },
-        {
           "id": "js-l01",
           "section": {
             "ar": "الأساسيات",
@@ -5222,21 +5194,19 @@
             "en": "What is the difference between var, let and const?"
           },
           "short": {
-            "ar": "var نطاقها الدالة، و let و const نطاقهم البلوك، و const مينفعش يتعمل لها إعادة تعيين.",
-            "en": "var is function-scoped; let and const are block-scoped, and const cannot be reassigned."
+            "ar": "var نطاقها الدالة وبيتعمل لها hoisting وينفع تتعرف تاني. let و const نطاقهم الـ block.",
+            "en": "var is function-scoped, hoisted and re-declarable. let and const are block-scoped."
           },
           "points": {
             "ar": [
-              "var بيحصل لها hoisting بقيمة undefined وينفع تتعرف أكتر من مرة.",
-              "let و const بيحصل لهم hoisting بس مينفعش تستخدمهم قبل سطر التعريف (TDZ).",
-              "const بتمنع تغيير المرجع، لكن محتوى الـ object ممكن يتعدل.",
-              "أفضل ممارسة: const افتراضيًا، و let لو هتعيد التعيين، ومتستخدمش var. ولو عايز تمنع تعديل الـ object استخدم Object.freeze()."
+              "var نطاقها الدالة وبيتعمل لها hoisting وتقدر تعيد تعريفها.",
+              "let و const نطاقهم الـ block.",
+              "الـ const مينفعش تعيد إسناد قيمتها، لكن لو object تقدر تعدّل جواه."
             ],
             "en": [
-              "var is hoisted with the value undefined and can be redeclared.",
-              "let and const are hoisted too, but cannot be used before their declaration line (TDZ).",
-              "const prevents reassigning the reference, but an object's contents can still change.",
-              "Best practice: const by default, let when you must reassign, and never var. To stop an object from changing, use Object.freeze()."
+              "var is function-scoped, hoisted and can be re-declared.",
+              "let and const are block-scoped.",
+              "const cannot be reassigned, but if it holds an object you can still mutate its contents."
             ]
           },
           "code": "const user = { name: \"Ali\" };\nuser.name = \"Omar\"; // works\nuser = {};          // TypeError"
@@ -5248,24 +5218,26 @@
             "en": "Basics"
           },
           "title": {
-            "ar": "إيه أنواع البيانات في JavaScript؟",
-            "en": "What are the data types in JavaScript?"
+            "ar": "يعني إيه Hoisting؟",
+            "en": "What is hoisting?"
           },
           "short": {
-            "ar": "7 أنواع Primitive، وكمان Object.",
-            "en": "7 primitive types, plus Object."
+            "ar": "الـ JS بترفع التعريفات لأول النطاق قبل التنفيذ.",
+            "en": "JS moves declarations to the top of their scope before execution."
           },
           "points": {
             "ar": [
-              "الـ Primitives هي string و number و bigint و boolean و undefined و null و symbol.",
-              "أي حاجة تانية تعتبر object، زي الـ arrays والـ functions والـ dates."
+              "الـ JS بترفع التعريفات لأول النطاق قبل التنفيذ.",
+              "var بتتعرف بقيمة undefined.",
+              "let و const بتفضل في الـ Temporal Dead Zone لحد سطر التعريف."
             ],
             "en": [
-              "The primitives are string, number, bigint, boolean, undefined, null and symbol.",
-              "Everything else is an object, including arrays, functions and dates."
+              "JS moves declarations to the top of their scope before execution.",
+              "var is initialized as undefined.",
+              "let and const stay in the Temporal Dead Zone until their declaration line."
             ]
           },
-          "code": ""
+          "code": "console.log(a); // undefined\nvar a = 1;\n\nconsole.log(b); // ReferenceError (TDZ)\nlet b = 2;"
         },
         {
           "id": "js-l03",
@@ -5274,24 +5246,26 @@
             "en": "Basics"
           },
           "title": {
-            "ar": "إيه الفرق بين Primitive و Reference types؟",
-            "en": "What is the difference between primitive and reference types?"
+            "ar": "الفرق بين == و ===؟",
+            "en": "What is the difference between == and ===?"
           },
           "short": {
-            "ar": "الـ Primitive بيتنسخ بالقيمة، والـ Object بيتنسخ بالمرجع.",
-            "en": "Primitives are copied by value; objects are copied by reference."
+            "ar": "== بتقارن بعد تحويل النوع، و === بتقارن القيمة والنوع من غير تحويل.",
+            "en": "== compares after type coercion; === compares value and type with no coercion."
           },
           "points": {
             "ar": [
-              "الـ Primitives غير قابلة للتعديل (immutable)، ولما تنسخها بتاخد قيمة مستقلة.",
-              "في الـ objects المتغير بيشيل مرجع، فلو متغيرين بيشاوروا على نفس الـ object، التعديل من أي واحد يظهر في التاني."
+              "== بتقارن القيمة بعد تحويل النوع (type coercion).",
+              "=== بتقارن القيمة والنوع من غير تحويل.",
+              "=== هي الأفضل دايمًا."
             ],
             "en": [
-              "Primitives are immutable, and copying one gives an independent value.",
-              "An object variable holds a reference, so if two variables point to the same object, a change through either one shows in both."
+              "== compares values after type coercion.",
+              "=== compares value and type with no coercion.",
+              "Prefer === in practice."
             ]
           },
-          "code": "let a = 1, b = a; b = 2;           // a = 1\nconst x = { n: 1 }, y = x; y.n = 2; // x.n = 2"
+          "code": "5 == \"5\";  // true\n5 === \"5\"; // false"
         },
         {
           "id": "js-l04",
@@ -5300,26 +5274,26 @@
             "en": "Basics"
           },
           "title": {
-            "ar": "إيه الفرق بين == و ===؟",
-            "en": "What is the difference between == and ===?"
+            "ar": "الفرق بين null و undefined؟",
+            "en": "What is the difference between null and undefined?"
           },
           "short": {
-            "ar": "== بتحول الأنواع قبل المقارنة، و === لأ.",
-            "en": "== converts types before comparing; === does not."
+            "ar": "undefined يعني المتغير اتعرف وماخدش قيمة، و null يعني \"مفيش قيمة\" إنت اللي حاطها قصدًا.",
+            "en": "undefined means declared but never assigned; null is an intentional \"no value\" you assign yourself."
           },
           "points": {
             "ar": [
-              "=== بترجع true بس لو النوع والقيمة متطابقين (وفي الـ objects لازم نفس المرجع).",
-              "== بتعمل Type Coercion وده ممكن يدي نتايج غريبة، فالأفضل تستخدم ===.",
-              "NaN مش بيساوي أي حاجة حتى نفسه، فاستخدم Number.isNaN() للتأكد."
+              "undefined معناها إن المتغير اتعرف بس ماخدش قيمة.",
+              "null معناها \"مفيش قيمة\" وإنت اللي بتحطها قصدًا.",
+              "خد بالك إن typeof null بترجع \"object\" وده bug قديم في اللغة."
             ],
             "en": [
-              "=== is true only when type and value match (for objects, it must be the same reference).",
-              "== performs type coercion, which can give surprising results, so prefer ===.",
-              "NaN is not equal to anything, not even itself, so check it with Number.isNaN()."
+              "undefined means a variable was declared but never assigned a value.",
+              "null is an intentional \"no value\" that you assign yourself.",
+              "Note that typeof null returns \"object\", a historical bug."
             ]
           },
-          "code": "0 == \"\";  // true\n0 === \"\"; // false\n\nNaN === NaN;        // false\nNumber.isNaN(NaN);  // true"
+          "code": "let a;\nconsole.log(a);        // undefined\nlet b = null;\nconsole.log(typeof b); // \"object\""
         },
         {
           "id": "js-l05",
@@ -5328,271 +5302,31 @@
             "en": "Basics"
           },
           "title": {
-            "ar": "إيه الفرق بين null و undefined؟",
-            "en": "What is the difference between null and undefined?"
+            "ar": "الفرق بين Primitive و Reference types؟",
+            "en": "What is the difference between primitive and reference types?"
           },
           "short": {
-            "ar": "undefined يعني مفيش قيمة اتحطت، و null يعني فاضي بقصد.",
-            "en": "undefined means no value was assigned; null means intentionally empty."
+            "ar": "الـ Primitives بتتنسخ بالقيمة، والـ objects والـ arrays والـ functions بتتنسخ بالـ reference.",
+            "en": "Primitives are copied by value; objects, arrays and functions are copied by reference."
           },
           "points": {
             "ar": [
-              "undefined بتظهر تلقائيًا في متغير من غير قيمة، أو property مش موجودة، أو دالة مش بترجع حاجة.",
-              "null المبرمج هو اللي بيحطها.",
-              "null == undefined بترجع true، لكن === بترجع false.",
-              "الـ default parameter بيشتغل مع undefined بس، مش مع null. و ??= بتعين قيمة لو المتغير null أو undefined."
+              "الـ Primitives (string و number و boolean و null و undefined و symbol و bigint) بتتنسخ بالقيمة.",
+              "الـ objects والـ arrays والـ functions بتتنسخ بالـ reference.",
+              "يعني متغيرين ممكن يشاوروا على نفس الـ object وأي تعديل من واحد بيبان في التاني."
             ],
             "en": [
-              "undefined appears automatically for an unassigned variable, a missing property, or a function that returns nothing.",
-              "null is set deliberately by the programmer.",
-              "null == undefined is true, but === is false.",
-              "A default parameter kicks in only for undefined, not null. ??= assigns a value only when the variable is null or undefined."
+              "Primitives (string, number, boolean, null, undefined, symbol, bigint) are copied by value.",
+              "Objects, arrays and functions are copied by reference.",
+              "So two variables can point to the same object, and a change through one shows in the other."
             ]
           },
-          "code": "function greet(name = \"Guest\") { return name; }\ngreet(undefined); // \"Guest\"\ngreet(null);      // null\n\nuser.name ??= \"Guest\";"
+          "code": "const a = { n: 1 };\nconst b = a;\nb.n = 2;\nconsole.log(a.n); // 2"
         },
         {
           "id": "js-l06",
           "section": {
-            "ar": "الأساسيات",
-            "en": "Basics"
-          },
-          "title": {
-            "ar": "يعني إيه Type Coercion؟",
-            "en": "What is type coercion?"
-          },
-          "short": {
-            "ar": "تحويل القيمة من نوع لنوع.",
-            "en": "Converting a value from one type to another."
-          },
-          "points": {
-            "ar": [
-              "منه Implicit بتعمله اللغة لوحدها، و Explicit بتعمله بإيدك زي Number() و String().",
-              "علامة + مع string بتعمل دمج، أما - و * فبيحولوا لأرقام."
-            ],
-            "en": [
-              "Implicit coercion is done by the language; explicit coercion is done by you, for example Number() and String().",
-              "+ with a string concatenates, while - and * convert to numbers."
-            ]
-          },
-          "code": "\"5\" + 1; // \"51\"\n\"5\" - 1; // 4"
-        },
-        {
-          "id": "js-l07",
-          "section": {
-            "ar": "الأساسيات",
-            "en": "Basics"
-          },
-          "title": {
-            "ar": "إيه هي القيم الـ Falsy؟",
-            "en": "What are the falsy values?"
-          },
-          "short": {
-            "ar": "false, 0, -0, 0n, \"\", null, undefined, NaN.",
-            "en": "false, 0, -0, 0n, \"\", null, undefined, NaN."
-          },
-          "points": {
-            "ar": [
-              "دي القيم اللي بتتحول لـ false في الشروط.",
-              "أي حاجة تانية Truthy، حتى [] و {} و \"0\" و \"false\".",
-              "وفي المتصفح فيه استثناء قديم هو document.all."
-            ],
-            "en": [
-              "These values become false in conditions.",
-              "Everything else is truthy, even [], {}, \"0\" and \"false\".",
-              "Browsers also have one legacy exception: document.all."
-            ]
-          },
-          "code": ""
-        },
-        {
-          "id": "js-l08",
-          "section": {
-            "ar": "الأساسيات",
-            "en": "Basics"
-          },
-          "title": {
-            "ar": "ليه typeof null بترجع \"object\"؟",
-            "en": "Why does typeof null return \"object\"?"
-          },
-          "short": {
-            "ar": "ده bug قديم من أول إصدار.",
-            "en": "It is an old bug from the very first version."
-          },
-          "points": {
-            "ar": [
-              "في التنفيذ الأول كانت القيم بتتخزن بعلامة للنوع، و null كانت علامتها زي علامة الـ object.",
-              "متصلحش عشان ميكسرش مواقع قديمة. للتأكد استخدم value === null."
-            ],
-            "en": [
-              "The first implementation stored values with a type tag, and null had the same tag as objects.",
-              "It was never fixed so old sites would not break. To check for null, use value === null."
-            ]
-          },
-          "code": ""
-        },
-        {
-          "id": "js-l09",
-          "section": {
-            "ar": "الأساسيات",
-            "en": "Basics"
-          },
-          "title": {
-            "ar": "إيه الفرق بين || و ??؟",
-            "en": "What is the difference between || and ??"
-          },
-          "short": {
-            "ar": "|| بتبص على أي قيمة Falsy، و ?? على null و undefined بس.",
-            "en": "|| falls back on any falsy value; ?? only on null and undefined."
-          },
-          "points": {
-            "ar": [
-              "?? مفيدة لما 0 أو \"\" تكون قيم صحيحة ومش عايز تستبدلها."
-            ],
-            "en": [
-              "?? is useful when 0 or \"\" are valid values you do not want to replace."
-            ]
-          },
-          "code": "0 || 10; // 10\n0 ?? 10; // 0"
-        },
-        {
-          "id": "js-l10",
-          "section": {
-            "ar": "الأساسيات",
-            "en": "Basics"
-          },
-          "title": {
-            "ar": "إيه هو الـ Optional Chaining (?.)؟",
-            "en": "What is optional chaining (?.)?"
-          },
-          "short": {
-            "ar": "وصول آمن للـ properties من غير Error.",
-            "en": "Safe property access without errors."
-          },
-          "points": {
-            "ar": [
-              "لو اللي قبل ?. كان null أو undefined، التعبير بيرجع undefined بدل TypeError.",
-              "وبيشتغل مع الدوال والـ arrays كمان."
-            ],
-            "en": [
-              "If the value before ?. is null or undefined, the expression returns undefined instead of throwing a TypeError.",
-              "It also works with function calls and array access."
-            ]
-          },
-          "code": "user?.address?.city;\nuser.save?.();\nlist?.[0];"
-        },
-        {
-          "id": "js-l52",
-          "section": {
-            "ar": "الأساسيات",
-            "en": "Basics"
-          },
-          "title": {
-            "ar": "إيه هي الـ Template Literals؟",
-            "en": "What are template literals?"
-          },
-          "short": {
-            "ar": "نصوص بين backticks بتدعم ${} والأسطر المتعددة.",
-            "en": "Strings in backticks that support ${} interpolation and multiple lines."
-          },
-          "points": {
-            "ar": [
-              "أي expression ينفع جوه ${} زي العمليات والـ ternary.",
-              "بتكتب نص على كذا سطر من غير \\n.",
-              "الـ Tagged Templates بتعدي النص على دالة قبل ما يتكون، زي مكتبات الـ styling والـ SQL."
-            ],
-            "en": [
-              "Any expression works inside ${}, including arithmetic and ternaries.",
-              "You can write multi-line strings without \\n.",
-              "Tagged templates pass the string through a function first, as styling and SQL libraries do."
-            ]
-          },
-          "code": "const name = \"Alex\";\nconst msg = `Hello, ${name}. Next year you will be ${age + 1}`;\n\nconst html = `\n  <div>\n    <h1>${title}</h1>\n  </div>\n`;\n\nfunction tag(strings, ...values) { /* ... */ }\ntag`Hi ${name}`;"
-        },
-        {
-          "id": "js-l11",
-          "section": {
-            "ar": "Scope و Functions",
-            "en": "Scope & Functions"
-          },
-          "title": {
-            "ar": "يعني إيه Hoisting؟",
-            "en": "What is hoisting?"
-          },
-          "short": {
-            "ar": "التعريفات بتتسجل في أول الـ scope قبل تنفيذ الكود.",
-            "en": "Declarations are registered at the top of their scope before the code runs."
-          },
-          "points": {
-            "ar": [
-              "الـ Function Declarations بتترفع كاملة فتقدر تناديها قبل تعريفها.",
-              "var بتترفع بقيمة undefined.",
-              "let و const و class بيترفعوا من غير تهيئة، فاستخدامهم بدري بيرمي ReferenceError."
-            ],
-            "en": [
-              "Function declarations are hoisted completely, so you can call them before they are defined.",
-              "var is hoisted with the value undefined.",
-              "let, const and class are hoisted without initialisation, so using them early throws a ReferenceError."
-            ]
-          },
-          "code": "console.log(a); // undefined\nvar a = 5;"
-        },
-        {
-          "id": "js-l12",
-          "section": {
-            "ar": "Scope و Functions",
-            "en": "Scope & Functions"
-          },
-          "title": {
-            "ar": "إيه هي الـ Temporal Dead Zone؟",
-            "en": "What is the Temporal Dead Zone?"
-          },
-          "short": {
-            "ar": "الفترة من بداية البلوك لحد سطر تعريف let أو const.",
-            "en": "The period from the start of the block until the let or const declaration line."
-          },
-          "points": {
-            "ar": [
-              "المتغير موجود في الـ scope بس مينفعش تقراه أو تكتب فيه.",
-              "الهدف إنك تكتشف الأخطاء بدري."
-            ],
-            "en": [
-              "The variable exists in the scope but cannot be read or written.",
-              "The goal is to catch mistakes early."
-            ]
-          },
-          "code": "console.log(x); // ReferenceError\nlet x = 1;"
-        },
-        {
-          "id": "js-l13",
-          "section": {
-            "ar": "Scope و Functions",
-            "en": "Scope & Functions"
-          },
-          "title": {
-            "ar": "إيه أنواع الـ Scope؟ وإيه هو الـ Scope Chain؟",
-            "en": "What are the types of scope, and what is the scope chain?"
-          },
-          "short": {
-            "ar": "Global و Module و Function و Block، والـ Chain هي البحث من الداخل للخارج.",
-            "en": "Global, Module, Function and Block; the chain is the lookup from the inside out."
-          },
-          "points": {
-            "ar": [
-              "لما تستخدم متغير، المحرك بيدور في الـ scope الحالي، ولو ملقاهوش يطلع للي بره لحد الـ global.",
-              "ده Lexical Scoping، يعني بيتحدد حسب مكان كتابة الكود مش مكان استدعائه."
-            ],
-            "en": [
-              "When you use a variable, the engine looks in the current scope, then moves outward until it reaches the global scope.",
-              "This is lexical scoping: it depends on where the code is written, not where it is called."
-            ]
-          },
-          "code": ""
-        },
-        {
-          "id": "js-l14",
-          "section": {
-            "ar": "Scope و Functions",
+            "ar": "النطاق والدوال",
             "en": "Scope & Functions"
           },
           "title": {
@@ -5600,239 +5334,137 @@
             "en": "What is a closure?"
           },
           "short": {
-            "ar": "دالة فاكرة متغيرات الـ scope اللي اتعرفت فيه حتى بعد ما يخلص.",
-            "en": "A function that remembers the variables of the scope it was defined in, even after that scope has finished."
+            "ar": "دالة بتفتكر متغيرات النطاق الخارجي حتى بعد ما الدالة الأم تخلص.",
+            "en": "A function that remembers the variables of its outer scope even after the outer function has finished."
           },
           "points": {
             "ar": [
-              "بنستخدمه لإخفاء البيانات، وعمل factory functions، وفي الـ callbacks والـ debounce.",
-              "فخ مشهور: var جوه loop مع setTimeout بيطبع آخر قيمة بس، والحل let أو IIFE."
+              "الدالة الداخلية بتفتكر متغيرات الدالة اللي اتعرفت جواها حتى بعد ما الدالة الأم تخلص.",
+              "بنستخدمها في الـ private data وفي الـ factories."
             ],
             "en": [
-              "Used for data privacy, factory functions, callbacks and debounce.",
-              "A classic trap: var inside a loop with setTimeout prints only the final value; fix it with let or an IIFE."
+              "An inner function keeps access to the variables of the function it was defined in, even after that outer function returns.",
+              "Used for private state and factories."
             ]
           },
-          "code": "function counter() {\n  let count = 0;\n  return () => ++count;\n}\nconst c = counter();\nc(); // 1\nc(); // 2\n\nfor (var i = 0; i < 3; i++) setTimeout(() => console.log(i)); // 3 3 3\nfor (let i = 0; i < 3; i++) setTimeout(() => console.log(i)); // 0 1 2"
+          "code": "function counter() {\n  let count = 0;\n  return () => ++count;\n}\nconst next = counter();\nnext(); // 1\nnext(); // 2"
         },
         {
-          "id": "js-l15",
+          "id": "js-l07",
           "section": {
-            "ar": "Scope و Functions",
+            "ar": "النطاق والدوال",
             "en": "Scope & Functions"
           },
           "title": {
-            "ar": "إيه الفرق بين Function Declaration و Function Expression؟",
-            "en": "What is the difference between a function declaration and a function expression?"
+            "ar": "قيمة this بتتحدد إزاي؟",
+            "en": "How is this determined?"
           },
           "short": {
-            "ar": "الـ Declaration ينفع تناديها قبل تعريفها، والـ Expression لأ.",
-            "en": "A declaration can be called before it is defined; an expression cannot."
+            "ar": "بطريقة الاستدعاء مش مكان التعريف.",
+            "en": "By how a function is called, not where it is defined."
           },
           "points": {
             "ar": [
-              "الـ Expression هي دالة متخزنة في متغير أو متمررة كقيمة، وبتتبع قواعد المتغير في الـ hoisting."
+              "في الـ method بتبقى الـ object.",
+              "في دالة عادية بتبقى undefined (strict) أو window.",
+              "الـ arrow function بتورث this من النطاق اللي حواليها.",
+              "وتقدر تتحكم فيها بـ call و apply و bind."
             ],
             "en": [
-              "An expression is a function stored in a variable or passed as a value, and it follows that variable's hoisting rules."
+              "In a method call, this is the object.",
+              "In a plain call, it is undefined (strict mode) or window.",
+              "Arrow functions inherit this lexically from the surrounding scope.",
+              "You can set it explicitly with call, apply or bind."
             ]
           },
-          "code": "function a() {}\nconst b = function () {};"
+          "code": "const user = {\n  name: \"Ali\",\n  hi() { return this.name; },\n};\nuser.hi();          // \"Ali\"\nconst f = user.hi;\nf();                // undefined (strict)"
         },
         {
-          "id": "js-l16",
+          "id": "js-l08",
           "section": {
-            "ar": "Scope و Functions",
+            "ar": "النطاق والدوال",
             "en": "Scope & Functions"
           },
           "title": {
-            "ar": "إيه الفرق بين Arrow Function والدالة العادية؟",
-            "en": "What is the difference between an arrow function and a regular function?"
+            "ar": "الفرق بين Arrow function والدالة العادية؟",
+            "en": "What is the difference between arrow and regular functions?"
           },
           "short": {
-            "ar": "الـ Arrow ملهاش this خاص بيها ومينفعش تتستخدم مع new.",
-            "en": "Arrow functions have no this of their own and cannot be used with new."
+            "ar": "الـ arrow ملهاش this ولا arguments خاصين بيها، ومينفعش تتستخدم مع new.",
+            "en": "Arrow functions have no own this or arguments and cannot be used with new."
           },
           "points": {
             "ar": [
-              "الـ Arrow بتاخد this من الـ scope المحيط، وملهاش arguments ولا prototype.",
-              "مناسبة للـ callbacks، ومش مناسبة كـ method لو محتاج this يشاور على الـ object."
+              "الـ arrow ملهاش this ولا arguments خاصين بيها.",
+              "مينفعش تتستخدم مع new.",
+              "وصياغتها أقصر."
             ],
             "en": [
-              "Arrows take this from the surrounding scope and have no arguments object or prototype.",
-              "They suit callbacks, but not methods where this must point to the object."
+              "Arrow functions have no own this or arguments.",
+              "They cannot be used with new.",
+              "They have shorter syntax."
             ]
           },
-          "code": ""
+          "code": "const add = (a, b) => a + b;\n\nconst Foo = () => {};\nnew Foo(); // TypeError: Foo is not a constructor"
         },
         {
-          "id": "js-l17",
+          "id": "js-l09",
           "section": {
-            "ar": "Scope و Functions",
+            "ar": "النطاق والدوال",
             "en": "Scope & Functions"
           },
           "title": {
-            "ar": "this بتشاور على إيه؟",
-            "en": "What does this refer to?"
-          },
-          "short": {
-            "ar": "على حسب طريقة استدعاء الدالة.",
-            "en": "It depends on how the function is called."
-          },
-          "points": {
-            "ar": [
-              "مع new: الـ object الجديد.",
-              "مع call / apply / bind: القيمة اللي حددتها.",
-              "كـ method: الـ object اللي قبل النقطة.",
-              "استدعاء عادي: undefined في strict mode، وإلا الـ global.",
-              "Arrow: this بتاع الـ scope المحيط.",
-              "Event listener بدالة عادية: العنصر اللي عليه الـ listener.",
-              "فخ مشهور: لو خدت الـ method في متغير لوحدها، this بيضيع. الحل bind أو arrow function."
-            ],
-            "en": [
-              "With new: the new object.",
-              "With call / apply / bind: the value you pass.",
-              "As a method: the object before the dot.",
-              "Plain call: undefined in strict mode, otherwise the global object.",
-              "Arrow function: the this of the surrounding scope.",
-              "Event listener with a regular function: the element the listener is attached to.",
-              "A classic trap: storing a method in a separate variable loses this. Fix it with bind or an arrow function."
-            ]
-          },
-          "code": "const fn = user.greet;\nfn();                      // this is lost\nconst bound = user.greet.bind(user);\nbound();                   // works"
-        },
-        {
-          "id": "js-l18",
-          "section": {
-            "ar": "Scope و Functions",
-            "en": "Scope & Functions"
-          },
-          "title": {
-            "ar": "إيه الفرق بين call و apply و bind؟",
+            "ar": "الفرق بين call و apply و bind؟",
             "en": "What is the difference between call, apply and bind?"
           },
           "short": {
-            "ar": "call و apply بينفذوا فورًا، و bind بترجع دالة جديدة.",
-            "en": "call and apply invoke immediately; bind returns a new function."
+            "ar": "التلاتة بيحددوا this يدويًا: call و apply بينفذوا فورًا، و bind بترجع دالة جديدة.",
+            "en": "All three set this explicitly: call and apply invoke immediately, bind returns a new function."
           },
           "points": {
             "ar": [
-              "التلاتة بيحددوا this.",
-              "call بتاخد الـ arguments منفصلة، و apply بتاخدها array."
+              "call بتنفذ الدالة فورًا والـ arguments مفصولة.",
+              "apply بتنفذ فورًا والـ arguments في array.",
+              "bind بترجع دالة جديدة this ثابتة فيها وبتتنفذ بعدين."
             ],
             "en": [
-              "All three set this.",
-              "call takes the arguments separately; apply takes them as an array."
+              "call invokes immediately with arguments listed one by one.",
+              "apply invokes immediately with an array of arguments.",
+              "bind returns a new function with this fixed, to be called later."
             ]
           },
-          "code": "greet.call(user, \"Hi\", \"!\");\ngreet.apply(user, [\"Hi\", \"!\"]);\nconst f = greet.bind(user);"
+          "code": "function greet(greeting, mark) {\n  return greeting + \" \" + this.name + mark;\n}\nconst u = { name: \"Ali\" };\ngreet.call(u, \"Hi\", \"!\");\ngreet.apply(u, [\"Hi\", \"!\"]);\nconst g = greet.bind(u);\ng(\"Hi\", \"!\");"
         },
         {
-          "id": "js-l19",
+          "id": "js-l10",
           "section": {
-            "ar": "Scope و Functions",
+            "ar": "النطاق والدوال",
             "en": "Scope & Functions"
           },
           "title": {
-            "ar": "يعني إيه Higher-Order Function و Callback؟",
-            "en": "What are higher-order functions and callbacks?"
+            "ar": "الفرق بين Spread و Rest؟",
+            "en": "What is the difference between spread and rest?"
           },
           "short": {
-            "ar": "الـ HOF بتاخد دالة أو ترجع دالة، والـ Callback هي الدالة المتمررة.",
-            "en": "A higher-order function takes or returns a function; the callback is the function passed in."
+            "ar": "الاتنين بيستخدموا ... : الـ Spread بيفرد، والـ Rest بيجمع.",
+            "en": "Both use ... : spread expands, rest collects."
           },
           "points": {
             "ar": [
-              "ده ممكن لأن الدوال في JS قيم عادية (First-class).",
-              "أمثلة: map و filter و setTimeout."
+              "الـ Spread بيفرد array أو object لعناصره ([...a, ...b]).",
+              "الـ Rest بيجمع الباقي في array (function f(...args))."
             ],
             "en": [
-              "This works because functions in JS are first-class values.",
-              "Examples: map, filter and setTimeout."
+              "Spread expands an iterable or object into individual elements ([...a, ...b]).",
+              "Rest collects the remaining items into an array (function f(...args))."
             ]
           },
-          "code": ""
+          "code": "const all = [...[1, 2], ...[3]]; // [1, 2, 3]\n\nfunction sum(...nums) {\n  return nums.reduce((a, b) => a + b, 0);\n}"
         },
         {
-          "id": "js-l20",
+          "id": "js-l11",
           "section": {
-            "ar": "Scope و Functions",
-            "en": "Scope & Functions"
-          },
-          "title": {
-            "ar": "إيه هي الـ IIFE؟",
-            "en": "What is an IIFE?"
-          },
-          "short": {
-            "ar": "دالة بتتنفذ فور تعريفها.",
-            "en": "A function that runs immediately after it is defined."
-          },
-          "points": {
-            "ar": [
-              "كانت بتستخدم لعمل scope خاص ومنع تلويث الـ global.",
-              "دلوقتي الـ modules و let قللوا الحاجة ليها، بس لسه مفيدة لتشغيل async فورًا."
-            ],
-            "en": [
-              "It was used to create a private scope and avoid polluting the global scope.",
-              "Modules and let reduced the need for it, but it is still handy for running async code right away."
-            ]
-          },
-          "code": "(async () => { await init(); })();"
-        },
-        {
-          "id": "js-l21",
-          "section": {
-            "ar": "Scope و Functions",
-            "en": "Scope & Functions"
-          },
-          "title": {
-            "ar": "يعني إيه Pure Function؟",
-            "en": "What is a pure function?"
-          },
-          "short": {
-            "ar": "نفس المدخلات تدي نفس الناتج من غير side effects.",
-            "en": "The same inputs always give the same output, with no side effects."
-          },
-          "points": {
-            "ar": [
-              "مبتعدلش متغيرات خارجية ولا المدخلات ولا بتعمل طلبات شبكة.",
-              "سهلة في الاختبار والتوقع."
-            ],
-            "en": [
-              "It does not change outside variables or its inputs, and makes no network requests.",
-              "It is easy to test and predict."
-            ]
-          },
-          "code": "const add = (a, b) => a + b;"
-        },
-        {
-          "id": "js-l22",
-          "section": {
-            "ar": "Scope و Functions",
-            "en": "Scope & Functions"
-          },
-          "title": {
-            "ar": "يعني إيه Currying؟",
-            "en": "What is currying?"
-          },
-          "short": {
-            "ar": "تحويل دالة بكذا argument لسلسلة دوال، كل واحدة بتاخد argument.",
-            "en": "Turning a function with several arguments into a chain of functions that each take one."
-          },
-          "points": {
-            "ar": [
-              "بيعتمد على الـ closures، ومفيد لإعادة استخدام دالة بقيم ثابتة."
-            ],
-            "en": [
-              "It relies on closures and helps you reuse a function with fixed values."
-            ]
-          },
-          "code": "const mul = a => b => a * b;\nconst double = mul(2);\ndouble(5); // 10"
-        },
-        {
-          "id": "js-l23",
-          "section": {
-            "ar": "Arrays و Objects",
+            "ar": "الـ Arrays والـ Objects",
             "en": "Arrays & Objects"
           },
           "title": {
@@ -5840,485 +5472,171 @@
             "en": "What is the difference between map, forEach, filter and reduce?"
           },
           "short": {
-            "ar": "map تحول، filter تصفي، reduce تجمع في قيمة واحدة، forEach تنفذ بس.",
-            "en": "map transforms, filter selects, reduce combines into one value, forEach just runs code."
+            "ar": "forEach بتلف بس، map بترجع array جديد بنفس الطول، filter بترجع اللي حقق الشرط، reduce بتجمع في قيمة واحدة.",
+            "en": "forEach just iterates, map returns a same-length array, filter keeps matches, reduce folds into one value."
           },
           "points": {
             "ar": [
-              "map بترجع array بنفس الطول، و filter array بالعناصر اللي حققت الشرط، و reduce أي قيمة (رقم أو object).",
-              "forEach بترجع undefined.",
-              "ولا واحدة منهم بتعدل الأصل من نفسها."
+              "forEach بتلف بس ومبترجعش حاجة.",
+              "map بترجع array جديد بنفس الطول.",
+              "filter بترجع العناصر اللي حققت الشرط.",
+              "reduce بتجمع الـ array كله في قيمة واحدة."
             ],
             "en": [
-              "map returns an array of the same length, filter an array of the matching items, reduce any value (a number or an object).",
-              "forEach returns undefined.",
-              "None of them changes the original array by itself."
+              "forEach just iterates and returns nothing.",
+              "map returns a new array of the same length.",
+              "filter returns the elements that pass a test.",
+              "reduce folds the array into a single value."
             ]
           },
-          "code": "[1,2,3].map(n => n * 2);         // [2,4,6]\n[1,2,3].filter(n => n > 1);      // [2,3]\n[1,2,3].reduce((s,n) => s+n, 0); // 6"
+          "code": "const n = [1, 2, 3, 4];\nn.map(x => x * 2);          // [2, 4, 6, 8]\nn.filter(x => x % 2 === 0); // [2, 4]\nn.reduce((a, b) => a + b, 0); // 10"
         },
         {
-          "id": "js-l24",
+          "id": "js-l12",
           "section": {
-            "ar": "Arrays و Objects",
-            "en": "Arrays & Objects"
-          },
-          "title": {
-            "ar": "الفرق بين slice و splice؟",
-            "en": "What is the difference between slice and splice?"
-          },
-          "short": {
-            "ar": "slice بتنسخ جزء، و splice بتعدل الأصل.",
-            "en": "slice copies a part; splice changes the original."
-          },
-          "points": {
-            "ar": [
-              "slice(start, end) النهاية فيها غير محسوبة.",
-              "splice(start, deleteCount, ...items) بتمسح أو تضيف وبترجع العناصر الممسوحة."
-            ],
-            "en": [
-              "In slice(start, end) the end index is not included.",
-              "splice(start, deleteCount, ...items) removes or inserts items and returns the removed ones."
-            ]
-          },
-          "code": "const a = [1,2,3,4];\na.slice(1,3);  // [2,3]\na.splice(1,2); // returns [2,3], a is now [1,4]"
-        },
-        {
-          "id": "js-l25",
-          "section": {
-            "ar": "Arrays و Objects",
-            "en": "Arrays & Objects"
-          },
-          "title": {
-            "ar": "الفرق بين Spread و Rest؟",
-            "en": "What is the difference between spread and rest?"
-          },
-          "short": {
-            "ar": "Spread بتفرد العناصر، و Rest بتجمعها.",
-            "en": "Spread expands items; rest collects them."
-          },
-          "points": {
-            "ar": [
-              "الاتنين ... والفرق في المكان."
-            ],
-            "en": [
-              "Both use ...; the difference is where they appear."
-            ]
-          },
-          "code": "const b = [...a, 4];            // spread\nfunction sum(...nums) {}        // rest\nconst { id, ...others } = user; // rest"
-        },
-        {
-          "id": "js-l26",
-          "section": {
-            "ar": "Arrays و Objects",
-            "en": "Arrays & Objects"
-          },
-          "title": {
-            "ar": "يعني إيه Destructuring؟",
-            "en": "What is destructuring?"
-          },
-          "short": {
-            "ar": "استخراج قيم من array أو object في متغيرات.",
-            "en": "Pulling values out of an array or object into variables."
-          },
-          "points": {
-            "ar": [
-              "بيدعم قيم افتراضية وإعادة تسمية."
-            ],
-            "en": [
-              "It supports default values and renaming."
-            ]
-          },
-          "code": "const { name: userName, age = 20 } = user;\nconst [first, , third] = arr;"
-        },
-        {
-          "id": "js-l27",
-          "section": {
-            "ar": "Arrays و Objects",
+            "ar": "الـ Arrays والـ Objects",
             "en": "Arrays & Objects"
           },
           "title": {
             "ar": "الفرق بين Shallow Copy و Deep Copy؟",
-            "en": "What is the difference between a shallow copy and a deep copy?"
+            "en": "What is the difference between a shallow and a deep copy?"
           },
           "short": {
-            "ar": "الـ Shallow بتنسخ أول مستوى بس، والـ Deep بتنسخ كل المستويات.",
-            "en": "A shallow copy copies only the first level; a deep copy copies every level."
+            "ar": "الـ Shallow بينسخ المستوى الأول بس، والـ Deep بينسخ كل حاجة.",
+            "en": "A shallow copy duplicates only the top level; a deep copy duplicates everything."
           },
           "points": {
             "ar": [
-              "{...obj} و Object.assign نسخ سطحي، فالـ objects الداخلية مشتركة.",
-              "للنسخ العميق استخدم structuredClone(obj)، بس مبتنسخش الدوال.",
-              "طريقة JSON بتضيع undefined والدوال وبتحول التواريخ لنصوص."
+              "الـ Shallow (زي spread {...obj}) بينسخ المستوى الأول بس، والـ objects المتداخلة بتفضل مشتركة.",
+              "الـ Deep بينسخ كل حاجة، مثلًا بـ structuredClone()."
             ],
             "en": [
-              "{...obj} and Object.assign make shallow copies, so nested objects stay shared.",
-              "For a deep copy use structuredClone(obj), though it cannot copy functions.",
-              "The JSON trick drops undefined and functions, and turns dates into strings."
+              "A shallow copy (e.g. spread {...obj}) copies only the top level; nested objects remain shared.",
+              "A deep copy duplicates everything, e.g. with structuredClone()."
             ]
           },
-          "code": ""
+          "code": "const a = { info: { age: 20 } };\nconst s = { ...a };\ns.info.age = 30; // a.info.age is 30 too\n\nconst d = structuredClone(a);\nd.info.age = 40; // a is unchanged"
         },
         {
-          "id": "js-l28",
+          "id": "js-l13",
           "section": {
-            "ar": "Arrays و Objects",
-            "en": "Arrays & Objects"
-          },
-          "title": {
-            "ar": "الفرق بين Object.freeze و Object.seal؟",
-            "en": "What is the difference between Object.freeze and Object.seal?"
-          },
-          "short": {
-            "ar": "freeze تمنع أي تغيير، و seal تسمح بتعديل القيم الموجودة بس.",
-            "en": "freeze blocks every change; seal only allows editing existing values."
-          },
-          "points": {
-            "ar": [
-              "الاتنين بيمنعوا الإضافة والحذف.",
-              "freeze كمان بتمنع التعديل.",
-              "وكلاهما سطحي، فالـ objects الداخلية تتعدل عادي."
-            ],
-            "en": [
-              "Both prevent adding and deleting properties.",
-              "freeze also prevents editing.",
-              "Both are shallow, so nested objects can still change."
-            ]
-          },
-          "code": ""
-        },
-        {
-          "id": "js-l29",
-          "section": {
-            "ar": "Arrays و Objects",
-            "en": "Arrays & Objects"
-          },
-          "title": {
-            "ar": "الفرق بين Map و Object، و Set و Array؟",
-            "en": "What is the difference between Map and Object, and between Set and Array?"
-          },
-          "short": {
-            "ar": "Map مفاتيحها أي نوع، و Set قيمها مبتتكررش.",
-            "en": "Map keys can be any type; Set values never repeat."
-          },
-          "points": {
-            "ar": [
-              "Map بتحافظ على ترتيب الإضافة وليها size، ومناسبة للإضافة والحذف المتكرر.",
-              "مفاتيح الـ Object نصوص أو symbols.",
-              "Set.has أسرع عادةً من includes في البيانات الكبيرة."
-            ],
-            "en": [
-              "Map keeps insertion order, has a size, and suits frequent adding and removing.",
-              "Object keys are strings or symbols.",
-              "Set.has is usually faster than includes on large data."
-            ]
-          },
-          "code": "const unique = [...new Set([1,1,2])]; // [1,2]"
-        },
-        {
-          "id": "js-l30",
-          "section": {
-            "ar": "Arrays و Objects",
-            "en": "Arrays & Objects"
-          },
-          "title": {
-            "ar": "إيه هي WeakMap و WeakSet؟",
-            "en": "What are WeakMap and WeakSet?"
-          },
-          "short": {
-            "ar": "مجموعات بتمسك مراجع ضعيفة، فمبتمنعش مسح العنصر من الذاكرة.",
-            "en": "Collections that hold weak references, so they do not stop items from being garbage collected."
-          },
-          "points": {
-            "ar": [
-              "مفاتيح WeakMap وقيم WeakSet لازم تكون objects أو symbols غير مسجلة.",
-              "مينفعش تلف عليهم وملهمش size.",
-              "مفيدين للـ caching وربط بيانات خاصة بـ object."
-            ],
-            "en": [
-              "WeakMap keys and WeakSet values must be objects or non-registered symbols.",
-              "You cannot iterate over them and they have no size.",
-              "They are useful for caching and attaching private data to an object."
-            ]
-          },
-          "code": ""
-        },
-        {
-          "id": "js-l31",
-          "section": {
-            "ar": "OOP و Prototypes",
+            "ar": "الـ OOP والـ Prototypes",
             "en": "OOP & Prototypes"
           },
           "title": {
-            "ar": "يعني إيه Prototype و Prototype Chain؟",
-            "en": "What are the prototype and the prototype chain?"
+            "ar": "يعني إيه Prototype و Prototypal Inheritance؟",
+            "en": "What is the prototype and prototypal inheritance?"
           },
           "short": {
-            "ar": "كل object ممكن يورث من object تاني، والبحث بيطلع في السلسلة.",
-            "en": "Every object can inherit from another object, and property lookup walks up the chain."
+            "ar": "كل object ليه رابط لـ object تاني اسمه prototype، والـ JS بتدور في السلسلة لو الـ property مش موجودة.",
+            "en": "Every object links to another object, its prototype, and JS walks up that chain when a property is missing."
           },
           "points": {
             "ar": [
-              "لو property مش موجودة في الـ object، المحرك يدور في الـ prototype بتاعه، وبعدين اللي فوقه لحد null.",
-              "تقدر تشوفه بـ Object.getPrototypeOf(obj)."
+              "كل object ليه رابط لـ object تاني اسمه prototype.",
+              "لو الـ property مش موجودة، الـ JS بتدور عليها في السلسلة (prototype chain).",
+              "الـ class هي syntax فوق النظام ده."
             ],
             "en": [
-              "If a property is not on the object, the engine checks its prototype, then the next one up, until it reaches null.",
-              "You can inspect it with Object.getPrototypeOf(obj)."
+              "Every object links to another object, its prototype.",
+              "If a property is not found, JS walks up the prototype chain.",
+              "class is syntax on top of this system."
             ]
           },
-          "code": ""
+          "code": "const animal = { eats: true };\nconst dog = Object.create(animal);\nconsole.log(dog.eats); // true (from the prototype)"
         },
         {
-          "id": "js-l32",
+          "id": "js-l14",
           "section": {
-            "ar": "OOP و Prototypes",
-            "en": "OOP & Prototypes"
-          },
-          "title": {
-            "ar": "الفرق بين Prototypal و Classical Inheritance؟",
-            "en": "What is the difference between prototypal and classical inheritance?"
-          },
-          "short": {
-            "ar": "في JS الـ objects بتورث من objects، وفي الكلاسيكي الـ classes بتورث من classes.",
-            "en": "In JS objects inherit from objects; in classical inheritance classes inherit from classes."
-          },
-          "points": {
-            "ar": [
-              "في لغات زي Java الـ class قالب بيتعمل منه نسخ.",
-              "في JS الوراثة ربط حي بين objects، فأي تعديل في الـ prototype يظهر للي بيورثوا منه."
-            ],
-            "en": [
-              "In languages like Java, a class is a blueprint that instances are made from.",
-              "In JS inheritance is a live link between objects, so any change to the prototype shows up in everything that inherits from it."
-            ]
-          },
-          "code": ""
-        },
-        {
-          "id": "js-l33",
-          "section": {
-            "ar": "OOP و Prototypes",
-            "en": "OOP & Prototypes"
-          },
-          "title": {
-            "ar": "new بتعمل إيه؟",
-            "en": "What does new do?"
-          },
-          "short": {
-            "ar": "بتنشئ object جديد وتشغل عليه الـ constructor.",
-            "en": "It creates a new object and runs the constructor on it."
-          },
-          "points": {
-            "ar": [
-              "بتعمل object فاضي.",
-              "بتربط الـ prototype بتاعه بـ Constructor.prototype.",
-              "بتنفذ الدالة و this هو الـ object ده.",
-              "بترجعه، إلا لو الدالة رجعت object تاني."
-            ],
-            "en": [
-              "Creates an empty object.",
-              "Links its prototype to Constructor.prototype.",
-              "Runs the function with this set to that object.",
-              "Returns it, unless the function returns a different object."
-            ]
-          },
-          "code": ""
-        },
-        {
-          "id": "js-l34",
-          "section": {
-            "ar": "OOP و Prototypes",
-            "en": "OOP & Prototypes"
-          },
-          "title": {
-            "ar": "الـ Classes في ES6 بتشتغل إزاي؟",
-            "en": "How do ES6 classes work?"
-          },
-          "short": {
-            "ar": "صيغة أنضف فوق نظام الـ prototypes.",
-            "en": "A cleaner syntax on top of the prototype system."
-          },
-          "points": {
-            "ar": [
-              "الـ methods بتتحط على الـ prototype.",
-              "extends للوراثة، و super لنداء الأب، و # للخصائص الخاصة، و static للي تبع الـ class نفسه.",
-              "ولازم new."
-            ],
-            "en": [
-              "Methods are placed on the prototype.",
-              "extends inherits, super calls the parent, # marks private fields, and static belongs to the class itself.",
-              "Classes must be called with new."
-            ]
-          },
-          "code": "class Dog extends Animal {\n  #age = 1;\n  constructor(name) { super(name); }\n}"
-        },
-        {
-          "id": "js-l35",
-          "section": {
-            "ar": "Asynchronous JavaScript",
+            "ar": "الـ JavaScript الـ Asynchronous",
             "en": "Asynchronous JavaScript"
           },
           "title": {
-            "ar": "JS Single-threaded، إزاي بتعمل Async؟",
-            "en": "JS is single-threaded, so how does it do async work?"
+            "ar": "إيه الفرق بين Sync و Async؟",
+            "en": "What is the difference between sync and async?"
           },
           "short": {
-            "ar": "البيئة (المتصفح أو Node) بتتولى الانتظار، والـ Event Loop بيرجع النتيجة.",
-            "en": "The runtime (browser or Node) handles the waiting, and the event loop delivers the result."
+            "ar": "الـ Sync بينفذ سطر ورا سطر ويوقف كل حاجة، والـ Async بيسلم العمليات الطويلة ويكمل من غير ما يستنى.",
+            "en": "Sync runs line by line and blocks; async hands long tasks off and keeps running without waiting."
           },
           "points": {
             "ar": [
-              "فيه Call Stack واحد.",
-              "عمليات زي الـ timers والشبكة بتتنفذ برّه، ولما تخلص الـ callback بيدخل طابور ويستنى لحد ما الـ stack يفضى."
+              "الـ Sync معناه إن الكود بيتنفذ سطر ورا سطر، وكل سطر لازم يخلص قبل اللي بعده، فلو في عملية تقيلة بتوقف كل حاجة (blocking).",
+              "الـ Async: العمليات الطويلة (زي طلب API أو قراءة ملف أو setTimeout) بتتسلم للـ Web APIs وبيكمل الكود عادي من غير ما يستنى.",
+              "لما العملية تخلص الـ callback بيرجع عن طريق الـ Event Loop.",
+              "الناتج في المثال 1 ثم 3 ثم 2."
             ],
             "en": [
-              "There is a single call stack.",
-              "Timers and network requests run outside it; when they finish, the callback joins a queue and waits until the stack is empty."
+              "Sync code runs line by line, each line finishing before the next starts, so a heavy task blocks everything.",
+              "Async code hands long-running tasks (API calls, file reads, setTimeout) off to the Web APIs and keeps running without waiting.",
+              "When the task finishes, its callback returns via the Event Loop.",
+              "The example prints 1, 3, 2."
             ]
           },
-          "code": ""
+          "code": "console.log(\"1\");\nsetTimeout(() => console.log(\"2\"), 0);\nconsole.log(\"3\");\n// Output: 1, 3, 2"
         },
         {
-          "id": "js-l36",
+          "id": "js-l15",
           "section": {
-            "ar": "Asynchronous JavaScript",
+            "ar": "الـ JavaScript الـ Asynchronous",
             "en": "Asynchronous JavaScript"
           },
           "title": {
-            "ar": "اشرح الـ Event Loop.",
-            "en": "Explain the event loop."
+            "ar": "إيه هو الـ Event Loop؟",
+            "en": "What is the Event Loop?"
           },
           "short": {
-            "ar": "آلية بتنقل المهام من الطوابير للـ Call Stack لما يفضى.",
-            "en": "A mechanism that moves tasks from the queues to the call stack when it is empty."
+            "ar": "الآلية اللي بتنقل الـ callbacks من الطوابير للـ Call Stack لما يفضى.",
+            "en": "The mechanism that moves callbacks from the queues to the Call Stack when it is empty."
           },
           "points": {
             "ar": [
-              "الكود المتزامن بيتنفذ الأول، وبعدين كل الـ microtasks، وبعدين macrotask واحدة، ثم الـ microtasks تاني، وهكذا.",
-              "المتصفح ممكن يعمل render بين الدورات."
+              "الـ JS single-threaded، والـ Call Stack بينفذ الكود.",
+              "العمليات الـ async بتروح للـ Web APIs وبعدين لطوابير الانتظار.",
+              "الـ Event Loop بيشوف لو الـ Stack فاضي وينقل له الـ callbacks.",
+              "الـ Microtasks (Promises) ليها أولوية على الـ Macrotasks (setTimeout)."
             ],
             "en": [
-              "Synchronous code runs first, then all microtasks, then one macrotask, then the microtasks again, and so on.",
-              "The browser may render between cycles."
+              "JS is single-threaded, and the Call Stack runs code.",
+              "Async work goes to the Web APIs and then to queues.",
+              "The Event Loop moves callbacks to the stack when it is empty.",
+              "Microtasks (Promises) run before macrotasks (setTimeout)."
             ]
           },
-          "code": "console.log(1);\nsetTimeout(() => console.log(2));\nPromise.resolve().then(() => console.log(3));\nconsole.log(4);\n// 1 4 3 2"
+          "code": "setTimeout(() => console.log(\"timeout\"), 0);\nPromise.resolve().then(() => console.log(\"promise\"));\n// promise, timeout"
         },
         {
-          "id": "js-l37",
+          "id": "js-l16",
           "section": {
-            "ar": "Asynchronous JavaScript",
+            "ar": "الـ JavaScript الـ Asynchronous",
             "en": "Asynchronous JavaScript"
           },
           "title": {
-            "ar": "الفرق بين Microtasks و Macrotasks؟",
-            "en": "What is the difference between microtasks and macrotasks?"
+            "ar": "الفرق بين Promise و async/await؟",
+            "en": "What is the difference between Promise and async/await?"
           },
           "short": {
-            "ar": "الـ Microtasks ليها أولوية.",
-            "en": "Microtasks have priority."
+            "ar": "الـ async/await هي syntax أسهل فوق الـ Promises.",
+            "en": "async/await is syntactic sugar over Promises."
           },
           "points": {
             "ar": [
-              "Microtasks: callbacks الـ Promises و queueMicrotask و MutationObserver.",
-              "Macrotasks: setTimeout و setInterval وأحداث المستخدم.",
-              "طابور الـ microtasks بيتفضى بالكامل، فلو فضل يضيف لنفسه هيعطل الباقي."
+              "الـ async/await هي syntax أسهل فوق الـ Promises.",
+              "بتخلي الكود الـ async شكله متسلسل.",
+              "الأخطاء بتتمسك بـ try/catch."
             ],
             "en": [
-              "Microtasks: promise callbacks, queueMicrotask and MutationObserver.",
-              "Macrotasks: setTimeout, setInterval and user events.",
-              "The microtask queue is drained completely, so if it keeps adding to itself it blocks everything else."
+              "async/await is syntactic sugar over Promises.",
+              "It makes async code read sequentially.",
+              "Errors are handled with try/catch."
             ]
           },
-          "code": ""
+          "code": "// Promise\nfetch(url).then(r => r.json()).catch(console.error);\n\n// async/await\nasync function load() {\n  try {\n    const r = await fetch(url);\n    return await r.json();\n  } catch (err) {\n    console.error(err);\n  }\n}"
         },
         {
-          "id": "js-l38",
+          "id": "js-l17",
           "section": {
-            "ar": "Asynchronous JavaScript",
-            "en": "Asynchronous JavaScript"
-          },
-          "title": {
-            "ar": "يعني إيه Promise وإيه حالاتها؟",
-            "en": "What is a promise and what are its states?"
-          },
-          "short": {
-            "ar": "object بيمثل نتيجة عملية مستقبلية: pending أو fulfilled أو rejected.",
-            "en": "An object representing the future result of an operation: pending, fulfilled or rejected."
-          },
-          "points": {
-            "ar": [
-              "أول ما تتحسم (settled) حالتها مبتتغيرش.",
-              "بنتعامل معاها بـ then و catch و finally، وكل then بترجع Promise جديدة فينفع نعمل chaining."
-            ],
-            "en": [
-              "Once it is settled, its state never changes.",
-              "We handle it with then, catch and finally, and each then returns a new promise, so calls can be chained."
-            ]
-          },
-          "code": "fetch(url).then(r => r.json()).catch(console.error);"
-        },
-        {
-          "id": "js-l39",
-          "section": {
-            "ar": "Asynchronous JavaScript",
-            "en": "Asynchronous JavaScript"
-          },
-          "title": {
-            "ar": "يعني إيه Callback Hell؟",
-            "en": "What is callback hell?"
-          },
-          "short": {
-            "ar": "callbacks متداخلة بتخلي الكود صعب القراءة.",
-            "en": "Deeply nested callbacks that make code hard to read."
-          },
-          "points": {
-            "ar": [
-              "بيظهر لما كل خطوة تعتمد على اللي قبلها.",
-              "الحل: Promises أو async/await، وتقسيم الكود لدوال صغيرة."
-            ],
-            "en": [
-              "It appears when every step depends on the previous one.",
-              "The fix: promises or async/await, and splitting code into small functions."
-            ]
-          },
-          "code": ""
-        },
-        {
-          "id": "js-l40",
-          "section": {
-            "ar": "Asynchronous JavaScript",
-            "en": "Asynchronous JavaScript"
-          },
-          "title": {
-            "ar": "async/await بتشتغل إزاي؟",
-            "en": "How does async/await work?"
-          },
-          "short": {
-            "ar": "صيغة أسهل للتعامل مع الـ Promises.",
-            "en": "An easier syntax for working with promises."
-          },
-          "points": {
-            "ar": [
-              "دالة async دايمًا بترجع Promise.",
-              "await بتوقف الدالة دي بس من غير ما تعطل الـ thread.",
-              "الأخطاء بنمسكها بـ try/catch، و fetch مبترفضش في حالة 404 أو 500 فلازم تشيك على ok.",
-              "شغل الطلبات المستقلة بالتوازي بـ Promise.all بدل await ورا بعض. وفي الـ modules تقدر تستخدم await في أعلى الملف (top-level await)."
-            ],
-            "en": [
-              "An async function always returns a promise.",
-              "await pauses only that function, without blocking the thread.",
-              "Catch errors with try/catch. fetch does not reject on 404 or 500, so check res.ok.",
-              "Run independent requests in parallel with Promise.all instead of awaiting them one by one. In modules you can use await at the top level."
-            ]
-          },
-          "code": "try {\n  const res = await fetch(url);\n  if (!res.ok) throw new Error(res.status);\n} catch (e) {\n  console.error(e);\n}"
-        },
-        {
-          "id": "js-l41",
-          "section": {
-            "ar": "Asynchronous JavaScript",
+            "ar": "الـ JavaScript الـ Asynchronous",
             "en": "Asynchronous JavaScript"
           },
           "title": {
@@ -6326,269 +5644,81 @@
             "en": "What is the difference between Promise.all, allSettled, race and any?"
           },
           "short": {
-            "ar": "all كلهم ينجحوا، allSettled استنى الكل، race أول واحد يخلص، any أول واحد ينجح.",
-            "en": "all needs every one to succeed, allSettled waits for all, race takes the first to finish, any takes the first to succeed."
+            "ar": "all بتفشل عند أول فشل، allSettled بتستنى الكل، race أول واحد يخلص، any أول نجاح.",
+            "en": "all fails on the first rejection, allSettled waits for all, race takes the first to settle, any takes the first success."
           },
           "points": {
             "ar": [
-              "all بترفض عند أول فشل.",
-              "allSettled بترجع حالة كل واحدة.",
-              "race بتاخد أول نتيجة نجاح أو فشل.",
-              "any بترفض بـ AggregateError لو كلهم فشلوا."
+              "all بتنجح لما كلهم ينجحوا وبتفشل عند أول فشل.",
+              "allSettled بتستنى كلهم وبترجع نتيجة كل واحد.",
+              "race بترجع أول واحد يخلص، نجح أو فشل.",
+              "any بترجع أول نجاح وبتفشل بس لو كلهم فشلوا."
             ],
             "en": [
-              "all rejects on the first failure.",
-              "allSettled reports the status of each one.",
-              "race takes the first result, success or failure.",
-              "any rejects with an AggregateError if they all fail."
+              "all resolves when all succeed and rejects on the first failure.",
+              "allSettled waits for all and reports each result.",
+              "race settles with the first promise to finish, success or failure.",
+              "any resolves with the first success and rejects only if all fail."
             ]
           },
-          "code": ""
+          "code": "const results = await Promise.allSettled([p1, p2]);\n// [{ status: \"fulfilled\", value }, { status: \"rejected\", reason }]"
         },
         {
-          "id": "js-l53",
+          "id": "js-l18",
           "section": {
-            "ar": "DOM و Browser",
+            "ar": "الـ DOM والمتصفح",
             "en": "DOM & Browser"
           },
           "title": {
-            "ar": "إيه هو الـ DOM؟",
-            "en": "What is the DOM?"
+            "ar": "يعني إيه Event Bubbling و Event Delegation؟",
+            "en": "What are event bubbling and event delegation?"
           },
           "short": {
-            "ar": "تمثيل صفحة الـ HTML كشجرة nodes تقدر JavaScript تقراها وتعدلها.",
-            "en": "A tree of nodes representing the HTML page, which JavaScript can read and change."
+            "ar": "الـ Bubbling إن الـ event بيطلع من العنصر لأجداده، والـ Delegation إنك تحط listener واحد على الأب.",
+            "en": "Bubbling is an event travelling up from the target to its ancestors; delegation puts one listener on the parent."
           },
           "points": {
             "ar": [
-              "تختار العناصر بـ querySelector و querySelectorAll و getElementById.",
-              "تعدل بـ textContent و classList و setAttribute، وتضيف بـ createElement و append، وتشيل بـ remove().",
-              "textContent أأمن من innerHTML، لأن innerHTML مع مدخلات المستخدم ممكن يعمل XSS.",
-              "التعديلات الكتير على الـ DOM مكلفة، وده سبب فكرة الـ Virtual DOM في React."
+              "الـ Bubbling معناه إن الـ event بيحصل على العنصر نفسه وبعدين بيطلع لأبوه وأجداده.",
+              "الـ Delegation بيستفيد من ده: بتحط listener واحد على الأب وتفحص event.target.",
+              "وده بيشتغل كمان مع العناصر اللي بتتضاف بعدين وبيوفر ذاكرة."
             ],
             "en": [
-              "Select elements with querySelector, querySelectorAll and getElementById.",
-              "Change them with textContent, classList and setAttribute, add with createElement and append, and delete with remove().",
-              "textContent is safer than innerHTML, because innerHTML with user input can cause XSS.",
-              "Frequent DOM changes are expensive, which is why React uses a Virtual DOM."
+              "Bubbling means an event fires on the target and then travels up through its ancestors.",
+              "Delegation uses that: attach one listener to a parent and check event.target.",
+              "It also works for elements added later and saves memory."
             ]
           },
-          "code": "const card = document.querySelector(\".card\");\ncard.textContent = \"New text\";\ncard.classList.toggle(\"active\");\n\nconst div = document.createElement(\"div\");\ndiv.textContent = \"I'm new!\";\ndocument.body.append(div);"
+          "code": "list.addEventListener(\"click\", (e) => {\n  if (e.target.matches(\"li\")) {\n    console.log(e.target.textContent);\n  }\n});"
         },
         {
-          "id": "js-l54",
+          "id": "js-l19",
           "section": {
-            "ar": "DOM و Browser",
+            "ar": "الـ DOM والمتصفح",
             "en": "DOM & Browser"
           },
           "title": {
-            "ar": "الـ Events و addEventListener؟",
-            "en": "Events and addEventListener?"
+            "ar": "يعني إيه Debounce و Throttle؟",
+            "en": "What is the difference between debounce and throttle?"
           },
           "short": {
-            "ar": "حدث بيحصل في المتصفح زي click أو input، وبنسمعله بـ addEventListener.",
-            "en": "An action in the browser such as click or input, which you listen to with addEventListener."
+            "ar": "الـ Debounce بينفذ بعد ما الاستدعاء يقف فترة، والـ Throttle بينفذ مرة كل فترة ثابتة.",
+            "en": "Debounce runs after calls stop for a while; throttle runs at most once per interval."
           },
           "points": {
             "ar": [
-              "الـ event object فيه target و type و key، و preventDefault() و stopPropagation().",
-              "options: once بيشيل الـ listener بعد أول مرة، و passive بيحسن أداء الـ scroll، و capture للـ capturing phase.",
-              "removeEventListener لازم ياخد نفس مرجع الدالة، فمتستخدمش arrow function مباشرة لو هتشيله."
+              "الـ Debounce بينفذ الدالة بعد ما المستخدم يبطل يستدعيها فترة معينة (زي البحث).",
+              "الـ Throttle بينفذها مرة كل فترة ثابتة مهما اتكرر الاستدعاء (زي الـ scroll)."
             ],
             "en": [
-              "The event object has target, type and key, plus preventDefault() and stopPropagation().",
-              "Options: once removes the listener after the first call, passive improves scroll performance, and capture uses the capture phase.",
-              "removeEventListener needs the same function reference, so do not pass an inline arrow function if you plan to remove it."
+              "Debounce runs the function after the user stops triggering it for a set time (e.g. a search input).",
+              "Throttle runs it at most once per interval, however often it is triggered (e.g. scroll)."
             ]
           },
-          "code": "function handleClick(e) {\n  console.log(e.type, e.target);\n}\n\nbutton.addEventListener(\"click\", handleClick, { once: true });\nbutton.removeEventListener(\"click\", handleClick);"
+          "code": "function debounce(fn, ms) {\n  let t;\n  return (...args) => {\n    clearTimeout(t);\n    t = setTimeout(() => fn(...args), ms);\n  };\n}"
         },
         {
-          "id": "js-l42",
-          "section": {
-            "ar": "DOM و Browser",
-            "en": "DOM & Browser"
-          },
-          "title": {
-            "ar": "يعني إيه Event Bubbling و Capturing؟",
-            "en": "What are event bubbling and capturing?"
-          },
-          "short": {
-            "ar": "Capturing الحدث نازل من فوق للهدف، و Bubbling طالع منه لفوق.",
-            "en": "In capturing the event travels down to the target; in bubbling it travels back up from it."
-          },
-          "points": {
-            "ar": [
-              "الترتيب: capture ثم target ثم bubble.",
-              "الافتراضي إن الـ listener بيشتغل في الـ bubbling، وللـ capturing استخدم { capture: true }."
-            ],
-            "en": [
-              "The order is capture, then target, then bubble.",
-              "By default listeners run during bubbling; for capturing pass { capture: true }."
-            ]
-          },
-          "code": "el.addEventListener(\"click\", fn, { capture: true });"
-        },
-        {
-          "id": "js-l43",
-          "section": {
-            "ar": "DOM و Browser",
-            "en": "DOM & Browser"
-          },
-          "title": {
-            "ar": "يعني إيه Event Delegation؟",
-            "en": "What is event delegation?"
-          },
-          "short": {
-            "ar": "listener واحد على الأب بدل listener لكل ابن.",
-            "en": "One listener on the parent instead of one per child."
-          },
-          "points": {
-            "ar": [
-              "بيعتمد على الـ bubbling، وبيوفر ذاكرة وبيشتغل مع العناصر المضافة بعدين."
-            ],
-            "en": [
-              "It relies on bubbling, saves memory and works with elements added later."
-            ]
-          },
-          "code": "list.addEventListener(\"click\", e => {\n  const item = e.target.closest(\"li\");\n  if (item) select(item);\n});"
-        },
-        {
-          "id": "js-l44",
-          "section": {
-            "ar": "DOM و Browser",
-            "en": "DOM & Browser"
-          },
-          "title": {
-            "ar": "الفرق بين preventDefault و stopPropagation؟",
-            "en": "What is the difference between preventDefault and stopPropagation?"
-          },
-          "short": {
-            "ar": "الأولى تمنع السلوك الافتراضي، والتانية توقف انتقال الحدث.",
-            "en": "The first stops the default behaviour; the second stops the event from travelling."
-          },
-          "points": {
-            "ar": [
-              "preventDefault مثلًا تمنع الفورم من الإرسال أو اللينك من الفتح.",
-              "stopPropagation تمنع الحدث يوصل لعناصر تانية في السلسلة.",
-              "و stopImmediatePropagation توقف كمان باقي الـ listeners على نفس العنصر."
-            ],
-            "en": [
-              "preventDefault, for example, stops a form from submitting or a link from opening.",
-              "stopPropagation stops the event from reaching other elements in the chain.",
-              "stopImmediatePropagation also stops the remaining listeners on the same element."
-            ]
-          },
-          "code": ""
-        },
-        {
-          "id": "js-l45",
-          "section": {
-            "ar": "DOM و Browser",
-            "en": "DOM & Browser"
-          },
-          "title": {
-            "ar": "الفرق بين localStorage و sessionStorage و Cookies؟",
-            "en": "What is the difference between localStorage, sessionStorage and cookies?"
-          },
-          "short": {
-            "ar": "localStorage دائم، sessionStorage للتاب، والـ Cookies بتتبعت مع الطلبات.",
-            "en": "localStorage persists, sessionStorage lasts for the tab, and cookies are sent with requests."
-          },
-          "points": {
-            "ar": [
-              "الـ Web Storage حجمه حوالي 5MB غالبًا وبيخزن نصوص.",
-              "الـ Cookie حوالي 4KB وليها تاريخ انتهاء، وتقدر تأمنها بـ HttpOnly و Secure و SameSite.",
-              "الأفضل متخزنش بيانات حساسة في localStorage."
-            ],
-            "en": [
-              "Web Storage usually holds about 5MB and stores strings.",
-              "A cookie holds about 4KB, has an expiry date, and can be secured with HttpOnly, Secure and SameSite.",
-              "Avoid storing sensitive data in localStorage."
-            ]
-          },
-          "code": ""
-        },
-        {
-          "id": "js-l46",
-          "section": {
-            "ar": "DOM و Browser",
-            "en": "DOM & Browser"
-          },
-          "title": {
-            "ar": "الفرق بين defer و async؟",
-            "en": "What is the difference between defer and async?"
-          },
-          "short": {
-            "ar": "الاتنين بيحملوا بالتوازي، defer بينفذ بعد قراءة الـ HTML، و async أول ما يحمل.",
-            "en": "Both download in parallel; defer runs after the HTML is parsed, async runs as soon as it loads."
-          },
-          "points": {
-            "ar": [
-              "defer بيحافظ على ترتيب الملفات وبينفذ قبل DOMContentLoaded.",
-              "async ترتيبه مش مضمون ومناسب لسكريبتات مستقلة زي الـ analytics.",
-              "والـ type=\"module\" سلوكه الافتراضي زي defer."
-            ],
-            "en": [
-              "defer keeps file order and runs before DOMContentLoaded.",
-              "async order is not guaranteed, so it suits independent scripts such as analytics.",
-              "type=\"module\" scripts behave like defer by default."
-            ]
-          },
-          "code": ""
-        },
-        {
-          "id": "js-l47",
-          "section": {
-            "ar": "مواضيع متقدمة",
-            "en": "Advanced Topics"
-          },
-          "title": {
-            "ar": "الفرق بين Debouncing و Throttling؟",
-            "en": "What is the difference between debouncing and throttling?"
-          },
-          "short": {
-            "ar": "Debounce ينفذ بعد ما الأحداث تقف، و Throttle ينفذ مرة كل فترة.",
-            "en": "Debounce runs after the events stop; throttle runs at most once per interval."
-          },
-          "points": {
-            "ar": [
-              "Debounce مناسب للبحث أثناء الكتابة، و Throttle للـ scroll والـ resize."
-            ],
-            "en": [
-              "Debounce suits search-as-you-type; throttle suits scroll and resize."
-            ]
-          },
-          "code": "function debounce(fn, ms) {\n  let t;\n  return (...args) => {\n    clearTimeout(t);\n    t = setTimeout(() => fn(...args), ms);\n  };\n}\nfunction throttle(fn, ms) {\n  let last = 0;\n  return (...args) => {\n    if (Date.now() - last >= ms) {\n      last = Date.now();\n      fn(...args);\n    }\n  };\n}"
-        },
-        {
-          "id": "js-l48",
-          "section": {
-            "ar": "مواضيع متقدمة",
-            "en": "Advanced Topics"
-          },
-          "title": {
-            "ar": "الـ Garbage Collection و Memory Leaks؟",
-            "en": "What are garbage collection and memory leaks?"
-          },
-          "short": {
-            "ar": "المحرك بيمسح اللي مبقاش ينفع الوصول ليه، والـ Leak إن حاجة مش محتاجها تفضل متوصلة.",
-            "en": "The engine frees what is no longer reachable; a leak is something you no longer need that stays reachable."
-          },
-          "points": {
-            "ar": [
-              "الفكرة الأساسية Mark-and-Sweep.",
-              "أسباب التسريب: متغيرات global، و timers من غير clearInterval، و listeners متشالتش، و closures أو caches ماسكة بيانات كبيرة، وعناصر DOM محذوفة ولسه ليها مرجع."
-            ],
-            "en": [
-              "The core algorithm is mark-and-sweep.",
-              "Common leaks: global variables, timers without clearInterval, listeners never removed, closures or caches holding large data, and removed DOM elements that are still referenced."
-            ]
-          },
-          "code": ""
-        },
-        {
-          "id": "js-l49",
+          "id": "js-l20",
           "section": {
             "ar": "مواضيع متقدمة",
             "en": "Advanced Topics"
@@ -6598,84 +5728,50 @@
             "en": "What is the difference between ES Modules and CommonJS?"
           },
           "short": {
-            "ar": "ESM بيستخدم import/export، و CommonJS بيستخدم require/module.exports.",
-            "en": "ESM uses import/export; CommonJS uses require/module.exports."
+            "ar": "الـ ES Modules بتستخدم import/export وهي static، والـ CommonJS بتستخدم require وهي dynamic و sync.",
+            "en": "ES Modules use import/export and are static; CommonJS uses require and is dynamic and synchronous."
           },
           "points": {
             "ar": [
-              "ESM هو المعيار الرسمي، تحليله static فبيدعم Tree Shaking، وبيدعم top-level await.",
-              "CommonJS تحميله متزامن وأصله من Node.",
-              "والإصدارات الحديثة من Node بتسمح بـ require لـ ESM في حالات معينة.",
-              "import() الديناميكي بيحمل الـ module وقت الحاجة (code splitting)، وتقدر تستورد JSON بـ with { type: \"json\" }."
+              "الـ ES Modules بتستخدم import/export، وبتتحلل static (فبتسمح بـ tree-shaking) وبتتحمل async.",
+              "الـ CommonJS بتستخدم require/module.exports، وبتتحمل sync وهي dynamic.",
+              "الـ CommonJS هي الأسلوب القديم في Node.js."
             ],
             "en": [
-              "ESM is the official standard; it is statically analysable, so it supports tree shaking and top-level await.",
-              "CommonJS loads synchronously and comes from Node.",
-              "Recent Node versions allow require() of ESM in some cases.",
-              "Dynamic import() loads a module only when needed (code splitting), and you can import JSON with with { type: \"json\" }."
+              "ES Modules use import/export, are static (enabling tree-shaking) and load asynchronously.",
+              "CommonJS uses require/module.exports, is dynamic and loads synchronously.",
+              "CommonJS is the older Node.js style."
             ]
           },
-          "code": "const { renderChart } = await import(\"./chart.js\");\nimport config from \"./config.json\" with { type: \"json\" };"
+          "code": "// ES Modules\nimport { sum } from \"./math.js\";\nexport const x = 1;\n\n// CommonJS\nconst { sum } = require(\"./math\");\nmodule.exports = { x: 1 };"
         },
         {
-          "id": "js-l50",
+          "id": "js-l21",
           "section": {
             "ar": "مواضيع متقدمة",
             "en": "Advanced Topics"
           },
           "title": {
-            "ar": "يعني إيه CORS وليه بيظهر الـ Error؟",
-            "en": "What is CORS and why does the error appear?"
+            "ar": "إيه هو الـ Memory Leak وإزاي بيحصل في JS؟",
+            "en": "What is a memory leak and how does it happen in JS?"
           },
           "short": {
-            "ar": "آلية بتخلي السيرفر يسمح لـ origin مختلف يقرا الرد.",
-            "en": "A mechanism that lets a server allow a different origin to read its response."
+            "ar": "ذاكرة مبقتش محتاجها بس الـ Garbage Collector مش قادر يمسحها لأن حاجة لسه شاورة عليها.",
+            "en": "Memory that is no longer needed but cannot be garbage-collected because something still references it."
           },
           "points": {
             "ar": [
-              "المتصفح بيطبق Same-Origin Policy (البروتوكول والدومين والبورت).",
-              "الـ Error بيظهر لو الرد مفيهوش Access-Control-Allow-Origin مناسب.",
-              "بعض الطلبات بيسبقها preflight بـ OPTIONS.",
-              "الحل من السيرفر أو proxy، مش من كود الفرونت."
+              "ذاكرة مبقتش محتاجها بس الـ Garbage Collector مش قادر يمسحها لأن حاجة لسه شاورة عليها.",
+              "أسبابها الشائعة: timers أو event listeners منسية، متغيرات global بالغلط، و closures ماسكة objects كبيرة.",
+              "الحل إنك تشيل الـ listeners والـ timers لما متبقاش محتاجها."
             ],
             "en": [
-              "The browser enforces the same-origin policy (protocol, domain and port).",
-              "The error appears when the response lacks a suitable Access-Control-Allow-Origin header.",
-              "Some requests are preceded by an OPTIONS preflight.",
-              "The fix belongs on the server or a proxy, not in frontend code."
+              "Memory that is no longer needed but cannot be garbage-collected because something still references it.",
+              "Common causes: forgotten timers or event listeners, accidental globals, and closures holding large objects.",
+              "Fix it by removing listeners and clearing timers when you no longer need them."
             ]
           },
-          "code": ""
-        },
-        {
-          "id": "js-l55",
-          "section": {
-            "ar": "مواضيع متقدمة",
-            "en": "Advanced Topics"
-          },
-          "title": {
-            "ar": "إيه الجديد في JavaScript (ES2025)؟",
-            "en": "What is new in modern JavaScript (ES2025)?"
-          },
-          "short": {
-            "ar": "Iterator helpers و methods جديدة للـ Set و Promise.try و JSON modules و RegExp.escape.",
-            "en": "Iterator helpers, new Set methods, Promise.try, JSON modules and RegExp.escape."
-          },
-          "points": {
-            "ar": [
-              "Iterator helpers زي map و filter و take و toArray على أي iterator، وبتشتغل lazy عنصر عنصر.",
-              "Set بقى فيه union و intersection و difference و isSubsetOf.",
-              "Promise.try بتلف دالة sync أو async في Promise.",
-              "ومن الحاجات اللي بتيجي بعد كده: Temporal API بديل Date، و using للتنظيف التلقائي للموارد."
-            ],
-            "en": [
-              "Iterator helpers such as map, filter, take and toArray work on any iterator, lazily, one item at a time.",
-              "Sets gained union, intersection, difference and isSubsetOf.",
-              "Promise.try wraps a sync or async function in a promise.",
-              "Coming next: the Temporal API to replace Date, and using for automatic resource cleanup."
-            ]
-          },
-          "code": "function* numbers() { yield 1; yield 2; yield 3; yield 4; }\nnumbers().map(x => x * 2).filter(x => x > 4).toArray(); // [6, 8]\n\nnew Set([1, 2]).union(new Set([2, 3]));         // Set {1, 2, 3}\nnew Set([1, 2]).intersection(new Set([2, 3]));  // Set {2}"
+          "code": "const id = setInterval(tick, 1000);\nwindow.addEventListener(\"resize\", onResize);\n\n// cleanup\nclearInterval(id);\nwindow.removeEventListener(\"resize\", onResize);"
         }
       ],
       "quiz": [
@@ -6687,8 +5783,8 @@
           },
           "options": [
             {
-              "ar": "بتمنع إعادة التعيين لكن محتوى الـ object يتعدل",
-              "en": "It prevents reassignment, but object contents can change"
+              "ar": "مينفعش تعيد إسنادها لكن محتوى الـ object يتعدل",
+              "en": "It cannot be reassigned, but object contents can be mutated"
             },
             {
               "ar": "بتمنع أي تعديل في الـ object",
@@ -6699,60 +5795,60 @@
               "en": "It is function-scoped like var"
             },
             {
-              "ar": "ينفع تتعرف مرتين في نفس البلوك",
-              "en": "It can be redeclared in the same block"
+              "ar": "ينفع تتعرف مرتين في نفس الـ block",
+              "en": "It can be re-declared in the same block"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "const بتثبت المرجع بس، مش المحتوى.",
-            "en": "const fixes the binding, not the contents."
+            "ar": "const بتثبت الإسناد بس، مش محتوى الـ object.",
+            "en": "const fixes the binding, not the object contents."
           }
         },
         {
           "id": "js-q02",
           "question": {
-            "ar": "أنهي واحد مش نوع Primitive؟",
-            "en": "Which of these is NOT a primitive type?"
+            "ar": "إيه اللي بيحصل لو استخدمت متغير let قبل سطر تعريفه؟",
+            "en": "What happens if you use a let variable before its declaration line?"
           },
           "options": [
             {
-              "ar": "array",
-              "en": "array"
+              "ar": "ReferenceError لأنه في الـ Temporal Dead Zone",
+              "en": "A ReferenceError, because it is in the Temporal Dead Zone"
             },
             {
-              "ar": "symbol",
-              "en": "symbol"
+              "ar": "بيرجع undefined زي var",
+              "en": "It returns undefined like var"
             },
             {
-              "ar": "bigint",
-              "en": "bigint"
+              "ar": "بيرجع null",
+              "en": "It returns null"
             },
             {
-              "ar": "null",
-              "en": "null"
+              "ar": "الكود بيشتغل عادي لأن let مش بيتعمل لها hoisting خالص",
+              "en": "It works fine because let is not hoisted at all"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "الـ array نوع من الـ object.",
-            "en": "Arrays are objects."
+            "ar": "let و const بيفضلوا في الـ TDZ لحد سطر التعريف.",
+            "en": "let and const stay in the TDZ until their declaration line."
           }
         },
         {
           "id": "js-q03",
           "question": {
-            "ar": "const x = { n: 1 }; const y = x; y.n = 2; قيمة x.n كام؟",
-            "en": "const x = { n: 1 }; const y = x; y.n = 2; What is x.n?"
+            "ar": "ناتج 5 === \"5\" إيه؟",
+            "en": "What does 5 === \"5\" return?"
           },
           "options": [
             {
-              "ar": "2",
-              "en": "2"
+              "ar": "false",
+              "en": "false"
             },
             {
-              "ar": "1",
-              "en": "1"
+              "ar": "true",
+              "en": "true"
             },
             {
               "ar": "undefined",
@@ -6765,654 +5861,204 @@
           ],
           "answer": 0,
           "explanation": {
-            "ar": "x و y بيشاوروا على نفس الـ object.",
-            "en": "x and y reference the same object."
+            "ar": "=== مبتعملش تحويل نوع، والنوعين مختلفين.",
+            "en": "=== does no coercion, and the types differ."
           }
         },
         {
           "id": "js-q04",
           "question": {
-            "ar": "ناتج 0 == \"\" ؟",
-            "en": "What is 0 == \"\"?"
+            "ar": "typeof null بترجع إيه؟",
+            "en": "What does typeof null return?"
           },
           "options": [
             {
-              "ar": "true",
-              "en": "true"
+              "ar": "\"object\"",
+              "en": "\"object\""
             },
             {
-              "ar": "false",
-              "en": "false"
+              "ar": "\"null\"",
+              "en": "\"null\""
             },
             {
-              "ar": "TypeError",
-              "en": "TypeError"
+              "ar": "\"undefined\"",
+              "en": "\"undefined\""
             },
             {
-              "ar": "undefined",
-              "en": "undefined"
+              "ar": "\"number\"",
+              "en": "\"number\""
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "== بتحول الاتنين لرقم 0.",
-            "en": "== coerces both sides to the number 0."
+            "ar": "ده bug تاريخي في اللغة.",
+            "en": "It is a historical bug in the language."
           }
         },
         {
           "id": "js-q05",
           "question": {
-            "ar": "ناتج null === undefined ؟",
-            "en": "What is null === undefined?"
+            "ar": "لو const b = a و a عبارة عن object، وعدلت b.n، إيه اللي يحصل لـ a.n؟",
+            "en": "If const b = a where a is an object, and you change b.n, what happens to a.n?"
           },
           "options": [
             {
-              "ar": "false",
-              "en": "false"
+              "ar": "بيتغير هو كمان لأنهم بيشاوروا على نفس الـ object",
+              "en": "It changes too, because both point to the same object"
             },
             {
-              "ar": "true",
-              "en": "true"
+              "ar": "مبيتغيرش لأن b نسخة منفصلة",
+              "en": "It stays the same, because b is a separate copy"
             },
             {
-              "ar": "TypeError",
-              "en": "TypeError"
+              "ar": "بيحصل TypeError لأن b متعرفة بـ const",
+              "en": "A TypeError is thrown because b is a const"
             },
             {
-              "ar": "NaN",
-              "en": "NaN"
+              "ar": "a.n بيبقى undefined",
+              "en": "a.n becomes undefined"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "نوعين مختلفين، و == بس اللي بتعتبرهم متساويين.",
-            "en": "They are different types; only == treats them as equal."
+            "ar": "الـ objects بتتنسخ بالـ reference.",
+            "en": "Objects are copied by reference."
           }
         },
         {
           "id": "js-q06",
           "question": {
-            "ar": "ناتج \"5\" - 1 ؟",
-            "en": "What is \"5\" - 1?"
+            "ar": "إيه أشهر استخدام للـ Closure؟",
+            "en": "What is a common use of closures?"
           },
           "options": [
             {
-              "ar": "4",
-              "en": "4"
+              "ar": "عمل private state و factories",
+              "en": "Creating private state and factories"
             },
             {
-              "ar": "\"51\"",
-              "en": "\"51\""
+              "ar": "تسريع الـ loops",
+              "en": "Speeding up loops"
             },
             {
-              "ar": "\"4\"",
-              "en": "\"4\""
+              "ar": "منع الـ hoisting",
+              "en": "Preventing hoisting"
             },
             {
-              "ar": "NaN",
-              "en": "NaN"
+              "ar": "تحويل الكود لـ async",
+              "en": "Making code asynchronous"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "علامة - بتحول النص لرقم.",
-            "en": "- converts the string to a number."
+            "ar": "الدالة الداخلية بتحتفظ بمتغيرات الدالة الأم فتقدر تخبيها.",
+            "en": "The inner function keeps the outer variables, so they can be hidden."
           }
         },
         {
           "id": "js-q07",
           "question": {
-            "ar": "أنهي قيمة Truthy؟",
-            "en": "Which value is truthy?"
+            "ar": "قيمة this بتتحدد بإيه؟",
+            "en": "What determines the value of this?"
           },
           "options": [
             {
-              "ar": "[]",
-              "en": "[]"
+              "ar": "طريقة استدعاء الدالة",
+              "en": "How the function is called"
             },
             {
-              "ar": "0",
-              "en": "0"
+              "ar": "مكان تعريف الدالة دايمًا",
+              "en": "Always where the function is defined"
             },
             {
-              "ar": "\"\"",
-              "en": "\"\""
+              "ar": "اسم الدالة",
+              "en": "The function name"
             },
             {
-              "ar": "NaN",
-              "en": "NaN"
+              "ar": "عدد الـ arguments",
+              "en": "The number of arguments"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "الـ array الفاضي Truthy.",
-            "en": "An empty array is truthy."
+            "ar": "this بتتحدد وقت الاستدعاء، ماعدا الـ arrow function.",
+            "en": "this is set at call time, except for arrow functions."
           }
         },
         {
           "id": "js-q08",
           "question": {
-            "ar": "أحسن طريقة تتأكد إن القيمة null؟",
-            "en": "Best way to check whether a value is null?"
+            "ar": "أنهي حاجة مينفعش تعملها بالـ arrow function؟",
+            "en": "Which of these can you not do with an arrow function?"
           },
           "options": [
             {
-              "ar": "value === null",
-              "en": "value === null"
+              "ar": "تستخدمها كـ constructor مع new",
+              "en": "Use it as a constructor with new"
             },
             {
-              "ar": "typeof value === \"null\"",
-              "en": "typeof value === \"null\""
+              "ar": "ترجع قيمة",
+              "en": "Return a value"
             },
             {
-              "ar": "typeof value === \"object\"",
-              "en": "typeof value === \"object\""
+              "ar": "تاخد parameters",
+              "en": "Take parameters"
             },
             {
-              "ar": "value == 0",
-              "en": "value == 0"
+              "ar": "تتخزن في متغير",
+              "en": "Store it in a variable"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "typeof null بترجع \"object\" فمينفعش تعتمد عليها.",
-            "en": "typeof null returns \"object\", so it cannot be relied on."
+            "ar": "الـ arrow ملهاش this خاص بيها فمينفعش تتستخدم مع new.",
+            "en": "An arrow has no own this, so it cannot be used with new."
           }
         },
         {
           "id": "js-q09",
           "question": {
-            "ar": "ناتج \"\" ?? \"default\" ؟",
-            "en": "What is \"\" ?? \"default\"?"
+            "ar": "أنهي واحدة بترجع دالة جديدة بدل ما تنفذ فورًا؟",
+            "en": "Which one returns a new function instead of invoking immediately?"
           },
           "options": [
             {
-              "ar": "\"\"",
-              "en": "\"\""
-            },
-            {
-              "ar": "\"default\"",
-              "en": "\"default\""
-            },
-            {
-              "ar": "null",
-              "en": "null"
-            },
-            {
-              "ar": "undefined",
-              "en": "undefined"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "?? بتستبدل null و undefined بس.",
-            "en": "?? only replaces null and undefined."
-          }
-        },
-        {
-          "id": "js-q10",
-          "question": {
-            "ar": "لو user قيمته null، user?.name بترجع إيه؟",
-            "en": "If user is null, what does user?.name return?"
-          },
-          "options": [
-            {
-              "ar": "undefined",
-              "en": "undefined"
-            },
-            {
-              "ar": "null",
-              "en": "null"
-            },
-            {
-              "ar": "TypeError",
-              "en": "TypeError"
-            },
-            {
-              "ar": "\"\"",
-              "en": "\"\""
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "?. بتوقف التعبير وترجع undefined.",
-            "en": "?. short-circuits to undefined."
-          }
-        },
-        {
-          "id": "js-q11",
-          "question": {
-            "ar": "أنهي واحدة ينفع تناديها قبل سطر تعريفها؟",
-            "en": "Which one can be called before its definition line?"
-          },
-          "options": [
-            {
-              "ar": "Function Declaration",
-              "en": "Function Declaration"
-            },
-            {
-              "ar": "Function Expression في const",
-              "en": "Function expression stored in const"
-            },
-            {
-              "ar": "Arrow function في let",
-              "en": "Arrow function stored in let"
-            },
-            {
-              "ar": "method جوه class",
-              "en": "A method inside a class"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الـ Declaration بتترفع كاملة.",
-            "en": "Declarations are hoisted completely."
-          }
-        },
-        {
-          "id": "js-q12",
-          "question": {
-            "ar": "الوصول لمتغير let جوه الـ TDZ بيدي إيه؟",
-            "en": "Accessing a let variable inside its TDZ gives?"
-          },
-          "options": [
-            {
-              "ar": "ReferenceError",
-              "en": "ReferenceError"
-            },
-            {
-              "ar": "TypeError",
-              "en": "TypeError"
-            },
-            {
-              "ar": "SyntaxError",
-              "en": "SyntaxError"
-            },
-            {
-              "ar": "بيرجع undefined",
-              "en": "It returns undefined"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "المتغير لسه متهيأش.",
-            "en": "The variable is not initialised yet."
-          }
-        },
-        {
-          "id": "js-q13",
-          "question": {
-            "ar": "الـ Lexical Scoping معناه إن الـ scope بيتحدد بإيه؟",
-            "en": "Lexical scoping means scope is decided by?"
-          },
-          "options": [
-            {
-              "ar": "مكان كتابة الكود",
-              "en": "Where the code is written"
-            },
-            {
-              "ar": "مكان استدعاء الدالة",
-              "en": "Where the function is called"
-            },
-            {
-              "ar": "قيمة this",
-              "en": "The value of this"
-            },
-            {
-              "ar": "ترتيب التنفيذ",
-              "en": "The order of execution"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "مكان النداء مش بيفرق.",
-            "en": "The call site does not matter."
-          }
-        },
-        {
-          "id": "js-q14",
-          "question": {
-            "ar": "لو counter بترجع () => ++count و count بيبدأ من 0، النداء التالت لنفس الدالة بيرجع كام؟",
-            "en": "If counter returns () => ++count and count starts at 0, what does the third call of the same function return?"
-          },
-          "options": [
-            {
-              "ar": "3",
-              "en": "3"
-            },
-            {
-              "ar": "1",
-              "en": "1"
-            },
-            {
-              "ar": "0",
-              "en": "0"
-            },
-            {
-              "ar": "undefined",
-              "en": "undefined"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الـ closure محتفظ بقيمة count بين النداءات.",
-            "en": "The closure keeps count alive between calls."
-          }
-        },
-        {
-          "id": "js-q15",
-          "question": {
-            "ar": "نداء b() قبل سطر const b = function () {} بيدي إيه؟",
-            "en": "Calling b() before the line const b = function () {} gives?"
-          },
-          "options": [
-            {
-              "ar": "ReferenceError",
-              "en": "ReferenceError"
-            },
-            {
-              "ar": "بتشتغل عادي",
-              "en": "It runs normally"
-            },
-            {
-              "ar": "undefined",
-              "en": "undefined"
-            },
-            {
-              "ar": "SyntaxError",
-              "en": "SyntaxError"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "بتتبع قواعد const والـ TDZ.",
-            "en": "It follows const and TDZ rules."
-          }
-        },
-        {
-          "id": "js-q16",
-          "question": {
-            "ar": "إيه اللي يحصل لو عملت new لـ arrow function؟",
-            "en": "What happens if you call an arrow function with new?"
-          },
-          "options": [
-            {
-              "ar": "TypeError",
-              "en": "TypeError"
-            },
-            {
-              "ar": "بتعمل object جديد",
-              "en": "It creates a new object"
-            },
-            {
-              "ar": "بترجع undefined",
-              "en": "It returns undefined"
-            },
-            {
-              "ar": "بتربط this بـ window",
-              "en": "It binds this to window"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الـ arrow مش constructor.",
-            "en": "Arrow functions are not constructors."
-          }
-        },
-        {
-          "id": "js-q17",
-          "question": {
-            "ar": "في obj.greet() و greet دالة عادية، this جواها بتشاور على إيه؟",
-            "en": "In obj.greet(), where greet is a regular function, what is this?"
-          },
-          "options": [
-            {
-              "ar": "obj",
-              "en": "obj"
-            },
-            {
-              "ar": "window",
-              "en": "window"
-            },
-            {
-              "ar": "undefined",
-              "en": "undefined"
-            },
-            {
-              "ar": "الدالة greet نفسها",
-              "en": "The greet function itself"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الـ object اللي قبل النقطة.",
-            "en": "The object before the dot."
-          }
-        },
-        {
-          "id": "js-q18",
-          "question": {
-            "ar": "أنهي واحدة بتاخد الـ arguments كـ array؟",
-            "en": "Which one takes the arguments as an array?"
-          },
-          "options": [
-            {
-              "ar": "apply",
-              "en": "apply"
+              "ar": "bind",
+              "en": "bind"
             },
             {
               "ar": "call",
               "en": "call"
             },
             {
-              "ar": "bind",
-              "en": "bind"
+              "ar": "apply",
+              "en": "apply"
             },
             {
-              "ar": "map",
-              "en": "map"
+              "ar": "التلاتة بينفذوا فورًا",
+              "en": "All three invoke immediately"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "apply(thisArg, [args]).",
-            "en": "apply(thisArg, [args])."
+            "ar": "bind بترجع دالة this ثابتة فيها.",
+            "en": "bind returns a function with this fixed."
           }
         },
         {
-          "id": "js-q19",
+          "id": "js-q10",
           "question": {
-            "ar": "ليه ينفع تمرر دالة كـ argument في JS؟",
-            "en": "Why can you pass a function as an argument in JS?"
+            "ar": "في function f(...args)، الـ ... اسمها إيه؟",
+            "en": "In function f(...args), what is the ... called?"
           },
           "options": [
             {
-              "ar": "لأن الدوال قيم عادية (First-class)",
-              "en": "Functions are first-class values"
+              "ar": "Rest، بتجمع الـ arguments في array",
+              "en": "Rest: it collects the arguments into an array"
             },
             {
-              "ar": "بسبب الـ hoisting",
-              "en": "Because of hoisting"
-            },
-            {
-              "ar": "بسبب الـ Event Loop",
-              "en": "Because of the event loop"
-            },
-            {
-              "ar": "في strict mode بس",
-              "en": "Only in strict mode"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الدالة قيمة زي أي قيمة تانية.",
-            "en": "A function is a value like any other."
-          }
-        },
-        {
-          "id": "js-q20",
-          "question": {
-            "ar": "الاستخدام التقليدي الأساسي للـ IIFE؟",
-            "en": "The classic main purpose of an IIFE?"
-          },
-          "options": [
-            {
-              "ar": "عمل scope خاص",
-              "en": "Creating a private scope"
-            },
-            {
-              "ar": "تسريع الكود",
-              "en": "Making code faster"
-            },
-            {
-              "ar": "تحويل الدالة لـ class",
-              "en": "Turning a function into a class"
-            },
-            {
-              "ar": "منع الـ hoisting",
-              "en": "Preventing hoisting"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "عشان متلوثش الـ global.",
-            "en": "To avoid polluting the global scope."
-          }
-        },
-        {
-          "id": "js-q21",
-          "question": {
-            "ar": "أنهي دالة مش Pure؟",
-            "en": "Which function is NOT pure?"
-          },
-          "options": [
-            {
-              "ar": "() => Math.random()",
-              "en": "() => Math.random()"
-            },
-            {
-              "ar": "(a, b) => a + b",
-              "en": "(a, b) => a + b"
-            },
-            {
-              "ar": "x => x * 2",
-              "en": "x => x * 2"
-            },
-            {
-              "ar": "s => s.trim()",
-              "en": "s => s.trim()"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الناتج بيتغير مع نفس المدخلات.",
-            "en": "Its output changes for the same input."
-          }
-        },
-        {
-          "id": "js-q22",
-          "question": {
-            "ar": "const mul = a => b => a * b; ناتج mul(3)(4)؟",
-            "en": "const mul = a => b => a * b; What is mul(3)(4)?"
-          },
-          "options": [
-            {
-              "ar": "12",
-              "en": "12"
-            },
-            {
-              "ar": "7",
-              "en": "7"
-            },
-            {
-              "ar": "دالة",
-              "en": "A function"
-            },
-            {
-              "ar": "NaN",
-              "en": "NaN"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "mul(3) بترجع دالة بتضرب في 3.",
-            "en": "mul(3) returns a function that multiplies by 3."
-          }
-        },
-        {
-          "id": "js-q23",
-          "question": {
-            "ar": "forEach بترجع إيه؟",
-            "en": "What does forEach return?"
-          },
-          "options": [
-            {
-              "ar": "undefined",
-              "en": "undefined"
-            },
-            {
-              "ar": "array جديدة",
-              "en": "A new array"
-            },
-            {
-              "ar": "الـ array الأصلية",
-              "en": "The original array"
-            },
-            {
-              "ar": "عدد العناصر",
-              "en": "The number of items"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "forEach للتنفيذ بس.",
-            "en": "forEach only runs code."
-          }
-        },
-        {
-          "id": "js-q24",
-          "question": {
-            "ar": "ناتج [1,2,3,4].slice(1,3)؟",
-            "en": "What does [1,2,3,4].slice(1,3) return?"
-          },
-          "options": [
-            {
-              "ar": "[2,3]",
-              "en": "[2,3]"
-            },
-            {
-              "ar": "[2,3,4]",
-              "en": "[2,3,4]"
-            },
-            {
-              "ar": "[1,2,3]",
-              "en": "[1,2,3]"
-            },
-            {
-              "ar": "[1,4]",
-              "en": "[1,4]"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "النهاية مش محسوبة.",
-            "en": "The end index is not included."
-          }
-        },
-        {
-          "id": "js-q25",
-          "question": {
-            "ar": "في function sum(...nums) {}، الـ ...nums اسمها إيه؟",
-            "en": "In function sum(...nums) {}, what is ...nums?"
-          },
-          "options": [
-            {
-              "ar": "Rest",
-              "en": "Rest"
-            },
-            {
-              "ar": "Spread",
-              "en": "Spread"
+              "ar": "Spread، بتفرد الـ array",
+              "en": "Spread: it expands the array"
             },
             {
               "ar": "Destructuring",
@@ -7425,45 +6071,45 @@
           ],
           "answer": 0,
           "explanation": {
-            "ar": "بتجمع الـ arguments في array.",
-            "en": "It collects the arguments into an array."
+            "ar": "في الـ parameters بتبقى Rest لأنها بتجمع الباقي.",
+            "en": "In parameters it is rest, because it gathers the remaining items."
           }
         },
         {
-          "id": "js-q26",
+          "id": "js-q11",
           "question": {
-            "ar": "const { name: userName } = user; بتعمل متغير اسمه إيه؟",
-            "en": "const { name: userName } = user; creates which variable?"
+            "ar": "أنهي method مبترجعش أي قيمة؟",
+            "en": "Which method returns nothing?"
           },
           "options": [
             {
-              "ar": "userName",
-              "en": "userName"
+              "ar": "forEach",
+              "en": "forEach"
             },
             {
-              "ar": "name",
-              "en": "name"
+              "ar": "map",
+              "en": "map"
             },
             {
-              "ar": "user.name",
-              "en": "user.name"
+              "ar": "filter",
+              "en": "filter"
             },
             {
-              "ar": "الاتنين name و userName",
-              "en": "Both name and userName"
+              "ar": "reduce",
+              "en": "reduce"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "name: userName معناها إعادة تسمية.",
-            "en": "name: userName renames the value."
+            "ar": "forEach بترجع undefined.",
+            "en": "forEach returns undefined."
           }
         },
         {
-          "id": "js-q27",
+          "id": "js-q12",
           "question": {
-            "ar": "أحسن طريقة مدمجة تعمل بيها Deep Copy؟",
-            "en": "Best built-in way to make a deep copy?"
+            "ar": "أنهي طريقة بتعمل Deep Copy؟",
+            "en": "Which of these makes a deep copy?"
           },
           "options": [
             {
@@ -7471,599 +6117,209 @@
               "en": "structuredClone(obj)"
             },
             {
-              "ar": "{ ...obj }",
-              "en": "{ ...obj }"
+              "ar": "{...obj}",
+              "en": "{...obj}"
             },
             {
               "ar": "Object.assign({}, obj)",
               "en": "Object.assign({}, obj)"
             },
             {
-              "ar": "Object.freeze(obj)",
-              "en": "Object.freeze(obj)"
+              "ar": "const copy = obj",
+              "en": "const copy = obj"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "الباقيين نسخ سطحي أو مش نسخ أصلاً.",
-            "en": "The others are shallow or not copies at all."
+            "ar": "الـ spread و Object.assign بيعملوا shallow copy بس.",
+            "en": "Spread and Object.assign only make shallow copies."
           }
         },
         {
-          "id": "js-q28",
+          "id": "js-q13",
           "question": {
-            "ar": "في object معمول له seal تقدر تعمل إيه؟",
-            "en": "What can you still do with a sealed object?"
+            "ar": "لو property مش موجودة في الـ object، الـ JS بتعمل إيه؟",
+            "en": "If a property is not found on an object, what does JS do?"
           },
           "options": [
             {
-              "ar": "تعدل القيم الموجودة",
-              "en": "Edit existing values"
+              "ar": "بتدور عليها في الـ prototype chain",
+              "en": "It looks it up the prototype chain"
             },
             {
-              "ar": "تضيف خصائص جديدة",
-              "en": "Add new properties"
+              "ar": "بترمي error على طول",
+              "en": "It throws an error immediately"
             },
             {
-              "ar": "تمسح خصائص",
-              "en": "Delete properties"
+              "ar": "بتعملها بقيمة null",
+              "en": "It creates it with the value null"
             },
             {
-              "ar": "ولا حاجة خالص",
-              "en": "Nothing at all"
+              "ar": "بتدور عليها في الـ global scope",
+              "en": "It looks it up in the global scope"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "seal بتمنع الإضافة والحذف بس.",
-            "en": "seal only blocks adding and deleting."
+            "ar": "لو وصلت لآخر السلسلة من غير ما تلاقيها بترجع undefined.",
+            "en": "If it reaches the end of the chain without finding it, it returns undefined."
           }
         },
         {
-          "id": "js-q29",
+          "id": "js-q14",
           "question": {
-            "ar": "ناتج [...new Set([1,1,2])]؟",
-            "en": "What is [...new Set([1,1,2])]?"
+            "ar": "إيه ناتج: console.log(\"1\"); setTimeout(() => console.log(\"2\"), 0); console.log(\"3\");",
+            "en": "What is the output of: console.log(\"1\"); setTimeout(() => console.log(\"2\"), 0); console.log(\"3\");"
           },
           "options": [
             {
-              "ar": "[1,2]",
-              "en": "[1,2]"
+              "ar": "1, 3, 2",
+              "en": "1, 3, 2"
             },
             {
-              "ar": "[1,1,2]",
-              "en": "[1,1,2]"
+              "ar": "1, 2, 3",
+              "en": "1, 2, 3"
             },
             {
-              "ar": "[2]",
-              "en": "[2]"
+              "ar": "2, 1, 3",
+              "en": "2, 1, 3"
             },
             {
-              "ar": "{1,2}",
-              "en": "{1,2}"
+              "ar": "3, 2, 1",
+              "en": "3, 2, 1"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "الـ Set بتشيل التكرار.",
-            "en": "A Set removes duplicates."
+            "ar": "الـ setTimeout بيتنفذ بعد ما الكود الـ sync يخلص حتى لو الوقت 0.",
+            "en": "setTimeout runs after the sync code finishes, even with a delay of 0."
           }
         },
         {
-          "id": "js-q30",
+          "id": "js-q15",
           "question": {
-            "ar": "أنهي جملة صح عن WeakMap؟",
-            "en": "Which statement about WeakMap is true?"
+            "ar": "مين بيتنفذ الأول: Promise.then ولا setTimeout(..., 0)؟",
+            "en": "Which runs first: Promise.then or setTimeout(..., 0)?"
           },
           "options": [
             {
-              "ar": "مينفعش تلف عليها",
-              "en": "You cannot iterate over it"
+              "ar": "Promise.then لأنها microtask",
+              "en": "Promise.then, because it is a microtask"
             },
             {
-              "ar": "مفاتيحها ممكن تكون نصوص",
-              "en": "Its keys can be strings"
+              "ar": "setTimeout لأنه اتكتب الأول",
+              "en": "setTimeout, because it was written first"
             },
             {
-              "ar": "ليها خاصية size",
-              "en": "It has a size property"
+              "ar": "الاتنين في نفس الوقت",
+              "en": "Both at the same time"
             },
             {
-              "ar": "بتمنع الـ Garbage Collection",
-              "en": "It prevents garbage collection"
+              "ar": "مفيش ترتيب ثابت",
+              "en": "There is no fixed order"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "المراجع ضعيفة فمفيش iteration ولا size.",
-            "en": "References are weak, so there is no iteration or size."
+            "ar": "الـ Microtasks ليها أولوية على الـ Macrotasks.",
+            "en": "Microtasks take priority over macrotasks."
           }
         },
         {
-          "id": "js-q31",
+          "id": "js-q16",
           "question": {
-            "ar": "البحث في الـ Prototype Chain بيقف عند إيه؟",
-            "en": "Where does the prototype chain lookup stop?"
+            "ar": "إزاي بتمسك الأخطاء مع async/await؟",
+            "en": "How do you handle errors with async/await?"
           },
           "options": [
             {
-              "ar": "null",
-              "en": "null"
+              "ar": "بـ try/catch",
+              "en": "With try/catch"
             },
             {
-              "ar": "Object",
-              "en": "Object"
+              "ar": "بـ .finally بس",
+              "en": "Only with .finally"
             },
             {
-              "ar": "window",
-              "en": "window"
+              "ar": "بـ window.onerror",
+              "en": "With window.onerror"
             },
             {
-              "ar": "undefined",
-              "en": "undefined"
+              "ar": "مينفعش تتمسك",
+              "en": "They cannot be caught"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "آخر السلسلة null.",
-            "en": "The chain ends at null."
+            "ar": "await بترمي الـ rejection كـ error عادي يتمسك بـ try/catch.",
+            "en": "await throws the rejection as a normal error caught by try/catch."
           }
         },
         {
-          "id": "js-q32",
+          "id": "js-q17",
           "question": {
-            "ar": "لو ضفت method للـ prototype بعد ما عملت objects منه، إيه اللي يحصل؟",
-            "en": "If you add a method to a prototype after creating objects from it, what happens?"
+            "ar": "أنهي واحدة بتستنى كل الـ promises وترجع نتيجة كل واحد حتى لو فيه فشل؟",
+            "en": "Which one waits for all promises and reports each result, even if some fail?"
           },
           "options": [
             {
-              "ar": "الـ objects الموجودة تاخدها فورًا",
-              "en": "Existing objects get it immediately"
+              "ar": "Promise.allSettled",
+              "en": "Promise.allSettled"
             },
             {
-              "ar": "الـ objects الجديدة بس",
-              "en": "Only new objects get it"
+              "ar": "Promise.all",
+              "en": "Promise.all"
             },
             {
-              "ar": "بيرمي Error",
-              "en": "It throws an error"
+              "ar": "Promise.race",
+              "en": "Promise.race"
             },
             {
-              "ar": "لازم تعيد إنشاء الـ objects",
-              "en": "You must recreate the objects"
+              "ar": "Promise.any",
+              "en": "Promise.any"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "الوراثة ربط حي.",
-            "en": "Inheritance is a live link."
+            "ar": "all بتفشل عند أول فشل، لكن allSettled بتكمل.",
+            "en": "all rejects on the first failure, but allSettled keeps going."
           }
         },
         {
-          "id": "js-q33",
+          "id": "js-q18",
           "question": {
-            "ar": "لو الـ constructor رجع object تاني صراحةً، ناتج new هيكون إيه؟",
-            "en": "If a constructor explicitly returns another object, what does new give you?"
+            "ar": "ميزة الـ Event Delegation إيه؟",
+            "en": "What is an advantage of event delegation?"
           },
           "options": [
             {
-              "ar": "الـ object اللي الدالة رجعته",
-              "en": "The object the function returned"
+              "ar": "listener واحد بيشتغل حتى مع العناصر اللي بتتضاف بعدين",
+              "en": "One listener also works for elements added later"
             },
             {
-              "ar": "الـ object الجديد (this)",
-              "en": "The new object (this)"
+              "ar": "بيمنع الـ bubbling",
+              "en": "It stops bubbling"
             },
             {
-              "ar": "undefined",
-              "en": "undefined"
+              "ar": "بيخلي الـ events تتنفذ sync",
+              "en": "It makes events run synchronously"
             },
             {
-              "ar": "TypeError",
-              "en": "TypeError"
+              "ar": "بيحط listener على كل عنصر لوحده",
+              "en": "It attaches a listener to every element"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "الـ object المرجع بيكسب على this.",
-            "en": "A returned object wins over this."
+            "ar": "بيعتمد على الـ bubbling ويفحص event.target.",
+            "en": "It relies on bubbling and checks event.target."
           }
         },
         {
-          "id": "js-q34",
+          "id": "js-q19",
           "question": {
-            "ar": "إيه البادئة اللي بتعمل خاصية private في الـ class؟",
-            "en": "Which prefix makes a class field private?"
-          },
-          "options": [
-            {
-              "ar": "#",
-              "en": "#"
-            },
-            {
-              "ar": "_",
-              "en": "_"
-            },
-            {
-              "ar": "private",
-              "en": "private"
-            },
-            {
-              "ar": "$",
-              "en": "$"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "# خاصية خاصة فعلاً ومينفعش توصلها من بره.",
-            "en": "# fields are truly private and unreachable from outside."
-          }
-        },
-        {
-          "id": "js-q35",
-          "question": {
-            "ar": "مين اللي بيستنى فعلاً الـ timer أو طلب الشبكة؟",
-            "en": "Who actually waits for a timer or a network request?"
-          },
-          "options": [
-            {
-              "ar": "البيئة (المتصفح أو Node)",
-              "en": "The runtime (browser or Node)"
-            },
-            {
-              "ar": "الـ Call Stack",
-              "en": "The call stack"
-            },
-            {
-              "ar": "thread تاني لـ JavaScript",
-              "en": "A second JavaScript thread"
-            },
-            {
-              "ar": "الـ Garbage Collector",
-              "en": "The garbage collector"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الـ stack بيفضل فاضي للكود التاني.",
-            "en": "The stack stays free for other code."
-          }
-        },
-        {
-          "id": "js-q36",
-          "question": {
-            "ar": "ترتيب الطباعة؟ log(1); setTimeout(2); Promise.then(3); log(4)",
-            "en": "Output order? log(1); setTimeout(2); Promise.then(3); log(4)"
-          },
-          "options": [
-            {
-              "ar": "1 4 3 2",
-              "en": "1 4 3 2"
-            },
-            {
-              "ar": "1 2 3 4",
-              "en": "1 2 3 4"
-            },
-            {
-              "ar": "1 4 2 3",
-              "en": "1 4 2 3"
-            },
-            {
-              "ar": "1 3 4 2",
-              "en": "1 3 4 2"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "المتزامن الأول، بعده الـ microtasks، بعده الـ timers.",
-            "en": "Synchronous code first, then microtasks, then timers."
-          }
-        },
-        {
-          "id": "js-q37",
-          "question": {
-            "ar": "أنهي واحدة microtask؟",
-            "en": "Which one is a microtask?"
-          },
-          "options": [
-            {
-              "ar": "callback بتاع Promise.then",
-              "en": "A Promise.then callback"
-            },
-            {
-              "ar": "setTimeout",
-              "en": "setTimeout"
-            },
-            {
-              "ar": "setInterval",
-              "en": "setInterval"
-            },
-            {
-              "ar": "حدث click",
-              "en": "A click event"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "callbacks الـ Promises من الـ microtasks.",
-            "en": "Promise callbacks are microtasks."
-          }
-        },
-        {
-          "id": "js-q38",
-          "question": {
-            "ar": "ينفع Promise تكون fulfilled وبعدين تتحول rejected؟",
-            "en": "Can a fulfilled promise later become rejected?"
-          },
-          "options": [
-            {
-              "ar": "لأ، بعد ما تتحسم مبتتغيرش",
-              "en": "No, once settled it never changes"
-            },
-            {
-              "ar": "أيوه",
-              "en": "Yes"
-            },
-            {
-              "ar": "لو عملت catch بس",
-              "en": "Only if you call catch"
-            },
-            {
-              "ar": "بعد timeout بس",
-              "en": "Only after a timeout"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الحالة بتتحسم مرة واحدة.",
-            "en": "A promise settles only once."
-          }
-        },
-        {
-          "id": "js-q39",
-          "question": {
-            "ar": "أحسن حل للـ Callback Hell؟",
-            "en": "Best fix for callback hell?"
-          },
-          "options": [
-            {
-              "ar": "Promises أو async/await",
-              "en": "Promises or async/await"
-            },
-            {
-              "ar": "callbacks أكتر",
-              "en": "More callbacks"
-            },
-            {
-              "ar": "استخدام var",
-              "en": "Using var"
-            },
-            {
-              "ar": "setTimeout",
-              "en": "setTimeout"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "بتخلي الكود مسطح وسهل القراءة.",
-            "en": "They keep the code flat and readable."
-          }
-        },
-        {
-          "id": "js-q40",
-          "question": {
-            "ar": "fetch بترفض (reject) لو الرد 404؟",
-            "en": "Does fetch reject when the response is 404?"
-          },
-          "options": [
-            {
-              "ar": "لأ، لازم تشيك على res.ok",
-              "en": "No, you must check res.ok"
-            },
-            {
-              "ar": "أيوه دايمًا",
-              "en": "Yes, always"
-            },
-            {
-              "ar": "في Node بس",
-              "en": "Only in Node"
-            },
-            {
-              "ar": "في 500 بس",
-              "en": "Only on 500"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "fetch بترفض في أخطاء الشبكة بس.",
-            "en": "fetch only rejects on network errors."
-          }
-        },
-        {
-          "id": "js-q41",
-          "question": {
-            "ar": "Promise.any بترفض بإيه لو كلهم فشلوا؟",
-            "en": "What does Promise.any reject with if every promise fails?"
-          },
-          "options": [
-            {
-              "ar": "AggregateError",
-              "en": "AggregateError"
-            },
-            {
-              "ar": "TypeError",
-              "en": "TypeError"
-            },
-            {
-              "ar": "أول Error حصل",
-              "en": "The first error"
-            },
-            {
-              "ar": "undefined",
-              "en": "undefined"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "بيجمع كل الأخطاء في error واحد.",
-            "en": "It bundles every error into one."
-          }
-        },
-        {
-          "id": "js-q42",
-          "question": {
-            "ar": "addEventListener بيشتغل افتراضيًا في أنهي مرحلة؟",
-            "en": "By default, addEventListener runs in which phase?"
-          },
-          "options": [
-            {
-              "ar": "Bubbling",
-              "en": "Bubbling"
-            },
-            {
-              "ar": "Capturing",
-              "en": "Capturing"
-            },
-            {
-              "ar": "الاتنين",
-              "en": "Both"
-            },
-            {
-              "ar": "ولا واحدة",
-              "en": "Neither"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "للـ capturing لازم تحدد { capture: true }.",
-            "en": "Capturing needs { capture: true }."
-          }
-        },
-        {
-          "id": "js-q43",
-          "question": {
-            "ar": "الـ Event Delegation بيعتمد على إيه؟",
-            "en": "What does event delegation rely on?"
-          },
-          "options": [
-            {
-              "ar": "Event bubbling",
-              "en": "Event bubbling"
-            },
-            {
-              "ar": "Hoisting",
-              "en": "Hoisting"
-            },
-            {
-              "ar": "الـ closures بس",
-              "en": "Closures only"
-            },
-            {
-              "ar": "preventDefault",
-              "en": "preventDefault"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الحدث بيطلع من الابن للأب.",
-            "en": "The event bubbles up from the child to the parent."
-          }
-        },
-        {
-          "id": "js-q44",
-          "question": {
-            "ar": "عشان تمنع الفورم من الإرسال تستخدم إيه؟",
-            "en": "What stops a form from submitting?"
-          },
-          "options": [
-            {
-              "ar": "preventDefault()",
-              "en": "preventDefault()"
-            },
-            {
-              "ar": "stopPropagation()",
-              "en": "stopPropagation()"
-            },
-            {
-              "ar": "stopImmediatePropagation()",
-              "en": "stopImmediatePropagation()"
-            },
-            {
-              "ar": "return null",
-              "en": "return null"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الإرسال هو السلوك الافتراضي للفورم.",
-            "en": "Submitting is the form’s default behaviour."
-          }
-        },
-        {
-          "id": "js-q45",
-          "question": {
-            "ar": "أنهي واحد بيتبعت تلقائيًا مع كل طلب HTTP؟",
-            "en": "Which one is sent automatically with every HTTP request?"
-          },
-          "options": [
-            {
-              "ar": "Cookies",
-              "en": "Cookies"
-            },
-            {
-              "ar": "localStorage",
-              "en": "localStorage"
-            },
-            {
-              "ar": "sessionStorage",
-              "en": "sessionStorage"
-            },
-            {
-              "ar": "IndexedDB",
-              "en": "IndexedDB"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "الـ cookies بتتبعت مع الطلبات للدومين بتاعها.",
-            "en": "Cookies are sent with requests to their domain."
-          }
-        },
-        {
-          "id": "js-q46",
-          "question": {
-            "ar": "أنهي attribute بيحافظ على ترتيب تنفيذ السكريبتات؟",
-            "en": "Which attribute keeps scripts running in order?"
-          },
-          "options": [
-            {
-              "ar": "defer",
-              "en": "defer"
-            },
-            {
-              "ar": "async",
-              "en": "async"
-            },
-            {
-              "ar": "nomodule",
-              "en": "nomodule"
-            },
-            {
-              "ar": "crossorigin",
-              "en": "crossorigin"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "async بينفذ أول ما يحمل من غير ترتيب.",
-            "en": "async runs whenever it loads, in no fixed order."
-          }
-        },
-        {
-          "id": "js-q47",
-          "question": {
-            "ar": "أنسب حاجة للبحث أثناء الكتابة؟",
-            "en": "Best fit for search-as-you-type?"
+            "ar": "أنسب حاجة لخانة بحث بتبعت request مع كل حرف؟",
+            "en": "What fits best for a search input that sends a request on every keystroke?"
           },
           "options": [
             {
@@ -8079,254 +6335,74 @@
               "en": "setInterval"
             },
             {
-              "ar": "requestAnimationFrame",
-              "en": "requestAnimationFrame"
+              "ar": "Promise.race",
+              "en": "Promise.race"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "بيستنى لحد ما المستخدم يوقف كتابة.",
-            "en": "It waits until the user stops typing."
+            "ar": "Debounce بيستنى المستخدم يبطل كتابة وبعدين يبعت.",
+            "en": "Debounce waits until the user stops typing, then sends."
           }
         },
         {
-          "id": "js-q48",
+          "id": "js-q20",
           "question": {
-            "ar": "أنهي واحدة من أشهر أسباب الـ Memory Leak؟",
-            "en": "Which is a common cause of memory leaks?"
+            "ar": "ليه الـ ES Modules بتسمح بـ tree-shaking؟",
+            "en": "Why do ES Modules allow tree-shaking?"
           },
           "options": [
             {
-              "ar": "setInterval من غير clearInterval",
-              "en": "A setInterval that is never cleared"
+              "ar": "لأنها static وبتتحلل قبل التنفيذ",
+              "en": "Because they are static and analysed before execution"
             },
             {
-              "ar": "استخدام const",
-              "en": "Using const"
+              "ar": "لأنها بتتحمل sync",
+              "en": "Because they load synchronously"
             },
             {
-              "ar": "الـ Pure Functions",
-              "en": "Pure functions"
+              "ar": "لأنها بتستخدم require",
+              "en": "Because they use require"
             },
             {
-              "ar": "الـ Template Literals",
-              "en": "Template literals"
+              "ar": "لأنها شغالة في Node.js بس",
+              "en": "Because they only run in Node.js"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "الـ timer بيفضل ماسك الـ callback وكل اللي فيه.",
-            "en": "The timer keeps its callback and everything it references alive."
+            "ar": "الـ bundler يقدر يعرف إيه اللي مش مستخدم ويشيله.",
+            "en": "The bundler can tell what is unused and drop it."
           }
         },
         {
-          "id": "js-q49",
+          "id": "js-q21",
           "question": {
-            "ar": "ليه ESM بيدعم Tree Shaking؟",
-            "en": "Why does ESM support tree shaking?"
+            "ar": "أنهي حاجة من دول سبب شائع للـ Memory Leak؟",
+            "en": "Which of these is a common cause of a memory leak?"
           },
           "options": [
             {
-              "ar": "لأن تحليل الـ imports بتاعه static",
-              "en": "Its imports can be analysed statically"
+              "ar": "event listener أو timer منسي من غير cleanup",
+              "en": "A forgotten event listener or timer with no cleanup"
             },
             {
-              "ar": "لأن تحميله متزامن",
-              "en": "It loads synchronously"
+              "ar": "استخدام const بدل let",
+              "en": "Using const instead of let"
             },
             {
-              "ar": "لأن أصله من Node",
-              "en": "It comes from Node"
+              "ar": "استخدام ===",
+              "en": "Using ==="
             },
             {
-              "ar": "لأنه بيستخدم require",
-              "en": "It uses require"
+              "ar": "كتابة دوال arrow",
+              "en": "Writing arrow functions"
             }
           ],
           "answer": 0,
           "explanation": {
-            "ar": "الأداة تعرف وقت البناء إيه اللي مستخدم.",
-            "en": "Tools can see at build time what is actually used."
-          }
-        },
-        {
-          "id": "js-q50",
-          "question": {
-            "ar": "خطأ CORS بيتحل صح فين؟",
-            "en": "Where is a CORS error properly fixed?"
-          },
-          "options": [
-            {
-              "ar": "من السيرفر أو proxy",
-              "en": "On the server or a proxy"
-            },
-            {
-              "ar": "من كود الفرونت",
-              "en": "In the frontend code"
-            },
-            {
-              "ar": "بإيقاف JavaScript",
-              "en": "By disabling JavaScript"
-            },
-            {
-              "ar": "بتخزين البيانات في localStorage",
-              "en": "By storing data in localStorage"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "السيرفر هو اللي بيبعت هيدر السماح.",
-            "en": "Only the server can send the allow header."
-          }
-        },
-        {
-          "id": "js-q51",
-          "question": {
-            "ar": "JavaScript بتشتغل فين؟",
-            "en": "Where can JavaScript run?"
-          },
-          "options": [
-            {
-              "ar": "المتصفح والسيرفر والموبايل والديسكتوب",
-              "en": "Browsers, servers, mobile and desktop"
-            },
-            {
-              "ar": "المتصفح بس",
-              "en": "Only in browsers"
-            },
-            {
-              "ar": "السيرفر بس",
-              "en": "Only on servers"
-            },
-            {
-              "ar": "جوه ملفات HTML بس",
-              "en": "Only inside HTML files"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "لغة برمجة high-level و dynamic لعمل صفحات وتطبيقات تفاعلية.",
-            "en": "A high-level, dynamic language for building interactive pages and applications."
-          }
-        },
-        {
-          "id": "js-q52",
-          "question": {
-            "ar": "ناتج `Total: ${2 + 3}`؟",
-            "en": "What does `Total: ${2 + 3}` produce?"
-          },
-          "options": [
-            {
-              "ar": "\"Total: 5\"",
-              "en": "\"Total: 5\""
-            },
-            {
-              "ar": "\"Total: ${2 + 3}\"",
-              "en": "\"Total: ${2 + 3}\""
-            },
-            {
-              "ar": "\"Total: 23\"",
-              "en": "\"Total: 23\""
-            },
-            {
-              "ar": "SyntaxError",
-              "en": "SyntaxError"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "نصوص بين backticks بتدعم ${} والأسطر المتعددة.",
-            "en": "Strings in backticks that support ${} interpolation and multiple lines."
-          }
-        },
-        {
-          "id": "js-q53",
-          "question": {
-            "ar": "أنهي method بترجع أول عنصر بيطابق CSS selector؟",
-            "en": "Which method returns the first element matching a CSS selector?"
-          },
-          "options": [
-            {
-              "ar": "querySelector",
-              "en": "querySelector"
-            },
-            {
-              "ar": "querySelectorAll",
-              "en": "querySelectorAll"
-            },
-            {
-              "ar": "getElementsByClassName",
-              "en": "getElementsByClassName"
-            },
-            {
-              "ar": "createElement",
-              "en": "createElement"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "تمثيل صفحة الـ HTML كشجرة nodes تقدر JavaScript تقراها وتعدلها.",
-            "en": "A tree of nodes representing the HTML page, which JavaScript can read and change."
-          }
-        },
-        {
-          "id": "js-q54",
-          "question": {
-            "ar": "أنهي option بيشيل الـ listener تلقائيًا بعد أول مرة؟",
-            "en": "Which option removes the listener automatically after it fires once?"
-          },
-          "options": [
-            {
-              "ar": "once: true",
-              "en": "once: true"
-            },
-            {
-              "ar": "passive: true",
-              "en": "passive: true"
-            },
-            {
-              "ar": "capture: true",
-              "en": "capture: true"
-            },
-            {
-              "ar": "single: true",
-              "en": "single: true"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "حدث بيحصل في المتصفح زي click أو input، وبنسمعله بـ addEventListener.",
-            "en": "An action in the browser such as click or input, which you listen to with addEventListener."
-          }
-        },
-        {
-          "id": "js-q55",
-          "question": {
-            "ar": "أنهي ميزة اتضافت في ES2025؟",
-            "en": "Which feature was added in ES2025?"
-          },
-          "options": [
-            {
-              "ar": "Iterator helpers",
-              "en": "Iterator helpers"
-            },
-            {
-              "ar": "Optional chaining",
-              "en": "Optional chaining"
-            },
-            {
-              "ar": "let و const",
-              "en": "let and const"
-            },
-            {
-              "ar": "async/await",
-              "en": "async/await"
-            }
-          ],
-          "answer": 0,
-          "explanation": {
-            "ar": "optional chaining في ES2020، و let و const في ES2015، و async/await في ES2017.",
-            "en": "Optional chaining arrived in ES2020, let and const in ES2015, and async/await in ES2017."
+            "ar": "طول ما فيه reference، الـ Garbage Collector مش هيمسح الذاكرة.",
+            "en": "As long as a reference exists, the garbage collector cannot free the memory."
           }
         }
       ]
