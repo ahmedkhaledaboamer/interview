@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useApp } from '../hooks/useApp.jsx';
 import Icon from './Icon.jsx';
 
-async function copyText(text) {
+export async function copyText(text) {
   if (navigator.clipboard?.writeText) {
     await navigator.clipboard.writeText(text);
     return;

@@ -2,7 +2,10 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { useApp } from '../hooks/useApp.jsx';
 import CodeBlock from './CodeBlock.jsx';
 import Icon from './Icon.jsx';
+import Playground from './Playground.jsx';
 import { btn } from './buttonStyles.js';
+
+const EXT = { js: 'js', ts: 'ts', react: 'jsx', rn: 'jsx', python: 'py', php: 'php', bash: 'sh', sql: 'sql', yaml: 'yml', json: 'json', ini: 'ini', dockerfile: 'Dockerfile' };
 
 function matches(lesson, query, lang) {
   if (!query) return true;
@@ -206,6 +209,10 @@ export default function StudyPanel({ track, lessonId, onLessonChange, onGoQuiz }
             <div className="mt-8">
               <CodeBlock code={lesson.code} label={`${track.id}/${lesson.id}`} />
             </div>
+          )}
+
+          {lesson.example && (
+            <Playground key={lesson.id} example={lesson.example} label={`${lesson.id}.${EXT[lesson.example.lang] ?? 'txt'}`} />
           )}
 
           <div className="mt-8 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
