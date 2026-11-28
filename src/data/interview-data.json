@@ -18317,11 +18317,11 @@
           "code": "",
           "example": {
             "lang": "python",
-            "runnable": true,
-            "code": "import threading, time\nfrom concurrent.futures import ThreadPoolExecutor\n\ndef count_down(n):\n    while n:\n        n -= 1\n\n# CPU-bound: threads do not give a real speed-up under the GIL\nN = 3_000_000\nstart = time.perf_counter()\ncount_down(N); count_down(N)\nseq = time.perf_counter() - start\n\nstart = time.perf_counter()\nts = [threading.Thread(target=count_down, args=(N,)) for _ in range(2)]\n[t.start() for t in ts]; [t.join() for t in ts]\nthr = time.perf_counter() - start\nprint(\"threads not much faster:\", thr > seq * 0.5)   # True\n\n# I/O-bound: the GIL is released while waiting\ndef fake_io(i):\n    time.sleep(0.2)\n    return i\nstart = time.perf_counter()\nwith ThreadPoolExecutor(5) as ex:\n    print(list(ex.map(fake_io, range(5))))   # [0, 1, 2, 3, 4]\nprint(f\"{time.perf_counter() - start:.1f}s\")  # ~0.2s instead of 1.0s",
+            "runnable": false,
+            "code": "# Threads cannot start in the browser (Pyodide), so run this one locally: python example.py\nimport threading, time\nfrom concurrent.futures import ThreadPoolExecutor\n\ndef count_down(n):\n    while n:\n        n -= 1\n\n# CPU-bound: threads do not give a real speed-up under the GIL\nN = 3_000_000\nstart = time.perf_counter()\ncount_down(N); count_down(N)\nseq = time.perf_counter() - start\n\nstart = time.perf_counter()\nts = [threading.Thread(target=count_down, args=(N,)) for _ in range(2)]\n[t.start() for t in ts]; [t.join() for t in ts]\nthr = time.perf_counter() - start\nprint(\"threads not much faster:\", thr > seq * 0.5)   # True\n\n# I/O-bound: the GIL is released while waiting\ndef fake_io(i):\n    time.sleep(0.2)\n    return i\nstart = time.perf_counter()\nwith ThreadPoolExecutor(5) as ex:\n    print(list(ex.map(fake_io, range(5))))   # [0, 1, 2, 3, 4]\nprint(f\"{time.perf_counter() - start:.1f}s\")  # ~0.2s instead of 1.0s",
             "try": {
-              "ar": "قلّل الـ workers لـ 1 وشوف الوقت.",
-              "en": "Set the pool to 1 worker and watch the time."
+              "ar": "شغّله على جهازك بـ python وغيّر عدد الـ threads وشوف الوقت بيتغير إزاي.",
+              "en": "Run it locally with python, change the number of threads and watch how the timing changes."
             }
           }
         },
@@ -18354,11 +18354,11 @@
           "code": "from concurrent.futures import ProcessPoolExecutor\n\nwith ProcessPoolExecutor() as pool:\n    results = list(pool.map(heavy_calc, numbers))",
           "example": {
             "lang": "python",
-            "runnable": true,
-            "code": "import threading\nfrom concurrent.futures import ThreadPoolExecutor\n\ncounter = 0\nlock = threading.Lock()\n\ndef work_unsafe():\n    global counter\n    for _ in range(100_000):\n        counter += 1\n\ndef work_safe():\n    global counter\n    for _ in range(100_000):\n        with lock:\n            counter += 1\n\nwith ThreadPoolExecutor(4) as ex:\n    for _ in range(4):\n        ex.submit(work_safe)\nprint(counter)            # 400000 (always, thanks to the lock)\n\n# Rule of thumb\nguide = {\n    \"I/O-bound, many connections\": \"asyncio\",\n    \"I/O-bound, blocking libs\": \"threading\",\n    \"CPU-bound\": \"multiprocessing\",\n}\nfor k, v in guide.items():\n    print(f\"{k} -> {v}\")",
+            "runnable": false,
+            "code": "# Threads cannot start in the browser (Pyodide), so run this one locally: python example.py\nimport threading\nfrom concurrent.futures import ThreadPoolExecutor\n\ncounter = 0\nlock = threading.Lock()\n\ndef work_unsafe():\n    global counter\n    for _ in range(100_000):\n        counter += 1\n\ndef work_safe():\n    global counter\n    for _ in range(100_000):\n        with lock:\n            counter += 1\n\nwith ThreadPoolExecutor(4) as ex:\n    for _ in range(4):\n        ex.submit(work_safe)\nprint(counter)            # 400000 (always, thanks to the lock)\n\n# Rule of thumb\nguide = {\n    \"I/O-bound, many connections\": \"asyncio\",\n    \"I/O-bound, blocking libs\": \"threading\",\n    \"CPU-bound\": \"multiprocessing\",\n}\nfor k, v in guide.items():\n    print(f\"{k} -> {v}\")",
             "try": {
-              "ar": "جرب work_unsafe بدل work_safe وشوف النتيجة.",
-              "en": "Use work_unsafe instead of work_safe and compare the result."
+              "ar": "شغّله على جهازك بـ python وغيّر عدد الـ threads وشوف الوقت بيتغير إزاي.",
+              "en": "Run it locally with python, change the number of threads and watch how the timing changes."
             }
           }
         },

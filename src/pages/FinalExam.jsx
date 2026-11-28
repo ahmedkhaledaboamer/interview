@@ -4,9 +4,10 @@ import ExamRunner from '../components/exam/ExamRunner.jsx';
 import ExamSetup from '../components/exam/ExamSetup.jsx';
 import { useApp } from '../hooks/useApp.jsx';
 import { buildExam, examConfig, examDurationMinutes, percent, tracks } from '../utils/quiz.js';
+import { quizKey } from '../utils/review.js';
 
 export default function FinalExam() {
-  const { t, recordExamScore } = useApp();
+  const { t, recordExamScore, recordReview } = useApp();
   const [phase, setPhase] = useState('setup');
   const [selected, setSelected] = useState(() => tracks.map((tr) => tr.id));
   const [exam, setExam] = useState(null);
@@ -27,12 +28,18 @@ export default function FinalExam() {
       const { questions } = exam;
       const correct = questions.filter((q) => answers[q.id] === q.correct).length;
       const isBest = recordExamScore(percent(correct, questions.length));
+      // Wrong answers go to spaced review (unanswered ones are skipped: running out of time isn't a mistake).
+      for (const q of questions) {
+        if (answers[q.id] !== undefined && answers[q.id] !== q.correct) {
+          recordReview(quizKey(q.id), false, { meta: { kind: 'quiz', trackId: q.trackId } });
+        }
+      }
       setResult({ questions, answers, timeUp, isBest });
       setExam(null);
       setPhase('result');
       window.scrollTo(0, 0);
     },
-    [exam, recordExamScore],
+    [exam, recordExamScore, recordReview],
   );
 
   return (

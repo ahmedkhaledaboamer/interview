@@ -212,7 +212,7 @@ export default function StudyPanel({ track, lessonId, onLessonChange, onGoQuiz }
           )}
 
           {lesson.example && (
-            <Playground key={lesson.id} example={lesson.example} label={`${lesson.id}.${EXT[lesson.example.lang] ?? 'txt'}`} />
+            <Playground key={lesson.id} lessonId={lesson.id} trackId={track.id} example={lesson.example} label={`${lesson.id}.${EXT[lesson.example.lang] ?? 'txt'}`} />
           )}
 
           <div className="mt-8 flex flex-col gap-4 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">

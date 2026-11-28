@@ -7,6 +7,7 @@ import Terminal from '../components/Terminal.jsx';
 import TrackCard from '../components/TrackCard.jsx';
 import { btn } from '../components/buttonStyles.js';
 import { useApp } from '../hooks/useApp.jsx';
+import { useDueCount } from '../hooks/useDueCount.js';
 import { examConfig, tracks } from '../utils/quiz.js';
 
 function StatCard({ icon, label, value, children }) {
@@ -41,6 +42,7 @@ export default function Home() {
 
   const scored = tracks.map((tr) => bestScores[tr.id]).filter((s) => s !== undefined);
   const avgScore = scored.length ? Math.round(scored.reduce((a, b) => a + b, 0) / scored.length) : null;
+  const due = useDueCount();
   const hasProgress = doneLessons > 0 || scored.length > 0 || bestExam !== null;
 
   return (
@@ -83,6 +85,28 @@ export default function Home() {
           <Terminal commands={commands} />
         </div>
       </section>
+
+      {/* Daily review */}
+      {due > 0 && (
+        <Link
+          to="/review"
+          className="mb-4 flex flex-col gap-4 rounded-3xl border border-accent/50 bg-accent/10 p-5 transition hover:bg-accent/15 sm:flex-row sm:items-center sm:justify-between sm:p-6"
+        >
+          <span className="flex items-center gap-4">
+            <span className="grid size-12 shrink-0 place-items-center rounded-2xl bg-accent text-accent-fg">
+              <Icon name="refresh" className="size-6" />
+            </span>
+            <span>
+              <span className="block text-lg font-bold">{t('home.reviewTitle', { n: due })}</span>
+              <span className="block text-sm text-muted">{t('home.reviewSub')}</span>
+            </span>
+          </span>
+          <span className={btn('primary', 'md', 'self-start sm:self-auto')}>
+            {t('home.reviewGo')}
+            <Icon name="arrowRight" className="size-4" />
+          </span>
+        </Link>
+      )}
 
       {/* Stats */}
       <section className="grid gap-4 sm:grid-cols-3" aria-label={t('stats.progress')}>

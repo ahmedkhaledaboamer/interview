@@ -1,5 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useApp } from '../hooks/useApp.jsx';
+import { useDueCount } from '../hooks/useDueCount.js';
 import Icon from './Icon.jsx';
 import { btn } from './buttonStyles.js';
 
@@ -8,7 +9,7 @@ function PillLink({ to, active, children }) {
     <Link
       to={to}
       aria-current={active ? 'page' : undefined}
-      className={`rounded-full px-4 py-1.5 text-sm font-medium transition-colors ${
+      className={`shrink-0 whitespace-nowrap rounded-full px-3 py-1.5 text-sm font-medium transition-colors sm:px-4 ${
         active
           ? 'bg-accent/15 text-accent-text ring-1 ring-accent/40'
           : 'text-muted hover:bg-card-2 hover:text-fg'
@@ -25,6 +26,7 @@ const roundBtn =
 export default function Navbar() {
   const { t, lang, theme, toggleLang, toggleTheme } = useApp();
   const { pathname } = useLocation();
+  const due = useDueCount();
   const nextMode = theme === 'dark' ? 'light' : 'dark';
   const themeLabel = t('nav.toggleTheme', { mode: t(`mode.${nextMode}`) });
 
@@ -41,13 +43,27 @@ export default function Navbar() {
 
         <nav
           aria-label={t('nav.menu')}
-          className="order-last flex w-full items-center gap-1 sm:order-none sm:w-auto"
+          className="order-last -mx-1 flex w-full items-center gap-1 overflow-x-auto px-1 sm:order-none sm:mx-0 sm:w-auto sm:px-0"
         >
           <PillLink to="/" active={pathname === '/'}>
             {t('nav.home')}
           </PillLink>
           <PillLink to="/#tracks" active={pathname.startsWith('/track/')}>
             {t('nav.tracks')}
+          </PillLink>
+          <PillLink to="/interview" active={pathname === '/interview'}>
+            {t('nav.mock')}
+          </PillLink>
+          <PillLink to="/review" active={pathname === '/review'}>
+            <span className="inline-flex items-center gap-1.5">
+              {t('nav.review')}
+              {due > 0 && (
+                <span className="grid min-w-5 place-items-center rounded-full bg-accent px-1.5 text-xs font-bold text-accent-fg">
+                  <span className="sr-only">{t('nav.reviewDue', { n: due })}</span>
+                  <span aria-hidden="true">{due > 99 ? '99+' : due}</span>
+                </span>
+              )}
+            </span>
           </PillLink>
         </nav>
 

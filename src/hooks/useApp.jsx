@@ -1,6 +1,7 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import strings from '../i18n/strings.js';
 import { readStorage, useLocalStorage, writeStorage } from './useLocalStorage.js';
+import { schedule, today } from '../utils/review.js';
 
 const AppContext = createContext(null);
 const THEME_KEY = 'ip.themeChoice';
@@ -32,6 +33,14 @@ export function AppProvider({ children }) {
   const [completed, setCompleted] = useLocalStorage('ip.completed', EMPTY_LIST);
   const [bestScores, setBestScores] = useLocalStorage('ip.bestScores', EMPTY_OBJ);
   const [bestExam, setBestExam] = useLocalStorage('ip.bestExam', null);
+  // Spaced-repetition queue: { [key]: { box, due, misses, added, kind, trackId } }
+  const [reviewQueue, setReviewQueue] = useLocalStorage('ip.review', EMPTY_OBJ);
+  const [reviewStats, setReviewStats] = useLocalStorage('ip.reviewStats', { mastered: 0, streak: 0, lastDay: null });
+  // Several answers can be recorded in one tick (e.g. the final exam), so updates chain through a ref.
+  const queueRef = useRef(reviewQueue);
+  useEffect(() => {
+    queueRef.current = reviewQueue;
+  }, [reviewQueue]);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -91,11 +100,41 @@ export function AppProvider({ children }) {
     [bestExam, setBestExam],
   );
 
+  /**
+   * Records an answer for spaced repetition. Wrong answers enter (or restart) the review queue;
+   * correct answers on the review page move the item up. Returns what happened, for feedback.
+   */
+  const recordReview = useCallback(
+    (key, ok, { inReview = false, meta } = {}) => {
+      const { queue, outcome } = schedule(queueRef.current, key, ok, inReview, meta);
+      if (queue !== queueRef.current) {
+        queueRef.current = queue;
+        setReviewQueue(queue);
+      }
+      if (outcome?.type === 'mastered') setReviewStats((s) => ({ ...s, mastered: (s.mastered ?? 0) + 1 }));
+      return outcome;
+    },
+    [setReviewQueue, setReviewStats],
+  );
+
+  /** Called when a review session ends; keeps the daily streak. */
+  const finishReviewDay = useCallback(() => {
+    setReviewStats((s) => {
+      const day = today();
+      if (s.lastDay === day) return s;
+      const [y, m, d] = day.split('-').map(Number);
+      const yesterday = today(new Date(y, m - 1, d - 1));
+      return { ...s, streak: s.lastDay === yesterday ? (s.streak ?? 0) + 1 : 1, lastDay: day };
+    });
+  }, [setReviewStats]);
+
   const resetProgress = useCallback(() => {
     setCompleted([]);
     setBestScores({});
     setBestExam(null);
-  }, [setCompleted, setBestScores, setBestExam]);
+    setReviewQueue({});
+    setReviewStats({ mastered: 0, streak: 0, lastDay: null });
+  }, [setCompleted, setBestScores, setBestExam, setReviewQueue, setReviewStats]);
 
   const value = useMemo(
     () => ({
@@ -112,6 +151,10 @@ export function AppProvider({ children }) {
       recordQuizScore,
       bestExam,
       recordExamScore,
+      reviewQueue,
+      reviewStats,
+      recordReview,
+      finishReviewDay,
       resetProgress,
     }),
     [
@@ -127,6 +170,10 @@ export function AppProvider({ children }) {
       recordQuizScore,
       bestExam,
       recordExamScore,
+      reviewQueue,
+      reviewStats,
+      recordReview,
+      finishReviewDay,
       resetProgress,
     ],
   );

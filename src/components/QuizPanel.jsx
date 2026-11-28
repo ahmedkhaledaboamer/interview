@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useApp } from '../hooks/useApp.jsx';
 import { buildTrackQuiz, percent } from '../utils/quiz.js';
+import { quizKey } from '../utils/review.js';
 import Icon from './Icon.jsx';
 import OptionList from './OptionList.jsx';
 import ProgressBar from './ProgressBar.jsx';
@@ -9,7 +10,7 @@ import ScoreRing from './ScoreRing.jsx';
 import { btn } from './buttonStyles.js';
 
 export default function QuizPanel({ track, onBackToStudy }) {
-  const { t, pick, bestScores, recordQuizScore } = useApp();
+  const { t, pick, bestScores, recordQuizScore, recordReview } = useApp();
   const [questions, setQuestions] = useState(() => buildTrackQuiz(track));
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState([]);
@@ -43,6 +44,7 @@ export default function QuizPanel({ track, onBackToStudy }) {
 
   const select = (i) => {
     if (answered) return;
+    recordReview(quizKey(q.id), i === q.correct, { meta: { kind: 'quiz', trackId: q.trackId } });
     setAnswers((a) => {
       const copy = [...a];
       copy[index] = i;
